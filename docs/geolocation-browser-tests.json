@@ -1,0 +1,64 @@
+{
+  "passed": 44,
+  "results": [
+    {
+      "browser": "chromium",
+      "passed": 22,
+      "checks": [
+        "no automatic location request on page load",
+        "resupply offers an opt-in GPS toggle",
+        "GPS updates Current km to the projected race position",
+        "map and resupply toggles stay synchronized",
+        "automatic GPS progress is visibly linked",
+        "ahead filter removes already-passed resupply points",
+        "cards distinguish along-route and straight-line distances",
+        "raw GPS coordinates are not saved in plan storage",
+        "actual location marker appears on the map",
+        "map can centre on the GPS fix",
+        "centring uses the actual GPS coordinate",
+        "off clears the browser watch and both toggles",
+        "off removes GPS overlays and restores manual input",
+        "weak accuracy leaves existing route progress unchanged",
+        "off-route fixes keep actual GPS position without inventing progress",
+        "off-route resupply explains the manual progress fallback",
+        "off-route centring uses the GPS fix rather than the snapped track",
+        "GPS feature makes no external requests",
+        "GPS interactions have no runtime errors",
+        "permission denial turns the switch off with an actionable explanation",
+        "permission failure preserves the working manual planner",
+        "GPS controls fit a phone viewport"
+      ],
+      "mocked_browser_geolocation": true
+    },
+    {
+      "browser": "webkit",
+      "passed": 22,
+      "checks": [
+        "no automatic location request on page load",
+        "resupply offers an opt-in GPS toggle",
+        "GPS updates Current km to the projected race position",
+        "map and resupply toggles stay synchronized",
+        "automatic GPS progress is visibly linked",
+        "ahead filter removes already-passed resupply points",
+        "cards distinguish along-route and straight-line distances",
+        "raw GPS coordinates are not saved in plan storage",
+        "actual location marker appears on the map",
+        "map can centre on the GPS fix",
+        "centring uses the actual GPS coordinate",
+        "off clears the browser watch and both toggles",
+        "off removes GPS overlays and restores manual input",
+        "weak accuracy leaves existing route progress unchanged",
+        "off-route fixes keep actual GPS position without inventing progress",
+        "off-route resupply explains the manual progress fallback",
+        "off-route centring uses the GPS fix rather than the snapped track",
+        "GPS feature makes no external requests",
+        "GPS interactions have no runtime errors",
+        "permission denial turns the switch off with an actionable explanation",
+        "permission failure preserves the working manual planner",
+        "GPS controls fit a phone viewport"
+      ],
+      "mocked_browser_geolocation": true
+    }
+  ],
+  "physical_device_test": false
+}

@@ -13,6 +13,7 @@ assets={
  '/*DATA_JSON*/':json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c'),
  '/*GPX_BASE64*/':base64.b64encode(gpx).decode(),
  '/*ENGINE_JS*/':(ROOT/'engine.js').read_text(),
+ '/*LOCATION_JS*/':(ROOT/'location.js').read_text(),
  '/*APP_JS*/':(ROOT/'app.js').read_text(),
 }
 for marker,value in assets.items():text=text.replace(marker,value)

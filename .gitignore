@@ -5,3 +5,4 @@ data/test_*
 data/roadbook_*.png
 data/browser_tests.json
 .DS_Store
+data/location-*.png

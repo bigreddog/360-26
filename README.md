@@ -105,3 +105,47 @@ To host with GitHub Pages, select `main` and the repository root in the reposito
 - Day/night markers: Astral calculation for the island centre, not terrain-shadow or weather predictions.
 
 Settings and notes are stored only in your browser or your exported plan. The committed app contains no personal progress or notes.
+
+## Current location and nearby resupply
+
+Use **Use current location (GPS)** on either the Map or Resupply tab. Both toggles
+control the same browser location watch. The browser asks for permission only
+after you turn it on; tracking is not restored automatically after reopening the
+app. **Centre on me** moves the map to the actual GPS fix, and a circle shows its
+reported accuracy.
+
+An accurate fix near the track updates **Current km** by projecting onto the
+ordered GPX segments. The ahead filter then removes passed stops and each card
+shows distance ahead along the route, distance including the outward shop
+approach, and a separately labelled straight-line GPS distance. Straight-line
+proximity is not a walking route. Existing search, type, detour and hours filters
+continue to apply. Arrival times still use your editable race plan and its
+existing progress/elapsed-time anchoring controls.
+
+Poor accuracy, an old fix, an off-route position or an unresolved repeated pass
+of the track does not overwrite progress. The actual/last GPS fix can still be
+shown while the planner uses the existing Current km. At an ambiguous crossing,
+enter an approximate kilometre to select the right pass. Switching GPS off clears
+the watch and map overlays, restores manual editing and retains the last verified
+route kilometre. Browsers can pause location updates in background tabs.
+
+**Location needs browser permission and a secure context (HTTPS or localhost).**
+Some mobile browsers block location in downloaded HTML files; use an HTTPS host
+such as GitHub Pages in that case. Offline route/POI browsing still works without
+GPS. No GPS coordinates are sent to an application server or saved in plan JSON
+or browser storage. The matched route kilometre is saved locally with your plan.
+
+`location.js` contains the segment projection and location-watch lifecycle.
+`node tests/location.test.js` covers matching, ambiguous passes, permission
+handling, stale/weak/off-route fixes and stopping/late callbacks. Browser checks
+in `tests/geolocation_browser_test.py` use simulated fixes through Chromium and
+WebKit's Geolocation API, including the synchronized switches, map markers,
+distances, filtering and manual fallback. They are not a physical GPS accuracy
+test. After serving the repository and installing the selected browsers, run:
+
+```sh
+node tests/location.test.js
+python3 tests/geolocation_browser_test.py
+```
+
+Results are recorded in `docs/geolocation-browser-tests.json`.

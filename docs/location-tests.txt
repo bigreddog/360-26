@@ -1,0 +1,18 @@
+ok 1 - straight-line distance is geodesic and zero at the same point
+ok 2 - position projects onto the segment, not just the nearest vertex
+ok 3 - off-route displacement is preserved
+ok 4 - route crossings use a plausible existing progress hint
+ok 5 - no permission request occurs on page construction
+ok 6 - explicit start registers one high accuracy watch
+ok 7 - good fixes update route progress
+ok 8 - weak accuracy does not update route progress
+ok 9 - off-route fixes keep actual coordinates and manual progress
+ok 10 - cached stale fixes do not update progress
+ok 11 - fresh fixes become stale as time passes
+ok 12 - invalid coordinates are not accepted
+ok 13 - permission denial clears tracking and shows a recoverable error
+ok 14 - timeout keeps the watch available for a later successful fix
+ok 15 - off stops the watch and ignores late callbacks
+ok 16 - unsupported and insecure contexts do not request permission
+ok 17 - synchronous permission denial does not leak a watch
+17 location tests passed
