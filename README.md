@@ -65,7 +65,7 @@ python3 tests/progress_sync_browser_test.py
 
 The suites use system Chromium (`/usr/bin/chromium`, or `CHROMIUM_PATH` for mobile/GPS tests) and Playwright WebKit. External requests are blocked to check offline operation. Reports in `docs/` record:
 
-- 18 engine/data tests and 17 route-matching/location lifecycle tests.
+- 18 engine/data tests and 18 route-matching/location lifecycle tests.
 - 30 browser journey checks, including feature removal, state migration, collapsed settings, offline HTML reopen, keyboard navigation and byte-identical GPX download.
 - 276 mobile UX checks across Chromium and WebKit at 320, 360, 390 and 430 CSS pixels, plus 844/932 landscape widths. Expanded numeric controls, filter text clipping, 48px targets, larger text and leg cards are checked.
 - 44 browser Geolocation API checks for permission, actual-position maps, distances, weak/off-route fixes and manual fallback.
@@ -82,3 +82,11 @@ For GitHub Pages, select the `main` branch and repository root. No hosting accou
 - DEM: Mapzen Terrain Tiles / AWS Skadi composite; [Joerd documentation](https://github.com/tilezen/joerd/tree/master/docs).
 - Leaflet 1.9.4, BSD-2-Clause, bundled with its license in `vendor/`.
 - Day/night markers: Astral island-centre sunrise/sunset calculations, not terrain-shadow or weather predictions.
+
+## Trail Vision
+
+Open **Map → Trail Vision** for a compass-driven first-person preview of the next 500 m. It uses the embedded GPX's actual bends and elevations, a dark cyan ribbon, 100 m markers and GPS route matching. Turn and tilt the phone to look around; no camera or video is used. Manual and route-following views are explicit alternatives when compass readings are unavailable.
+
+Controls include 100 / 250 / 500 / 1,000 m look-ahead, vertical scale, Recenter, a progress hint, desktop simulation and local GPX preview loading. The renderer uses Canvas perspective geometry without a new dependency or WebGL requirement. The hosted app now caches its self-contained HTML for offline reloads; wait for offline readiness under Downloads & tools before leaving coverage.
+
+Read [Trail Vision permissions, implementation and Android/iOS testing](docs/trail-vision.md) for north-reference limits, calibration guidance, battery decisions and field-check instructions. New automated suites are `node tests/vision.test.js`, `python3 tests/vision_browser_test.py` and `python3 tests/offline_browser_test.py`. Browser tests use simulated sensors, not physical hardware.

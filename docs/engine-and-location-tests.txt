@@ -1,6 +1,6 @@
 
 > canarias360-racer-roadbook@1.0.0 test
-> node tests/engine.test.js && node tests/location.test.js
+> node tests/engine.test.js && node tests/location.test.js && node tests/vision.test.js
 
 ok 1 - first daily quotas hit 24, 48 and 72 hours
 ok 2 - planning finish and 101h deadline
@@ -38,4 +38,44 @@ ok 14 - timeout keeps the watch available for a later successful fix
 ok 15 - off stops the watch and ignores late callbacks
 ok 16 - unsupported and insecure contexts do not request permission
 ok 17 - synchronous permission denial does not leak a watch
-17 location tests passed
+ok 18 - shared subscribers receive updates and can unsubscribe independently
+18 location tests passed
+ok 1 - synthetic GPX has sharp turns, switchbacks, climb, descent and a close loop
+ok 2 - cumulative GPX distance is geodesic and increases
+ok 3 - fractional interpolation is on a segment, including elevation
+ok 4 - 500m window follows cumulative track distance through turns
+ok 5 - lookahead options produce exact bounded local geometry
+ok 6 - end-of-track truncation never wraps around a loop
+ok 7 - separate GPX segments never acquire a connecting straight line
+ok 8 - sparse jumps over 400m are split and not interpolated
+ok 9 - local ENU axes and units are east north up in metres
+ok 10 - upward and downward stats preserve net elevation
+ok 11 - significant climbs and descents are identified
+ok 12 - missing elevation yields a labelled flat preview
+ok 13 - implausible elevation spikes yield a flat preview
+ok 14 - camera is 1.7m above GPX; vertical scaling never moves the eye height
+ok 15 - perspective makes far geometry smaller and rejects points behind
+ok 16 - absolute Android orientation points the BACK of an upright phone north
+ok 17 - yaw rotates the virtual camera clockwise around a geographically fixed route
+ok 18 - upright phone tilt maps to actual world pitch
+ok 19 - iOS magnetic heading is labelled and transformed
+ok 20 - relative orientation is never silently treated as a compass
+ok 21 - portrait/landscape bases retain geographic heading and an upright horizon
+ok 22 - screen orientation rotates screen axes but never rotates the world or forward heading
+ok 23 - quaternion smoothing crosses north without a 360-degree detour
+ok 24 - quaternion rotation stays finite while the phone points vertically
+ok 25 - map matching uses fractional projection
+ok 26 - progress-aware matching chooses the prior side of a close loop
+ok 27 - legitimate backtracking can decrease cumulative progress
+ok 28 - implausible jumps to another pass are rejected
+ok 29 - off-route detection never relocates the preview silently
+ok 30 - weak GPS is rejected before progress is changed
+ok 31 - no GPX and invalid location are understandable states
+ok 32 - compass begins unavailable then uncertain then apparently usable
+ok 33 - reported poor magnetometer quality strongly supports calibration suggestion
+ok 34 - heading movement alone does not justify calibration advice
+ok 35 - independent still gyro plus repeated implausible heading jumps is strong evidence
+ok 36 - loss of heading is unavailable, not a claim that calibration is needed
+ok 37 - confidence can recover after isolated uncertainty
+ok 38 - preferences are bounded and compass/500m/true scale are defaults
+38 Trail Vision tests passed

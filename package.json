@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "build": "python3 scripts/build.py",
-    "test": "node tests/engine.test.js && node tests/location.test.js"
+    "test": "node tests/engine.test.js && node tests/location.test.js && node tests/vision.test.js"
   }
 }

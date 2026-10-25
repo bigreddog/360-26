@@ -1,0 +1,48 @@
+const assert=require('node:assert/strict'),fs=require('node:fs');
+const V=require('../vision-core.js');let passed=0;
+function test(name,fn){fn();console.log('ok',++passed,'-',name);}
+function near(a,b,t=.01){assert(Math.abs(a-b)<t,`${a} != ${b}`);}
+// Fixture reader only: production GPX parsing uses DOMParser and is browser-tested.
+const xml=fs.readFileSync(__dirname+'/fixtures/trail-vision-synthetic.gpx','utf8');
+const raw=[...xml.matchAll(/<trkpt lat="([^"]+)" lon="([^"]+)">\s*<ele>([^<]+)<\/ele>/g)].map(m=>({lat:+m[1],lon:+m[2],ele:+m[3]}));
+const route=V.makeRoute([raw]);
+function en(x,y,z=0){return {lat:28+y/V.RAD/6371008.8,lon:-15.6+x/V.RAD/6371008.8/Math.cos(28*V.RAD),ele:z};}
+test('synthetic GPX has sharp turns, switchbacks, climb, descent and a close loop',()=>{assert(raw.length>50);assert(route.distance>1000);assert(raw.some(p=>p.ele===128));assert(V.distance(raw[0],raw.at(-10))<200);});
+test('cumulative GPX distance is geodesic and increases',()=>{near(route.points[0].s,0);for(let i=1;i<route.points.length;i++)near(route.points[i].s-route.points[i-1].s,V.distance(raw[i-1],raw[i]),.00001);});
+test('fractional interpolation is on a segment, including elevation',()=>{const a=route.points[0],b=route.points[1],p=V.at(route,(a.s+b.s)/2);near(p.lat,(a.lat+b.lat)/2,1e-10);near(p.ele,(a.ele+b.ele)/2);near(p.t,.5);});
+test('500m window follows cumulative track distance through turns',()=>{const w=V.windowRoute(route,70,500);near(w.available,500);near(w.points.at(-1).s-w.points[0].s,500);assert(w.local.length<=102);assert(V.distance(w.origin,w.points.at(-1))<500);});
+test('lookahead options produce exact bounded local geometry',()=>{for(const d of [100,250,500,1000]){const w=V.windowRoute(route,0,d);near(w.available,d);assert(w.local.length<=d/5+1);}});
+test('end-of-track truncation never wraps around a loop',()=>{const w=V.windowRoute(route,route.distance-25,500);near(w.available,25);assert(w.ended);});
+test('separate GPX segments never acquire a connecting straight line',()=>{const r=V.makeRoute([[en(0,0),en(0,100)],[en(1000,1000),en(1000,1100)]]);near(r.distance,200,.1);const w=V.windowRoute(r,50,500,0);near(w.available,50,.1);assert(w.ended);assert(w.local.every(p=>Math.abs(p[0])<1));});
+test('sparse jumps over 400m are split and not interpolated',()=>{const r=V.makeRoute([[en(0,0),en(0,100),en(0,1000),en(0,1100)]]);assert.equal(r.gaps,1);assert.equal(r.segments.length,2);near(r.distance,200,.1);});
+test('local ENU axes and units are east north up in metres',()=>{const origin=en(0,0,10),p=V.local(en(100,200,35),origin);near(p[0],100);near(p[1],200);near(p[2],25);});
+test('upward and downward stats preserve net elevation',()=>{const w=V.windowRoute(route,0,1000);assert(w.stats.ascent>20);assert(w.stats.descent>10);near(w.stats.ascent-w.stats.descent,w.stats.net);});
+test('significant climbs and descents are identified',()=>{const up=Array.from({length:31},(_,i)=>({s:i*5,ele:i*.5})),down=up.map(p=>({...p,ele:-p.ele}));assert.equal(V.significantChange(up).kind,'Climb');assert.equal(V.significantChange(down).kind,'Descent');});
+test('missing elevation yields a labelled flat preview',()=>{const r=V.makeRoute([[en(0,0),{...en(0,100),ele:null}]]),w=V.windowRoute(r,0);assert(!w.elevationOK);assert.match(w.warning,/Flat/);assert(w.local.every(p=>p[2]===0));});
+test('implausible elevation spikes yield a flat preview',()=>{const w=V.windowRoute(V.makeRoute([[en(0,0,0),en(0,5,1000),en(0,10,0)]]),0);assert(!w.elevationOK);});
+test('camera is 1.7m above GPX; vertical scaling never moves the eye height',()=>{const b=V.basis(0,0);near(V.cameraPoint([0,0,0],b,3)[1],-1.7);near(V.cameraPoint([0,100,10],b,1)[1],8.3);near(V.cameraPoint([0,100,10],b,3)[1],28.3);});
+test('perspective makes far geometry smaller and rejects points behind',()=>{const a=V.perspective([1,0,10],400,400),b=V.perspective([1,0,100],400,400);assert(a.x-200>b.x-200);assert.equal(V.perspective([0,0,-1],400,400),null);});
+test('absolute Android orientation points the BACK of an upright phone north',()=>{const p=V.devicePose({alpha:0,beta:90,gamma:0,absolute:true});near(p.heading,0);near(p.pitch,0);near(p.roll,0);assert.match(p.reference,/unverified/);});
+test('yaw rotates the virtual camera clockwise around a geographically fixed route',()=>{near(V.devicePose({alpha:270,beta:90,gamma:0,absolute:true}).heading,90);const geometry=V.windowRoute(route,0).local,copy=JSON.stringify(geometry);for(let h=0;h<360;h+=30)geometry.map(p=>V.cameraPoint(p,V.basis(h,0)));assert.equal(JSON.stringify(geometry),copy);});
+test('upright phone tilt maps to actual world pitch',()=>{near(V.devicePose({alpha:0,beta:120,gamma:0,absolute:true}).pitch,30);near(V.devicePose({alpha:0,beta:60,gamma:0,absolute:true}).pitch,-30);});
+test('iOS magnetic heading is labelled and transformed',()=>{const p=V.devicePose({webkitCompassHeading:123,webkitCompassAccuracy:10,beta:90,gamma:0});near(p.heading,123);assert.equal(p.reference,'Magnetic north');assert.equal(p.accuracy,10);});
+test('relative orientation is never silently treated as a compass',()=>{assert.equal(V.devicePose({alpha:100,beta:90,gamma:0,absolute:false}),null);});
+test('portrait/landscape bases retain geographic heading and an upright horizon',()=>{const portrait=V.devicePose({alpha:90,beta:90,gamma:0,absolute:true},0),landscape=V.devicePose({alpha:0,beta:0,gamma:90,absolute:true},90);near(portrait.heading,270);near(landscape.heading,270);near(portrait.roll,0);near(landscape.roll,0);});
+test('screen orientation rotates screen axes but never rotates the world or forward heading',()=>{for(const angle of [0,90,180,270])near(V.devicePose({alpha:30,beta:90,gamma:0,absolute:true},angle).heading,330);});
+test('quaternion smoothing crosses north without a 360-degree detour',()=>{const a=V.devicePose({alpha:1,beta:90,gamma:0,absolute:true}).q,b=V.devicePose({alpha:359,beta:90,gamma:0,absolute:true}).q,p=V.poseFromQ(V.slerp(a,b,.5));assert(Math.abs(V.delta(p.heading,0))<.001);});
+test('quaternion rotation stays finite while the phone points vertically',()=>{for(const beta of [0,.001,90,179.999,180]){const p=V.devicePose({alpha:0,beta,gamma:0,absolute:true});assert([p.heading,p.pitch,p.roll,...p.q].every(Number.isFinite));}});
+test('map matching uses fractional projection',()=>{const r=V.makeRoute([[en(0,0),en(0,100)]]),m=V.matchProgress(r,{...en(2,45),accuracy:5,timestamp:1000},null,0);assert(m.usable);near(m.s,45,.1);near(m.t,.45,.001);});
+test('progress-aware matching chooses the prior side of a close loop',()=>{const fix={...en(2,85),accuracy:8,timestamp:1000},out=V.matchProgress(route,fix,null,85),back=V.matchProgress(route,fix,null,route.distance-240);assert(out.usable);assert(back.usable);assert(back.s-out.s>500);});
+test('legitimate backtracking can decrease cumulative progress',()=>{const r=V.makeRoute([[en(0,0),en(0,100)]]),a=V.matchProgress(r,{...en(0,70),accuracy:5,timestamp:1000},null,70),b=V.matchProgress(r,{...en(0,50),accuracy:5,timestamp:11000},a);assert(b.usable);assert(b.s<a.s);});
+test('implausible jumps to another pass are rejected',()=>{const fix={...en(0,80),accuracy:5,timestamp:1000},a=V.matchProgress(route,fix,null,80),b=V.matchProgress(route,{...en(-60,90),accuracy:5,timestamp:2000},a);assert(!b.usable);assert.equal(b.status,'ambiguous');});
+test('off-route detection never relocates the preview silently',()=>{const m=V.matchProgress(route,{...en(2000,2000),accuracy:5,timestamp:1000},null,0);assert.equal(m.status,'offroute');assert(!m.usable);});
+test('weak GPS is rejected before progress is changed',()=>{assert.equal(V.matchProgress(route,{...raw[0],accuracy:500},null,0).status,'weak');});
+test('no GPX and invalid location are understandable states',()=>{assert.equal(V.matchProgress(null,null).status,'empty');assert.equal(V.matchProgress(route,null).status,'waiting');});
+test('compass begins unavailable then uncertain then apparently usable',()=>{const c=new V.CompassConfidence();assert.equal(c.state,'Unavailable');assert.equal(c.update({heading:0,now:1000}),'Uncertain');for(let i=0;i<6;i++)c.update({heading:i*.2,now:1100+i*100});assert.equal(c.state,'Good');});
+test('reported poor magnetometer quality strongly supports calibration suggestion',()=>{const c=new V.CompassConfidence();assert.equal(c.update({heading:0,accuracy:-1,now:1000}),'Calibration suggested');assert.equal(c.update({heading:0,accuracy:60,now:2000}),'Calibration suggested');});
+test('heading movement alone does not justify calibration advice',()=>{const c=new V.CompassConfidence();for(let i=0;i<20;i++){c.update({heading:i*90%360,now:i*100});assert.notEqual(c.state,'Calibration suggested');}});
+test('independent still gyro plus repeated implausible heading jumps is strong evidence',()=>{const c=new V.CompassConfidence();for(let i=0;i<5;i++)c.update({heading:i*90%360,gyroRate:0,now:1000+i*100});assert.equal(c.state,'Calibration suggested');});
+test('loss of heading is unavailable, not a claim that calibration is needed',()=>{const c=new V.CompassConfidence();assert.equal(c.update({available:false,now:1000}),'Unavailable');});
+test('confidence can recover after isolated uncertainty',()=>{const c=new V.CompassConfidence();for(let i=0;i<8;i++)c.update({heading:i*.1,now:1000+i*100});c.update({heading:100,now:1900});assert.equal(c.state,'Uncertain');c.update({heading:100,now:6000});assert.equal(c.state,'Good');});
+test('preferences are bounded and compass/500m/true scale are defaults',()=>{assert.deepEqual(V.prefs(),{lookAhead:500,exaggeration:1,mode:'compass',manualHeading:0});assert.equal(V.prefs({exaggeration:9,lookAhead:999}).lookAhead,500);assert.equal(V.prefs({manualHeading:370}).manualHeading,10);});
+console.log(`${passed} Trail Vision tests passed`);

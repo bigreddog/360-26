@@ -14,8 +14,13 @@ assets={
  '/*GPX_BASE64*/':base64.b64encode(gpx).decode(),
  '/*ENGINE_JS*/':(ROOT/'engine.js').read_text(),
  '/*LOCATION_JS*/':(ROOT/'location.js').read_text(),
+ '/*VISION_CSS*/':(ROOT/'vision.css').read_text(),
+ '/*VISION_CORE_JS*/':(ROOT/'vision-core.js').read_text(),
+ '/*VISION_JS*/':(ROOT/'vision.js').read_text(),
  '/*APP_JS*/':(ROOT/'app.js').read_text(),
 }
 for marker,value in assets.items():text=text.replace(marker,value)
 (ROOT/'index.html').write_text(text)
+revision=hashlib.sha256(text.encode()).hexdigest()[:12]
+(ROOT/'sw.js').write_text((ROOT/'sw.template.js').read_text().replace('/*BUILD_REVISION*/',revision))
 print(f'Built index.html: {len(data["sections"])} sections, {len(data["pois"])} places, {len(text.encode()):,} bytes')

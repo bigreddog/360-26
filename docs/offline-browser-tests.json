@@ -1,0 +1,30 @@
+{
+  "passed": 12,
+  "results": [
+    {
+      "browser": "chromium",
+      "passed": 6,
+      "checks": [
+        "self-contained HTML is cached for navigation",
+        "roadbook cold-reloads without network",
+        "offline Leaflet route still initializes",
+        "Trail Vision renders cached race GPX offline",
+        "race GPX elevations remain available offline",
+        "closing offline preview returns to a working map"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "passed": 6,
+      "checks": [
+        "self-contained HTML is cached for navigation",
+        "roadbook cold-reloads without network",
+        "offline Leaflet route still initializes",
+        "Trail Vision renders cached race GPX offline",
+        "race GPX elevations remain available offline",
+        "closing offline preview returns to a working map"
+      ]
+    }
+  ],
+  "physical_device_test": false
+}

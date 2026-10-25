@@ -664,9 +664,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
 @media(max-width:900px){.layout{display:block}.sidebar{position:static}.sidebar>.panel{margin-bottom:12px}.progress-line{max-width:560px}.pacegrid{max-width:600px}.preset{max-width:600px}.top h1{font-size:20px}.panel{padding:16px}.metrics{gap:10px}.metric{padding:14px}.metric strong{font-size:26px}.shell{padding:12px 12px 30px}.tabs button{font-size:17px}.map{height:430px}.next-name{font-size:26px}.poi-card{padding:16px}}
 @media(max-width:359px){.top{padding:14px 12px}.brandmark{font-size:27px}.top h1{font-size:18px}.top .small{font-size:15px}.metric strong{font-size:24px}.metric{padding:12px}.tabs button{font-size:16px}.poi-top{display:block}.poi-km{display:block;margin-top:4px}.preset button{font-size:16px}.progress-line{gap:10px}}
 @media print{body{background:white;color:black;font-size:12pt}.shell{max-width:none;padding:0}.top,.sidebar,.tabs,.tools,.actions,.no-print,.toast{display:none!important}.layout{display:block}.tab[hidden]{display:block!important}#tab-map,#tab-resupply{display:none!important}.panel{padding:12px;border-color:#aaa}.leg-card,.stage,.gap-card{break-inside:avoid}.metric strong{font-size:20pt}.profile{height:150px}.print-only{display:block}.poi-card{break-inside:avoid}details:not(.no-print)>*{display:block!important}summary::before{display:none}.help,.small{font-size:11pt}}
+</style><style>/* Scoped fullscreen view; roadbook colours and controls remain unchanged. */
+dialog.vision{position:fixed;inset:0;margin:0;width:100%;max-width:none;height:100%;height:100dvh;max-height:none;padding:0;border:0;background:#06131c;color:#e8f7f6;overflow:auto;color-scheme:dark;font-size:18px}dialog.vision::backdrop{background:#06131c}.vision[open]{display:flex;flex-direction:column}.vision [hidden]{display:none!important}.vision button,.vision select,.vision input{font:inherit;color:#e8f7f6;background:#102a36;border:1px solid #577681;border-radius:8px;min-height:48px}.vision button{padding:9px 14px}.vision button:hover{background:#234653}.vision button.primary{background:#036e64;border-color:#3bd5be}.vision button:focus-visible,.vision input:focus-visible,.vision select:focus-visible,.vision summary:focus-visible{outline:3px solid #67ffe0;outline-offset:2px}.vision-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid #35515c;padding-top:max(10px,env(safe-area-inset-top))}.vision h2{font-size:22px;margin:0}.vision-mode{color:#8eebd9;font-size:16px;line-height:1.3}.vision-hud{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;padding:10px 16px;background:#0d222d;font-size:16px;line-height:1.35}.vision-hud strong{font-size:18px}.vision-quality{display:block;color:#b9d8dd}.vision-status{padding:0 16px;background:#0d222d;font-size:16px}.vision-status p{margin:0;padding-bottom:6px}.vision-status p:empty{display:none}.vision-warning{color:#ffda8b}.vision-stage{position:relative;flex:1;min-height:240px;background:#06131c;overflow:hidden}.vision canvas{display:block;width:100%;height:100%;position:absolute;inset:0;touch-action:none}.vision-direction{position:absolute;left:10px;right:10px;top:9px;pointer-events:none;text-align:center;font-size:18px;font-weight:700;text-shadow:0 1px 4px #000;background:#06131cc9;border-radius:8px;padding:4px}.vision-offset{position:absolute;bottom:40px;left:10px;right:10px;color:#ffda8b;text-align:center;font-size:16px;pointer-events:none}.vision-bottom{padding:10px 16px max(12px,env(safe-area-inset-bottom));border-top:1px solid #35515c;background:#0d222d}.vision-main-controls{display:flex;gap:10px}.vision-main-controls button{flex:0 0 auto}.vision-main-controls select{flex:1;min-width:0;padding:9px 30px 9px 10px;font-size:17px}.vision-options{margin-top:4px}.vision-options summary{min-height:48px}.vision-option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.vision label{display:block;min-width:0;font-size:16px}.vision label>select,.vision label>input:not([type=checkbox]){display:block;width:100%;max-width:100%;margin:5px 0 10px;padding:8px;font-size:18px}.vision input[type=range]{padding:0!important;accent-color:#39e9ca;border:0}.vision input[type=checkbox]{width:24px;height:24px;vertical-align:middle;accent-color:#39e9ca;min-height:24px;margin-right:9px}.vision .vision-check{display:flex;align-items:center;min-height:48px}.vision-help{font-size:16px;color:#d1e5e7}.vision-fallback{display:flex;gap:8px;padding-bottom:8px;flex-wrap:wrap}.vision-fallback button{font-size:16px;min-height:44px;padding:8px 12px}.vision .vision-help-button{min-height:44px;font-size:16px;margin-bottom:8px}.vision-file-actions{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}.vision input[type=file]{width:100%;font-size:16px}.vision .hint-row{display:flex;gap:10px;align-items:end}.vision .hint-row>label{flex:1;min-width:0}.vision .hint-row button{margin-bottom:10px}.vision [data-vision=manualControls]{margin-top:10px}.vision [data-vision=simulationPanel]{padding:12px;border:1px solid #887339;border-radius:8px;margin:8px 0;background:#312912}.vision [data-vision=simulationPanel] strong{color:#ffda8b}.vision-heading-readout{font-variant-numeric:tabular-nums}.vision [data-vision=fileStatus]{overflow-wrap:anywhere}.vision .vision-head button{min-width:70px}.vision .vision-option-grid label select{appearance:auto;background-image:none;padding-right:8px}@media(min-width:950px){.vision-hud{grid-template-columns:repeat(4,1fr)}.vision-bottom,.vision-head,.vision-hud,.vision-status{padding-left:max(20px,calc((100vw - 1200px)/2));padding-right:max(20px,calc((100vw - 1200px)/2))}.vision-stage{min-height:320px}}@media(max-width:359px){.vision-head,.vision-hud,.vision-status,.vision-bottom{padding-left:12px;padding-right:12px}.vision-main-controls{gap:8px}.vision-main-controls button{padding:9px 10px}.vision-main-controls select{font-size:16px}.vision-hud{gap:6px 10px}}@media(max-height:500px) and (orientation:landscape){.vision-hud{grid-template-columns:repeat(4,minmax(0,1fr));font-size:16px}.vision-stage{min-height:230px}.vision-status{font-size:16px}.vision-head{padding-top:6px;padding-bottom:6px}}@media print{dialog.vision{display:none!important}}
+
+.vision [data-vision=heading],.vision [data-vision=elevation],.vision [data-vision=ahead]{white-space:pre-line}
+
+.vision-head{position:sticky;top:0;z-index:2;background:#06131c;flex-shrink:0}@media(max-height:500px) and (orientation:landscape){.vision-stage{min-height:140px}.vision [data-vision=change]{display:none}}
 </style></head><body>
 <header class="top"><div class="brand"><span class="brandmark">360°</span><div><h1>Canarias 360 roadbook</h1><div class="small">4–8 Nov 2026 · Canary time</div></div></div></header>
-<div class="shell"><details class="tools no-print" id="toolsPanel"><summary>Downloads & tools</summary><div class="quicklinks"><button id="downloadHtml">Save offline HTML</button><button id="downloadGpx">Download GPX</button><button id="printBtn">Print roadbook</button><button id="downloadSections">Sections CSV</button><button id="downloadEvidence">Sources & places</button></div><p class="help" id="storageNote">Pace settings and your last route kilometre stay in this browser.</p></details>
+<div class="shell"><details class="tools no-print" id="toolsPanel"><summary>Downloads & tools</summary><div class="quicklinks"><button id="downloadHtml">Save offline HTML</button><button id="downloadGpx">Download GPX</button><button id="printBtn">Print roadbook</button><button id="downloadSections">Sections CSV</button><button id="downloadEvidence">Sources & places</button></div><p class="help" id="offlineStatus"></p><p class="help" id="storageNote">Pace settings and your last route kilometre stay in this browser.</p></details>
 <div class="metrics"><div class="metric"><span class="label">Projected finish</span><strong id="finishClock">—</strong><span id="finishElapsed" class="small muted"></span></div><div class="metric"><span class="label">Time spare at finish</span><strong id="finishMargin">—</strong><span class="small muted">Limit: Sun 14:00 · 101 h</span></div></div>
 <div class="layout"><aside class="sidebar">
 <div class="panel location-controls"><h2>Your progress</h2><label class="check-label" for="location-main"><input id="location-main" type="checkbox" data-location-toggle> Use GPS location</label><div class="progress-line"><div class="field"><label for="progressKm">Current route km</label><input id="progressKm" type="number" inputmode="decimal" min="0" max="254.074" step=".1" value="0"></div><button id="syncProgress" class="primary">Sync location<br>& time</button></div><p id="progressGpsNote" class="help" hidden>GPS updates route km. Switch GPS off to edit it.</p><p class="location-status" data-location-status role="status" aria-live="polite">GPS is off. Set route km manually or sync.</p><p id="syncStatus" role="status" aria-live="polite" hidden></p></div>
@@ -675,8 +681,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <section class="tab" id="tab-plan" role="tabpanel" aria-labelledby="nav-plan"><div class="panel" id="nextCheckpoint"></div><div class="panel"><div class="section-head"><div><h2>Route profile</h2><p><span id="totalKm">—</span> · <span id="totalVert">—</span></p></div></div><svg class="profile" id="profileSvg" viewBox="0 0 1000 190" role="img" aria-label="Race elevation profile; use Legs for accessible section details"></svg><div class="profile-label muted"><span>Gáldar</span><span>Tejeda</span></div><p class="help" id="profileHover">Tap the profile to view a leg on the map.</p></div><details class="panel" id="stagesPanel"><summary>All 5 race stages</summary><div id="stageCards"></div></details><div id="scenarioNote"></div><div class="panel"><div class="section-head"><h2>Plan your food</h2><button id="showShops">Find stops</button></div><div class="gaps" id="gapCards"></div><p class="help">Race-base food and intermediate closing times: check the organiser’s roadbook.</p></div></section>
 <section class="tab" id="tab-sections" role="tabpanel" aria-labelledby="nav-sections" hidden><div class="panel"><h2>Route legs</h2><p class="help">29 legs in race order. Gain and loss use the same smoothed elevation profile.</p><div id="sectionRows"></div></div></section>
 <section class="tab" id="tab-resupply" role="tabpanel" aria-labelledby="nav-resupply" hidden><div class="section-head"><div><h2>Next resupply</h2><p id="poiCount"></p></div></div><div class="field"><label for="searchPoi">Find a shop, café or town</label><input id="searchPoi" type="search" placeholder="Search places"></div><details class="panel" id="filtersPanel" style="margin-top:12px"><summary><span class="summary-text">Filters<span class="summary-note" id="filterSummary">Food & drinks · ahead · within 500 m</span></span></summary><div class="filters"><label for="typeFilter">Place type<select id="typeFilter"><option value="food">Food & drinks</option><option value="retail">Shops & bakeries</option><option value="cafe">Cafés & meals</option><option value="water">Water points</option><option value="all">All places</option></select></label><label for="statusFilter">Opening hours<select id="statusFilter"><option value="all">Any hours</option><option value="open">Open at arrival</option><option value="operator">Owner hours checked</option><option value="unknown">Hours unknown</option></select></label></div><div class="filterline"><label class="detour-label" for="detourFilter">Walk from route, each way<select id="detourFilter"><option value="250">250 m</option><option value="500" selected>500 m</option><option value="1000">1 km</option><option value="1600">1.6 km</option></select></label><label class="check-label"><input id="aheadOnly" type="checkbox" checked> Only places ahead</label></div></details><p class="help">Times use your race plan, including the outward walk. Published hours can change; unknown hours need checking.</p><div id="poiCards" class="poi-grid"></div><button id="showMore" style="width:100%;margin-top:14px">Show next 6 places</button></section>
-<section class="tab" id="tab-map" role="tabpanel" aria-labelledby="nav-map" hidden><div class="panel"><h2>Route & stops</h2><p id="mapCaption" class="help">Blue line: candidate GPX. Pins use your resupply filters.</p><div class="map-actions"><button id="mapLocateMe" disabled>Centre on me</button><button id="mapFit">Whole route</button></div><div id="map" class="map" aria-label="Interactive route map"></div><details class="detailsline"><summary>Map options & key</summary><div class="map-actions"><button id="mapNext">Route progress</button><button id="toggleTiles">Street map: off</button></div><div class="legend"><span><i class="status-dot gps"></i>GPS position + accuracy circle</span><span><i class="status-dot open"></i>Open across arrival window</span><span><i class="status-dot sensitive"></i>Timing sensitive</span><span><i class="status-dot closed"></i>Closed across arrival window</span><span><i class="status-dot"></i>Hours unknown · ■ race base</span></div><p class="map-note">Route and pins work offline. Street tiles need internet. GPS needs permission and HTTPS or localhost; downloaded files may block it. Orange shop approaches use mapped ways to the vicinity; check the final entrance.</p></details><div id="mapSelection"></div></div></section>
-</main></div><section class="print-only" id="printStops"></section><footer><details><summary>Sources & assumptions</summary><p id="aboutText"></p><p>Opening hours researched 25 October 2026 from owner pages and OpenStreetMap. Restaurant hours do not establish kitchen service. Water points have unverified operability. Fuel stations are not food shops unless a shop is separately mapped.</p><p>ETAs are planning estimates. Normal stops are included in daily targets. Add extra walking, waiting or rest under Extra delay if beyond your normal allowance. Arrival windows use ±5 km/day scenarios, not probabilities. Access is treated as resolved.</p><div class="source-links"><a href="https://spargrancanaria.es/tiendas/" target="_blank" rel="noopener">SPAR Gran Canaria · operator pages</a><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors · ODbL</a><a href="https://www.360thechallenge.com/reglamento/" target="_blank" rel="noopener">Official race regulations</a></div></details><p>Candidate route · personal roadbook · no account or tracking</p></footer></div><div id="toast" class="toast" hidden role="status"></div>
+<section class="tab" id="tab-map" role="tabpanel" aria-labelledby="nav-map" hidden><div class="panel"><h2>Route & stops</h2><p id="mapCaption" class="help">Blue line: candidate GPX. Pins use your resupply filters.</p><div class="map-actions"><button id="mapLocateMe" disabled>Centre on me</button><button id="mapFit">Whole route</button><button id="openTrailVision" class="primary">Trail Vision</button></div><div id="map" class="map" aria-label="Interactive route map"></div><details class="detailsline"><summary>Map options & key</summary><div class="map-actions"><button id="mapNext">Route progress</button><button id="toggleTiles">Street map: off</button></div><div class="legend"><span><i class="status-dot gps"></i>GPS position + accuracy circle</span><span><i class="status-dot open"></i>Open across arrival window</span><span><i class="status-dot sensitive"></i>Timing sensitive</span><span><i class="status-dot closed"></i>Closed across arrival window</span><span><i class="status-dot"></i>Hours unknown · ■ race base</span></div><p class="map-note">Route and pins work offline. Street tiles need internet. GPS needs permission and HTTPS or localhost; downloaded files may block it. Orange shop approaches use mapped ways to the vicinity; check the final entrance.</p></details><div id="mapSelection"></div></div></section>
+</main></div><section class="print-only" id="printStops"></section><footer><details><summary>Sources & assumptions</summary><p id="aboutText"></p><p>Opening hours researched 25 October 2026 from owner pages and OpenStreetMap. Restaurant hours do not establish kitchen service. Water points have unverified operability. Fuel stations are not food shops unless a shop is separately mapped.</p><p>ETAs are planning estimates. Normal stops are included in daily targets. Add extra walking, waiting or rest under Extra delay if beyond your normal allowance. Arrival windows use ±5 km/day scenarios, not probabilities. Access is treated as resolved.</p><div class="source-links"><a href="https://spargrancanaria.es/tiendas/" target="_blank" rel="noopener">SPAR Gran Canaria · operator pages</a><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors · ODbL</a><a href="https://www.360thechallenge.com/reglamento/" target="_blank" rel="noopener">Official race regulations</a></div></details><p>Candidate route · personal roadbook · no account or tracking</p></footer></div><dialog id="trailVision" class="vision" aria-labelledby="visionTitle">
+ <header class="vision-head"><div><h2 id="visionTitle">Trail Vision</h2><div class="vision-mode" data-vision="modeLabel">Compass view</div></div><button data-vision="exit">Exit</button></header>
+ <div class="vision-hud" aria-label="Route preview information"><div><strong data-vision="progress">Route position pending</strong><span class="vision-quality" data-vision="gps">GPS: waiting</span></div><div class="vision-heading-readout"><span data-vision="heading">Compass heading unavailable</span><span class="vision-quality" data-vision="quality">Compass: Unavailable</span></div><div><strong data-vision="ahead">500 m ahead · 1× true scale</strong><div data-vision="change"></div></div><div data-vision="elevation">Elevation unavailable</div></div>
+ <div class="vision-status"><p data-vision="gpsStatus" role="status"></p><p data-vision="sensorStatus" role="status"></p><p class="vision-warning" data-vision="compassWarning" hidden></p><p class="vision-warning" data-vision="elevationWarning"></p><p class="vision-warning" data-vision="segmentWarning"></p><button data-vision="previewOffline" hidden>Preview without GPS</button><div class="vision-fallback" data-vision="fallback"><button data-vision-mode="manual">Use manual heading</button><button data-vision-mode="route">Follow route</button></div></div>
+ <div class="vision-stage"><canvas data-vision="canvas" aria-label="First-person perspective of the connected GPX ahead; route distance and elevation are also shown above">Your browser cannot draw this route preview. Use the normal route map.</canvas><div class="vision-direction" data-vision="direction" role="status"></div><div class="vision-offset" data-vision="offset"></div></div>
+ <div class="vision-bottom"><div class="vision-main-controls"><button data-vision="recenter">Recenter</button><select data-vision="mode" aria-label="Trail Vision camera mode"><option value="compass">Compass view</option><option value="manual">Manual heading</option><option value="route">Follow route</option></select></div>
+ <div data-vision="manualControls" hidden><label data-vision="headingControl">Manual heading <span data-vision="manualValue">0°</span><input data-vision="manualHeading" aria-label="Manual compass heading" type="range" min="0" max="359" step="1" value="0"></label><label>Tilt up / down<input data-vision="manualPitch" aria-label="Manual camera tilt" type="range" min="-80" max="80" step="1" value="-5"></label></div>
+ <details class="vision-options" data-vision="options"><summary>Settings & help</summary><div class="vision-option-grid"><label>Look ahead<select data-vision="lookAhead"><option value="100">100 m</option><option value="250">250 m</option><option value="500" selected>500 m</option><option value="1000">1 km</option></select></label><label>Vertical scale<select data-vision="exaggeration"><option value="1" selected>1× (true)</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3">3×</option></select></label></div><p class="vision-help">Hold the phone upright and turn to look around. Drag the view for a temporary offset; Recenter clears that offset. The grid is a reference plane, not terrain.</p><button class="vision-help-button" data-vision="help" aria-controls="visionHelp">Compass help</button><p class="vision-help" id="visionHelp" data-vision="helpText" hidden>Compass reference can be magnetic or unspecified by the browser. No true-north correction is assumed. Move away from metal objects if readings seem wrong. Depending on your phone, calibration may involve moving it in a figure-eight pattern. This app cannot calibrate the magnetometer. Use Manual heading or Follow route if needed.</p><div class="hint-row"><label>Approximate route km<input type="number" inputmode="decimal" min="0" step=".01" data-vision="hint"></label><button data-vision="hintApply">Set hint</button></div><p class="vision-help">A hint helps distinguish repeated route passes. Backtracking is supported. GPS position remains authoritative when the route match is clear.</p><label class="vision-check"><input type="checkbox" data-vision="simulate">Desktop simulation (no live sensors)</label><div data-vision="simulationPanel" hidden><strong>SIMULATION — not your live position</strong><label>Route km<input data-vision="simDistance" type="number" inputmode="decimal" min="0" step=".01" value="0"></label><label>Simulated heading<input data-vision="simHeading" type="range" min="0" max="359" step="1" value="0"></label><label>Simulated phone tilt<input data-vision="simPitch" type="range" min="-80" max="80" step="1" value="0"></label></div><label>Load a GPX for this preview<input data-vision="file" type="file" accept=".gpx,application/gpx+xml,application/xml,text/xml"></label><div class="vision-file-actions"><button data-vision="raceRoute">Use race GPX</button></div><p class="vision-help" data-vision="fileStatus"></p><p class="vision-help">GPS and compass need HTTPS and browser permission. There is no camera or video. Offline HTML contains the race GPX and all preview code. An uploaded GPX is kept only for this session.</p></details></div>
+</dialog>
+<div id="toast" class="toast" hidden role="status"></div>
 <script>/* @preserve
  * Leaflet 1.9.4, a JS library for interactive maps. https://leafletjs.com
  * (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade
@@ -722,10 +737,11 @@ function matchRoute(data,fix,priorKm){
 }
 class Tracker{
  constructor({data,onChange,getProgressKm,api=()=>globalThis.navigator?.geolocation,secure=()=>globalThis.isSecureContext,now=()=>Date.now()}){
-  this.data=data;this.onChange=onChange;this.getProgressKm=getProgressKm;this.api=api;this.secure=secure;this.now=now;this.enabled=false;this.status='off';this.message='Location is off. Current km can be set manually.';this.fix=null;this.match=null;this.watchId=null;this.generation=0;this.timer=null;
+  this.listeners=new Set();this.data=data;this.onChange=onChange;this.getProgressKm=getProgressKm;this.api=api;this.secure=secure;this.now=now;this.enabled=false;this.status='off';this.message='Location is off. Current km can be set manually.';this.fix=null;this.match=null;this.watchId=null;this.generation=0;this.timer=null;
  }
  snapshot(){return {enabled:this.enabled,status:this.status,message:this.message,fix:this.fix,match:this.match,usable:this.enabled&&this.status==='active'};}
- emit(){this.onChange(this.snapshot());}
+ subscribe(listener){this.listeners.add(listener);return ()=>this.listeners.delete(listener);}
+ emit(){const snapshot=this.snapshot();this.onChange(snapshot);for(const listener of this.listeners)listener(snapshot);}
  start(){
   if(this.enabled)return;const api=this.api();
   if(!this.secure()){this.status='error';this.message='Location needs HTTPS or localhost. Open the HTTPS app and try again.';this.emit();return;}
@@ -762,11 +778,334 @@ class Tracker{
 }
 const api={distanceMetres,matchRoute,Tracker,FRESH_MS};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.RoadbookLocation=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
+</script><script>/* Trail Vision geometry and orientation maths. Metres in local east/north/up. */
+(function(root){
+'use strict';
+const RAD=Math.PI/180,DEG=180/Math.PI,R=6371008.8;
+const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+const wrap=n=>(n%360+360)%360;
+const delta=(a,b)=>(a-b+540)%360-180;
+const finite=n=>typeof n==='number'&&Number.isFinite(n);
+function distance(a,b){const p=a.lat*RAD,q=b.lat*RAD,h=Math.sin((q-p)/2)**2+Math.cos(p)*Math.cos(q)*Math.sin((b.lon-a.lon)*RAD/2)**2;return 2*R*Math.asin(Math.sqrt(clamp(h,0,1)));}
+function local(p,origin){return [(p.lon-origin.lon)*RAD*R*Math.cos(origin.lat*RAD),(p.lat-origin.lat)*RAD*R,(p.ele??0)-(origin.ele??0)];}
+function prefs(p={}){return {lookAhead:[100,250,500,1000].includes(Number(p.lookAhead))?Number(p.lookAhead):500,exaggeration:[1,1.5,2,3].includes(Number(p.exaggeration))?Number(p.exaggeration):1,mode:['compass','manual','route'].includes(p.mode)?p.mode:'compass',manualHeading:finite(Number(p.manualHeading))?wrap(Number(p.manualHeading)):0};}
+function makeRoute(rawSegments,axis){
+ const points=[],segments=[];let s=0,gaps=0,axisIndex=0,current=null,previous=null;
+ for(const raw of rawSegments){current=null;previous=null;
+  for(const rawPoint of raw){const p={lat:Number(rawPoint.lat),lon:Number(rawPoint.lon),ele:rawPoint.ele===null||rawPoint.ele===undefined?null:Number(rawPoint.ele)};
+   if(!finite(p.lat)||!finite(p.lon)||Math.abs(p.lat)>90||Math.abs(p.lon)>180){current=null;previous=null;gaps++;axisIndex++;continue;}
+   const step=previous?distance(previous,p):0;
+   // A sparse jump is unverified geometry. Do not interpolate a bridge across it.
+   if(step>400){current=null;previous=null;gaps++;}
+   if(!current){current={id:segments.length,start:points.length,startM:s,endM:s,end:points.length};segments.push(current);}
+   if(previous)s+=step;
+   if(axis&&finite(axis[axisIndex])&&(!points.length||axis[axisIndex]>=s-1))s=axis[axisIndex];
+   p.s=s;p.segment=current.id;points.push(p);current.end=points.length-1;current.endM=s;previous=p;axisIndex++;
+  }
+ }
+ return {points,segments,distance:s,gaps,valid:points.length>=2&&segments.some(g=>g.end>g.start)};
+}
+function parseGPX(xml,Parser=root.DOMParser){
+ if(!Parser)throw Error('GPX parsing is unavailable in this browser.');
+ const doc=new Parser().parseFromString(xml,'application/xml');if(doc.querySelector('parsererror')||doc.documentElement.localName!=='gpx')throw Error('This file is not valid GPX.');
+ const read=e=>{const z=e.getElementsByTagNameNS('*','ele')[0]?.textContent.trim();return {lat:e.hasAttribute('lat')&&e.getAttribute('lat').trim()?Number(e.getAttribute('lat')):NaN,lon:e.hasAttribute('lon')&&e.getAttribute('lon').trim()?Number(e.getAttribute('lon')):NaN,ele:z?Number(z):null};};
+ let segments=[...doc.getElementsByTagNameNS('*','trkseg')].map(s=>[...s.children].filter(p=>p.localName==='trkpt').map(read));
+ if(!segments.length)segments=[...doc.getElementsByTagNameNS('*','rte')].map(s=>[...s.children].filter(p=>p.localName==='rtept').map(read));
+ if(!segments.some(s=>s.length>=2))throw Error('This GPX has no usable track or route segments.');return segments;
+}
+function segmentAt(route,s,id){if(id!==undefined&&route.segments[id]&&s>=route.segments[id].startM-.001&&s<=route.segments[id].endM+.001)return route.segments[id];return route.segments.find(g=>s>=g.startM-.001&&s<=g.endM+.001)||route.segments.at(-1);}
+function at(route,s,segmentId){
+ const g=segmentAt(route,s,segmentId);if(!g)return null;s=clamp(s,g.startM,g.endM);let a=g.start,b=g.end;
+ while(b-a>1){const m=(a+b)>>1;if(route.points[m].s<=s)a=m;else b=m;}
+ const p=route.points[a],q=route.points[b],t=q.s>p.s?clamp((s-p.s)/(q.s-p.s),0,1):0;
+ return {lat:p.lat+(q.lat-p.lat)*t,lon:p.lon+(q.lon-p.lon)*t,ele:finite(p.ele)&&finite(q.ele)?p.ele+(q.ele-p.ele)*t:null,s,segment:g.id,index:a,t};
+}
+function elevationStats(points){let ascent=0,descent=0;for(let i=1;i<points.length;i++){const d=points[i].ele-points[i-1].ele;if(d>0)ascent+=d;else descent-=d;}return {ascent,descent,net:points.length?points.at(-1).ele-points[0].ele:0};}
+function significantChange(points){
+ let start=null,end=null,sign=0;
+ for(let i=0;i+6<points.length;i++){const d=points[i+6].s-points[i].s,z=points[i+6].ele-points[i].ele,k=d>=20&&Math.abs(z/d)>=.06?Math.sign(z):0;
+  if(k&&(!sign||k===sign)){if(start===null){start=i;sign=k;}end=i+6;}
+  else if(start!==null){if(points[end].s-points[start].s>=30&&Math.abs(points[end].ele-points[start].ele)>=3)break;start=null;end=null;sign=0;}
+ }
+ return start!==null&&points[end].s-points[start].s>=30?{kind:sign>0?'Climb':'Descent',inMetres:points[start].s-points[0].s,length:points[end].s-points[start].s,change:points[end].ele-points[start].ele}:null;
+}
+function windowRoute(route,start,length=500,segmentId){
+ const g=segmentAt(route,start,segmentId);if(!g||g.end===g.start)return {points:[],local:[],available:0,elevationOK:false,warning:'No connected track segment at this position.'};
+ start=clamp(start,g.startM,g.endM);const end=Math.min(g.endM,start+length),points=[];
+ for(let s=start;s<end;s+=5)points.push(at(route,s,g.id));points.push(at(route,end,g.id));
+ let elevationOK=points.every(p=>finite(p.ele)&&p.ele>=-500&&p.ele<=9000);
+ if(elevationOK)for(let i=1;i<points.length;i++)if(Math.abs(points[i].ele-points[i-1].ele)>35&&points[i].s-points[i-1].s<=5)elevationOK=false;
+ if(elevationOK){const original=points.map(p=>p.ele),weights=[1,2,3,2,1];for(let i=1;i<points.length-1;i++){let z=0,w=0;for(let j=-2;j<=2;j++){let k=clamp(i+j,0,points.length-1);z+=original[k]*weights[j+2];w+=weights[j+2];}points[i].ele=z/w;}}
+ else points.forEach(p=>p.ele=0);
+ const origin=points[0],stats=elevationStats(points),available=end-start;
+ return {points,origin,local:points.map(p=>local(p,origin)),available,elevationOK,stats,change:elevationOK?significantChange(points):null,segment:g.id,ended:available<length-.1,warning:!elevationOK?'GPX elevation is missing or unreliable. Flat preview.':null};
+}
+function projectSegment(fix,a,b){const av=local(a,fix),bv=local(b,fix),dx=bv[0]-av[0],dy=bv[1]-av[1],den=dx*dx+dy*dy,t=den?clamp(-(av[0]*dx+av[1]*dy)/den,0,1):0;return {s:a.s+(b.s-a.s)*t,offsetM:Math.hypot(av[0]+dx*t,av[1]+dy*t),lat:a.lat+(b.lat-a.lat)*t,lon:a.lon+(b.lon-a.lon)*t,ele:finite(a.ele)&&finite(b.ele)?a.ele+(b.ele-a.ele)*t:null,segment:a.segment,t};}
+function matchProgress(route,fix,previous,hint){
+ if(!route?.valid)return {usable:false,status:'empty',message:'No usable GPX loaded.'};
+ if(!fix||!finite(fix.lat)||!finite(fix.lon))return {usable:false,status:'waiting',message:'Waiting for a GPS fix.'};
+ const candidates=[];for(const g of route.segments)for(let i=g.start;i<g.end;i++)candidates.push(projectSegment(fix,route.points[i],route.points[i+1]));
+ const nearest=candidates.reduce((a,b)=>a.offsetM<=b.offsetM?a:b),accuracy=finite(fix.accuracy)?fix.accuracy:1000;
+ if(accuracy>80)return {...nearest,usable:false,status:'weak',message:'GPS accuracy is too poor. Move to a clearer view of the sky.'};
+ if(nearest.offsetM>clamp(accuracy*2,35,80))return {...nearest,usable:false,status:'offroute',message:`Off route by about ${Math.round(nearest.offsetM)} m. Preview stays at the last matched position.`};
+ const allowance=clamp(accuracy*.75,5,18),near=candidates.filter(p=>p.offsetM<=nearest.offsetM+allowance);
+ const prior=previous?.s??hint,dt=previous?Math.max(0,((fix.timestamp??0)-(previous.timestamp??0))/1000):0;
+ const budget=previous?Math.max(35,dt*6+accuracy*2):150;
+ const plausible=finite(prior)?near.filter(p=>Math.abs(p.s-prior)<=budget):[];
+ let selected=nearest;
+ if(plausible.length)selected=plausible.reduce((a,b)=>(a.offsetM+.2*Math.abs(a.s-prior))<=(b.offsetM+.2*Math.abs(b.s-prior))?a:b);
+ const groups=[];for(const p of [...near].sort((a,b)=>a.s-b.s)){if(!groups.length||p.s-groups.at(-1).at(-1).s>40)groups.push([]);groups.at(-1).push(p);}
+ if((previous&&!plausible.length)||(groups.length>1&&!plausible.length))return {...selected,usable:false,status:'ambiguous',message:'Several route passes are possible. Set an approximate route km in Settings to choose the right pass.'};
+ return {...selected,usable:true,status:'active',timestamp:fix.timestamp,message:'GPS matched to the route.'};
+}
+function qmul(a,b){return [a[3]*b[0]+a[0]*b[3]+a[1]*b[2]-a[2]*b[1],a[3]*b[1]-a[0]*b[2]+a[1]*b[3]+a[2]*b[0],a[3]*b[2]+a[0]*b[1]-a[1]*b[0]+a[2]*b[3],a[3]*b[3]-a[0]*b[0]-a[1]*b[1]-a[2]*b[2]];}
+function qaxis(axis,angle){const h=angle*RAD/2,s=Math.sin(h);return [axis[0]*s,axis[1]*s,axis[2]*s,Math.cos(h)];}
+function rotate(q,v){const r=qmul(qmul(q,[...v,0]),[-q[0],-q[1],-q[2],q[3]]);return r.slice(0,3);}
+function slerp(a,b,t){let d=a.reduce((v,x,i)=>v+x*b[i],0);if(d<0){b=b.map(x=>-x);d=-d;}let u,v;if(d>.9995){u=1-t;v=t;}else{const angle=Math.acos(clamp(d,-1,1)),sin=Math.sin(angle);u=Math.sin((1-t)*angle)/sin;v=Math.sin(t*angle)/sin;}const q=a.map((x,i)=>u*x+v*b[i]),n=Math.hypot(...q);return q.map(x=>x/n);}
+function qdistance(a,b){return 2*Math.acos(clamp(Math.abs(a.reduce((v,x,i)=>v+x*b[i],0)),0,1))*DEG;}
+function poseFromQ(q){const forward=rotate(q,[0,0,-1]),right=rotate(q,[1,0,0]),up=rotate(q,[0,1,0]),flat=Math.hypot(forward[0],forward[1]);return {q,heading:wrap(Math.atan2(flat>.01?forward[0]:up[0],flat>.01?forward[1]:up[1])*DEG),pitch:Math.asin(clamp(forward[2],-1,1))*DEG,roll:Math.atan2(right[2],up[2])*DEG};}
+function devicePose(event,screenAngle=0){
+ if(!finite(event.beta)||!finite(event.gamma))return null;
+ let alpha,reference,accuracy=null;
+ if(finite(event.webkitCompassHeading)){alpha=wrap(360-event.webkitCompassHeading);reference='Magnetic north';accuracy=finite(event.webkitCompassAccuracy)?event.webkitCompassAccuracy:null;}
+ else if(finite(event.alpha)&&(event.absolute===true||event.type==='deviceorientationabsolute')){alpha=event.alpha;reference='Device north · unverified reference';}
+ else return null;
+ // W3C intrinsic Z-X-Y rotation; camera looks out the BACK of the screen (-Z).
+ const q=qmul(qmul(qmul(qaxis([0,0,1],alpha),qaxis([1,0,0],event.beta)),qaxis([0,1,0],event.gamma)),qaxis([0,0,1],screenAngle));
+ return {...poseFromQ(q),reference,accuracy};
+}
+function basis(heading,pitch=0,roll=0){const h=heading*RAD,p=clamp(pitch,-89.5,89.5)*RAD,r=roll*RAD,f=[Math.sin(h)*Math.cos(p),Math.cos(h)*Math.cos(p),Math.sin(p)],right=[Math.cos(h),-Math.sin(h),0],up=[-Math.sin(h)*Math.sin(p),-Math.cos(h)*Math.sin(p),Math.cos(p)];return {forward:f,right:right.map((v,i)=>v*Math.cos(r)+up[i]*Math.sin(r)),up:up.map((v,i)=>v*Math.cos(r)-right[i]*Math.sin(r))};}
+function cameraPoint(v,b,exaggeration=1){const p=[v[0],v[1],v[2]*exaggeration-1.7],dot=a=>a.reduce((s,x,i)=>s+x*p[i],0);return [dot(b.right),dot(b.up),dot(b.forward)];}
+function perspective(v,width,height,fov=65){if(v[2]<.25)return null;const f=height/(2*Math.tan(fov*RAD/2));return {x:width/2+v[0]*f/v[2],y:height/2-v[1]*f/v[2],depth:v[2]};}
+function bearing(a,b){const v=local(b,a);return wrap(Math.atan2(v[0],v[1])*DEG);}
+class CompassConfidence{
+ constructor(){this.reset();}
+ reset(){this.last=null;this.count=0;this.suspectUntil=0;this.jumps=[];this.state='Unavailable';}
+ update({heading,pitch=0,accuracy=null,gyroRate=null,now=0,available=true}){
+  if(!available||!finite(heading)){this.state='Unavailable';return this.state;}
+  this.count++;
+  if(accuracy!==null&&(accuracy<0||accuracy>=45)){this.state='Calibration suggested';this.suspectUntil=now+5000;}
+  else{
+   if(this.last){const dt=now-this.last.now,jump=Math.abs(delta(heading,this.last.heading));
+    if(dt>0&&dt<300&&jump>50&&Math.abs(pitch)<70){this.suspectUntil=now+3000;if(finite(gyroRate)&&gyroRate<8)this.jumps.push(now);}
+   }
+   this.jumps=this.jumps.filter(t=>now-t<10000);
+   this.state=this.jumps.length>=3?'Calibration suggested':accuracy!==null&&accuracy>20||now<this.suspectUntil||this.count<5?'Uncertain':'Good';
+  }
+  this.last={heading,now};return this.state;
+ }
+}
+const api={RAD,DEG,clamp,wrap,delta,distance,local,prefs,makeRoute,parseGPX,at,windowRoute,elevationStats,significantChange,projectSegment,matchProgress,qmul,qaxis,rotate,slerp,qdistance,poseFromQ,devicePose,basis,cameraPoint,perspective,bearing,CompassConfidence};
+if(typeof module!=='undefined'&&module.exports)module.exports=api;root.TrailVisionCore=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script><script>/* Isolated, on-demand Canvas 3D view. No camera, WebGL, or network dependency. */
+(function(root){
+'use strict';
+const C=root.TrailVisionCore;
+class View{
+ constructor({element,tracker,getGpx,getAxis,getProgressKm,getPreferences,onPreferences}){
+  Object.assign(this,{el:element,tracker,getGpx,getAxis,getProgressKm,getPreferences,onPreferences});
+  this.active=false;this.frames=0;this.raf=0;this.generation=0;this.route=null;this.uploaded=false;this.sensorAttached=false;this.permissionsGranted=false;this.confidence=new C.CompassConfidence();
+  this.find=id=>this.el.querySelector('[data-vision="'+id+'"]');this.canvas=this.find('canvas');
+  this.find('exit').onclick=()=>this.close();this.el.addEventListener('cancel',e=>{e.preventDefault();this.close();});
+  this.find('recenter').onclick=()=>{this.offsetYaw=0;this.offsetPitch=0;if(this.targetQ)this.smoothQ=this.targetQ.slice();this.redraw();};
+  for(const name of ['lookAhead','exaggeration','mode','manualHeading'])this.find(name).addEventListener('change',()=>{
+   this.preferences=C.prefs({...this.preferences,[name]:this.find(name).value});this.onPreferences(this.preferences);this.offsetYaw=0;this.offsetPitch=0;if(name==='lookAhead')this.updateWindow();this.updateHUD();this.redraw();
+  });
+  this.find('manualHeading').addEventListener('input',()=>{this.preferences.manualHeading=Number(this.find('manualHeading').value);this.updateHUD();this.redraw();});
+  this.find('manualPitch').oninput=()=>{this.manualPitch=Number(this.find('manualPitch').value);this.redraw();};
+  this.find('hintApply').onclick=()=>{const km=Number(this.find('hint').value);if(!Number.isFinite(km)||km<0||km>this.route.distance/1000){this.find('fileStatus').textContent='Enter a route kilometre within this GPX.';return;}this.previous=null;this.hint=km*1000;if(this.simulation)this.simulate({distance:this.hint});else this.onGPS(this.tracker.snapshot());};
+  this.find('previewOffline').onclick=()=>this.setSimulation(true);
+  this.find('help').onclick=()=>{this.find('helpText').hidden=!this.find('helpText').hidden;this.find('help').setAttribute('aria-expanded',String(!this.find('helpText').hidden));};
+  this.find('simulate').onchange=()=>this.setSimulation(this.find('simulate').checked);
+  for(const name of ['simHeading','simPitch','simDistance'])this.find(name).oninput=()=>this.simulate({heading:Number(this.find('simHeading').value),pitch:Number(this.find('simPitch').value),distance:Number(this.find('simDistance').value)*1000});
+  this.find('file').onchange=e=>this.loadFile(e.target.files?.[0]);this.find('raceRoute').onclick=()=>this.restoreRace();
+  this.el.querySelectorAll('[data-vision-mode]').forEach(b=>b.onclick=()=>{this.preferences.mode=b.dataset.visionMode;this.find('mode').value=this.preferences.mode;this.onPreferences(this.preferences);this.updateHUD();this.redraw();});
+  this.orientationHandler=e=>this.onOrientation(e);this.motionHandler=e=>{const r=e.rotationRate;if(r&&[r.alpha,r.beta,r.gamma].every(Cfinite))this.gyro={rate:Math.hypot(r.alpha,r.beta,r.gamma),time:performance.now()};};
+  this.visibilityHandler=()=>{if(!this.active)return;if(document.hidden){this.detachSensors();cancelAnimationFrame(this.raf);this.raf=0;}else{if(this.permissionsGranted&&!this.simulation)this.attachSensors();this.tracker.refresh();this.checkSensors();this.redraw();}};
+  this.screenHandler=()=>{this.targetQ=null;this.smoothQ=null;this.confidence.reset();this.quality='Unavailable';this.sensorMessage='Screen rotated. Waiting for a new compass reading.';this.updateHUD();this.redraw();};
+  this.canvas.addEventListener('pointerdown',e=>{this.drag={x:e.clientX,y:e.clientY,yaw:this.offsetYaw,pitch:this.offsetPitch};this.canvas.setPointerCapture(e.pointerId);});
+  this.canvas.addEventListener('pointermove',e=>{if(!this.drag)return;this.offsetYaw=C.clamp(this.drag.yaw-(e.clientX-this.drag.x)*.18,-180,180);this.offsetPitch=C.clamp(this.drag.pitch+(e.clientY-this.drag.y)*.15,-60,60);this.redraw();});
+  this.canvas.addEventListener('pointerup',()=>this.drag=null);this.canvas.addEventListener('pointercancel',()=>this.drag=null);
+ }
+ async open(){
+  if(this.active)return;this.active=true;this.canvasVisible=true;const token=++this.generation;this.preferences=C.prefs(this.getPreferences());this.hint=this.uploaded?(this.previewHint??0):this.getProgressKm()*1000;this.previous=null;this.match=null;this.window=null;this.gps=null;this.targetQ=null;this.smoothQ=null;this.lastPose=null;this.lastSensorTime=0;this.offsetYaw=0;this.offsetPitch=0;this.manualPitch=-5;this.status='';this.matchStatus='waiting';this.quality='Unavailable';this.sensorMessage='Waiting for compass heading. Hold the phone upright.';this.simulation=false;this.confidence.reset();this.frames=0;this.drag=null;
+  for(const name of ['lookAhead','exaggeration','mode','manualHeading'])this.find(name).value=this.preferences[name];
+  this.find('manualPitch').value=-5;this.find('simulate').checked=false;this.find('simulationPanel').hidden=true;this.find('options').open=false;this.find('helpText').hidden=true;this.find('help').setAttribute('aria-expanded','false');this.find('fileStatus').textContent=this.uploaded?'Custom preview GPX · race map unchanged':'Race candidate GPX';this.find('direction').textContent='';this.find('offset').textContent='';this.find('hint').value=this.hint/1000;
+  this.el.showModal();this.oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
+  // Call permission methods directly in the initiating user gesture (required by iOS).
+  this.requestSensors(token);
+  try{if(!this.route)this.restoreRace(false);if(!this.route?.valid)throw Error('No usable GPX loaded. Load a GPX in Settings.');}
+  catch(e){this.route=null;this.find('fileStatus').textContent=e.message;}
+  this.ctx=this.canvas.getContext('2d',{alpha:false});
+  if(!this.ctx)this.sensorMessage='This browser cannot draw the preview. The normal route map is still available.';
+  this.resizeObserver=new ResizeObserver(()=>this.redraw());this.resizeObserver.observe(this.canvas);
+  if(typeof IntersectionObserver!=='undefined'){this.intersectionObserver=new IntersectionObserver(entries=>{this.canvasVisible=entries[0].isIntersecting;if(this.canvasVisible)this.redraw();},{root:this.el});this.intersectionObserver.observe(this.canvas);}
+  document.addEventListener('visibilitychange',this.visibilityHandler);window.addEventListener('orientationchange',this.screenHandler);screen.orientation?.addEventListener('change',this.screenHandler);
+  this.sensorTimer=setInterval(()=>this.checkSensors(),1000);
+  this.takeGPS();this.updateHUD();this.redraw();
+ }
+ close(){
+  if(!this.active)return;if(this.uploaded)this.previewHint=this.match?.s??0;this.active=false;++this.generation;cancelAnimationFrame(this.raf);this.raf=0;this.detachSensors();clearInterval(this.sensorTimer);this.resizeObserver?.disconnect();this.intersectionObserver?.disconnect();this.releaseGPS();
+  document.removeEventListener('visibilitychange',this.visibilityHandler);window.removeEventListener('orientationchange',this.screenHandler);screen.orientation?.removeEventListener('change',this.screenHandler);
+  this.canvas.width=1;this.canvas.height=1;this.window=null;this.targetQ=null;this.smoothQ=null;this.drag=null;this.el.close();document.body.style.overflow=this.oldOverflow;
+ }
+ takeGPS(){this.ownsGPS=!this.tracker.enabled;this.unsubscribe=this.tracker.subscribe(s=>this.onGPS(s));if(this.tracker.enabled)this.onGPS(this.tracker.snapshot());else this.tracker.start();}
+ releaseGPS(){this.unsubscribe?.();this.unsubscribe=null;if(this.ownsGPS&&this.tracker.enabled)this.tracker.stop();this.ownsGPS=false;}
+ async requestSensors(token){
+  let orientationPermission='granted',motionPermission='granted';
+  try{
+   const orientationPromise=typeof DeviceOrientationEvent!=='undefined'&&typeof DeviceOrientationEvent.requestPermission==='function'?DeviceOrientationEvent.requestPermission(true):Promise.resolve(typeof DeviceOrientationEvent==='undefined'?'unsupported':'granted');
+   const motionPromise=typeof DeviceMotionEvent!=='undefined'&&typeof DeviceMotionEvent.requestPermission==='function'?DeviceMotionEvent.requestPermission().catch(()=>'denied'):Promise.resolve('granted');
+   [orientationPermission,motionPermission]=await Promise.all([orientationPromise,motionPromise]);
+  }catch(e){orientationPermission='denied';}
+  if(!this.active||token!==this.generation)return;
+  this.permissionsGranted=orientationPermission==='granted';this.motionGranted=motionPermission==='granted';
+  if(this.permissionsGranted&&!this.simulation)this.attachSensors();
+  else{this.quality='Unavailable';this.sensorMessage=orientationPermission==='denied'?'Compass permission denied. Choose Manual or Follow route.':'Compass sensors unavailable. Choose Manual or Follow route.';this.updateHUD();this.redraw();}
+ }
+ attachSensors(){if(this.sensorAttached||!this.active||document.hidden)return;window.addEventListener('deviceorientationabsolute',this.orientationHandler);window.addEventListener('deviceorientation',this.orientationHandler);if(this.motionGranted)window.addEventListener('devicemotion',this.motionHandler);this.sensorAttached=true;}
+ detachSensors(){window.removeEventListener('deviceorientationabsolute',this.orientationHandler);window.removeEventListener('deviceorientation',this.orientationHandler);window.removeEventListener('devicemotion',this.motionHandler);this.sensorAttached=false;}
+ onOrientation(event){
+  if(!this.active||document.hidden||this.simulation)return;
+  const pose=C.devicePose(event,screen.orientation?.angle??window.orientation??0);if(!pose)return;
+  // Prefer the absolute event over duplicate relative events on Android.
+  const now=performance.now();if(event.type==='deviceorientationabsolute')this.absoluteTime=now;else if(!Cfinite(event.webkitCompassHeading)&&now-(this.absoluteTime??-Infinity)<1000)return;
+  this.acceptPose(pose,now);
+ }
+ acceptPose(pose,now=performance.now()){
+  const priorQuality=this.quality,changed=!this.targetQ||C.qdistance(this.targetQ,pose.q)>.08||pose.reference!==this.lastPose?.reference;
+  this.lastPose=pose;this.lastSensorTime=now;this.sensorMessage=Math.abs(pose.pitch)>75?'Hold the phone upright to look along the trail.':'';
+  const gyroRate=this.gyro&&now-this.gyro.time<300?this.gyro.rate:null;
+  this.quality=this.confidence.update({heading:pose.heading,pitch:pose.pitch,accuracy:pose.accuracy,gyroRate,now});
+  if(changed||priorQuality!==this.quality){this.targetQ=pose.q;this.updateHUD();this.redraw();}
+ }
+ checkSensors(){
+  if(!this.active||this.simulation)return;
+  if(this.targetQ&&performance.now()-this.lastSensorTime>30000){this.targetQ=null;this.smoothQ=null;this.quality='Unavailable';this.sensorMessage='Compass readings stopped. Choose Manual or Follow route.';this.updateHUD();this.redraw();}
+  else if(this.targetQ&&performance.now()-this.lastSensorTime>10000){this.quality='Uncertain';this.sensorMessage='No recent compass update. Turn the phone or choose a fallback.';this.updateHUD();}
+  else if(!this.targetQ&&this.permissionsGranted){this.sensorMessage='No absolute compass heading available. Choose Manual or Follow route.';this.updateHUD();}
+  if(this.gps?.fix&&Date.now()-this.gps.fix.timestamp>120000)this.onGPS(this.tracker.snapshot());
+ }
+ restoreRace(update=true){
+  const raw=this.getGpx();if(!raw)throw Error('No GPX loaded. Choose a GPX in Settings.');
+  this.route=C.makeRoute(C.parseGPX(raw),this.getAxis());this.uploaded=false;this.previous=null;this.match=null;this.window=null;this.hint=this.getProgressKm()*1000;this.find('fileStatus').textContent='Race candidate GPX';
+  if(update){if(this.simulation)this.simulate({distance:this.hint});else this.onGPS(this.tracker.snapshot());this.updateHUD();this.redraw();}
+ }
+ async loadFile(file){
+  if(!file)return;const token=this.generation;
+  try{if(file.size>20*1024*1024)throw Error('Choose a GPX smaller than 20 MB.');const raw=await file.text();if(!this.active||token!==this.generation)return;const route=C.makeRoute(C.parseGPX(raw));if(!route.valid)throw Error('This GPX has no connected track.');this.route=route;this.uploaded=true;this.previous=null;this.match=null;this.window=null;this.hint=0;this.find('hint').value=0;this.find('fileStatus').textContent=`Preview GPX: ${file.name}. Race map unchanged.`;if(this.simulation)this.simulate({distance:0});else this.onGPS(this.tracker.snapshot());this.updateHUD();this.redraw();}
+  catch(e){this.find('fileStatus').textContent=e.message;}
+ }
+ onGPS(snapshot){
+  if(!this.active||this.simulation)return;this.gps=snapshot;
+  if(!this.route?.valid){this.status='No usable GPX loaded. Choose a GPX in Settings.';this.updateHUD();this.redraw();return;}
+  if(!snapshot.fix){this.status=snapshot.message;this.updateHUD();this.redraw();return;}
+  if(['waiting','error'].includes(snapshot.status)){this.status=snapshot.message;this.updateHUD();this.redraw();return;}
+  if(Date.now()-snapshot.fix.timestamp>120000){this.status='GPS fix is over 2 minutes old. Preview stays at the last matched position.';this.updateHUD();this.redraw();return;}
+  const matched=C.matchProgress(this.route,snapshot.fix,this.previous,this.hint);this.status=matched.message;this.matchStatus=matched.status;
+  if(matched.usable){this.match=matched;this.previous=matched;this.hint=matched.s;this.updateWindow();}
+  this.updateHUD();this.redraw();
+ }
+ updateWindow(){if(this.route&&this.match)this.window=C.windowRoute(this.route,this.match.s,this.preferences.lookAhead,this.match.segment);}
+ setSimulation(enabled){
+  if(enabled&&!this.route?.valid){this.find('simulate').checked=false;this.find('fileStatus').textContent='Load a GPX before starting simulation.';return;}
+  this.simulation=enabled;this.find('simulate').checked=enabled;this.find('simulationPanel').hidden=!enabled;this.previous=null;this.match=null;
+  if(enabled){this.releaseGPS();this.detachSensors();this.confidence.reset();this.find('simDistance').max=(this.route?.distance??0)/1000;this.find('simDistance').value=C.clamp(this.hint,0,this.route?.distance??0)/1000;const start=C.at(this.route,C.clamp(this.hint,0,this.route.distance));const next=C.at(this.route,Math.min(this.route.distance,start.s+30),start.segment);this.find('simHeading').value=Math.round(C.bearing(start,next));this.find('simPitch').value=0;this.simulate({distance:start.s,heading:Number(this.find('simHeading').value),pitch:0});}
+  else{this.targetQ=null;this.smoothQ=null;this.lastPose=null;this.confidence.reset();this.quality='Unavailable';if(this.permissionsGranted)this.attachSensors();this.takeGPS();this.updateHUD();this.redraw();}
+ }
+ simulate({distance,heading,pitch,accuracy=8}={}){
+  if(!this.active||!this.simulation||!this.route?.valid)return;
+  if(Cfinite(distance)){const p=C.at(this.route,C.clamp(distance,0,this.route.distance));this.match={...p,usable:true,status:'active'};this.hint=p.s;this.matchStatus='active';this.status='Simulation — no live GPS or compass';this.gps={fix:{...p,accuracy,timestamp:Date.now()}};this.updateWindow();this.find('simDistance').value=p.s/1000;}
+  heading=Cfinite(heading)?heading:Number(this.find('simHeading').value);pitch=Cfinite(pitch)?pitch:Number(this.find('simPitch').value);this.find('simHeading').value=heading;this.find('simPitch').value=pitch;
+  const pose=C.devicePose({alpha:C.wrap(360-heading),beta:90+pitch,gamma:0,absolute:true});pose.reference='Simulated north';this.acceptPose(pose);this.updateHUD();this.redraw();
+ }
+ cameraPose(){
+  let h,p,r=0;
+  if(this.preferences.mode==='compass'){if(!this.smoothQ)return null;const pose=C.poseFromQ(this.smoothQ);h=pose.heading;p=pose.pitch;r=C.clamp(pose.roll*.15,-8,8);}
+  else if(this.preferences.mode==='manual'){h=this.preferences.manualHeading;p=this.manualPitch;}
+  else{if(!this.window?.points.length)return null;h=C.bearing(this.window.origin,this.window.points[Math.min(6,this.window.points.length-1)]);p=this.manualPitch;}
+  return {heading:C.wrap(h+this.offsetYaw),pitch:C.clamp(p+this.offsetPitch,-89,89),roll:r,basis:C.basis(h+this.offsetYaw,p+this.offsetPitch,r)};
+ }
+ updateHUD(){
+  if(!this.active)return;const w=this.window,p=this.preferences;
+  this.find('progress').textContent=this.match&&this.route?`${(this.match.s/1000).toFixed(2)} / ${(this.route.distance/1000).toFixed(1)} km`:'Route position pending';
+  this.find('heading').textContent=p.mode==='manual'?`${Math.round(p.manualHeading)}°\nManual view heading`:p.mode==='route'?`${Math.round(this.cameraPose()?.heading??0)}°\nRoute view heading`:this.lastPose?`${Math.round(this.lastPose.heading)}°\n${this.lastPose.reference.startsWith('Device')?'North ref unverified':this.lastPose.reference}`:'Compass heading unavailable';
+  this.find('quality').textContent=this.simulation?'Simulated compass':`Compass: ${this.quality}`;
+  this.find('gps').textContent=this.gps?.fix?`${this.simulation?'Simulated GPS':'GPS'} ±${Math.round(this.gps.fix.accuracy)} m`:'GPS: waiting';
+  this.find('elevation').textContent=w?.elevationOK?`↑ ${Math.round(w.stats.ascent)} m  ↓ ${Math.round(w.stats.descent)} m\nNet ${w.stats.net>=0?'+':''}${Math.round(w.stats.net)} m`:'Elevation unavailable';
+  this.find('ahead').textContent=`${w?Math.round(w.available):p.lookAhead} m ahead\n${p.exaggeration}× ${p.exaggeration===1?'true scale':'vertical scale'}`;
+  this.find('modeLabel').textContent=this.simulation?`SIMULATION · ${p.mode==='compass'?'compass':p.mode==='route'?'follow route':'manual'} view`:p.mode==='compass'?'Compass view':p.mode==='route'?'Follow route · automatic heading':'Manual heading';
+  const warning=!this.simulation&&['Uncertain','Calibration suggested'].includes(this.quality)&&p.mode==='compass';
+  this.find('compassWarning').hidden=!warning;this.find('compassWarning').textContent=warning?'Compass accuracy may be low. Move away from metal objects and calibrate your phone if needed.':'';
+  this.find('sensorStatus').textContent=p.mode==='compass'?this.sensorMessage:'';
+  this.find('fallback').hidden=this.simulation||p.mode!=='compass'||this.quality==='Good';
+  this.find('gpsStatus').textContent=this.status==='GPS matched to the route.'?'':this.status||'Waiting for GPS permission and position…';
+  this.find('previewOffline').hidden=this.simulation||!!this.match||!this.route?.valid;
+  this.find('elevationWarning').textContent=w?.warning??'';
+  this.find('segmentWarning').textContent=w?.ended?`Track segment ends in ${Math.round(w.available)} m. No gap is bridged.`:'';
+  this.find('manualControls').hidden=p.mode==='compass';this.find('headingControl').hidden=p.mode!=='manual';
+  this.find('manualValue').textContent=Math.round(p.manualHeading)+'°';
+  const change=w?.change;this.find('change').textContent=change?`${change.kind} ${change.inMetres<5?'now':'in '+Math.round(change.inMetres)+' m'} · ${Math.round(Math.abs(change.change))} m over ${Math.round(change.length)} m`:'';
+ }
+ redraw(){if(this.active&&this.canvasVisible!==false&&!document.hidden&&!this.raf)this.raf=requestAnimationFrame(t=>this.frame(t));}
+ frame(time){
+  this.raf=0;if(!this.active||this.canvasVisible===false||document.hidden||!this.ctx)return;
+  if(this.lastFrame&&time-this.lastFrame<32){this.redraw();return;}
+  const dt=Math.min(.2,Math.max(.016,(time-(this.lastFrame??time-33))/1000));this.lastFrame=time;
+  let animating=false;if(this.targetQ){if(!this.smoothQ)this.smoothQ=this.targetQ.slice();else{const angle=C.qdistance(this.smoothQ,this.targetQ);if(angle>.08){this.smoothQ=C.slerp(this.smoothQ,this.targetQ,1-Math.exp(-dt/.11));animating=true;}else this.smoothQ=this.targetQ.slice();}}
+  this.draw();this.frames++;if(animating)this.redraw();
+ }
+ draw(){
+  const rect=this.canvas.getBoundingClientRect(),width=Math.max(1,rect.width),height=Math.max(1,rect.height),ratio=Math.min(1.5,window.devicePixelRatio||1);
+  if(this.canvas.width!==Math.round(width*ratio)||this.canvas.height!==Math.round(height*ratio)){this.canvas.width=Math.round(width*ratio);this.canvas.height=Math.round(height*ratio);}
+  const ctx=this.ctx;ctx.setTransform(ratio,0,0,ratio,0,0);ctx.fillStyle='#06131c';ctx.fillRect(0,0,width,height);
+  const pose=this.cameraPose();ctx.font='16px system-ui';ctx.textAlign='center';
+  if(!pose){ctx.fillStyle='#d8f4f3';ctx.fillText(this.preferences.mode==='compass'?'Waiting for compass — choose a fallback below':'Waiting for route position',width/2,height/2);this.find('direction').textContent='';return;}
+  const b=pose.basis,project=v=>C.perspective(C.cameraPoint(v,b,this.preferences.exaggeration),width,height);
+  // A flat reference grid is not terrain; route elevations alone are rendered.
+  ctx.lineWidth=1;ctx.strokeStyle='#17404c';
+  const gridSize=Math.min(1100,this.preferences.lookAhead+100),spacing=this.preferences.lookAhead>500?100:50;
+  const segment=(a,z,color,widthPx=1)=>{let av=C.cameraPoint(a,b,this.preferences.exaggeration),bv=C.cameraPoint(z,b,this.preferences.exaggeration);const clipped=clipNear(av,bv);if(!clipped)return;const p=C.perspective(clipped[0],width,height),q=C.perspective(clipped[1],width,height);if(!p||!q)return;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=color;ctx.lineWidth=widthPx;ctx.stroke();};
+  for(let n=-gridSize;n<=gridSize;n+=spacing){segment([n,-gridSize,0],[n,gridSize,0],'#12323f');segment([-gridSize,n,0],[gridSize,n,0],'#12323f');}
+  // Project the true horizontal plane's line at infinity; clamp only for drawing.
+  const horizonY=height/2+Math.tan(pose.pitch*C.RAD)*height/(2*Math.tan(65*C.RAD/2));
+  if(horizonY>=0&&horizonY<=height){ctx.strokeStyle='#446370';ctx.beginPath();ctx.moveTo(0,horizonY);ctx.lineTo(width,horizonY);ctx.stroke();ctx.fillStyle='#99b4ba';ctx.textAlign='left';ctx.fillText('Horizon',12,horizonY-7);}
+  const w=this.window;if(!w?.local.length){this.find('direction').textContent=this.route?.valid?'Waiting for a reliable route position':'Load a GPX in Settings';ctx.fillStyle='#e0f1ef';ctx.textAlign='center';ctx.fillText('Waiting for a reliable route position',width/2,height/2);return;}
+  const triangles=[];
+  for(let i=0;i<w.local.length-1;i++){
+   const a=w.local[i],z=w.local[i+1],dx=z[0]-a[0],dy=z[1]-a[1],length=Math.hypot(dx,dy)||1,side=[-dy/length*1.1,dx/length*1.1,0];
+   const quad=[[a[0]+side[0],a[1]+side[1],a[2]],[a[0]-side[0],a[1]-side[1],a[2]],[z[0]-side[0],z[1]-side[1],z[2]],[z[0]+side[0],z[1]+side[1],z[2]]].map(v=>C.cameraPoint(v,b,this.preferences.exaggeration));
+   const polygon=clipPolygon(quad);if(polygon.length>=3)triangles.push({polygon,depth:polygon.reduce((s,p)=>s+p[2],0)/polygon.length});
+  }
+  triangles.sort((a,z)=>z.depth-a.depth);ctx.fillStyle='#18dbc1';
+  for(const {polygon} of triangles){const ps=polygon.map(p=>C.perspective(p,width,height));ctx.beginPath();ps.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fill();}
+  for(let i=0;i<w.local.length-1;i++)segment(w.local[i],w.local[i+1],'#92ffeb',2);
+  const markerPositions=[];let visible=0;
+  for(let d=100;d<=w.available+.1;d+=100){const i=Math.min(w.local.length-1,Math.round(d/5)),point=project(w.local[i]);if(!point||point.x<0||point.x>width||point.y<0||point.y>height)continue;visible++;
+   ctx.fillStyle='#c5fff2';ctx.beginPath();ctx.arc(point.x,point.y,4,0,Math.PI*2);ctx.fill();
+   if(markerPositions.some(p=>Math.hypot(p.x-point.x,p.y-point.y)<42))continue;markerPositions.push(point);
+   ctx.font='bold 16px system-ui';ctx.textAlign='center';ctx.lineWidth=4;ctx.strokeStyle='#06131c';ctx.strokeText(d+' m',point.x,point.y-10);ctx.fillText(d+' m',point.x,point.y-10);
+  }
+  const current=project([0,0,.03]);if(current){ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(current.x,current.y,7,0,Math.PI*2);ctx.fill();}
+  ctx.font='bold 17px system-ui';ctx.textAlign='center';ctx.fillStyle='#d5fff5';ctx.fillText('● You',width/2,height-16);
+  const target=w.local[Math.min(6,w.local.length-1)],heading=C.wrap(Math.atan2(target[0],target[1])*C.DEG),difference=C.delta(heading,pose.heading);
+  const hasVisible=w.local.slice(1).some(v=>{const p=project(v);return p&&p.x>8&&p.x<width-8&&p.y>8&&p.y<height-8;});
+  this.find('direction').textContent=Math.abs(difference)>100?`Route starts behind you · turn ${difference>0?'right':'left'}`:Math.abs(difference)>40?`Route starts to your ${difference>0?'right →':'left ←'}`:!hasVisible?'Route is outside the view · tilt the phone':w.ended&&w.available<5?'End of this track segment':'Route ahead';
+  this.find('offset').textContent=Math.abs(this.offsetYaw)>.5||Math.abs(this.offsetPitch)>.5?'View offset applied · tap Recenter':'';
+ }
+ snapshot(){return {active:this.active,simulation:this.simulation,mode:this.preferences?.mode,quality:this.quality,reference:this.lastPose?.reference,heading:this.lastPose?.heading,match:this.match?{distance:this.match.s,segment:this.match.segment}:null,matchStatus:this.matchStatus,geometry:this.window?.local.map(p=>p.slice()),available:this.window?.available,elevationOK:this.window?.elevationOK,stats:this.window?.stats,frames:this.frames,sensorAttached:this.sensorAttached,ownsGPS:this.ownsGPS,preferences:this.preferences};}
+}
+function Cfinite(n){return typeof n==='number'&&Number.isFinite(n);}
+function clipNear(a,b){if(a[2]<.25&&b[2]<.25)return null;const mix=(p,q)=>{const t=(.25-p[2])/(q[2]-p[2]);const out=p.map((v,i)=>v+(q[i]-v)*t);out[2]=.25;return out;};if(a[2]<.25)a=mix(a,b);if(b[2]<.25)b=mix(b,a);return [a,b];}
+function clipPolygon(vertices){const output=[];for(let i=0;i<vertices.length;i++){const a=vertices[i],b=vertices[(i+1)%vertices.length],insideA=a[2]>=.25,insideB=b[2]>=.25;if(insideA)output.push(a);if(insideA!==insideB){const t=(.25-a[2])/(b[2]-a[2]);const point=a.map((v,j)=>v+(b[j]-v)*t);point[2]=.25;output.push(point);}}return output;}
+root.TrailVisionView=View;
+})(typeof globalThis!=='undefined'?globalThis:this);
 </script><script>'use strict';
 const DATA=JSON.parse(document.getElementById('roadbookData').textContent),E=RoadbookEngine,$=id=>document.getElementById(id),KEY='canarias360-roadbook-v2';
-const defaults={quotas:[85,70,60,50],progressKm:0,elapsedHours:0,anchorLive:false,extraHours:0,terrainWeight:1};let state=structuredClone(defaults),limit=6,map=null,pinLayer=null,selectedLine=null,approachLine=null,baseTiles=null,progressPin=null,baseMarkers=[],selectedPlaceId=null,selectedSectionId=null,selectedPin=null,tab='plan';let persisted=true;
+const defaults={quotas:[85,70,60,50],progressKm:0,elapsedHours:0,anchorLive:false,extraHours:0,terrainWeight:1,vision:TrailVisionCore.prefs()};let state=structuredClone(defaults),limit=6,map=null,pinLayer=null,selectedLine=null,approachLine=null,baseTiles=null,progressPin=null,baseMarkers=[],selectedPlaceId=null,selectedSectionId=null,selectedPin=null,tab='plan';let persisted=true;
 try{let embedded=$('savedPlanData');let stored=embedded?JSON.parse(embedded.textContent):JSON.parse(localStorage.getItem(KEY)||localStorage.getItem('canarias360-roadbook-v1')||'null');if(stored)for(let k of Object.keys(defaults))if(Object.hasOwn(stored,k))state[k]=stored[k];}catch(e){persisted=false;}
-function cleanState(){state.quotas=Array.isArray(state.quotas)&&state.quotas.length===4?state.quotas.map((q,i)=>Math.max(5,Math.min(150,Number(q)||defaults.quotas[i]))):defaults.quotas.slice();for(let k of ['progressKm','elapsedHours','extraHours','terrainWeight']){state[k]=Number(state[k]);if(!Number.isFinite(state[k]))state[k]=defaults[k];}state.progressKm=Math.max(0,Math.min(DATA.distance_km,state.progressKm));state.elapsedHours=Math.max(0,state.elapsedHours);state.extraHours=Math.max(0,Math.min(48,state.extraHours));state.terrainWeight=Math.max(0,Math.min(2,state.terrainWeight));state.anchorLive=state.anchorLive===true;}
+function cleanState(){state.quotas=Array.isArray(state.quotas)&&state.quotas.length===4?state.quotas.map((q,i)=>Math.max(5,Math.min(150,Number(q)||defaults.quotas[i]))):defaults.quotas.slice();for(let k of ['progressKm','elapsedHours','extraHours','terrainWeight']){state[k]=Number(state[k]);if(!Number.isFinite(state[k]))state[k]=defaults[k];}state.progressKm=Math.max(0,Math.min(DATA.distance_km,state.progressKm));state.elapsedHours=Math.max(0,state.elapsedHours);state.extraHours=Math.max(0,Math.min(48,state.extraHours));state.terrainWeight=Math.max(0,Math.min(2,state.terrainWeight));state.anchorLive=state.anchorLive===true;state.vision=TrailVisionCore.prefs(state.vision);}
 cleanState();
 let locationMarker=null,locationAccuracy=null,centreNextFix=false,syncPending=false,liveTiming=false;
 const currentLocation=new RoadbookLocation.Tracker({data:DATA,onChange:handleLocationUpdate,getProgressKm:()=>state.progressKm});
@@ -839,7 +1178,7 @@ function renderSectionSelection(s){let near=DATA.pois.filter(p=>p.km>=s.from_km&
 
 
 function blobDownload(name,content,type='application/json'){let blob=content instanceof Blob?content:new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-function saveHtml(){let clone=document.documentElement.cloneNode(true);clone.querySelector('#map').innerHTML='';clone.querySelector('#map').className='map';clone.querySelector('#map').removeAttribute('style');clone.querySelector('#mapSelection').innerHTML='';clone.querySelectorAll('details').forEach(d=>d.removeAttribute('open'));clone.querySelector('#printStops').innerHTML='';clone.querySelector('#syncStatus').textContent='';clone.querySelector('#syncStatus').setAttribute('hidden','');clone.querySelector('#toast').setAttribute('hidden','');clone.querySelectorAll('[data-location-toggle]').forEach(e=>e.removeAttribute('checked'));clone.querySelectorAll('[data-location-status]').forEach(e=>e.textContent='Location is off. Current km can be set manually.');clone.querySelectorAll('.location-controls').forEach(e=>e.removeAttribute('data-gps-status'));clone.querySelector('#mapLocateMe').setAttribute('disabled','');clone.querySelector('#progressKm').removeAttribute('readonly');let old=clone.querySelector('#savedPlanData');if(old)old.remove();let embedded=document.createElement('script');embedded.id='savedPlanData';embedded.type='application/json';embedded.textContent=JSON.stringify(state).replaceAll('<','\\u003c');clone.querySelector('head').appendChild(embedded);blobDownload('canarias360_racer_roadbook.html','<!doctype html>\n'+clone.outerHTML,'text/html');toast('Offline HTML saved with your current plan.');}
+function saveHtml(){let clone=document.documentElement.cloneNode(true);clone.querySelector('#trailVision').removeAttribute('open');clone.querySelector('#trailVision canvas').width=1;clone.querySelector('#trailVision canvas').height=1;clone.querySelector('body').style.overflow='';clone.querySelector('#offlineStatus').textContent='This file includes the race GPX and Trail Vision for offline use.';clone.querySelector('#map').innerHTML='';clone.querySelector('#map').className='map';clone.querySelector('#map').removeAttribute('style');clone.querySelector('#mapSelection').innerHTML='';clone.querySelectorAll('details').forEach(d=>d.removeAttribute('open'));clone.querySelector('#printStops').innerHTML='';clone.querySelector('#syncStatus').textContent='';clone.querySelector('#syncStatus').setAttribute('hidden','');clone.querySelector('#toast').setAttribute('hidden','');clone.querySelectorAll('[data-location-toggle]').forEach(e=>e.removeAttribute('checked'));clone.querySelectorAll('[data-location-status]').forEach(e=>e.textContent='Location is off. Current km can be set manually.');clone.querySelectorAll('.location-controls').forEach(e=>e.removeAttribute('data-gps-status'));clone.querySelector('#mapLocateMe').setAttribute('disabled','');clone.querySelector('#progressKm').removeAttribute('readonly');let old=clone.querySelector('#savedPlanData');if(old)old.remove();let embedded=document.createElement('script');embedded.id='savedPlanData';embedded.type='application/json';embedded.textContent=JSON.stringify(state).replaceAll('<','\\u003c');clone.querySelector('head').appendChild(embedded);blobDownload('canarias360_racer_roadbook.html','<!doctype html>\n'+clone.outerHTML,'text/html');toast('Offline HTML saved with your current plan.');}
 function csvCell(v){return '"'+String(v).replaceAll('"','""')+'"';}
 function formatDistance(metres){return metres<1000?`${Math.round(metres/10)*10} m`:`${(metres/1000).toFixed(metres<10000?2:1)} km`;}
 function distanceText(p){
@@ -911,7 +1250,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-tab],[data
 $('mapFit').onclick=()=>map?.fitBounds(DATA.route,{padding:[20,20]});$('mapNext').onclick=()=>{initMap();if(currentLocation.snapshot().usable)centreOnLocation();else if(progressPin)map.setView(progressPin.getLatLng(),13);};$('toggleTiles').onclick=()=>{initMap();if(baseTiles){map.removeLayer(baseTiles);baseTiles=null;$('toggleTiles').textContent='Street map: off';}else{baseTiles=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}).addTo(map);$('toggleTiles').textContent='Street map: on';}};
 function profileKm(e){let r=$('profileSvg').getBoundingClientRect();return Math.max(0,Math.min(DATA.distance_km,(e.clientX-r.left)/r.width*DATA.distance_km));}$('profileSvg').onpointermove=e=>{let km=profileKm(e),z=E.interp(DATA.profile,km,1);$('profileHover').textContent=`km ${km.toFixed(1)} · ${Math.round(z)} m · ${etaClock(E.timing(DATA,km,state))}`;};$('profileSvg').onclick=e=>{let km=profileKm(e),s=DATA.sections.find(s=>km>=s.from_km&&km<=s.to_km);if(s)selectSection(s.id);};
 $('aboutText').textContent=DATA.based_on+'. Start Wednesday 4 November 2026 at 09:00; deadline Sunday 8 November at 14:00, Atlantic/Canary (GMT during the race). '+DATA.profile_method+' Section ETA pacing weights ascent inside each 24-hour block; it is not an individual performance prediction. '+(DATA.daylight?'Day/night markers use island-centre sunrise and sunset.':'');
-if(!persisted)$('storageNote').textContent='Browser storage is unavailable; use Save offline HTML to keep settings.';syncControls();render();chooseTab('plan');window.RACER_APP={DATA,E,getState:()=>state,chooseTab,filtered,opening,location:()=>currentLocation.snapshot()};
+if(!persisted)$('storageNote').textContent='Browser storage is unavailable; use Save offline HTML to keep settings.';syncControls();render();chooseTab('plan');window.RACER_APP={DATA,E,getState:()=>state,chooseTab,filtered,opening,location:()=>currentLocation.snapshot(),vision:()=>trailVision?.snapshot()};
 
 window.addEventListener('resize',()=>{if(tab==='plan')renderProfile();});
 
@@ -921,4 +1260,16 @@ setInterval(()=>{if(liveTiming){currentLocation.refresh();if(currentLocation.sna
 document.querySelector('.tabs').addEventListener('keydown',e=>{const names=['plan','sections','resupply','map'],i=names.indexOf(e.target.closest('[data-tab]')?.dataset.tab||tab);let next;if(e.key==='ArrowRight')next=names[(i+1)%4];if(e.key==='ArrowLeft')next=names[(i+3)%4];if(e.key==='Home')next=names[0];if(e.key==='End')next=names[3];if(next){e.preventDefault();chooseTab(next);$('nav-'+next).focus();}});
 
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)currentLocation.refresh();});
+
+let trailVision=null;
+$('openTrailVision').onclick=()=>{
+ if(!trailVision)trailVision=new TrailVisionView({element:$('trailVision'),tracker:currentLocation,getGpx:()=>{const raw=atob($('gpxData').textContent.trim());return new TextDecoder().decode(Uint8Array.from(raw,c=>c.charCodeAt(0)));},getAxis:()=>DATA.route_km.map(k=>k*1000),getProgressKm:()=>state.progressKm,getPreferences:()=>state.vision,onPreferences:p=>{state.vision=p;save();}});
+ trailVision.open();
+};
+window.addEventListener('pagehide',()=>trailVision?.close());
+
+// Cache only the self-contained hosted roadbook, never GPS fixes or shop requests.
+if('serviceWorker' in navigator&&window.isSecureContext&&location.protocol!=='file:'&&(location.pathname.endsWith('/')||location.pathname.endsWith('/index.html'))){
+ navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(()=>navigator.serviceWorker.ready).then(()=>{$('offlineStatus').textContent='Offline roadbook ready in this browser. Keep a saved HTML copy as a backup.';}).catch(()=>{$('offlineStatus').textContent='Offline caching is unavailable here. Use Save offline HTML.';});
+}
 </script></body></html>

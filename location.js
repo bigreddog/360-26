@@ -21,10 +21,11 @@ function matchRoute(data,fix,priorKm){
 }
 class Tracker{
  constructor({data,onChange,getProgressKm,api=()=>globalThis.navigator?.geolocation,secure=()=>globalThis.isSecureContext,now=()=>Date.now()}){
-  this.data=data;this.onChange=onChange;this.getProgressKm=getProgressKm;this.api=api;this.secure=secure;this.now=now;this.enabled=false;this.status='off';this.message='Location is off. Current km can be set manually.';this.fix=null;this.match=null;this.watchId=null;this.generation=0;this.timer=null;
+  this.listeners=new Set();this.data=data;this.onChange=onChange;this.getProgressKm=getProgressKm;this.api=api;this.secure=secure;this.now=now;this.enabled=false;this.status='off';this.message='Location is off. Current km can be set manually.';this.fix=null;this.match=null;this.watchId=null;this.generation=0;this.timer=null;
  }
  snapshot(){return {enabled:this.enabled,status:this.status,message:this.message,fix:this.fix,match:this.match,usable:this.enabled&&this.status==='active'};}
- emit(){this.onChange(this.snapshot());}
+ subscribe(listener){this.listeners.add(listener);return ()=>this.listeners.delete(listener);}
+ emit(){const snapshot=this.snapshot();this.onChange(snapshot);for(const listener of this.listeners)listener(snapshot);}
  start(){
   if(this.enabled)return;const api=this.api();
   if(!this.secure()){this.status='error';this.message='Location needs HTTPS or localhost. Open the HTTPS app and try again.';this.emit();return;}
