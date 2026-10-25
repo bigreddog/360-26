@@ -1,0 +1,1928 @@
+{
+  "test": "Mobile form controls and expanded states",
+  "hardware_test": false,
+  "browser_runs": 12,
+  "checks_passed": 216,
+  "results": [
+    {
+      "browser": "chromium",
+      "viewport": [
+        320,
+        740
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 970.875,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 154,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 166,
+          "y": 970.875,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 166,
+          "parentRight": 289,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 1052.875,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 154,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 166,
+          "y": 1052.875,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 166,
+          "parentRight": 289,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 1262.875,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 154,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 166,
+          "y": 1262.875,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 166,
+          "parentRight": 289,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1404.875,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 154,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 166,
+          "y": 1404.875,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 166,
+          "parentRight": 289,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 306,
+          "w": 292,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 266
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 306,
+          "w": 292,
+          "h": 48,
+          "font": 16,
+          "textWidth": 129.69625854492188,
+          "available": 240
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 306,
+          "w": 292,
+          "h": 48,
+          "font": 16,
+          "textWidth": 174.3683319091797,
+          "available": 240
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 306,
+          "w": 292,
+          "h": 48,
+          "font": 16,
+          "textWidth": 46.57611083984375,
+          "available": 240
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "viewport": [
+        360,
+        800
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 853.375,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 174,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 186,
+          "y": 853.375,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 186,
+          "parentRight": 329,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 935.375,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 174,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 186,
+          "y": 935.375,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 186,
+          "parentRight": 329,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 1128.875,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 174,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 186,
+          "y": 1128.875,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 186,
+          "parentRight": 329,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1270.875,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 174,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 186,
+          "y": 1270.875,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 186,
+          "parentRight": 329,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 346,
+          "w": 332,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 306
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 346,
+          "w": 332,
+          "h": 48,
+          "font": 16,
+          "textWidth": 129.69625854492188,
+          "available": 280
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 346,
+          "w": 332,
+          "h": 48,
+          "font": 16,
+          "textWidth": 174.3683319091797,
+          "available": 280
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 346,
+          "w": 332,
+          "h": 48,
+          "font": 16,
+          "textWidth": 46.57611083984375,
+          "available": 280
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "viewport": [
+        390,
+        844
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 832.875,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 189,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 201,
+          "y": 832.875,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 201,
+          "parentRight": 359,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 914.875,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 189,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 201,
+          "y": 914.875,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 201,
+          "parentRight": 359,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 1108.375,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 189,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 201,
+          "y": 1108.375,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 201,
+          "parentRight": 359,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1250.375,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 189,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 201,
+          "y": 1250.375,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 201,
+          "parentRight": 359,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 376,
+          "w": 362,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 336
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 376,
+          "w": 362,
+          "h": 48,
+          "font": 16,
+          "textWidth": 129.69625854492188,
+          "available": 310
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 376,
+          "w": 362,
+          "h": 48,
+          "font": 16,
+          "textWidth": 174.3683319091797,
+          "available": 310
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 376,
+          "w": 362,
+          "h": 48,
+          "font": 16,
+          "textWidth": 46.57611083984375,
+          "available": 310
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "viewport": [
+        430,
+        932
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 799.375,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 209,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 221,
+          "y": 799.375,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 221,
+          "parentRight": 399,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 881.375,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 209,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 221,
+          "y": 881.375,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 221,
+          "parentRight": 399,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 1074.875,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 209,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 221,
+          "y": 1074.875,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 221,
+          "parentRight": 399,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1216.875,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 209,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 221,
+          "y": 1216.875,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 221,
+          "parentRight": 399,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 416,
+          "w": 402,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 376
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 416,
+          "w": 402,
+          "h": 48,
+          "font": 16,
+          "textWidth": 129.69625854492188,
+          "available": 350
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 416,
+          "w": 402,
+          "h": 48,
+          "font": 16,
+          "textWidth": 174.3683319091797,
+          "available": 350
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 416,
+          "w": 402,
+          "h": 48,
+          "font": 16,
+          "textWidth": 46.57611083984375,
+          "available": 350
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "viewport": [
+        844,
+        390
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 720.78125,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 416,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 428,
+          "y": 720.78125,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 428,
+          "parentRight": 813,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 802.78125,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 416,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 428,
+          "y": 802.78125,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 428,
+          "parentRight": 813,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 979.78125,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 416,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 428,
+          "y": 979.78125,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 428,
+          "parentRight": 813,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1121.78125,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 416,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 428,
+          "y": 1121.78125,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 428,
+          "parentRight": 813,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 830,
+          "w": 816,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 790
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 830,
+          "w": 816,
+          "h": 48,
+          "font": 16,
+          "textWidth": 129.69625854492188,
+          "available": 764
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 830,
+          "w": 816,
+          "h": 48,
+          "font": 16,
+          "textWidth": 174.3683319091797,
+          "available": 764
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 830,
+          "w": 816,
+          "h": 48,
+          "font": 16,
+          "textWidth": 46.57611083984375,
+          "available": 764
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "viewport": [
+        932,
+        430
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 728.5,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 460,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 472,
+          "y": 728.5,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 472,
+          "parentRight": 901,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 810.5,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 460,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 472,
+          "y": 810.5,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 472,
+          "parentRight": 901,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 971,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 460,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 472,
+          "y": 971,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 472,
+          "parentRight": 901,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1113,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 460,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 472,
+          "y": 1113,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 472,
+          "parentRight": 901,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 918,
+          "w": 904,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 878
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 918,
+          "w": 904,
+          "h": 48,
+          "font": 16,
+          "textWidth": 129.69625854492188,
+          "available": 852
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 918,
+          "w": 904,
+          "h": 48,
+          "font": 16,
+          "textWidth": 174.3683319091797,
+          "available": 852
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 918,
+          "w": 904,
+          "h": 48,
+          "font": 16,
+          "textWidth": 46.57611083984375,
+          "available": 852
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "viewport": [
+        320,
+        740
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 970.375,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 154,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 166,
+          "y": 970.375,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 166,
+          "parentRight": 289,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 1052.375,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 154,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 166,
+          "y": 1052.375,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 166,
+          "parentRight": 289,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 1262.375,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 154,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 166,
+          "y": 1262.375,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 166,
+          "parentRight": 289,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1404.375,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 154,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 166,
+          "y": 1404.375,
+          "width": 123,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 166,
+          "parentRight": 289,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 306,
+          "w": 292,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 266
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 306,
+          "w": 292,
+          "h": 48,
+          "font": 16,
+          "textWidth": 125.39224243164062,
+          "available": 240
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 306,
+          "w": 292,
+          "h": 48,
+          "font": 16,
+          "textWidth": 173.98434448242188,
+          "available": 240
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 306,
+          "w": 292,
+          "h": 48,
+          "font": 16,
+          "textWidth": 48.44810485839844,
+          "available": 240
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "viewport": [
+        360,
+        800
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 833.375,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 174,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 186,
+          "y": 833.375,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 186,
+          "parentRight": 329,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 915.375,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 174,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 186,
+          "y": 915.375,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 186,
+          "parentRight": 329,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 1108.875,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 174,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 186,
+          "y": 1108.875,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 186,
+          "parentRight": 329,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1250.875,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 174,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 186,
+          "y": 1250.875,
+          "width": 143,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 186,
+          "parentRight": 329,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 346,
+          "w": 332,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 306
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 346,
+          "w": 332,
+          "h": 48,
+          "font": 16,
+          "textWidth": 125.39224243164062,
+          "available": 280
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 346,
+          "w": 332,
+          "h": 48,
+          "font": 16,
+          "textWidth": 173.98434448242188,
+          "available": 280
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 346,
+          "w": 332,
+          "h": 48,
+          "font": 16,
+          "textWidth": 48.44810485839844,
+          "available": 280
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "viewport": [
+        390,
+        844
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 810.875,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 189,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 201,
+          "y": 810.875,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 201,
+          "parentRight": 359,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 892.875,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 189,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 201,
+          "y": 892.875,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 201,
+          "parentRight": 359,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 1086.375,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 189,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 201,
+          "y": 1086.375,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 201,
+          "parentRight": 359,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1228.375,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 189,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 201,
+          "y": 1228.375,
+          "width": 158,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 201,
+          "parentRight": 359,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 376,
+          "w": 362,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 336
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 376,
+          "w": 362,
+          "h": 48,
+          "font": 16,
+          "textWidth": 125.39224243164062,
+          "available": 310
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 376,
+          "w": 362,
+          "h": 48,
+          "font": 16,
+          "textWidth": 173.98434448242188,
+          "available": 310
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 376,
+          "w": 362,
+          "h": 48,
+          "font": 16,
+          "textWidth": 48.44810485839844,
+          "available": 310
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "viewport": [
+        430,
+        932
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 761.375,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 209,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 221,
+          "y": 761.375,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 221,
+          "parentRight": 399,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 843.375,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 209,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 221,
+          "y": 843.375,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 221,
+          "parentRight": 399,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 1036.875,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 209,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 221,
+          "y": 1036.875,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 221,
+          "parentRight": 399,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1178.875,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 209,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 221,
+          "y": 1178.875,
+          "width": 178,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 221,
+          "parentRight": 399,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 416,
+          "w": 402,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 376
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 416,
+          "w": 402,
+          "h": 48,
+          "font": 16,
+          "textWidth": 125.39224243164062,
+          "available": 350
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 416,
+          "w": 402,
+          "h": 48,
+          "font": 16,
+          "textWidth": 173.98434448242188,
+          "available": 350
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 416,
+          "w": 402,
+          "h": 48,
+          "font": 16,
+          "textWidth": 48.44810485839844,
+          "available": 350
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "viewport": [
+        844,
+        390
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 720.25,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 416,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 428,
+          "y": 720.25,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 428,
+          "parentRight": 813,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 802.25,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 416,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 428,
+          "y": 802.25,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 428,
+          "parentRight": 813,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 979.25,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 416,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 428,
+          "y": 979.25,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 428,
+          "parentRight": 813,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1121.25,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 416,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 428,
+          "y": 1121.25,
+          "width": 385,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 428,
+          "parentRight": 813,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 830,
+          "w": 816,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 790
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 830,
+          "w": 816,
+          "h": 48,
+          "font": 16,
+          "textWidth": 125.39224243164062,
+          "available": 764
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 830,
+          "w": 816,
+          "h": 48,
+          "font": 16,
+          "textWidth": 173.98434448242188,
+          "available": 764
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 830,
+          "w": 816,
+          "h": 48,
+          "font": 16,
+          "textWidth": 48.44810485839844,
+          "available": 764
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "viewport": [
+        932,
+        430
+      ],
+      "passed": 18,
+      "checks": [
+        "all eight numeric controls inspected",
+        "numeric controls are wide enough for long values",
+        "numeric controls have 44px touch targets",
+        "numeric text is at least 16px",
+        "controls stay inside their grid cells",
+        "paired fields align in both pacing and timing rows",
+        "numeric keyboards are explicitly requested",
+        "preset buttons use a separate full-width row",
+        "typing into every numeric control updates the plan",
+        "touch checkbox updates live ETA anchoring",
+        "search and select controls are readable and touch-sized",
+        "selected filter labels fit without clipping",
+        "filter controls stay inside the phone viewport",
+        "dialog text controls use 16px readable text and fit",
+        "dialog fits a reduced viewport with usable actions",
+        "editing hours and notes on a phone persists",
+        "no page-wide horizontal overflow",
+        "no script errors in expanded phone states"
+      ],
+      "numeric_controls": [
+        {
+          "id": "day1",
+          "x": 31,
+          "y": 727.96875,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 460,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day2",
+          "x": 472,
+          "y": 727.96875,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 472,
+          "parentRight": 901,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day3",
+          "x": 31,
+          "y": 809.96875,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 460,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "day4",
+          "x": 472,
+          "y": 809.96875,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 472,
+          "parentRight": 901,
+          "inputMode": "numeric"
+        },
+        {
+          "id": "progressKm",
+          "x": 31,
+          "y": 970.46875,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 460,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "elapsedHours",
+          "x": 472,
+          "y": 970.46875,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 472,
+          "parentRight": 901,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "extraHours",
+          "x": 31,
+          "y": 1112.46875,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 31,
+          "parentRight": 460,
+          "inputMode": "decimal"
+        },
+        {
+          "id": "terrainWeight",
+          "x": 472,
+          "y": 1112.46875,
+          "width": 429,
+          "height": 48,
+          "font": 16,
+          "parentLeft": 472,
+          "parentRight": 901,
+          "inputMode": "decimal"
+        }
+      ],
+      "filter_controls": [
+        {
+          "id": "searchPoi",
+          "x": 14,
+          "right": 918,
+          "w": 904,
+          "h": 48,
+          "font": 16,
+          "textWidth": 0,
+          "available": 878
+        },
+        {
+          "id": "typeFilter",
+          "x": 14,
+          "right": 918,
+          "w": 904,
+          "h": 48,
+          "font": 16,
+          "textWidth": 125.39224243164062,
+          "available": 852
+        },
+        {
+          "id": "statusFilter",
+          "x": 14,
+          "right": 918,
+          "w": 904,
+          "h": 48,
+          "font": 16,
+          "textWidth": 173.98434448242188,
+          "available": 852
+        },
+        {
+          "id": "detourFilter",
+          "x": 14,
+          "right": 918,
+          "w": 904,
+          "h": 48,
+          "font": 16,
+          "textWidth": 48.44810485839844,
+          "available": 852
+        }
+      ]
+    }
+  ]
+}

@@ -74,6 +74,26 @@ python3 tests/browser_test.py
 
 The browser checks block all non-local requests to verify operation without external resources. They cover desktop/mobile layout, filters, notes, safe text handling, opening overrides, offline HTML export/reopen, interactive map/sections and byte-identical GPX download. Test summaries are in `docs/`.
 
+### Phone form-control regression checks
+
+The mobile layouts use two-column numeric rows, 16px input text, 48px input heights,
+full-width resupply filters and separate preset-button rows. Numeric keyboards,
+checkboxes and disclosure controls are styled consistently across browsers.
+
+After serving the repository, run:
+
+```sh
+python3 -m playwright install webkit
+python3 tests/mobile_controls_test.py --browsers chromium webkit
+```
+
+This tests Chromium and WebKit at 320, 360, 390 and 430 CSS pixels, plus 844- and 932-pixel landscape views, including opened
+timing settings, long numeric values, typing into all eight number fields, filter
+label clipping, touch targets and the edit dialog in a reduced-height viewport.
+The 216 checks and per-browser screenshots are in `docs/mobile-controls-tests.json`
+and `docs/mobile-qa/`. This is browser emulation rather than a physical-device test.
+Playwright's normal system dependencies for the selected browsers are required.
+
 To host with GitHub Pages, select `main` and the repository root in the repository's Pages settings. No hosting or external account is needed for the downloaded HTML.
 
 ## Data and software attribution
