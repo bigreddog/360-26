@@ -1,0 +1,24 @@
+{
+  "passed": 18,
+  "checks": [
+    "app loads offline without script errors",
+    "default finish is Sunday morning",
+    "29 sections render",
+    "core engine and source data are loaded",
+    "slower preset updates cut-off margin",
+    "nearby supermarket hours filter works",
+    "overnight supermarket is closed",
+    "a place can be saved",
+    "confirmed hour override updates evaluation",
+    "note text is escaped",
+    "saved HTML restores notes and hours overrides",
+    "saved HTML does not execute note markup",
+    "offline interactive map initializes",
+    "section selection opens map and leg information",
+    "no runtime errors during interactions",
+    "phone layout fits screen",
+    "phone resupply view fits screen",
+    "embedded GPX download hash matches original"
+  ],
+  "script_errors": []
+}

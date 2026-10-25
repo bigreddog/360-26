@@ -1,0 +1,7 @@
+__pycache__/
+.venv/
+node_modules/
+data/test_*
+data/roadbook_*.png
+data/browser_tests.json
+.DS_Store

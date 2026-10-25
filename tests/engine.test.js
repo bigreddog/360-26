@@ -1,0 +1,22 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),E=require('../engine.js');
+const d=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/roadbook_data.json'))),s={quotas:[85,70,60,50],terrainWeight:1,progressKm:0,elapsedHours:0,extraHours:0,anchorLive:false,hoursOverrides:{}};
+let count=0;function test(name,fn){fn();count++;console.log('ok',count,'-',name);}
+test('first daily quotas hit 24, 48 and 72 hours',()=>{for(let [km,h] of [[85,24],[155,48],[215,72]])assert(Math.abs(E.etaHours(d,km,s.quotas)-h)<1e-7);});
+test('planning finish and 101h deadline',()=>{let t=E.timing(d,d.distance_km,s);assert(t>90&&t<91);assert.equal(new Date(E.stamp(d,101)).toISOString(),'2026-11-08T14:00:00.000Z');});
+test('80km start scenario consumes almost the entire cut-off',()=>{let t=E.etaHours(d,d.distance_km,[80,65,55,45]);assert(t>100&&t<101);});
+test('ETA curve increases over all 254km',()=>{let last=-1;for(let km=0;km<=d.distance_km;km+=.1){let x=E.timing(d,km,s);assert(x>last);last=x;}});
+test('live progress anchor is exact and does not reset daily fatigue',()=>{let q={...s,progressKm:110,elapsedHours:36,anchorLive:true};assert(Math.abs(E.timing(d,110,q)-36)<1e-8);let delta=E.timing(d,150,q)-E.timing(d,110,q);assert(Math.abs(delta-(E.timing(d,150,s)-E.timing(d,110,s)))<1e-8);});
+test('extra delay reduces finish margin exactly',()=>{assert.equal(E.timing(d,d.distance_km,{...s,extraHours:3})-E.timing(d,d.distance_km,s),3);});
+test('split midday closure is closed and evening reopens',()=>{let q=E.weekly('Mo-Sa 09:00-13:30,17:00-20:30; Su off');assert(q.ok);let iv=E.intervals(d,q);let at=x=>iv.some(([a,b])=>Date.parse(x)>=a&&Date.parse(x)<b);assert(at('2026-11-04T13:29:00Z'));assert(!at('2026-11-04T13:30:00Z'));assert(!at('2026-11-04T16:59:00Z'));assert(at('2026-11-04T17:00:00Z'));assert(!at('2026-11-08T10:00:00Z'));});
+test('overnight hours carry into next date',()=>{let iv=E.intervals(d,E.weekly('Fr 18:00-02:00'));let t=Date.parse('2026-11-07T01:00:00Z');assert(iv.some(([a,b])=>t>=a&&t<b));});
+test('comma-separated weekdays and weekday wrap work',()=>{let w=E.weekly('Mo-Tu, Th-Fr 11:00-18:00; Sa-Su 10:00-19:00');assert(w.ok);assert.equal(w.week[3].length,0);assert.equal(w.week[4][0][0],660);assert.equal(w.week[0][0][0],600);});
+test('24/7 is uninterrupted',()=>{let iv=E.intervals(d,E.weekly('24/7'));assert.equal(iv.length,1);});
+test('unknown/seasonal/holiday expressions stay unknown',()=>{for(let h of ['', 'Nov-Feb: Mo-Sa 09:00-19:00','Mo-Sa 08:00-20:00; PH off','sunrise-sunset'])assert(!E.weekly(h).ok);});
+test('operator Artenara hours are used over old OSM',()=>{let p=d.pois.find(p=>p.id==='owner/spar-artenara');assert(p.operator_checked);assert.equal(p.opening_hours,'Mo-Sa 09:00-13:30,17:00-20:30; Su off');assert(E.opening(d,p,s).atPlan);});
+test('Tenteniguada is not marked open at overnight planning arrival',()=>{let p=d.pois.find(p=>p.id==='owner/spar-tenteniguada');let o=E.opening(d,p,s);assert.equal(o.atPlan,false);assert(o.waitHours>5);});
+test('Tejeda owner schedule is Sunday closed',()=>{let p=d.pois.find(p=>p.id==='owner/spar-tejeda');assert(!E.opening(d,p,s).atPlan);assert(!d.pois.some(p=>p.id==='node/2089311591'));});
+test('fuel stations do not become unverified food stops',()=>{for(let p of d.pois.filter(p=>p.category==='fuel'))assert.equal(p.food,false);});
+test('section distance and vertical totals reconcile',()=>{let sum=(k)=>d.sections.reduce((a,s)=>a+s[k],0);assert(Math.abs(sum('distance_km')-d.distance_km)<1e-7);assert(Math.abs(sum('gain_m')-d.gain_m)<=d.sections.length/2);assert(Math.abs(sum('loss_m')-d.loss_m)<=d.sections.length/2);});
+test('route positions and profile axes increase',()=>{assert.equal(d.route.length,d.route_km.length);for(let i=1;i<d.route_km.length;i++)assert(d.route_km[i]>d.route_km[i-1]);assert(Math.abs(d.route_km.at(-1)-d.distance_km)<.00001);});
+test('every resupply includes geographic and source evidence',()=>{for(let p of d.pois){assert(p.id&&p.name&&p.hours_source);assert(p.km>=0&&p.km<=d.distance_km+.0001);assert(p.walk_oneway_m<=1600&&p.entrance_snap_m<=100);assert(p.lat>27&&p.lon<0);}});
+console.log(`${count} engine/data tests passed`);

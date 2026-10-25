@@ -1,0 +1,19 @@
+ok 1 - first daily quotas hit 24, 48 and 72 hours
+ok 2 - planning finish and 101h deadline
+ok 3 - 80km start scenario consumes almost the entire cut-off
+ok 4 - ETA curve increases over all 254km
+ok 5 - live progress anchor is exact and does not reset daily fatigue
+ok 6 - extra delay reduces finish margin exactly
+ok 7 - split midday closure is closed and evening reopens
+ok 8 - overnight hours carry into next date
+ok 9 - comma-separated weekdays and weekday wrap work
+ok 10 - 24/7 is uninterrupted
+ok 11 - unknown/seasonal/holiday expressions stay unknown
+ok 12 - operator Artenara hours are used over old OSM
+ok 13 - Tenteniguada is not marked open at overnight planning arrival
+ok 14 - Tejeda owner schedule is Sunday closed
+ok 15 - fuel stations do not become unverified food stops
+ok 16 - section distance and vertical totals reconcile
+ok 17 - route positions and profile axes increase
+ok 18 - every resupply includes geographic and source evidence
+18 engine/data tests passed

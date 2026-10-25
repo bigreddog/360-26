@@ -1,0 +1,9 @@
+{
+  "name": "canarias360-racer-roadbook",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "python3 scripts/build.py",
+    "test": "node tests/engine.test.js"
+  }
+}
