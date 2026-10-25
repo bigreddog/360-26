@@ -2,6 +2,8 @@
 
 A self-contained HTML roadbook using the 254.074 km candidate GPX from Gáldar to Tejeda. Open [`index.html`](index.html), or save it to your phone. The ordered route, profile, shop data and calculations work offline. Street tiles and external links need internet; GPS needs a secure browser context.
 
+See [PRD.md](PRD.md) for product requirements and the full GPX replacement workflow, including resupply regeneration, weather, Trail Vision and saved-progress migration.
+
 ![Phone roadbook](docs/screenshots/mobile.png)
 
 ## During the race
