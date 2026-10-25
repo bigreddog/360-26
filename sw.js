@@ -1,5 +1,5 @@
 /* Offline navigation cache: the HTML already embeds GPX, Leaflet and Trail Vision. */
-const CACHE='canarias360-offline-dcdaa1c8f862';
+const CACHE='canarias360-offline-987854fec42c';
 const INDEX=new URL('index.html',self.registration.scope).href;
 self.addEventListener('install',event=>event.waitUntil((async()=>{
  const cache=await caches.open(CACHE);await cache.add(new Request(INDEX,{cache:'reload'}));await self.skipWaiting();

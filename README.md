@@ -10,6 +10,8 @@ The main views are **Race**, **Legs**, **Resupply** and **Map**. The race overvi
 
 **Daily progress** is collapsed by default. Expand it to change the four net daily distances or open manual timing and delay settings. Notes, saved places, custom hours editing and JSON plan import/export have been removed. Previous browser settings migrate only the pacing and progress fields; old notes and hours overrides are not imported into the new state.
 
+**Legs** marks the current leg with a green highlight, a progress bar and distance left. Completed legs get a tick automatically from Current km or linked GPS; correcting progress backwards updates those marks. **Go to current leg** jumps to your position. Small shop, café/meal and water icons show mapped stops within 500 m walk each way. Tap them for stop names, detours, opening status at your plan ETA and map actions. Stops behind your progress say **Passed on route**, which does not imply a visit. End-point stops belong to the arriving leg, so they are not duplicated; disclosures stay open during GPS updates. These leg indicators are independent of the Resupply tab’s filters.
+
 **Resupply** shows six stops at a time, in route order. Each stop leads with its name, distance ahead along the course, outward walking detour, plan arrival and opening status. Map and call are the main actions. **Hours & details** contains the source, weekly schedule, scenario window and separately labelled straight-line GPS distance. Search is visible; additional filters are collapsed with a summary of the current selection. Open details stay open when GPS refreshes.
 
 Use **Downloads & tools** for a portable HTML with your current pace settings, the original GPX, section CSV, evidence data or printing. Printing includes the route legs and the next six matching resupply places. Settings and the last route kilometre are saved locally; the committed app contains no personal progress.
@@ -61,15 +63,18 @@ python3 tests/browser_test.py
 python3 tests/mobile_controls_test.py --browsers chromium webkit
 python3 tests/geolocation_browser_test.py
 python3 tests/progress_sync_browser_test.py
+python3 tests/legs_browser_test.py
 ```
 
 The suites use system Chromium (`/usr/bin/chromium`, or `CHROMIUM_PATH` for mobile/GPS tests) and Playwright WebKit. External requests are blocked to check offline operation. Reports in `docs/` record:
 
-- 18 engine/data tests and 18 route-matching/location lifecycle tests.
+- 22 engine/data tests and 18 route-matching/location lifecycle tests.
 - 30 browser journey checks, including feature removal, state migration, collapsed settings, offline HTML reopen, keyboard navigation and byte-identical GPX download.
 - 276 mobile UX checks across Chromium and WebKit at 320, 360, 390 and 430 CSS pixels, plus 844/932 landscape widths. Expanded numeric controls, filter text clipping, 48px targets, larger text and leg cards are checked.
 - 44 browser Geolocation API checks for permission, actual-position maps, distances, weak/off-route fixes and manual fallback.
 - 54 clock-sync checks with deterministic time and GPS callbacks, including before-start/after-limit behaviour, live updates, manual overrides, permission retry and reopening without auto-tracking.
+
+- 88 leg/resupply browser checks in Chromium and WebKit at 320 and 390 px: boundary completion, live GPS, backward corrections, finish state, current-leg jump, disclosure/focus retention, reload persistence and stop map actions.
 
 These are browser emulation and simulated GPS checks, not physical-device or field accuracy tests. Representative screenshots are in `docs/screenshots/` and `docs/mobile-qa/`.
 

@@ -20,7 +20,11 @@ ok 15 - fuel stations do not become unverified food stops
 ok 16 - section distance and vertical totals reconcile
 ok 17 - route positions and profile axes increase
 ok 18 - every resupply includes geographic and source evidence
-18 engine/data tests passed
+ok 19 - leg completion switches exactly at boundaries, including start and finish
+ok 20 - there is exactly one current leg and progress can be corrected backwards
+ok 21 - near-route resupply partitions across legs without duplicated boundary stops
+ok 22 - endpoint shops belong to arriving leg, distant and unconfirmed fuel do not count
+22 engine/data tests passed
 ok 1 - straight-line distance is geodesic and zero at the same point
 ok 2 - position projects onto the segment, not just the nearest vertex
 ok 3 - off-route displacement is preserved
