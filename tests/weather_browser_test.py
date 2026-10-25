@@ -33,7 +33,7 @@ with sync_playwright() as p:
   check(cs,'one batch requests a different route position and elevation every hour',len(calls)==1 and len(parse_qs(urlparse(calls[0]).query)['latitude'][0].split(','))==19 and len(set(parse_qs(urlparse(calls[0]).query)['elevation'][0].split(',')))>3)
   check(cs,'temperature, rain, wind and route elevation summaries are populated',page.locator('[data-weather-summary]>div').count()==4 and 'Unavailable' not in page.locator('[data-weather-summary]').inner_text())
   check(cs,'summary has inline weather symbols paired with condition text',page.locator('[data-weather-conditions] svg[data-weather-icon]').count()>0 and 'Clear' in page.locator('[data-weather-conditions]').inner_text())
-  check(cs,'peak wind shows a north-up source arrow and speed in km/h',page.locator('.weather-wind-summary [data-wind-bearing="0"]').count()==1 and 'From N' in page.locator('.weather-wind-summary').inner_text() and 'km/h' in page.locator('.weather-wind-summary').inner_text())
+  check(cs,'wind from north points south while source label and km/h remain correct',page.locator('.weather-wind-summary [data-wind-bearing="0"] g').get_attribute('transform')=='rotate(180 24 26)' and 'From N' in page.locator('.weather-wind-summary').inner_text() and 'km/h' in page.locator('.weather-wind-summary').inner_text())
   check(cs,'no Beaufort scale is included',not page.locator('#weatherPanel').evaluate('e=>/beaufort|bft/i.test(e.textContent)'))
   check(cs,'forecast details start collapsed for a compact summary',not page.locator('[data-weather-route]').evaluate('e=>e.open'))
   check(cs,'endpoint shows projected place, route kilometre and height','km ' in page.locator('[data-weather-destination]').inner_text() and ' m' in page.locator('[data-weather-destination]').inner_text())
@@ -41,7 +41,7 @@ with sync_playwright() as p:
   for h in [12,18]:page.locator(f'[data-weather-hours="{h}"]').click();check(cs,f'{h}-hour view uses the cached trajectory without another API request',len(calls)==1 and page.locator(f'[data-weather-hours="{h}"]').get_attribute('aria-pressed')=='true')
   page.locator('[data-weather-route]>summary').click();check(cs,'eighteen-hour details show seven route/time stops',page.locator('.weather-stop').count()==7)
   check(cs,'night forecast and wind-from-north are labelled','night' in page.locator('[data-weather-cards]').inner_text() and 'From N' in page.locator('[data-weather-cards]').inner_text())
-  check(cs,'forecast stops have day/night icons and wind direction arrows',page.locator('[data-weather-cards] [data-weather-icon=moon]').count()>0 and page.locator('[data-weather-cards] .weather-direction').count()==7)
+  check(cs,'forecast stops have day/night icons and wind direction arrows',page.locator('[data-weather-cards] [data-weather-icon=moon]').count()>0 and page.locator('[data-weather-cards] .weather-direction g[transform="rotate(180 24 26)"]').count()==7)
   page.locator('[data-weather-hours="6"]').click();check(cs,'six-hour details show current, +3h and +6h positions',page.locator('.weather-stop').count()==3)
   page.locator('[data-weather-route]>summary').click()
   for width in [320,390,844]:

@@ -78,7 +78,7 @@ function weatherIcon(kind){
  return `<svg class="weather-icon" data-weather-icon="${Object.hasOwn(shapes,kind)?kind:'unknown'}" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">${Object.hasOwn(shapes,kind)?shapes[kind]:shapes.unknown}</svg>`;
 }
 function directionIcon(info){
- const arrow=info.direction!==null&&!info.calm?`<g transform="rotate(${info.direction} 24 26)"><path class="wx-direction-arrow" d="M24 39V15m-6 7 6-8 6 8"/></g>`:info.calm?'<circle class="wx-direction-calm" cx="24" cy="26" r="4"/>':'<path class="wx-direction-unknown" d="M19 23a5 5 0 1 1 8 4c-3 2-3 3-3 5m0 4h.01"/>';
+ const arrow=info.direction!==null&&!info.calm?`<g transform="rotate(${(info.direction+180)%360} 24 26)"><path class="wx-direction-arrow" d="M24 39V15m-6 7 6-8 6 8"/></g>`:info.calm?'<circle class="wx-direction-calm" cx="24" cy="26" r="4"/>':'<path class="wx-direction-unknown" d="M19 23a5 5 0 1 1 8 4c-3 2-3 3-3 5m0 4h.01"/>';
  return `<svg class="weather-direction" data-wind-bearing="${info.direction===null?'unknown':info.direction}" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle class="wx-direction-ring" cx="24" cy="26" r="19"/><text x="24" y="8" class="wx-north" text-anchor="middle">N</text>${arrow}</svg>`;
 }
 function clock(ms,zone,full=false){return new Intl.DateTimeFormat('en-GB',{timeZone:zone,weekday:'short',...(full?{day:'numeric',month:'short'}:{}),hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date(ms)).replace(',','');}
