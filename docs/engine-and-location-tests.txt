@@ -1,0 +1,41 @@
+
+> canarias360-racer-roadbook@1.0.0 test
+> node tests/engine.test.js && node tests/location.test.js
+
+ok 1 - first daily quotas hit 24, 48 and 72 hours
+ok 2 - planning finish and 101h deadline
+ok 3 - 80km start scenario consumes almost the entire cut-off
+ok 4 - ETA curve increases over all 254km
+ok 5 - live progress anchor is exact and does not reset daily fatigue
+ok 6 - extra delay reduces finish margin exactly
+ok 7 - split midday closure is closed and evening reopens
+ok 8 - overnight hours carry into next date
+ok 9 - comma-separated weekdays and weekday wrap work
+ok 10 - 24/7 is uninterrupted
+ok 11 - unknown/seasonal/holiday expressions stay unknown
+ok 12 - operator Artenara hours are used over old OSM
+ok 13 - Tenteniguada is not marked open at overnight planning arrival
+ok 14 - Tejeda owner schedule is Sunday closed
+ok 15 - fuel stations do not become unverified food stops
+ok 16 - section distance and vertical totals reconcile
+ok 17 - route positions and profile axes increase
+ok 18 - every resupply includes geographic and source evidence
+18 engine/data tests passed
+ok 1 - straight-line distance is geodesic and zero at the same point
+ok 2 - position projects onto the segment, not just the nearest vertex
+ok 3 - off-route displacement is preserved
+ok 4 - route crossings use a plausible existing progress hint
+ok 5 - no permission request occurs on page construction
+ok 6 - explicit start registers one high accuracy watch
+ok 7 - good fixes update route progress
+ok 8 - weak accuracy does not update route progress
+ok 9 - off-route fixes keep actual coordinates and manual progress
+ok 10 - cached stale fixes do not update progress
+ok 11 - fresh fixes become stale as time passes
+ok 12 - invalid coordinates are not accepted
+ok 13 - permission denial clears tracking and shows a recoverable error
+ok 14 - timeout keeps the watch available for a later successful fix
+ok 15 - off stops the watch and ignores late callbacks
+ok 16 - unsupported and insecure contexts do not request permission
+ok 17 - synchronous permission denial does not leak a watch
+17 location tests passed

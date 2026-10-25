@@ -1,151 +1,84 @@
 # Canarias 360 · Racer roadbook
 
-A downloadable, self-contained HTML app based on the 254.074 km candidate GPX from Gáldar to Tejeda. It combines 29 terrain sections, five checkpoint stages, personal pacing and resupply opening windows.
+A self-contained HTML roadbook using the 254.074 km candidate GPX from Gáldar to Tejeda. Open [`index.html`](index.html), or save it to your phone. The ordered route, profile, shop data and calculations work offline. Street tiles and external links need internet; GPS needs a secure browser context.
 
-**Open [`index.html`](index.html) in a browser**, or download it to your phone. The route, profile, shop data, notes and calculations work without a connection. Street-map tiles, calls and business websites require internet. All dependencies and the original GPX download are embedded in that HTML file.
+![Phone roadbook](docs/screenshots/mobile.png)
 
-![Roadbook desktop preview](docs/screenshots/desktop.png)
+## During the race
 
-## Your race plan
+The main views are **Race**, **Legs**, **Resupply** and **Map**. The race overview shows the next checkpoint, distance and climbing remaining, projected finish and time spare against the final limit. Route legs use readable cards instead of a wide table. Body and form text is 18px, controls have at least 48px touch targets, and supplementary information is folded away.
 
-- Start: **Wednesday 4 November 2026, 09:00**, Atlantic/Canary.
+**Daily progress** is collapsed by default. Expand it to change the four net daily distances or open manual timing and delay settings. Notes, saved places, custom hours editing and JSON plan import/export have been removed. Previous browser settings migrate only the pacing and progress fields; old notes and hours overrides are not imported into the new state.
+
+**Resupply** shows six stops at a time, in route order. Each stop leads with its name, distance ahead along the course, outward walking detour, plan arrival and opening status. Map and call are the main actions. **Hours & details** contains the source, weekly schedule, scenario window and separately labelled straight-line GPS distance. Search is visible; additional filters are collapsed with a summary of the current selection. Open details stay open when GPS refreshes.
+
+Use **Downloads & tools** for a portable HTML with your current pace settings, the original GPX, section CSV, evidence data or printing. Printing includes the route legs and the next six matching resupply places. Settings and the last route kilometre are saved locally; the committed app contains no personal progress.
+
+## Location and time
+
+The global progress panel is available on every view. **Use GPS location** starts a browser location watch and updates your route kilometre when the fix is accurate and near the ordered GPX. **Centre on me** on the map uses the actual GPS fix, with an accuracy circle.
+
+Tap **Sync location & time** to link both route progress and the current race clock in one action. It requests GPS if needed, waits for an accurate on-route position, sets elapsed race time from Wednesday's start, and enables ETA anchoring. New fixes and a 30-second foreground refresh keep the clock linked while GPS remains usable. Opening-hour checks and the finish margin use the updated ETAs. Before the start, it explicitly keeps the Wednesday 09:00 schedule; after the cutoff, it shows elapsed time and lateness without resetting the clock.
+
+Poor accuracy, stale fixes, off-route positions and unresolved repeated passes do not overwrite the last verified progress/time anchor. At an ambiguous crossing, set an approximate route kilometre to choose the right pass. Switching GPS off freezes the last anchor and restores manual kilometre editing. Editing elapsed time or the anchoring checkbox ends automatic clock linkage; tap Sync to resume. Reopening the app retains the last anchor but never restarts tracking automatically. Browsers may pause GPS in background tabs.
+
+GPS requires permission and HTTPS or localhost. Some mobile browsers block it in a downloaded HTML file; use the HTTPS-hosted app in that case. The app does not send GPS coordinates to a server or persist raw fixes. Straight-line proximity is not a walking route. The race clock relies on the device clock being correct.
+
+## Race model
+
+- Start: **Wednesday 4 November 2026, 09:00**, Atlantic/Canary (GMT during the race).
 - Final limit: **101 hours**, Sunday 8 November at 14:00.
-- Default net daily progress: **85 / 70 / 60 / 50 km**, allowing for fatigue after the first day. These targets already include normal sleep, meals and race-base stops.
+- Default net daily progress: **85 / 70 / 60 / 50 km**. Normal sleep, meals and base stops are already included.
 - Default projection: **Sunday 03:45**, about **10h 15m spare**.
-- Slower **80 / 65 / 55 / 45 km** scenario: approximately **Sunday 13:50**, leaving only about ten minutes.
+- Slower **80 / 65 / 55 / 45 km** scenario: about **Sunday 13:50**, only ten minutes spare.
 
-Each 24-hour block is distributed using distance plus ascent effort. Daily geographic quotas remain exact, rather than applying a constant kilometre-per-hour speed to every climb. The partial final day uses its proportion of the last daily quota. The last quota repeats if more than four days are needed.
+Each 24-hour block allocates time using distance plus ascent effort while retaining exact daily kilometre quotas. The partial final day uses its proportion of the last quota; that quota repeats if more days are needed. Arrival windows use ±5 km on each daily target and are scenarios, not confidence intervals.
 
-Edit daily targets, add extra delay, or re-anchor future ETAs to your actual distance and elapsed time. The arrival window uses ±5 km on each daily target; it is a scenario range, not a statistical confidence interval.
-
-## What is included
-
-- Section distance, gain/loss, ending elevation, arrival time and day/night indication.
-- Five checkpoint-stage summaries and final cut-off margin.
-- **353 mapped places** near the route, including shops, bakeries, cafés, restaurants and water points. **102 have published hours; 11 operator schedules were checked directly.**
-- Opening checks for the actual arrival date, including split sessions, overnight hours and Sunday closures. Conditional/seasonal expressions that cannot be evaluated conservatively stay unknown.
-- Approximate walking detours along the mapped pedestrian network to each venue's vicinity; the final entrance is not surveyed.
-- Opening status at your planning ETA and across the full arrival window, next opening/wait, source links and phone numbers where available.
-- Filters by type, known hours, owner evidence, saved places, distance ahead and walking detour.
-- Editable confirmed hours, personal notes, local saving, JSON plan import/export, portable HTML save, GPX download, section CSV and print layout.
-- Offline route/map overlays, with optional online OSM street tiles.
-
-Access is treated as resolved. This app uses the existing candidate course; it does not change its geometry.
-
-## Using resupply information
-
-"Listed open" means the stored weekly schedule covers the modelled arrival time. It does not confirm stock, kitchen service or a one-off closure. Restaurant opening hours do not establish kitchen hours. Unknown hours stay unknown. Water-point operability is unverified. Fuel stations without a separately established shop are not counted as food stops.
-
-Shop ETAs include an estimated outward detour at 3 km/h plus a climb allowance. The finish model does **not** automatically add extra detours, queues, shopping or opening-time waits beyond your net daily targets; put additional time in **Extra delay ahead**. An opening after the final race limit is explicitly marked.
-
-Race-base services and intermediate closing times follow the official event roadbook. Only the supplied final 101-hour limit is modelled here.
+Shop arrivals include the estimated outward detour at 3 km/h plus a climb allowance. The finish model does not automatically add detours, waiting, shopping or rest beyond the normal daily allowance. Add unplanned time under **Extra delay**. Race-base services and intermediate closing times follow the official organiser roadbook; only the final 101-hour limit is modelled. Access is treated as resolved. This app does not change the candidate geometry.
 
 ## Evidence and elevation
 
-POIs come from an OpenStreetMap snapshot retrieved 25 October 2026, spatially filtered against the candidate track and its pedestrian graph. Operator SPAR pages provide current coordinates and weekly schedules for the checked stores. An older generic Tejeda SPAR POI was suppressed as a probable duplicate of the owner-listed store, whose current hours take precedence. Evidence and this decision are in [`data/roadbook_data.json`](data/roadbook_data.json), and can be downloaded from the app.
+There are 29 terrain legs, five checkpoint stages and 353 mapped places near the route. Of these places, 102 have published hours and 11 have directly checked operator schedules. POIs use the 25 October 2026 OpenStreetMap snapshot, spatially filtered against the candidate and its pedestrian graph. SPAR owner pages provide checked schedules and coordinates; an older generic Tejeda SPAR POI was suppressed as a probable duplicate of the current owner-listed store. Source records are in [`data/roadbook_data.json`](data/roadbook_data.json) and in the app's evidence download.
 
-Opening and location evidence is attached to each place. Sparse map data is not proof that no other service exists. Operator hours are checked against source pages, not by telephone.
+Published hours are checked for the arrival date, split sessions, overnight hours and Sundays. Conditional or seasonal expressions remain unknown when they cannot be evaluated conservatively. Published hours do not establish stock, kitchen service or one-off closures. Water-point operability is unverified. Fuel stations are counted as food only when a shop is separately mapped. Walking approaches use mapped ways to a venue's vicinity; the final entrance is not surveyed. Sparse data is not proof that no other service exists.
 
-Elevation uses the candidate's original Mapzen/AWS Skadi DEM samples, resampled every 25 m with Gaussian sigma 50 m. Section ascent/descent uses differences of one cumulative smoothed profile, so section totals reconcile with approximately **+11,939 / −10,996 m**. This differs slightly from summing stages smoothed independently. Source GPX checksum is verified on every build; full point geometry is preserved on the map and in the GPX download.
+Elevation uses the candidate's Mapzen/AWS Skadi DEM samples, resampled every 25 m with Gaussian sigma 50 m. Section ascent/descent uses differences of one cumulative smoothed profile, reconciling to approximately **+11,939 / −10,996 m**. The source GPX checksum is verified on every build and the download preserves its full geometry.
 
 ## Build and test
 
-No npm dependencies are required.
+There are no npm runtime dependencies. Python standard library builds the HTML; Node runs the engine and route-matching tests.
 
 ```sh
 python3 scripts/build.py
-node tests/engine.test.js
-```
-
-The generated `index.html` is deterministic and has no runtime fetch dependency. Python 3.12 and Node 24 were used. There are 18 engine/data tests covering exact daily quotas, fatigue/finish margins, progress anchoring, split and overnight hours, Sunday closure, unknown/seasonal rules, fuel-shop separation, route-axis integrity and reconciled section totals.
-
-Browser QA uses Playwright with system Chromium. In one terminal, serve this repository:
-
-```sh
+npm test
 python3 -m http.server 8787 --bind 127.0.0.1
 ```
 
-Then, in another:
+With the server running, install Playwright and its browser dependencies, then run:
 
 ```sh
-python3 -m pip install playwright
 python3 tests/browser_test.py
-```
-
-The browser checks block all non-local requests to verify operation without external resources. They cover desktop/mobile layout, filters, notes, safe text handling, opening overrides, offline HTML export/reopen, interactive map/sections and byte-identical GPX download. Test summaries are in `docs/`.
-
-### Phone form-control regression checks
-
-The mobile layouts use two-column numeric rows, 16px input text, 48px input heights,
-full-width resupply filters and separate preset-button rows. Numeric keyboards,
-checkboxes and disclosure controls are styled consistently across browsers.
-
-After serving the repository, run:
-
-```sh
-python3 -m playwright install webkit
 python3 tests/mobile_controls_test.py --browsers chromium webkit
-```
-
-This tests Chromium and WebKit at 320, 360, 390 and 430 CSS pixels, plus 844- and 932-pixel landscape views, including opened
-timing settings, long numeric values, typing into all eight number fields, filter
-label clipping, touch targets and the edit dialog in a reduced-height viewport.
-The 216 checks and per-browser screenshots are in `docs/mobile-controls-tests.json`
-and `docs/mobile-qa/`. This is browser emulation rather than a physical-device test.
-Playwright's normal system dependencies for the selected browsers are required.
-
-To host with GitHub Pages, select `main` and the repository root in the repository's Pages settings. No hosting or external account is needed for the downloaded HTML.
-
-## Data and software attribution
-
-- Map and POI data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0. Source queries and ordered place evidence are included with the data.
-- Checked shop schedules and coordinates: [SPAR Gran Canaria store pages](https://spargrancanaria.es/tiendas/), linked individually in the app. Factual schedules are normalised to weekly patterns.
-- DEM: Mapzen Terrain Tiles / AWS Skadi composite elevation tiles; [Joerd documentation](https://github.com/tilezen/joerd/tree/master/docs).
-- Leaflet 1.9.4, BSD-2-Clause; bundled under `vendor/` with its license.
-- Day/night markers: Astral calculation for the island centre, not terrain-shadow or weather predictions.
-
-Settings and notes are stored only in your browser or your exported plan. The committed app contains no personal progress or notes.
-
-## Current location and nearby resupply
-
-Use **Use current location (GPS)** on either the Map or Resupply tab. Both toggles
-control the same browser location watch. The browser asks for permission only
-after you turn it on; tracking is not restored automatically after reopening the
-app. **Centre on me** moves the map to the actual GPS fix, and a circle shows its
-reported accuracy.
-
-An accurate fix near the track updates **Current km** by projecting onto the
-ordered GPX segments. The ahead filter then removes passed stops and each card
-shows distance ahead along the route, distance including the outward shop
-approach, and a separately labelled straight-line GPS distance. Straight-line
-proximity is not a walking route. Existing search, type, detour and hours filters
-continue to apply. Arrival times still use your editable race plan and its
-existing progress/elapsed-time anchoring controls.
-
-Poor accuracy, an old fix, an off-route position or an unresolved repeated pass
-of the track does not overwrite progress. The actual/last GPS fix can still be
-shown while the planner uses the existing Current km. At an ambiguous crossing,
-enter an approximate kilometre to select the right pass. Switching GPS off clears
-the watch and map overlays, restores manual editing and retains the last verified
-route kilometre. Browsers can pause location updates in background tabs.
-
-**Location needs browser permission and a secure context (HTTPS or localhost).**
-Some mobile browsers block location in downloaded HTML files; use an HTTPS host
-such as GitHub Pages in that case. Offline route/POI browsing still works without
-GPS. No GPS coordinates are sent to an application server or saved in plan JSON
-or browser storage. The matched route kilometre is saved locally with your plan.
-
-`location.js` contains the segment projection and location-watch lifecycle.
-`node tests/location.test.js` covers matching, ambiguous passes, permission
-handling, stale/weak/off-route fixes and stopping/late callbacks. Browser checks
-in `tests/geolocation_browser_test.py` use simulated fixes through Chromium and
-WebKit's Geolocation API, including the synchronized switches, map markers,
-distances, filtering and manual fallback. They are not a physical GPS accuracy
-test. After serving the repository and installing the selected browsers, run:
-
-```sh
-node tests/location.test.js
 python3 tests/geolocation_browser_test.py
+python3 tests/progress_sync_browser_test.py
 ```
 
-Results are recorded in `docs/geolocation-browser-tests.json`.
+The suites use system Chromium (`/usr/bin/chromium`, or `CHROMIUM_PATH` for mobile/GPS tests) and Playwright WebKit. External requests are blocked to check offline operation. Reports in `docs/` record:
+
+- 18 engine/data tests and 17 route-matching/location lifecycle tests.
+- 30 browser journey checks, including feature removal, state migration, collapsed settings, offline HTML reopen, keyboard navigation and byte-identical GPX download.
+- 276 mobile UX checks across Chromium and WebKit at 320, 360, 390 and 430 CSS pixels, plus 844/932 landscape widths. Expanded numeric controls, filter text clipping, 48px targets, larger text and leg cards are checked.
+- 44 browser Geolocation API checks for permission, actual-position maps, distances, weak/off-route fixes and manual fallback.
+- 54 clock-sync checks with deterministic time and GPS callbacks, including before-start/after-limit behaviour, live updates, manual overrides, permission retry and reopening without auto-tracking.
+
+These are browser emulation and simulated GPS checks, not physical-device or field accuracy tests. Representative screenshots are in `docs/screenshots/` and `docs/mobile-qa/`.
+
+For GitHub Pages, select the `main` branch and repository root. No hosting account is required for the downloadable HTML.
+
+## Attribution
+
+- Map and POI data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0; source queries and evidence are included with the data.
+- Shop schedules: [SPAR Gran Canaria owner pages](https://spargrancanaria.es/tiendas/), linked individually in the app.
+- DEM: Mapzen Terrain Tiles / AWS Skadi composite; [Joerd documentation](https://github.com/tilezen/joerd/tree/master/docs).
+- Leaflet 1.9.4, BSD-2-Clause, bundled with its license in `vendor/`.
+- Day/night markers: Astral island-centre sunrise/sunset calculations, not terrain-shadow or weather predictions.
