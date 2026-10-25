@@ -105,4 +105,11 @@ ok 23 - null probability and calm zero wind are distinguished
 ok 24 - standard weather codes are labelled while unsupported codes remain unknown
 ok 25 - terrain height includes a crest between hourly forecast points
 ok 26 - pre-race stage preview uses the planned arrival time at that kilometre
-26 route-weather tests passed
+ok 27 - wind direction uses sixteen compass points and wraps at north
+ok 28 - summary wind direction belongs to peak hourly wind, independently of gust maximum
+ok 29 - calm winds have no prevailing direction and missing speed stays unavailable
+ok 30 - weather icons distinguish clear and partly-cloudy nights from daytime
+ok 31 - rain, fog, snow, ice, storms and unknown conditions get corresponding icons
+ok 32 - condition strip keeps a storm signal visible in a mixed outlook
+ok 33 - weather illustrations are embedded decorative SVG with visible text provided separately
+33 route-weather tests passed

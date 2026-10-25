@@ -10,7 +10,7 @@ def payload(url,partial=False,empty=False):
  q=parse_qs(urlparse(url).query);alt=[float(x) for x in q['elevation'][0].split(',')];lat=[float(x) for x in q['latitude'][0].split(',')];lon=[float(x) for x in q['longitude'][0].split(',')]
  start=datetime.fromisoformat(q['start_hour'][0]).replace(tzinfo=timezone.utc);end=datetime.fromisoformat(q['end_hour'][0]).replace(tzinfo=timezone.utc);times=[int((start+timedelta(hours=i)).timestamp()) for i in range(int((end-start).total_seconds()/3600)+1)]
  def series(n):return [None if empty else n for _ in times]
- return [{'latitude':lat[i],'longitude':lon[i],'elevation':z,'hourly':{'time':times,'temperature_2m':series(25-z/180),'apparent_temperature':series(23-z/180),'precipitation_probability':[None for _ in times] if partial else series(20+i),'precipitation':series(.2),'weather_code':series(0 if i<8 else 61),'wind_speed_10m':series(10+i),'wind_gusts_10m':series(20+i),'wind_direction_10m':series(0),'is_day':series(1 if i<10 else 0)}} for i,z in enumerate(alt)]
+ return [{'latitude':lat[i],'longitude':lon[i],'elevation':z,'hourly':{'time':times,'temperature_2m':series(25-z/180),'apparent_temperature':series(23-z/180),'precipitation_probability':[None for _ in times] if partial else series(20+i),'precipitation':series(.2),'weather_code':series(0 if i<=12 else 61),'wind_speed_10m':series(10+i),'wind_gusts_10m':series(20+i),'wind_direction_10m':series(0),'is_day':series(1 if i<10 else 0)}} for i,z in enumerate(alt)]
 def check(cs,name,value):
  assert value,name
  cs.append(name)
@@ -32,12 +32,16 @@ with sync_playwright() as p:
   check(cs,'six-hour view is selected by default',page.locator('[data-weather-hours="6"]').get_attribute('aria-pressed')=='true')
   check(cs,'one batch requests a different route position and elevation every hour',len(calls)==1 and len(parse_qs(urlparse(calls[0]).query)['latitude'][0].split(','))==19 and len(set(parse_qs(urlparse(calls[0]).query)['elevation'][0].split(',')))>3)
   check(cs,'temperature, rain, wind and route elevation summaries are populated',page.locator('[data-weather-summary]>div').count()==4 and 'Unavailable' not in page.locator('[data-weather-summary]').inner_text())
+  check(cs,'summary has inline weather symbols paired with condition text',page.locator('[data-weather-conditions] svg[data-weather-icon]').count()>0 and 'Clear' in page.locator('[data-weather-conditions]').inner_text())
+  check(cs,'peak wind shows a north-up source arrow and speed in km/h',page.locator('.weather-wind-summary [data-wind-bearing="0"]').count()==1 and 'From N' in page.locator('.weather-wind-summary').inner_text() and 'km/h' in page.locator('.weather-wind-summary').inner_text())
+  check(cs,'no Beaufort scale is included',not page.locator('#weatherPanel').evaluate('e=>/beaufort|bft/i.test(e.textContent)'))
   check(cs,'forecast details start collapsed for a compact summary',not page.locator('[data-weather-route]').evaluate('e=>e.open'))
   check(cs,'endpoint shows projected place, route kilometre and height','km ' in page.locator('[data-weather-destination]').inner_text() and ' m' in page.locator('[data-weather-destination]').inner_text())
   base=page.evaluate('weatherPanel.cache.base');check(cs,'forecast is anchored to the displayed route progress and race clock',base==1793782800000)
   for h in [12,18]:page.locator(f'[data-weather-hours="{h}"]').click();check(cs,f'{h}-hour view uses the cached trajectory without another API request',len(calls)==1 and page.locator(f'[data-weather-hours="{h}"]').get_attribute('aria-pressed')=='true')
   page.locator('[data-weather-route]>summary').click();check(cs,'eighteen-hour details show seven route/time stops',page.locator('.weather-stop').count()==7)
-  check(cs,'night forecast and wind-from-north are labelled','night' in page.locator('[data-weather-cards]').inner_text() and 'km/h N' in page.locator('[data-weather-cards]').inner_text())
+  check(cs,'night forecast and wind-from-north are labelled','night' in page.locator('[data-weather-cards]').inner_text() and 'From N' in page.locator('[data-weather-cards]').inner_text())
+  check(cs,'forecast stops have day/night icons and wind direction arrows',page.locator('[data-weather-cards] [data-weather-icon=moon]').count()>0 and page.locator('[data-weather-cards] .weather-direction').count()==7)
   page.locator('[data-weather-hours="6"]').click();check(cs,'six-hour details show current, +3h and +6h positions',page.locator('.weather-stop').count()==3)
   page.locator('[data-weather-route]>summary').click()
   for width in [320,390,844]:
@@ -45,7 +49,8 @@ with sync_playwright() as p:
    check(cs,f'weather controls and summary fit {width}px width',page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'))
    targets=page.locator('#weatherPanel button').evaluate_all('es=>es.map(e=>({height:e.getBoundingClientRect().height,font:parseFloat(getComputedStyle(e).fontSize)}))')
    check(cs,f'forecast controls are readable and touch-sized at {width}px',all(x['height']>=48 and x['font']>=16 for x in targets))
-   if width==390:page.locator('#weatherPanel').screenshot(path=str(OUT/f'{engine}-summary.png'))
+   if width==390:
+    page.evaluate('window.scrollTo(0,0)');page.screenshot(path=str(OUT/f'{engine}-summary.png'),full_page=True,clip=page.locator('#weatherPanel').bounding_box())
   page.set_viewport_size({'width':390,'height':844});page.locator('#progressKm').fill('100');page.locator('#progressKm').blur();page.wait_for_function('!weatherPanel.loading&&weatherPanel.cache.fromKm===100')
   check(cs,'editing progress recalculates forecast locations',page.evaluate('weatherPanel.cache.rows[0].sample.km')==100 and page.evaluate('weatherPanel.cache.rows[6].sample.km')>100)
   before=page.evaluate('weatherPanel.cache.rows[6].sample.km');page.locator('#pacePanel>summary').click();page.locator('#timingPanel>summary').click();page.locator('#extraHours').fill('3');page.locator('#extraHours').blur();page.wait_for_function('!weatherPanel.loading&&weatherPanel.cache.signature.includes(",3]")')

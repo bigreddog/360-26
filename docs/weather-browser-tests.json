@@ -1,14 +1,17 @@
 {
-  "passed": 66,
+  "passed": 74,
   "results": [
     {
       "browser": "chromium",
-      "passed": 33,
+      "passed": 37,
       "checks": [
         "forecast panel is on the Race view immediately above route profile",
         "six-hour view is selected by default",
         "one batch requests a different route position and elevation every hour",
         "temperature, rain, wind and route elevation summaries are populated",
+        "summary has inline weather symbols paired with condition text",
+        "peak wind shows a north-up source arrow and speed in km/h",
+        "no Beaufort scale is included",
         "forecast details start collapsed for a compact summary",
         "endpoint shows projected place, route kilometre and height",
         "forecast is anchored to the displayed route progress and race clock",
@@ -16,6 +19,7 @@
         "18-hour view uses the cached trajectory without another API request",
         "eighteen-hour details show seven route/time stops",
         "night forecast and wind-from-north are labelled",
+        "forecast stops have day/night icons and wind direction arrows",
         "six-hour details show current, +3h and +6h positions",
         "weather controls and summary fit 320px width",
         "forecast controls are readable and touch-sized at 320px",
@@ -43,12 +47,15 @@
     },
     {
       "browser": "webkit",
-      "passed": 33,
+      "passed": 37,
       "checks": [
         "forecast panel is on the Race view immediately above route profile",
         "six-hour view is selected by default",
         "one batch requests a different route position and elevation every hour",
         "temperature, rain, wind and route elevation summaries are populated",
+        "summary has inline weather symbols paired with condition text",
+        "peak wind shows a north-up source arrow and speed in km/h",
+        "no Beaufort scale is included",
         "forecast details start collapsed for a compact summary",
         "endpoint shows projected place, route kilometre and height",
         "forecast is anchored to the displayed route progress and race clock",
@@ -56,6 +63,7 @@
         "18-hour view uses the cached trajectory without another API request",
         "eighteen-hour details show seven route/time stops",
         "night forecast and wind-from-north are labelled",
+        "forecast stops have day/night icons and wind direction arrows",
         "six-hour details show current, +3h and +6h positions",
         "weather controls and summary fit 320px width",
         "forecast controls are readable and touch-sized at 320px",
