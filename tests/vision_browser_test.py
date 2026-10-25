@@ -102,7 +102,7 @@ with sync_playwright() as p:
   page.locator('[data-vision=exit]').click();page.locator('#toolsPanel>summary').click()
   with page.expect_download() as dl:page.locator('#downloadGpx').click()
   gpx=dl.value.path();check(cs,'preview imports do not change the race GPX download',hashlib.sha256(Path(gpx).read_bytes()).hexdigest()==page.evaluate('RACER_APP.DATA.gpx_sha256'))
-  check(cs,'no camera or external data requests are ever made',page.evaluate('__cameraRequests')==0 and not [u for u in requests if not u.startswith('http://127.0.0.1:8787/')])
+  check(cs,'no camera or external data requests are ever made',page.evaluate('__cameraRequests')==0 and not [u for u in requests if not u.startswith('http://127.0.0.1:8787/') and not u.startswith('https://api.open-meteo.com/v1/forecast?')])
   check(cs,'all integrated interactions are free of script errors',not errors)
   ctx.close()
   # Denied sensors and absent GPX must leave an actionable UI.

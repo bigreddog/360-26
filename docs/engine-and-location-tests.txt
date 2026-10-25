@@ -1,6 +1,6 @@
 
 > canarias360-racer-roadbook@1.0.0 test
-> node tests/engine.test.js && node tests/location.test.js && node tests/vision.test.js
+> node tests/engine.test.js && node tests/location.test.js && node tests/vision.test.js && node tests/weather.test.js
 
 ok 1 - first daily quotas hit 24, 48 and 72 hours
 ok 2 - planning finish and 101h deadline
@@ -79,3 +79,30 @@ ok 36 - loss of heading is unavailable, not a claim that calibration is needed
 ok 37 - confidence can recover after isolated uncertainty
 ok 38 - preferences are bounded and compass/500m/true scale are defaults
 38 Trail Vision tests passed
+ok 1 - pre-race forecast begins at the race start, not today
+ok 2 - 6, 12 and 18-hour horizons share nineteen hourly projected points
+ok 3 - projected positions follow the existing climb-weighted pace curve
+ok 4 - latitude/longitude and elevation move with the actual course
+ok 5 - current route progress anchors future locations at the current time
+ok 6 - manual future elapsed time can preview a later race stage
+ok 7 - extra delay holds route position before movement resumes
+ok 8 - outlook stops at the exact projected finish without inventing onward travel
+ok 9 - completed course has no upcoming forecast even with delay set
+ok 10 - API request includes changing coordinates and GPX elevations
+ok 11 - forecast date availability respects a sixteen-day provider limit
+ok 12 - request end is clipped at the provider limit for partial windows
+ok 13 - each projected point reads its own location forecast
+ok 14 - temperature is interpolated in time without interpolating weather codes
+ok 15 - missing fields and nulls remain unavailable rather than becoming zero
+ok 16 - past and beyond-horizon data are never extrapolated
+ok 17 - missing a location response cannot misalign forecasts with route points
+ok 18 - malformed timestamps cannot be read as valid weather
+ok 19 - summary rainfall excludes the preceding hour at the starting point
+ok 20 - rainfall is unavailable if any future hour is missing
+ok 21 - fractional final hour only contributes its fraction of rainfall
+ok 22 - temperature ranges, hourly chance maxima and gusts cover the chosen window
+ok 23 - null probability and calm zero wind are distinguished
+ok 24 - standard weather codes are labelled while unsupported codes remain unknown
+ok 25 - terrain height includes a crest between hourly forecast points
+ok 26 - pre-race stage preview uses the planned arrival time at that kilometre
+26 route-weather tests passed
