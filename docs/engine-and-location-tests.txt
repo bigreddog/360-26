@@ -84,7 +84,7 @@ ok 37 - confidence can recover after isolated uncertainty
 ok 38 - preferences are bounded and compass/500m/true scale are defaults
 38 Trail Vision tests passed
 ok 1 - pre-race forecast begins at the race start, not today
-ok 2 - 6, 12 and 18-hour horizons share nineteen hourly projected points
+ok 2 - 12 and 24-hour horizons share twenty-five hourly projected points
 ok 3 - projected positions follow the existing climb-weighted pace curve
 ok 4 - latitude/longitude and elevation move with the actual course
 ok 5 - current route progress anchors future locations at the current time

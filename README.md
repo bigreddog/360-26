@@ -18,6 +18,14 @@ The main views are **Race**, **Legs**, **Resupply** and **Map**. The race overvi
 
 Use **Downloads & tools** for a portable HTML with your current pace settings, the original GPX, section CSV, evidence data or printing. Printing includes the route legs and the next six matching resupply places. Settings and the last route kilometre are saved locally; the committed app contains no personal progress.
 
+## Install on your phone
+
+On Android Chrome, open the [hosted roadbook](https://bigreddog.github.io/360-26/) online, then use **Downloads & tools → Install app**. If Chrome does not show a prompt, use **⋮ → Add to home screen → Install** (wording varies by Chrome version). Open **Canarias 360** from its new home-screen icon for a standalone app window. On iPhone, use Safari **Share → Add to Home Screen**.
+
+Wait for **Offline roadbook ready** before leaving coverage. Installation keeps the same route, resupply, weather and Trail Vision features; fresh forecasts and street tiles still need internet. GPS and compass permission remain separate. A downloaded HTML is a backup and is installed through the hosted app instead.
+
+Street tiles start **on** when Map opens. Change **Map options & key → Street map** to save your on/off preference across reloads and into saved HTML. No tiles are requested while the map stays closed or when the saved setting is off; the route and pins remain available offline.
+
 ## Location and time
 
 The global progress panel is available on every view. **Use GPS location** starts a browser location watch and updates your route kilometre when the fix is accurate and near the ordered GPX. **Centre on me** on the map uses the actual GPS fix, with an accuracy circle.
@@ -65,6 +73,7 @@ python3 tests/browser_test.py
 python3 tests/mobile_controls_test.py --browsers chromium webkit
 python3 tests/geolocation_browser_test.py
 python3 tests/progress_sync_browser_test.py
+python3 tests/install_browser_test.py
 python3 tests/legs_browser_test.py
 ```
 
@@ -72,6 +81,7 @@ The suites use system Chromium (`/usr/bin/chromium`, or `CHROMIUM_PATH` for mobi
 
 - 22 engine/data tests and 18 route-matching/location lifecycle tests.
 - 30 browser journey checks, including feature removal, state migration, collapsed settings, offline HTML reopen, keyboard navigation and byte-identical GPX download.
+- Installation checks cover manifest/icons, simulated prompt acceptance/dismissal/fallback, standalone layout, portable HTML and both on/off map preference reloads. The offline suite also checks cached manifest/icons.
 - 276 mobile UX checks across Chromium and WebKit at 320, 360, 390 and 430 CSS pixels, plus 844/932 landscape widths. Expanded numeric controls, filter text clipping, 48px targets, larger text and leg cards are checked.
 - 44 browser Geolocation API checks for permission, actual-position maps, distances, weak/off-route fixes and manual fallback.
 - 54 clock-sync checks with deterministic time and GPS callbacks, including before-start/after-limit behaviour, live updates, manual overrides, permission retry and reopening without auto-tracking.
@@ -100,17 +110,19 @@ Read [Trail Vision permissions, implementation and Android/iOS testing](docs/tra
 
 ## Weather ahead
 
-The **Race** view now includes **Weather ahead** above the route profile. Choose a **6-, 12- or 18-hour outlook** for the locations and elevations you are projected to reach. The compact summary shows temperature/feels-like range, approximate rain along the moving route, maximum hourly rain chance, wind/gusts and highest terrain. Expand **Along the route** for timed forecast stops, route kilometres, GPX heights and day/night conditions.
+The **Race** view now includes **Weather ahead** above the route profile. Choose a **12- or 24-hour outlook** (12 hours by default) for the locations and elevations you are projected to reach. The compact summary shows temperature/feels-like range, approximate rain along the moving route, maximum hourly rain chance, wind/gusts and highest terrain. Expand **Along the route** for timed forecast stops, route kilometres, GPX heights and day/night conditions.
 
 Forecasts come from [Open-Meteo](https://open-meteo.com/en/docs), with a separate GPX coordinate and supplied elevation for each projected hour. The existing fatigue/climbing pace curve is inverted to predict progress; extra delay holds position before movement resumes. During the race, the outlook starts at the current clock time and last entered route kilometre. Before the race it uses the planned arrival time at that kilometre, or a later explicit elapsed-time anchor. Use **Sync location & time** to keep progress current.
 
-The app requests the whole 18-hour path in one batch, so changing views needs no new request. It refreshes when the Race view is visible, normally every 30 minutes, after pace/manual-progress changes, or after substantial GPS progress; **Refresh** updates it on demand. Model date coverage is limited to about 16 days and missing values remain unavailable. Longer-range outlooks are labelled. Coordinates/elevations sent to the provider are projected GPX positions, rather than raw GPS fixes.
+The app requests the whole 24-hour path (25 hourly positions) in one batch, so changing views needs no new request. It refreshes when the Race view is visible, normally every 30 minutes, after pace/manual-progress changes, or after substantial GPS progress; **Refresh** updates it on demand. Model date coverage is limited to about 16 days and missing values remain unavailable. Longer-range outlooks are labelled. Coordinates/elevations sent to the provider are projected GPX positions, rather than raw GPS fixes.
 
 Saved forecasts retain their original dates, route positions and fetch time. Offline forecasts are labelled; old data is marked stale and expired windows hide their numerical summary. **Save offline HTML** includes the latest loaded weather snapshot. The app does not substitute today's weather for unsupported race dates. Weather fields are model estimates: mountain microclimates, exposed-ridge winds and trail conditions can differ. Height-dependent downscaling does not create a terrain-resolving wind model.
 
 Weather data © Open-Meteo, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Rain totals sum hourly estimates at the moving runner's projected positions, excluding the preceding hour at the starting point; they are approximate exposure estimates. The probability displayed is the maximum individual hourly rain chance, not a combined probability for the whole window. Highest terrain also examines intervening GPX profile heights, including crests between hourly forecast positions.
 
-`weather.js` and `weather.css` are embedded by the existing build without dependencies or API keys. Run `node tests/weather.test.js` for projection, time/elevation, response parsing and summary tests; `python3 tests/weather_browser_test.py` checks Chromium/WebKit layouts, horizons, pace changes, midnight, failures and portable offline snapshots. Forecast API responses are mocked in deterministic browser tests; a separate live request verified the 19-location race forecast and elevation parameters. Evidence is recorded in `docs/weather-integration.json`.
+`weather.js` and `weather.css` are embedded by the existing build without dependencies or API keys. Run `node tests/weather.test.js` for projection, time/elevation, response parsing and summary tests; `python3 tests/weather_browser_test.py` checks Chromium/WebKit layouts, horizons, pace changes, midnight, failures and portable offline snapshots. Forecast API responses are mocked in deterministic browser tests; a live request verified all 25 race locations/elevations over the 24-hour outlook. Evidence is recorded in `docs/weather-integration.json`.
 
 
 The weather panel uses bundled SVG illustrations for clear skies, cloud, rain, snow, fog, ice and thunderstorms, with moon variants for clear/cloudy nights. Direction arrows show where the air is blowing on a north-up compass. The sixteen-point ‘From’ label retains the meteorological source direction: wind from N has an arrow pointing south. The summary pairs direction with the strongest hourly wind sample; gust peaks are listed separately. Wind and gust speeds remain in km/h. Calm conditions show no prevailing direction, and missing data remains unavailable. Icons have adjacent text labels, work offline and require no additional requests.
+
+The hosted app manifest and committed 192/512 px icons support Chrome installation. `install.js` is embedded in the portable page; `scripts/build.py` also includes manifest/icon content in the service-worker revision. The normal build has no extra dependencies. To redraw icons only, run `python3 scripts/generate_icons.py /path/to/OpenSans-Bold.ttf` in a development environment with Pillow installed. Native installation prompts remain browser-controlled; automated prompt tests use simulated events.

@@ -1,8 +1,9 @@
 /* Offline navigation cache: the HTML already embeds GPX, Leaflet and Trail Vision. */
 const CACHE='canarias360-offline-/*BUILD_REVISION*/';
 const INDEX=new URL('index.html',self.registration.scope).href;
+const ASSETS=['manifest.webmanifest','icons/icon-192.png','icons/icon-512.png'].map(path=>new URL(path,self.registration.scope).href);
 self.addEventListener('install',event=>event.waitUntil((async()=>{
- const cache=await caches.open(CACHE);await cache.add(new Request(INDEX,{cache:'reload'}));await self.skipWaiting();
+ const cache=await caches.open(CACHE);await cache.addAll([INDEX,...ASSETS].map(url=>new Request(url,{cache:'reload'})));await self.skipWaiting();
 })()));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{
  for(const name of await caches.keys())if(name.startsWith('canarias360-offline-')&&name!==CACHE)await caches.delete(name);
@@ -10,7 +11,11 @@ self.addEventListener('activate',event=>event.waitUntil((async()=>{
 })()));
 self.addEventListener('fetch',event=>{
  const url=new URL(event.request.url),scope=new URL(self.registration.scope);
- if(event.request.method!=='GET'||event.request.mode!=='navigate'||url.origin!==scope.origin||![scope.pathname,scope.pathname+'index.html'].includes(url.pathname))return;
+ if(event.request.method!=='GET'||url.origin!==scope.origin)return;
+ if(ASSETS.includes(url.href)){
+  event.respondWith((async()=>{const cache=await caches.open(CACHE);return await cache.match(event.request)||fetch(event.request);})());return;
+ }
+ if(event.request.mode!=='navigate'||![scope.pathname,scope.pathname+'index.html'].includes(url.pathname))return;
  event.respondWith((async()=>{
   const cache=await caches.open(CACHE),controller=new AbortController(),timer=setTimeout(()=>controller.abort(),3500);
   try{

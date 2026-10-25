@@ -15,6 +15,7 @@ with sync_playwright() as p:
   check('self-contained HTML is cached for navigation',page.evaluate("caches.keys().then(keys=>keys.some(k=>k.startsWith('canarias360-offline-')))"))
   ctx.set_offline(True);page.goto('http://127.0.0.1:8787/?offline-cold-reload=1');page.wait_for_function('window.RACER_APP')
   check('roadbook cold-reloads without network',page.evaluate('RACER_APP.DATA.pois.length')==353)
+  check('manifest and both install icons remain available offline',page.evaluate("Promise.all(['manifest.webmanifest','icons/icon-192.png','icons/icon-512.png'].map(path=>fetch(path,{cache:'no-store'}).then(r=>r.ok))).then(results=>results.every(Boolean))"))
   page.get_by_role('tab',name='Map',exact=True).click();check('offline Leaflet route still initializes',page.locator('#map .leaflet-map-pane').count()==1)
   page.locator('#openTrailVision').click();page.wait_for_function('RACER_APP.vision()?.active');page.locator('[data-vision=previewOffline]').click();page.locator('[data-vision=mode]').select_option('route');page.wait_for_timeout(300)
   check('Trail Vision renders cached race GPX offline',page.evaluate('RACER_APP.vision().available')==500 and page.evaluate('RACER_APP.vision().frames')>0)

@@ -1,0 +1,14 @@
+{
+  "checked_at_utc": "2026-10-25T22:47:20.325508+00:00",
+  "browser": "System Chromium, headless, temporary persistent non-incognito profile",
+  "origin": "http://127.0.0.1:8787/",
+  "manifest_errors": [],
+  "installability_errors": [],
+  "method": "Chrome DevTools Page.getAppManifest and Page.getInstallabilityErrors after service worker activation",
+  "native_prompt_automated": false,
+  "physical_android_test": false,
+  "notes": [
+    "Install prompt acceptance/dismissal tested separately using simulated browser events.",
+    "Physical Chrome controls its native install prompt timing and home-screen installation."
+  ]
+}

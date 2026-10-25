@@ -43,7 +43,7 @@ with sync_playwright() as p:
   page.locator('#mapLocateMe').click()
   check(checks,'off-route centring uses the GPS fix rather than the snapped track',page.evaluate('Math.abs(map.getCenter().lat-51.5)<.0001'))
   page.locator('#location-main').uncheck()
-  check(checks,'GPS feature makes no external requests',not [u for u in requests if not u.startswith('http://127.0.0.1:8787/') and not u.startswith('https://api.open-meteo.com/v1/forecast?')])
+  check(checks,'GPS makes no requests beyond forecast and street-map tiles',not [u for u in requests if not u.startswith('http://127.0.0.1:8787/') and not u.startswith('https://api.open-meteo.com/v1/forecast?') and not any(u.startswith('https://'+host+'.tile.openstreetmap.org/') for host in ['a','b','c'])])
   check(checks,'GPS interactions have no runtime errors',not errors)
   ctx.close()
   # Permission-denied UI, with a deterministic asynchronous browser API failure.

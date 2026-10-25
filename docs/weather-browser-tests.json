@@ -1,12 +1,13 @@
 {
-  "passed": 74,
+  "passed": 80,
   "results": [
     {
       "browser": "chromium",
-      "passed": 37,
+      "passed": 40,
       "checks": [
         "forecast panel is on the Race view immediately above route profile",
-        "six-hour view is selected by default",
+        "twelve-hour view is selected by default",
+        "retired six/eighteen-hour weather controls are absent",
         "one batch requests a different route position and elevation every hour",
         "temperature, rain, wind and route elevation summaries are populated",
         "summary has inline weather symbols paired with condition text",
@@ -15,12 +16,13 @@
         "forecast details start collapsed for a compact summary",
         "endpoint shows projected place, route kilometre and height",
         "forecast is anchored to the displayed route progress and race clock",
+        "24-hour view uses the cached trajectory without another API request",
         "12-hour view uses the cached trajectory without another API request",
-        "18-hour view uses the cached trajectory without another API request",
-        "eighteen-hour details show seven route/time stops",
+        "24-hour view uses the cached trajectory without another API request",
+        "twenty-four-hour details show nine route/time stops",
         "night forecast and wind-from-north are labelled",
         "forecast stops have day/night icons and wind direction arrows",
-        "six-hour details show current, +3h and +6h positions",
+        "twelve-hour details show five route positions",
         "weather controls and summary fit 320px width",
         "forecast controls are readable and touch-sized at 320px",
         "weather controls and summary fit 390px width",
@@ -41,16 +43,18 @@
         "hidden forecast view does not make background weather requests",
         "no runtime errors throughout weather interactions",
         "outside-horizon race dates show availability guidance",
-        "all-null provider response stays unavailable without fabricated values"
+        "all-null provider response stays unavailable without fabricated values",
+        "old eighteen-hour cache is not relabelled as a twenty-four-hour forecast"
       ],
       "mocked_forecast_api": true
     },
     {
       "browser": "webkit",
-      "passed": 37,
+      "passed": 40,
       "checks": [
         "forecast panel is on the Race view immediately above route profile",
-        "six-hour view is selected by default",
+        "twelve-hour view is selected by default",
+        "retired six/eighteen-hour weather controls are absent",
         "one batch requests a different route position and elevation every hour",
         "temperature, rain, wind and route elevation summaries are populated",
         "summary has inline weather symbols paired with condition text",
@@ -59,12 +63,13 @@
         "forecast details start collapsed for a compact summary",
         "endpoint shows projected place, route kilometre and height",
         "forecast is anchored to the displayed route progress and race clock",
+        "24-hour view uses the cached trajectory without another API request",
         "12-hour view uses the cached trajectory without another API request",
-        "18-hour view uses the cached trajectory without another API request",
-        "eighteen-hour details show seven route/time stops",
+        "24-hour view uses the cached trajectory without another API request",
+        "twenty-four-hour details show nine route/time stops",
         "night forecast and wind-from-north are labelled",
         "forecast stops have day/night icons and wind direction arrows",
-        "six-hour details show current, +3h and +6h positions",
+        "twelve-hour details show five route positions",
         "weather controls and summary fit 320px width",
         "forecast controls are readable and touch-sized at 320px",
         "weather controls and summary fit 390px width",
@@ -85,7 +90,8 @@
         "hidden forecast view does not make background weather requests",
         "no runtime errors throughout weather interactions",
         "outside-horizon race dates show availability guidance",
-        "all-null provider response stays unavailable without fabricated values"
+        "all-null provider response stays unavailable without fabricated values",
+        "old eighteen-hour cache is not relabelled as a twenty-four-hour forecast"
       ],
       "mocked_forecast_api": true
     }

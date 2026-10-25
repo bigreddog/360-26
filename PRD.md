@@ -3,7 +3,7 @@
 Status: specification of the current product and required maintenance workflow  
 Repository: [bigreddog/360-26](https://github.com/bigreddog/360-26)  
 Application: [bigreddog.github.io/360-26](https://bigreddog.github.io/360-26/)  
-Baseline: application commit `6a06701`; documented 25 October 2026
+Baseline: integrated roadbook with 12/24-hour forecasts, app installation and remembered street-map settings; updated 25 October 2026
 
 ## 1. Purpose and user
 
@@ -110,13 +110,13 @@ Shop ETAs include the outward detour. The finish model does not silently add eve
 
 Use bundled Leaflet to show the candidate polyline, filtered resupply pins, checkpoint markers, selected legs and mapped stop approaches. Display actual GPS position plus accuracy and provide centre-on-me, whole-route and progress actions. Label candidate and pin semantics clearly.
 
-Route geometry, pins and selection must work without online tiles. Street-map tiles are off by default and need internet when explicitly enabled. Never substitute straight-line proximity for a pedestrian route to a shop.
+Route geometry, pins and selection must work without online tiles. Street-map tiles are on by default when the Map view opens and need internet. Persist the on/off choice as a boolean `streetMap` in the existing plan settings, restore it before map initialization, and preserve it in saved HTML. Older settings without this field default to on. Do not request tiles before the map opens or when the saved preference is off. Tile failure must not disable route geometry or pins; do not bulk-cache OSM tiles. Never substitute straight-line proximity for a pedestrian route to a shop.
 
 ### 4.6 Weather ahead
 
-Provide **6 / 12 / 18 hour** views for the locations and heights the runner is projected to reach. Use the existing fatigue/ascent pacing model and latest progress/time anchor. Extra delay holds projected position before travel resumes. Before the start, use the race schedule or a later explicit elapsed anchor; during the race, begin at the current clock time and last route progress.
+Provide only **12 / 24 hour** views, with **12 hours** selected initially, for the locations and heights the runner is projected to reach. Use the existing fatigue/ascent pacing model and latest progress/time anchor. Extra delay holds projected position before travel resumes. Before the start, use the race schedule or a later explicit elapsed anchor; during the race, begin at the current clock time and last route progress.
 
-Request up to 19 hourly positions in a single Open-Meteo multi-location request, using projected latitude, longitude and the GPX-derived roadbook elevation. Include an exact fractional finish endpoint when needed and stop the outlook at the finish. Do not use only the start-town forecast, a single island-wide forecast, or today's weather in place of unsupported race dates.
+Request up to 25 hourly positions (start plus 24 hours) in a single Open-Meteo multi-location request, using projected latitude, longitude and the GPX-derived roadbook elevation. Include an exact fractional finish endpoint when needed and stop the outlook at the finish. Do not use only the start-town forecast, a single island-wide forecast, or today's weather in place of unsupported race dates.
 
 Show weather icons and text, temperature and feels-like ranges, approximate moving-route rain in mm, maximum individual hourly rain chance, peak hourly wind and gusts in **km/h**, and highest/lowest route terrain. Terrain ranges must include crests between hourly samples. Expand timed route stops for places, kilometres, elevations and detailed conditions. Use night variants where appropriate.
 
@@ -126,7 +126,7 @@ Use hourly Celsius/km/h/mm fields, UNIX times and GMT requests, displayed in Atl
 
 Rain totals are approximate sums along the moving route, excluding the hour before outlook start and weighting a partial finish hour. A maximum hourly probability is not a combined whole-window probability. Elevation downscaling does not make exposed-ridge wind or local mountain weather certain.
 
-Refresh normally every 30 minutes while the Race tab is visible, after relevant plan changes or explicit time/location sync, and after substantial progress. Reuse the same trajectory when switching horizons and rate-limit failed requests. Cache fetched forecasts with route identity, original positions, dates and fetch time. Mark offline/stale data, and suppress expired numerical outlooks. Saved HTML should include the current forecast snapshot. Attribute Open-Meteo and its licence.
+Refresh normally every 30 minutes while the Race tab is visible, after relevant plan changes or explicit time/location sync, and after substantial progress. Reuse the same trajectory when switching horizons and rate-limit failed requests. Cache fetched forecasts with route identity, original positions, dates and fetch time. Use cache schema version 2 and `canarias360-weather-v2`; do not reuse the former 18-hour cache as a full-day forecast. Switching between 12 and 24 hours must use the same newly calculated 24-hour trajectory without another request. Mark offline/stale data, and suppress expired numerical outlooks. Saved HTML should include the current forecast snapshot. Attribute Open-Meteo and its licence.
 
 ### 4.7 Trail Vision
 
@@ -146,7 +146,15 @@ Render only while active and as needed; cap work for ordinary phones, pause in b
 
 The local GPX picker is **preview-only** and session-only. It does not replace the race map, progress axis, POIs, weather, checkpoints or GPX download. A full race-route update requires Section 7 below.
 
-### 4.8 Downloads, evidence and printing
+### 4.8 Installable app
+
+The hosted HTTPS roadbook must be installable from Android Chrome and launch as a standalone app from its home-screen icon. Provide a web app manifest with stable relative app ID, start URL and scope for `/360-26/`, app name, theme/background colours, and bundled 192/512 px PNG icons including maskable support. Keep orientation unrestricted for portrait and landscape Trail Vision.
+
+Expose **Install app** under **Downloads & tools**. Capture Chrome's install event, prompt only on the runner's tap, handle acceptance/dismissal without blocking the roadbook, and hide the redundant action in standalone mode or after installation. When Chrome does not supply a prompt, show menu instructions: **⋮ → Add to home screen → Install**. On iPhone, explain Safari **Share → Add to Home Screen**. The browser controls native installation eligibility and timing; do not claim the app can force a prompt.
+
+Cache the manifest and icons alongside the HTML for offline app launches. Installation does not grant location or motion permission; preserve all opt-in behaviour and manual fallbacks. Downloaded HTML remains a self-contained backup: remove hosted manifest/icon dependencies from that file and direct installation to the hosted HTTPS app. Verify metadata and prompt handling with browser tests, and record that native installation on physical Android has not been exercised by emulation.
+
+### 4.9 Downloads, evidence and printing
 
 Keep **Downloads & tools** available with:
 
@@ -168,13 +176,14 @@ Use plain JavaScript/CSS/HTML and bundled Leaflet. There are no npm runtime depe
 | `app.js` | UI, state, shared GPS integration, tabs, legs, downloads and map |
 | `engine.js` | Pacing, interpolation, opening hours, leg progress and leg POI assignment |
 | `location.js` | Shared opt-in tracker and main-map segment matching |
+| `install.js`, `manifest.webmanifest`, `icons/` | Browser install action, scoped app metadata and home-screen icons |
 | `weather.js`, `weather.css` | Projected forecast trajectory, API/cache, summary and cards |
 | `vision-core.js` | GPX parsing, geometry, matching, elevation and orientation maths |
 | `vision.js`, `vision.css` | Trail Vision lifecycle, controls, sensors and renderer |
 | `data/roadbook_data.json` | Canonical derived race, route, terrain, POI and evidence data |
 | `routes/canarias360_best_candidate.gpx` | Canonical downloadable race candidate with elevations and checkpoint waypoints |
 | `scripts/build.py` | Validates GPX hash and embeds assets/data/GPX into generated `index.html` |
-| `sw.template.js` → `sw.js` | Hosted offline navigation cache, versioned from built HTML content |
+| `sw.template.js` → `sw.js` | Hosted offline navigation cache, versioned from built HTML, manifest and icon content |
 | `tests/`, `docs/` | Pure/browser verification, evidence, screenshots and sensor documentation |
 
 `index.html` and `sw.js` are generated, tracked release files. Edit their source files and rebuild; do not maintain a separate hand-edited production copy.
@@ -202,9 +211,9 @@ Trail Vision independently uses the GPX elevation with a short local filter. Its
 
 ## 6. Offline operation, persistence and privacy
 
-The built HTML contains route, GPX, POIs, libraries and preview code. After a successful hosted load, the service worker caches that HTML; navigation tries the network for about 3.5 seconds before fallback. Changing the built HTML changes the cache revision. Confirm offline readiness before the race. Street tiles and business links are not bundled; forecasts require an initial online request and remain dated when cached.
+The built HTML contains route, GPX, POIs, libraries and preview code. After a successful hosted load, the service worker caches that HTML, the web app manifest and the install icons; navigation tries the network for about 3.5 seconds before fallback. Changing the built HTML, manifest or bundled install icons changes the cache revision. An installed app uses the same offline route/map/preview and settings as the hosted app; new forecasts and street tiles still require network access. Confirm offline readiness before the race. Street tiles and business links are not bundled; forecasts require an initial online request and remain dated when cached.
 
-The app stores plan settings and matched progress under `canarias360-roadbook-v2`; forecasts use `canarias360-weather-v1`. A saved HTML includes an embedded plan and, when present, a forecast snapshot. Do not persist raw GPS fixes, sensor histories or preview-uploaded GPX files. Forecast requests send projected course positions/elevations to Open-Meteo; raw GPS fixes are not sent to an application server.
+The app stores plan settings, street-map preference and matched progress under `canarias360-roadbook-v2`; forecasts use `canarias360-weather-v2`. A saved HTML includes an embedded plan and, when present, a forecast snapshot. Do not persist raw GPS fixes, sensor histories or preview-uploaded GPX files. Forecast requests send projected course positions/elevations to Open-Meteo; raw GPS fixes are not sent to an application server.
 
 Downloaded files may restrict GPS and motion permissions. Recommend the cached HTTPS app for live sensors and keep saved HTML as backup. Storage eviction, device clock error and background sensor suspension remain browser limitations.
 
@@ -249,7 +258,7 @@ The following is the required maintainer procedure. It specifies work to perform
 ### 7.4 Recalculate weather along the replacement
 
 1. Ensure `routePoint()` now interpolates the replacement `route`, `route_km` and `profile`, and uses the rebuilt anchors/legs for place labels. Recalculate pacing from the new ascent and distance; do not reuse old projected hourly coordinates.
-2. Generate a fresh outlook with `createPlan()` from the runner's validated new progress/time anchor. Verify 6/12/18 h positions and heights at coast, inland slopes, high ground, overnight transitions and the finish.
+2. Generate a fresh outlook with `createPlan()` from the runner's validated new progress/time anchor. Verify 12/24 h positions and heights at coast, inland slopes, high ground, overnight transitions and the finish.
 3. Request fresh forecast data for the new hourly latitude/longitude/elevation sequence. Open-Meteo supplied elevation must come from the new profile. Preserve units, date limits, partial coverage handling and the corrected wind-arrow convention.
 4. Invalidate old route forecasts and embedded `savedWeatherData`. The existing cache checks `routeSha256` against `gpx_sha256`, so a changed GPX hash rejects the previous route's cache. If derived elevations, race date or projection logic change while GPX bytes remain identical, extend/bump cache identity or clear the affected cache; the GPX hash alone does not detect those changes.
 5. Verify that old saved weather cannot appear as an outlook for the new route. When offline without a matching forecast, show unavailable/connect-once status. Never relabel old-route forecasts as new-route data.
@@ -265,7 +274,7 @@ The following is the required maintainer procedure. It specifies work to perform
 
 ### 7.6 Migrate saved progress and refresh all release metadata
 
-The current plan key stores kilometre progress without a route identity. Clamping an old kilometre to a new route length does **not** map the runner to the new course. A production route replacement must handle this explicitly: add route identity to saved-plan migration, retain compatible pacing preferences, and reset or geographically rematch progress and time anchoring with a visible explanation. An unchanged section before a late-course correction may permit a documented mapping, but never assume equal kilometres represent equal positions. Include embedded `savedPlanData` in this review.
+The current plan key stores kilometre progress without a route identity. Clamping an old kilometre to a new route length does **not** map the runner to the new course. A production route replacement must handle this explicitly: add route identity to saved-plan migration, retain compatible pacing and street-map preferences, and reset or geographically rematch progress and time anchoring with a visible explanation. An unchanged section before a late-course correction may permit a documented mapping, but never assume equal kilometres represent equal positions. Include embedded `savedPlanData` in this review.
 
 Update `gpx_sha256` only after derived data has been regenerated. Update `based_on`, `researched`, sources/hashes/decisions, profile method, count references and route documentation. If the event date/time or island coverage changes, update race metadata, daylight data, explicit start-time copy and relevant timezone/opening-hours assumptions. Keep the original source and new validation evidence attributable.
 
@@ -300,6 +309,7 @@ python3 tests/legs_browser_test.py
 python3 tests/weather_browser_test.py
 python3 tests/vision_browser_test.py
 python3 tests/offline_browser_test.py
+python3 tests/install_browser_test.py
 ```
 
 Existing suites include route-specific counts, town names, fixed kilometre examples and expected finish times. A new route legitimately changes some expectations: recompute them from reviewed reference data, retain independent invariants, and do not delete failing connectivity, matching or provenance checks to make a replacement pass. Keep the synthetic Trail Vision fixture strictly as test data, separate from the published race route.
@@ -311,9 +321,9 @@ A route revision is acceptable only when:
 - Checkpoints occur in the correct order and distances are measured on the replacement, with organiser target errors documented separately. Legs cover the route once, and their distance/elevation totals reconcile within documented rounding tolerances.
 - Every displayed POI is reattached to the new route with source-backed position, current approach metrics and reviewed opening evidence. No old-route stop survives solely because its stale kilometre still fits the new length.
 - Completion ticks, active-leg selection, endpoint POI allocation, backwards corrections, GPS/time sync and manual fallback work through the new course and finish.
-- Weather requests use the replacement's projected positions and heights; old cached forecasts are rejected; 6/12/18 h summaries, dates, finish truncation, offline/expired states and wind directions remain correct.
+- Weather requests use the replacement's projected positions and heights; old cached forecasts are rejected; 12/24 h summaries, dates, finish truncation, offline/expired states and wind directions remain correct.
 - Trail Vision previews the replacement's next cumulative 500 m with real bends/elevation, fixed-world orientation, explicit sensor fallback, correct progress alignment and no segment bridging.
-- Fresh and existing-storage browser sessions, portable downloads, map actions and offline reload pass. The feature remains readable on Android-sized screens and in WebKit emulation.
+- Fresh and existing-storage browser sessions, portable downloads, map actions and offline reload pass. Chrome manifest validation, install-prompt acceptance/dismissal/fallback, standalone layout, offline manifest/icons, and both on/off map preference reloads pass. The feature remains readable on Android-sized screens and in WebKit emulation.
 - The release notes identify route source/revision, changed distance/terrain/checkpoints/resupply, remaining uncertainty, processing methods and the published revision.
 
 Browser simulations verify software behaviour, not physical compass/GPS accuracy, weather reliability or battery endurance. Field-check heading/tilt, screen rotation, permission denial and offline reload on Android Chrome and iPhone Safari using [the Trail Vision checklist](docs/trail-vision.md). Record untested hardware behaviour honestly.

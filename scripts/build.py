@@ -19,10 +19,14 @@ assets={
  '/*VISION_JS*/':(ROOT/'vision.js').read_text(),
  '/*WEATHER_CSS*/':(ROOT/'weather.css').read_text(),
  '/*WEATHER_JS*/':(ROOT/'weather.js').read_text(),
+ '/*INSTALL_JS*/':(ROOT/'install.js').read_text(),
  '/*APP_JS*/':(ROOT/'app.js').read_text(),
 }
 for marker,value in assets.items():text=text.replace(marker,value)
 (ROOT/'index.html').write_text(text)
-revision=hashlib.sha256(text.encode()).hexdigest()[:12]
+release=hashlib.sha256(text.encode())
+for name in ['manifest.webmanifest','icons/icon-192.png','icons/icon-512.png']:
+ release.update((ROOT/name).read_bytes())
+revision=release.hexdigest()[:12]
 (ROOT/'sw.js').write_text((ROOT/'sw.template.js').read_text().replace('/*BUILD_REVISION*/',revision))
 print(f'Built index.html: {len(data["sections"])} sections, {len(data["pois"])} places, {len(text.encode()):,} bytes')

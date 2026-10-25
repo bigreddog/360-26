@@ -18,7 +18,7 @@ with sync_playwright() as p:
  check('default finish is Sunday morning','Sun 03:45' in page.locator('#finishClock').inner_text())
  check('daily progress is collapsed by default',not page.locator('#pacePanel').evaluate('e=>e.open'))
  check('notes, bookmarks and import/export plan are removed',page.locator('#placeDialog,#importPlan,#planFile,#exportPlan,[data-action=note],[data-action=save]').count()==0)
- check('old notes and hours do not migrate into planning state',set(page.evaluate('Object.keys(RACER_APP.getState())'))=={'quotas','progressKm','elapsedHours','anchorLive','extraHours','terrainWeight','vision'})
+ check('old notes and hours do not migrate into planning state',set(page.evaluate('Object.keys(RACER_APP.getState())'))=={'quotas','progressKm','elapsedHours','anchorLive','extraHours','terrainWeight','streetMap','vision'})
  check('all 29 legs use readable cards',page.locator('#sectionRows .leg-card').count()==29 and page.locator('#sectionRows table').count()==0)
  check('real source data and route remain loaded',page.evaluate('RACER_APP.DATA.pois.length')==353)
  page.screenshot(path=str(out/'roadbook_desktop.png'),full_page=True)

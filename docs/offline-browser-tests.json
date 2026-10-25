@@ -1,12 +1,13 @@
 {
-  "passed": 12,
+  "passed": 14,
   "results": [
     {
       "browser": "chromium",
-      "passed": 6,
+      "passed": 7,
       "checks": [
         "self-contained HTML is cached for navigation",
         "roadbook cold-reloads without network",
+        "manifest and both install icons remain available offline",
         "offline Leaflet route still initializes",
         "Trail Vision renders cached race GPX offline",
         "race GPX elevations remain available offline",
@@ -15,10 +16,11 @@
     },
     {
       "browser": "webkit",
-      "passed": 6,
+      "passed": 7,
       "checks": [
         "self-contained HTML is cached for navigation",
         "roadbook cold-reloads without network",
+        "manifest and both install icons remain available offline",
         "offline Leaflet route still initializes",
         "Trail Vision renders cached race GPX offline",
         "race GPX elevations remain available offline",

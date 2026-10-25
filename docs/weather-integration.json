@@ -2,19 +2,19 @@
   "provider": "Open-Meteo",
   "documentation": "https://open-meteo.com/en/docs",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "checked_at_utc": "2026-10-25T19:13:01.512827+00:00",
+  "checked_at_utc": "2026-10-25T22:46:27.657384+00:00",
   "http_status": 200,
   "cors_allow_origin": "*",
   "requested_origin": "https://bigreddog.github.io",
-  "locations": 19,
+  "locations": 25,
   "requested_period_start_utc": "2026-11-04T09:00:00+00:00",
-  "requested_period_end_utc": "2026-11-05T03:00:00+00:00",
+  "requested_period_end_utc": "2026-11-05T09:00:00+00:00",
   "gpx_elevation_supplied_per_location": true,
-  "forecast_samples_available": 19,
+  "forecast_samples_available": 25,
   "raw_forecast_committed": false,
   "notes": [
-    "Live test used the real candidate race GPX coordinates and elevations.",
-    "Deterministic browser tests use mocked forecast responses.",
-    "No weather values are bundled into the published application."
+    "Live test used 25 real candidate route coordinates/elevations over 24 hours.",
+    "Deterministic browser tests use mocked forecasts.",
+    "No forecast values are bundled into the published application."
   ]
 }

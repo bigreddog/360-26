@@ -1,0 +1,62 @@
+{
+  "passed": 43,
+  "physical_device_test": false,
+  "native_prompt_simulated": true,
+  "results": [
+    {
+      "browser": "chromium",
+      "passed": 22,
+      "checks": [
+        "weather offers only twelve and twenty-four hours",
+        "street tiles are enabled in new settings before map is opened",
+        "tiles are lazy and not requested in Race view",
+        "opening Map enables the street layer and requests tiles",
+        "street-map off is immediately reflected and persisted",
+        "off survives page reload and map initialization",
+        "on also survives page reload",
+        "valid scoped standalone manifest supplies a stable app identity",
+        "192px app icon has valid PNG dimensions",
+        "512px app icon has valid PNG dimensions",
+        "manifest has maskable icon for Android",
+        "Chrome parses manifest without errors",
+        "browser without a native prompt receives usable install guidance",
+        "browser prompt is deferred until a user tap",
+        "dismissal is non-blocking with no repeated automatic prompt",
+        "accepted prompt hides the install action",
+        "appinstalled event acknowledges installation",
+        "portable file has no external manifest or icon dependencies",
+        "portable file retains the saved street-map preference",
+        "standalone mode hides redundant install controls",
+        "installed layout fits a narrow phone",
+        "no application errors through install and map journeys"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "passed": 21,
+      "checks": [
+        "weather offers only twelve and twenty-four hours",
+        "street tiles are enabled in new settings before map is opened",
+        "tiles are lazy and not requested in Race view",
+        "opening Map enables the street layer and requests tiles",
+        "street-map off is immediately reflected and persisted",
+        "off survives page reload and map initialization",
+        "on also survives page reload",
+        "valid scoped standalone manifest supplies a stable app identity",
+        "192px app icon has valid PNG dimensions",
+        "512px app icon has valid PNG dimensions",
+        "manifest has maskable icon for Android",
+        "browser without a native prompt receives usable install guidance",
+        "browser prompt is deferred until a user tap",
+        "dismissal is non-blocking with no repeated automatic prompt",
+        "accepted prompt hides the install action",
+        "appinstalled event acknowledges installation",
+        "portable file has no external manifest or icon dependencies",
+        "portable file retains the saved street-map preference",
+        "standalone mode hides redundant install controls",
+        "installed layout fits a narrow phone",
+        "no application errors through install and map journeys"
+      ]
+    }
+  ]
+}

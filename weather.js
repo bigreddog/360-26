@@ -1,7 +1,7 @@
 /* Route-aware forecast: same pacing curve and distance axis as the roadbook. */
 (function(root){
 'use strict';
-const HOUR=3600000,MAX_HOURS=18,CACHE_KEY='canarias360-weather-v1';
+const HOUR=3600000,MAX_HOURS=24,CACHE_KEY='canarias360-weather-v2';
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function signature(state){return JSON.stringify([state.quotas,state.terrainWeight,state.extraHours]);}
@@ -86,8 +86,8 @@ const round=n=>finite(n)?String(Math.round(n)):'—';
 function range(a,b,unit){return finite(a)&&finite(b)?`${round(a)}${Math.round(a)!==Math.round(b)?'–'+round(b):''}${unit}`:'Unavailable';}
 class Panel{
  constructor({element,data,getState,engine,fetcher=(...a)=>fetch(...a),now=()=>Date.now()}){
-  Object.assign(this,{el:element,data,getState,E:engine,fetcher,now});this.hours=6;this.visible=false;this.loading=false;this.message='';this.cache=null;this.sequence=0;
-  try{const stored=JSON.parse(document.getElementById('savedWeatherData')?.textContent||localStorage.getItem(CACHE_KEY)||'null');if(stored?.version===1&&stored.routeSha256===data.gpx_sha256&&finite(stored.base)&&Math.abs(stored.base)<=8640000000000000&&finite(stored.fromKm)&&finite(stored.remaining)&&typeof stored.signature==='string'&&finite(stored.fetchedAt)&&Math.abs(stored.fetchedAt)<=8640000000000000&&Array.isArray(stored.rows)&&stored.rows.length>0&&stored.rows.length<=20&&stored.rows.every(r=>finite(r.sample?.time)&&Math.abs(r.sample.time)<=8640000000000000&&finite(r.sample?.hour)&&finite(r.sample?.km)&&finite(r.sample?.elevation)))this.cache=stored;}catch(e){}
+  Object.assign(this,{el:element,data,getState,E:engine,fetcher,now});this.hours=12;this.visible=false;this.loading=false;this.message='';this.cache=null;this.sequence=0;
+  try{const stored=JSON.parse(document.getElementById('savedWeatherData')?.textContent||localStorage.getItem(CACHE_KEY)||'null');if(stored?.version===2&&stored.routeSha256===data.gpx_sha256&&finite(stored.base)&&Math.abs(stored.base)<=8640000000000000&&finite(stored.fromKm)&&finite(stored.remaining)&&typeof stored.signature==='string'&&finite(stored.fetchedAt)&&Math.abs(stored.fetchedAt)<=8640000000000000&&Array.isArray(stored.rows)&&stored.rows.length>0&&stored.rows.length<=MAX_HOURS+1&&stored.rows.every(r=>finite(r.sample?.time)&&Math.abs(r.sample.time)<=8640000000000000&&finite(r.sample?.hour)&&finite(r.sample?.km)&&finite(r.sample?.elevation)))this.cache=stored;}catch(e){}
   this.el.querySelectorAll('[data-weather-hours]').forEach(b=>b.onclick=()=>{this.hours=Number(b.dataset.weatherHours);this.render();});
   this.el.querySelector('[data-weather-refresh]').onclick=()=>this.refresh(true);
   this.timer=setInterval(()=>this.update(),60000);
@@ -116,7 +116,7 @@ class Panel{
    const response=await this.fetcher(requestURL(plan),{signal:this.controller.signal,credentials:'omit',referrerPolicy:'no-referrer'});if(!response.ok)throw Error(response.status===429?'The forecast service is busy. Try again shortly.':'Weather service unavailable. Try Refresh.');
    const payload=await response.json(),rows=readResponses(payload,plan);if(!rows.some(r=>r.weather))throw Error('No forecast is available yet for these race dates. Refresh closer to the race.');
    if(sequence!==this.sequence)return;
-   this.lastError=false;this.cache={version:1,routeSha256:this.data.gpx_sha256,base:plan.base,fromKm:plan.fromKm,remaining:plan.remaining,signature:plan.signature,fetchedAt:this.now(),rows};this.message='';
+   this.lastError=false;this.cache={version:2,routeSha256:this.data.gpx_sha256,base:plan.base,fromKm:plan.fromKm,remaining:plan.remaining,signature:plan.signature,fetchedAt:this.now(),rows};this.message='';
    try{localStorage.setItem(CACHE_KEY,JSON.stringify(this.cache));}catch(e){this.message='Forecast loaded. This browser could not save it for offline use.';}
   }catch(e){this.lastError=true;if(sequence===this.sequence)this.message=e.name==='AbortError'?'Weather request timed out or was interrupted. Try Refresh.':e instanceof TypeError?'Could not load weather. Check your connection and tap Refresh.':e instanceof SyntaxError?'Forecast response was unreadable. Try Refresh.':e.message;if(this.cache)this.message+=' Saved forecast retains its original times and positions.';}
   finally{clearTimeout(timeout);if(sequence===this.sequence){this.loading=false;this.render();if(this.pendingManual){this.pendingManual=false;this.update(true);}}}
