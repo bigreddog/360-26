@@ -31,7 +31,7 @@ class View{
  async open(){
   if(this.active)return;this.active=true;this.canvasVisible=true;const token=++this.generation;this.preferences=C.prefs(this.getPreferences());this.hint=this.uploaded?(this.previewHint??0):this.getProgressKm()*1000;this.previous=null;this.match=null;this.window=null;this.gps=null;this.targetQ=null;this.smoothQ=null;this.lastPose=null;this.lastSensorTime=0;this.offsetYaw=0;this.offsetPitch=0;this.manualPitch=-5;this.status='';this.matchStatus='waiting';this.quality='Unavailable';this.sensorMessage='Waiting for compass heading. Hold the phone upright.';this.simulation=false;this.confidence.reset();this.frames=0;this.drag=null;
   for(const name of ['lookAhead','exaggeration','mode','manualHeading'])this.find(name).value=this.preferences[name];
-  this.find('manualPitch').value=-5;this.find('simulate').checked=false;this.find('simulationPanel').hidden=true;this.find('options').open=false;this.find('helpText').hidden=true;this.find('help').setAttribute('aria-expanded','false');this.find('fileStatus').textContent=this.uploaded?'Custom preview GPX · race map unchanged':'Race candidate GPX';this.find('direction').textContent='';this.find('offset').textContent='';this.find('hint').value=this.hint/1000;
+  this.find('manualPitch').value=-5;this.find('simulate').checked=false;this.find('simulationPanel').hidden=true;this.find('options').open=false;this.find('helpText').hidden=true;this.find('help').setAttribute('aria-expanded','false');this.find('fileStatus').textContent=this.uploaded?'Custom preview GPX · race map unchanged':'Official race GPX';this.find('direction').textContent='';this.find('offset').textContent='';this.find('hint').value=this.hint/1000;
   this.el.showModal();this.oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
   // Call permission methods directly in the initiating user gesture (required by iOS).
   this.requestSensors(token);
@@ -89,7 +89,7 @@ class View{
  }
  restoreRace(update=true){
   const raw=this.getGpx();if(!raw)throw Error('No GPX loaded. Choose a GPX in Settings.');
-  this.route=C.makeRoute(C.parseGPX(raw),this.getAxis());this.uploaded=false;this.previous=null;this.match=null;this.window=null;this.hint=this.getProgressKm()*1000;this.find('fileStatus').textContent='Race candidate GPX';
+  this.route=C.makeRoute(C.parseGPX(raw),this.getAxis());this.uploaded=false;this.previous=null;this.match=null;this.window=null;this.hint=this.getProgressKm()*1000;this.find('fileStatus').textContent='Official race GPX';
   if(update){if(this.simulation)this.simulate({distance:this.hint});else this.onGPS(this.tracker.snapshot());this.updateHUD();this.redraw();}
  }
  async loadFile(file){

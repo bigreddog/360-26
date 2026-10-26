@@ -1,0 +1,4200 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-25T08:42:05Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 268121920,
+  "lat": 27.7533391,
+  "lon": -15.6019224,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "compressed_air": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "operator:-2024": "Cepsa"
+  }
+},
+{
+  "type": "node",
+  "id": 287005988,
+  "lat": 28.1178934,
+  "lon": -15.5245653,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Calle Alcalde Suárez Franchy",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Shell Arucas",
+    "opening_hours": "Mo-Su 06:00-00:00",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287005989,
+  "lat": 28.0702580,
+  "lon": -15.5272767,
+  "tags": {
+    "addr:street": "MIRAFLOR - TEROR (GENERAL C-817 km 8)",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve Miraflor",
+    "opening_hours": "Mo-Sa 05:30-22:30; Su 06:00-22:00",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 287005991,
+  "lat": 28.0127500,
+  "lon": -15.5276110,
+  "tags": {
+    "addr:housenumber": "55",
+    "addr:street": "CALLE LA VEGUETILLA",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "5445954482112463",
+    "name": "SHELL SAN MATEO",
+    "opening_hours": "Mo-Sa 06:00-00:00; Su 10:00-21:00",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287005992,
+  "lat": 27.7653915,
+  "lon": -15.5586215,
+  "tags": {
+    "addr:city": "San Bartolomé de Tirajana",
+    "addr:milestone": "Km. 52",
+    "addr:postcode": "35100",
+    "addr:street": "Carretera General del Sur",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "name": "BP El Veril",
+    "opening_hours": "24/7",
+    "operator": "Hermanos Juán Castro García S.L.",
+    "phone": "+34 928 762 317",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2008-08-11"
+  }
+},
+{
+  "type": "node",
+  "id": 287005993,
+  "lat": 28.1454504,
+  "lon": -15.5608414,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "name": "BP KM 13 - 1 (SAN ANDRES)",
+    "opening_hours": "Mo-Su 06:00-00:00",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2008-08-11"
+  }
+},
+{
+  "type": "node",
+  "id": 287005996,
+  "lat": 27.8860271,
+  "lon": -15.5633625,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Calle Néstor Álamo",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Disa",
+    "opening_hours": "06:30-22:30",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287005997,
+  "lat": 28.0491110,
+  "lon": -15.5761390,
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Calle Perojo",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP Valleseco",
+    "opening_hours": "Mo-Su 07:00-23:00",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006000,
+  "lat": 27.8039720,
+  "lon": -15.4822780,
+  "tags": {
+    "addr:street": "AUTP.GC-1 (JUAN GRANDE) KM 34.43",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "1004615286736522",
+    "name": "Shell",
+    "opening_hours": "24/7",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006003,
+  "lat": 28.1361900,
+  "lon": -15.4889200,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "old_brand": "Texaco",
+    "old_name": "Texaco",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 287006005,
+  "lat": 27.9918060,
+  "lon": -15.4953522,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Avenida Juan Carlos I",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Estación de Servicio Disa Vasequillo",
+    "opening_hours": "Mo-Su 06:00-00:00",
+    "operator": "Disa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006006,
+  "lat": 28.0303330,
+  "lon": -15.4996110,
+  "tags": {
+    "addr:street": "CARRETERA GENERAL DEL CENTRO KM. 14",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "309155523947738",
+    "name": "BP SANTA BRIGIDA",
+    "opening_hours": "24/7",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006008,
+  "lat": 28.1124489,
+  "lon": -15.5106011,
+  "tags": {
+    "addr:housenumber": "180",
+    "addr:street": "CALLE AVENIDA PEDRO MORALES DENIZ",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP CRUCE SANTIDAD-ARUCAS",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006010,
+  "lat": 28.1174886,
+  "lon": -15.5176424,
+  "tags": {
+    "addr:street": "Autovia Arucas S/N KM 3.5",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Shell Autovia Arucas",
+    "opening_hours": "24/7",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006011,
+  "lat": 28.1169976,
+  "lon": -15.4551105,
+  "tags": {
+    "addr:city": "Las Palmas de Gran Canaria",
+    "addr:housenumber": "2",
+    "addr:postcode": "35010",
+    "addr:street": "Urbanización Díaz Casanova",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "old_brand": "Texaco",
+    "old_name": "Texaco Las Torres",
+    "opening_hours": "24/7",
+    "payment:coins": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 287006012,
+  "lat": 28.0956303,
+  "lon": -15.4516649,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "compressed_air": "yes",
+    "name": "Disa",
+    "opening_hours": "24/7",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2008-08-11"
+  }
+},
+{
+  "type": "node",
+  "id": 287006014,
+  "lat": 27.8386890,
+  "lon": -15.4569908,
+  "tags": {
+    "addr:street": "CL FRANCHY Y ROCA (EL DOCTORAL) S/N",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP EL TARO",
+    "opening_hours": "Mo-Su 06:30-23:00",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006018,
+  "lat": 28.0904720,
+  "lon": -15.4598060,
+  "tags": {
+    "addr:street": "CARRETERA GENERAL DE ALMATRICHE KM. 48",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006020,
+  "lat": 28.0446940,
+  "lon": -15.4751940,
+  "tags": {
+    "addr:street": "CARRETERA GENERAL DEL CENTRO KM. 146",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "compressed_air": "yes",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve Santa Brígida",
+    "opening_hours": "Mo-Th 06:30-23:30; Fr-Sa 06:30-00:00; Su 07:30-22:30",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006023,
+  "lat": 28.1013264,
+  "lon": -15.4352642,
+  "tags": {
+    "addr:housenumber": "70",
+    "addr:street": "Calle Diego Vega Sarmiento",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve el Dragón",
+    "opening_hours": "Mo-Sa 06:30-22:30; Su 07:30-21:30",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006025,
+  "lat": 28.1020171,
+  "lon": -15.4372038,
+  "tags": {
+    "addr:street": "LUIS CORREA MEDINA",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006027,
+  "lat": 27.8441078,
+  "lon": -15.4458303,
+  "tags": {
+    "addr:housenumber": "360",
+    "addr:street": "Avenida de Canarias",
+    "amenity": "fuel",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Vecindario",
+    "opening_hours": "Mo-Th 06:30-23:59; Fr-Sa 06:30-01:00; Su 07:00-15:00",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006033,
+  "lat": 28.0980128,
+  "lon": -15.4427882,
+  "tags": {
+    "addr:housenumber": "70",
+    "addr:street": "Calle Diego Vega Sarmiento",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP Cooperativa Taxis S. Cristobal",
+    "opening_hours": "24/7",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006038,
+  "lat": 27.9917780,
+  "lon": -15.4238610,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Calle Reyes Católicos",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve El Punto Fielato",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006049,
+  "lat": 27.8727930,
+  "lon": -15.4162493,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "name": "DISA Estación de servicio",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2008-08-11"
+  }
+},
+{
+  "type": "node",
+  "id": 287006056,
+  "lat": 27.9977529,
+  "lon": -15.4019893,
+  "tags": {
+    "addr:housenumber": "215",
+    "addr:street": "Callejón del Castillo",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP",
+    "opening_hours": "24/7",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006057,
+  "lat": 27.9676070,
+  "lon": -15.3909696,
+  "tags": {
+    "addr:postcode": "35219",
+    "addr:street": "CARRETERA GENERAL DEL SUR KM 13 KM. 13",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Repsol",
+    "opening_hours": "24/7",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006059,
+  "lat": 28.0143330,
+  "lon": -15.3875830,
+  "tags": {
+    "addr:street": "AUTOVIA GC-1 SUR LAS PALMAS KM. 8",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "1198939467233723",
+    "name": "BP LA GARITA",
+    "opening_hours": "24/7",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006060,
+  "lat": 28.0103340,
+  "lon": -15.3882967,
+  "tags": {
+    "addr:street": "CR GC-1 P.K. 8 M.I. (SALIDA A PARQ",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Repsol",
+    "opening_hours": "Mo-Su 07:00-23:00",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006064,
+  "lat": 27.9096940,
+  "lon": -15.4076110,
+  "tags": {
+    "addr:street": "CARLOS V (INGENIO km 1)",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve Carrizal",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006065,
+  "lat": 27.9607780,
+  "lon": -15.4048060,
+  "tags": {
+    "addr:street": "CARRETERA GENERAL DEL GORO KM. S/N",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "DISA CUATRO PUERTAS",
+    "opening_hours": "06:00-22:00",
+    "operator": "Disa"
+  }
+},
+{
+  "type": "node",
+  "id": 287006066,
+  "lat": 27.8990600,
+  "lon": -15.4048100,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "compressed_air": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "DISA Autopista",
+    "opening_hours": "24/7",
+    "operator": "Disa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2008-08-11"
+  }
+},
+{
+  "type": "node",
+  "id": 287006291,
+  "lat": 27.7957039,
+  "lon": -15.7035353,
+  "tags": {
+    "addr:street": "C/ TOMAS ROCA BOSH, S/N",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "SHELL PUERTO RICO",
+    "opening_hours": "24/7",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006303,
+  "lat": 27.8303137,
+  "lon": -15.7552965,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "name": "Moeve Mogan",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2008-08-11"
+  }
+},
+{
+  "type": "node",
+  "id": 287006305,
+  "lat": 27.7640280,
+  "lon": -15.5764440,
+  "tags": {
+    "addr:street": "CTRA.GRAL. DEL SUR (MASPALOMAS) km 54",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Shell",
+    "opening_hours": "24/7",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006308,
+  "lat": 27.7662780,
+  "lon": -15.6078060,
+  "tags": {
+    "addr:street": "POLIGONO EL TABLERO, S/N",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "291172865993828",
+    "name": "Repsol",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006313,
+  "lat": 28.1437460,
+  "lon": -15.6140567,
+  "tags": {
+    "addr:housenumber": "22",
+    "addr:street": "CR GC-2",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "check_date": "2024-01-11",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Repsol",
+    "opening_hours": "24/7",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006315,
+  "lat": 27.9912326,
+  "lon": -15.6148020,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Calle Lomo Los Santos",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Disa",
+    "opening_hours": "Mo-Sa 06:00-22:00; Su 08:00-14:00",
+    "source": "https://www.disagrupo.es/estaciones/canarias/80093/disa-tejeda",
+    "toilets:wheelchair": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 287006317,
+  "lat": 28.1427863,
+  "lon": -15.6280178,
+  "tags": {
+    "addr:street": "LUGAR ALBERCON DE LA VIRGEN, S/N",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "DISA GUIA",
+    "opening_hours": "Mo-Sa 05:30-23:00; Su 07:00-22:00",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006319,
+  "lat": 28.1414440,
+  "lon": -15.6285280,
+  "tags": {
+    "addr:street": "CARRETERA GENERAL DEL NORTE KM. 24",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP GUIA",
+    "opening_hours": "Mo-Fr 05:00-23:00; Sa 05:00-23:59; Su 07:00-22:00",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "node",
+  "id": 287006366,
+  "lat": 27.9893890,
+  "lon": -15.7957500,
+  "tags": {
+    "addr:housenumber": "86",
+    "addr:postcode": "35470",
+    "addr:street": "Calle Doctor Fleming",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "233896438492447",
+    "name": "Estación de Servicio Moeve La Aldea de San Nicolás",
+    "opening_hours": "24/7",
+    "phone": "+34 928 88 51 19",
+    "source": "https://cercadeti.cepsa.es/1404-estacion-de-servicio-cepsa-la-aldea-de-san-nicolas",
+    "source:date": "2022-01-19"
+  }
+},
+{
+  "type": "node",
+  "id": 305251135,
+  "lat": 27.9659694,
+  "lon": -15.5840907,
+  "tags": {
+    "amenity": "drinking_water",
+    "check_date": "2021-11-11",
+    "man_made": "water_tap"
+  }
+},
+{
+  "type": "node",
+  "id": 335685508,
+  "lat": 28.1333706,
+  "lon": -15.4300028,
+  "tags": {
+    "addr:housenumber": "365",
+    "addr:street": "Calle León y Castillo",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "compressed_air": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Disa Alcaravaneras",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 692337227,
+  "lat": 27.8049637,
+  "lon": -15.4744894,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "old_brand": "Texaco",
+    "old_name": "Texaco",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 839468644,
+  "lat": 28.1187780,
+  "lon": -15.5586110,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Paseo de Azuaje",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "816548209263380",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "old_brand": "Texaco",
+    "old_name": "Texaco Buenlugar",
+    "opening_hours": "Mo-Fr 06:00-22:00; Sa 06:30-00:00; Su 08:00-14:00"
+  }
+},
+{
+  "type": "node",
+  "id": 839469098,
+  "lat": 28.0060560,
+  "lon": -15.3953330,
+  "tags": {
+    "addr:street": "CARRETERA GC-10 KM 1.625",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Repsol",
+    "opening_hours": "24/7",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839469589,
+  "lat": 28.1082500,
+  "lon": -15.5830280,
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "CALLE LUJAN PEREZ",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP MOYA",
+    "opening_hours": "Mo-Su 08:00-21:30",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839471258,
+  "lat": 27.8796146,
+  "lon": -15.4299613,
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "CALLE ANSITE",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "896738717575366",
+    "name": "Repsol",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839471487,
+  "lat": 28.0010560,
+  "lon": -15.3978060,
+  "tags": {
+    "addr:housenumber": "114",
+    "addr:street": "CALLE CANOVAS DEL CASTILLO",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "fuel:GTL_diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "old_brand": "Texaco",
+    "old_name": "Texaco",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 839471893,
+  "lat": 27.8412500,
+  "lon": -15.4408330,
+  "tags": {
+    "addr:street": "AVENIDA DEL ATLANTICO, S/N",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "compressed_air": "yes",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Repsol",
+    "opening_hours": "24/7",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839472173,
+  "lat": 28.1155622,
+  "lon": -15.5279663,
+  "tags": {
+    "addr:street": "AUTOVIA CIRCUNVALACION ARUCAS 3º ROTONDA KM. S/N",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP LAS VEGAS",
+    "opening_hours": "24/7",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839472527,
+  "lat": 28.1234264,
+  "lon": -15.4412735,
+  "tags": {
+    "addr:housenumber": "42",
+    "addr:street": "AVENIDA JUAN CARLOS I",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839472634,
+  "lat": 28.1466670,
+  "lon": -15.5331390,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Avenida Lairaga",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve Bañaderos",
+    "opening_hours": "Mo-Su 06:00-22:00",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839472982,
+  "lat": 27.9955560,
+  "lon": -15.4726390,
+  "tags": {
+    "addr:housenumber": "42",
+    "addr:street": "Avenida los Almendros",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "4516810435013445",
+    "name": "Moeve los Almendros",
+    "opening_hours": "Mo-Su 06:00-01:00",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839473992,
+  "lat": 28.0537220,
+  "lon": -15.4497220,
+  "tags": {
+    "addr:street": "CARRETERA GC 800 KM. S/N",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "self_service": "no",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839474741,
+  "lat": 27.9946193,
+  "lon": -15.3941015,
+  "tags": {
+    "addr:street": "CALLE CRUCE MELENARA, S/N",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve Cruce Melenara",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839475168,
+  "lat": 28.0765560,
+  "lon": -15.4638890,
+  "tags": {
+    "addr:street": "CARRETERA SAN LORENZO KM. S/N",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "521673439210132",
+    "name": "REPSOL SAN LORENZO",
+    "opening_hours": "24/7",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839477422,
+  "lat": 27.9040932,
+  "lon": -15.4448880,
+  "tags": {
+    "addr:housenumber": "79",
+    "addr:street": "CALLE JUAN ALVARADO Y SANZ",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "compressed_air": "yes",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "DISA AGUIMES",
+    "opening_hours": "Mo-Su 06:30-22:30",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839477512,
+  "lat": 27.8518330,
+  "lon": -15.4403890,
+  "tags": {
+    "addr:housenumber": "197",
+    "addr:street": "Avenida de Canarias",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Shell Vecindario",
+    "opening_hours": "24/7",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839478127,
+  "lat": 27.7648890,
+  "lon": -15.5688330,
+  "tags": {
+    "addr:street": "CARRETERA AVENIDA DE MOYA KM 53.300",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "517610919413319",
+    "name": "DISA MASPALOMAS",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839478215,
+  "lat": 27.8563151,
+  "lon": -15.4292263,
+  "tags": {
+    "addr:street": "AVENIDA DEL ATLANTICO, S/N",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "compressed_air": "yes",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "SHELL SANTA LUCIA",
+    "opening_hours": "24/7",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 839479279,
+  "lat": 28.0612949,
+  "lon": -15.5471722,
+  "tags": {
+    "addr:city": "Teror",
+    "addr:housenumber": "15",
+    "addr:postcode": "35330",
+    "addr:street": "Calle Párroco Juan González",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "compressed_air": "yes",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP Teror",
+    "opening_hours": "Mo-Fr 06:00-23:00; Sa-Su 07:00-14:00",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839479826,
+  "lat": 28.0090280,
+  "lon": -15.5357220,
+  "tags": {
+    "addr:street": "CALLE EL RETIRO, S/N",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "3925077924275967",
+    "name": "BP SAN MATEO",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839480866,
+  "lat": 28.1473610,
+  "lon": -15.4188330,
+  "tags": {
+    "addr:street": "LUGAR EXPLANADA TOMAS QUEVEDO, S/N",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Cespa",
+    "name:-2024": "Cepsa",
+    "old_brand": "Texaco",
+    "old_name": "Texaco Puerto",
+    "opening_hours": "Mo-Fr 07:00-21:00; Sa 07:00-14:00"
+  }
+},
+{
+  "type": "node",
+  "id": 839481423,
+  "lat": 28.0262570,
+  "lon": -15.3920482,
+  "tags": {
+    "addr:street": "PARQUE MARITIMO DE JINAMAR C.C. LAS TERRAZAS, S/N",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP Las Terrazas",
+    "opening_hours": "Mo-Su 07:00-23:00",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839482232,
+  "lat": 28.0619170,
+  "lon": -15.5455280,
+  "tags": {
+    "addr:street": "Carretera C-817 km 21",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "compressed_air": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "old_brand": "Texaco",
+    "old_name": "Texaco Teror",
+    "opening_hours": "Mo-Fr 06:00-23:59; Sa 06:00-01:30; Su 07:00-14:00"
+  }
+},
+{
+  "type": "node",
+  "id": 839482480,
+  "lat": 27.9243138,
+  "lon": -15.5731554,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:street": "CALLE TAMARAN",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "fuel:diesel": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "820327371944588",
+    "name": "DISA SAN BARTOLOME T.",
+    "opening_hours": "Mo-Su 07:30-21:00",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839482740,
+  "lat": 27.8630964,
+  "lon": -15.4357327,
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Calle Hiedra",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839483037,
+  "lat": 27.9152500,
+  "lon": -15.5489720,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "CALLE ROSIANA",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "opening_hours": "Mo-Su 06:30-22:00",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839483311,
+  "lat": 27.9805830,
+  "lon": -15.3921110,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "CALLE VELAZQUEZ",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Repsol",
+    "opening_hours": "24/7",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839483504,
+  "lat": 28.0755710,
+  "lon": -15.4174644,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Paseo Blas Cabrera Felipe \"Físico\"",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP San José",
+    "opening_hours": "24/7",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839483701,
+  "lat": 27.8295664,
+  "lon": -15.4400295,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "CALLE CASA SANTA",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "old_brand": "Cepsa",
+    "opening_hours": "Mo-Su 06:00-22:00",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839483746,
+  "lat": 27.8646537,
+  "lon": -15.4322255,
+  "tags": {
+    "addr:milestone": "km. 34.5",
+    "addr:street": "Avenida de Canarias",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Estación de Servicio Moeve Barranco Balos II",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "phone": "+34 928 75 99 12",
+    "source": "Ministerio de Industria, Turismo y Comercio;https://cercadeti.cepsa.es/1469-estacion-de-servicio-cepsa-barranco-balos-ii",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839484317,
+  "lat": 28.1413330,
+  "lon": -15.6339440,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Calle Lomo Guillen",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "old_brand": "Texaco",
+    "old_name": "Texaco Guía",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 839484684,
+  "lat": 28.1042334,
+  "lon": -15.7004572,
+  "tags": {
+    "addr:street": "CARRETERA CTRA GENERAL DEL NORTE KM 35.800",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "3945153778911056",
+    "name": "Disa",
+    "opening_hours": "Mo-Fr 05:30-22:30; Sa 06:30-22:30; Su 08:00-22:30",
+    "operator": "DISA",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 839485614,
+  "lat": 28.1106390,
+  "lon": -15.4398890,
+  "tags": {
+    "addr:housenumber": "112",
+    "addr:street": "Avenida de Escaleritas",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve Mercedes",
+    "opening_hours": "Mo-Sa 06:30-22:30; Su 07:30-21:30",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839486261,
+  "lat": 27.9178250,
+  "lon": -15.4291643,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Calle Juliano Bonny Gómez",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "compressed_air": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Estación de Servicio Moeve Ingenio",
+    "opening_hours": "Mo-Su 06:00-00:00",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 839486384,
+  "lat": 28.0405280,
+  "lon": -15.4176390,
+  "tags": {
+    "addr:street": "CARRETERA CTRA. CUESTA RAMON KM. 1",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "SHELL Mercalaspalmas",
+    "opening_hours": "Mo-Fr 05:00-23:00; Sa-Su 06:00-22:00",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-13"
+  }
+},
+{
+  "type": "node",
+  "id": 839486688,
+  "lat": 27.8765985,
+  "lon": -15.4265945,
+  "tags": {
+    "addr:housenumber": "100",
+    "addr:street": "CALLE ANSITE",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Estación de Servicio Repsol",
+    "opening_hours": "24/7",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839486983,
+  "lat": 27.9182780,
+  "lon": -15.4325560,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "CALLE JULIANO BONNY",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "979499359463671",
+    "name": "Shell Ingenio",
+    "opening_hours": "Mo-Su 07:00-23:00",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 839487375,
+  "lat": 28.1074170,
+  "lon": -15.5911110,
+  "tags": {
+    "addr:street": "CARRETERA CARRETERA MOYA-GUÍA KM 4.800",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Repsol",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa-Su 09:00-21:00",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839487929,
+  "lat": 28.0341390,
+  "lon": -15.4135000,
+  "tags": {
+    "addr:street": "AVENIDA SANTA RITA DE CASIA, S/N",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve Jinamar",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839488181,
+  "lat": 28.1021085,
+  "lon": -15.7021071,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "Calle Leo y Castillo",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "compressed_air": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Moeve Agaete"
+  }
+},
+{
+  "type": "node",
+  "id": 839489154,
+  "lat": 27.8560830,
+  "lon": -15.4433060,
+  "tags": {
+    "addr:housenumber": "82",
+    "addr:street": "Calle Fernando Guanarteme",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP Sardina Sur",
+    "opening_hours": "24/7",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839489319,
+  "lat": 28.0976110,
+  "lon": -15.5383610,
+  "tags": {
+    "addr:street": "Carretera Los Portales",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Repsol",
+    "opening_hours": "Mo-Sa 07:00-22:00; Su 08:00-22:00",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 839489761,
+  "lat": 27.8598330,
+  "lon": -15.3992780,
+  "tags": {
+    "addr:housenumber": "124",
+    "addr:street": "Avenida Polizón",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "mapillary": "792987474684231",
+    "name": "Shell",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "node",
+  "id": 1454061397,
+  "lat": 28.0722454,
+  "lon": -15.6764066,
+  "tags": {
+    "amenity": "drinking_water",
+    "description": "Springwater"
+  }
+},
+{
+  "type": "node",
+  "id": 1942145075,
+  "lat": 28.0976922,
+  "lon": -15.4792024,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Plenergy",
+    "brand:-2025": "Plenoil",
+    "brand:website": "https://plenoil.es",
+    "brand:wikidata": "Q127497985",
+    "name": "Plenergy",
+    "name:-2025": "Plenoil"
+  }
+},
+{
+  "type": "node",
+  "id": 1973242701,
+  "lat": 28.1077136,
+  "lon": -15.4211567,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "compressed_air": "yes",
+    "name": "Moeve",
+    "name:-2024": "Cepsa"
+  }
+},
+{
+  "type": "node",
+  "id": 2260915911,
+  "lat": 28.0098078,
+  "lon": -15.3900721,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "operator:-2024": "Cepsa"
+  }
+},
+{
+  "type": "node",
+  "id": 2593714318,
+  "lat": 27.9781606,
+  "lon": -15.6163318,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 3222045923,
+  "lat": 28.1449470,
+  "lon": -15.5602871,
+  "tags": {
+    "addr:city": "Moya",
+    "addr:milestone": "Km. 13",
+    "addr:postcode": "35414",
+    "addr:street": "Crta. de la Costa",
+    "amenity": "fuel",
+    "brand": "Hexagon",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "H2exagon Norte"
+  }
+},
+{
+  "type": "node",
+  "id": 3250845051,
+  "lat": 27.9329782,
+  "lon": -15.7305442,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 3264055561,
+  "lat": 27.9365899,
+  "lon": -15.5376448,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 3376821891,
+  "lat": 28.0603913,
+  "lon": -15.6290962,
+  "tags": {
+    "amenity": "drinking_water",
+    "note": "Drinking water"
+  }
+},
+{
+  "type": "node",
+  "id": 3411929951,
+  "lat": 27.9891361,
+  "lon": -15.7948715,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "name": "Disa"
+  }
+},
+{
+  "type": "node",
+  "id": 3690982624,
+  "lat": 28.0869012,
+  "lon": -15.5422860,
+  "tags": {
+    "amenity": "fuel",
+    "name": "Pekan"
+  }
+},
+{
+  "type": "node",
+  "id": 4030236663,
+  "lat": 27.9765231,
+  "lon": -15.6004498,
+  "tags": {
+    "amenity": "drinking_water",
+    "check_date": "2025-12-31",
+    "natural": "spring"
+  }
+},
+{
+  "type": "node",
+  "id": 4130886189,
+  "lat": 27.8630650,
+  "lon": -15.4328650,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "name": "Disa",
+    "opening_hours": "Mo-Su 06:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 4580188794,
+  "lat": 28.0936035,
+  "lon": -15.4774485,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "compressed_air": "yes",
+    "name": "BP",
+    "operator": "BP"
+  }
+},
+{
+  "type": "node",
+  "id": 4874296221,
+  "lat": 28.0558691,
+  "lon": -15.5490391,
+  "tags": {
+    "amenity": "drinking_water",
+    "name": "español",
+    "name:es": "español"
+  }
+},
+{
+  "type": "node",
+  "id": 5418861172,
+  "lat": 27.8804161,
+  "lon": -15.5406560,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 5834404585,
+  "lat": 28.1350595,
+  "lon": -15.6249211,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 6051947800,
+  "lat": 27.9698883,
+  "lon": -15.5852062,
+  "tags": {
+    "amenity": "drinking_water",
+    "man_made": "water_tap"
+  }
+},
+{
+  "type": "node",
+  "id": 6327428985,
+  "lat": 27.9901011,
+  "lon": -15.5961926,
+  "tags": {
+    "amenity": "drinking_water",
+    "name": "Agua"
+  }
+},
+{
+  "type": "node",
+  "id": 6428286977,
+  "lat": 27.8350596,
+  "lon": -15.4509021,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "compressed_air": "yes",
+    "name": "BP",
+    "operator": "BP"
+  }
+},
+{
+  "type": "node",
+  "id": 6760729002,
+  "lat": 27.9353972,
+  "lon": -15.3904268,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 7261853778,
+  "lat": 27.9213939,
+  "lon": -15.5554997,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "check_date": "2023-04-21",
+    "name": "Disa",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "shop": "convenience"
+  }
+},
+{
+  "type": "node",
+  "id": 7278051862,
+  "lat": 28.0929451,
+  "lon": -15.5945711,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 7278251357,
+  "lat": 27.9447207,
+  "lon": -15.3894226,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "mapillary": "127627269354582",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "operator:-2024": "Cepsa"
+  }
+},
+{
+  "type": "node",
+  "id": 7928648101,
+  "lat": 28.1016268,
+  "lon": -15.4469897,
+  "tags": {
+    "addr:city": "Las Palmas de Gran Canaria",
+    "addr:postcode": "35011",
+    "addr:street": "Avenida Escaleritas",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Repsol",
+    "opening_hours": "Mo-Su 06:00-22:00",
+    "source": "MITECO"
+  }
+},
+{
+  "type": "node",
+  "id": 7996856786,
+  "lat": 28.0564251,
+  "lon": -15.5498053,
+  "tags": {
+    "amenity": "drinking_water",
+    "name": "Fuente de teror",
+    "name:en": "Natural spring"
+  }
+},
+{
+  "type": "node",
+  "id": 8913793577,
+  "lat": 27.9259843,
+  "lon": -15.4025978,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Calle Isora",
+    "amenity": "fuel",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Gasolinera Santana Dominguez, S.L.",
+    "opening_hours": "Mo-Fr 06:00-00:00; Sa 06:00-01:00; Su 06:00-23:00",
+    "self_service": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 8913793579,
+  "lat": 27.9132109,
+  "lon": -15.4116199,
+  "tags": {
+    "addr:housenumber": "104",
+    "addr:street": "Calle de la República Argentina",
+    "amenity": "fuel",
+    "brand": "Océano Combustibles",
+    "brand:website": "https://www.grupoinsularoceano.es",
+    "fuel:GTL_diesel": "yes",
+    "fuel:adblue": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Estación de Servicio Océano El Carrizal",
+    "opening_hours": "Mo-Sa 06:00-22:00; Su,PH 07:00-22:00",
+    "phone": "+34 828 07 35 73",
+    "source": "https://www.grupoinsularoceano.es/gasolinera-el-carrizal-oceano-combustibles"
+  }
+},
+{
+  "type": "node",
+  "id": 9412926159,
+  "lat": 27.8647914,
+  "lon": -15.4325844,
+  "tags": {
+    "addr:milestone": "km. 34.5",
+    "addr:street": "Avenida de Canarias",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "Estación de Servicio Moeve Barranco Balos I",
+    "opening_hours": "24/7",
+    "phone": "+34 928 75 99 12",
+    "source": "https://cercadeti.cepsa.es/1411-estacion-de-servicio-cepsa-barranco-balos-i"
+  }
+},
+{
+  "type": "node",
+  "id": 9554229485,
+  "lat": 27.9254246,
+  "lon": -15.5732030,
+  "tags": {
+    "amenity": "drinking_water",
+    "fountain": "bubbler"
+  }
+},
+{
+  "type": "node",
+  "id": 9672073401,
+  "lat": 28.0202530,
+  "lon": -15.6467518,
+  "tags": {
+    "amenity": "drinking_water",
+    "fee": "no",
+    "man_made": "water_tap"
+  }
+},
+{
+  "type": "node",
+  "id": 10083550988,
+  "lat": 27.9280045,
+  "lon": -15.6681391,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 10187171320,
+  "lat": 28.1208532,
+  "lon": -15.6718330,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "name": "Petroprix"
+  }
+},
+{
+  "type": "node",
+  "id": 10187171817,
+  "lat": 28.1212081,
+  "lon": -15.6698815,
+  "tags": {
+    "amenity": "fuel",
+    "name": "Canary Oil"
+  }
+},
+{
+  "type": "node",
+  "id": 10743429506,
+  "lat": 27.9415879,
+  "lon": -15.8278136,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 11463912869,
+  "lat": 27.9283931,
+  "lon": -15.6667805,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 11585167802,
+  "lat": 27.9393707,
+  "lon": -15.7362239,
+  "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "fee": "no",
+    "indoor": "no",
+    "man_made": "water_tap",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12182984521,
+  "lat": 28.0574973,
+  "lon": -15.6078376,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 12348591765,
+  "lat": 28.1016960,
+  "lon": -15.4187435,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 12368282901,
+  "lat": 27.9369100,
+  "lon": -15.3896276,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 12509369878,
+  "lat": 28.1400838,
+  "lon": -15.6567354,
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "compressed_air": "yes",
+    "name": "Repsol",
+    "opening_hours": "Mo-Su,PH 00:00-00:00"
+  }
+},
+{
+  "type": "node",
+  "id": 12598429501,
+  "lat": 27.9372283,
+  "lon": -15.3895018,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 12905143663,
+  "lat": 27.8590246,
+  "lon": -15.4172497,
+  "tags": {
+    "addr:housenumber": "17B",
+    "addr:street": "Calle los Algarrobos",
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "name": "Petroprix Agüimes - Calle Algarrobos",
+    "opening_hours": "24/7",
+    "self_service": "yes",
+    "source": "https://petroprix.com/gasolineras/petroprix-aguimes-algarrobos"
+  }
+},
+{
+  "type": "node",
+  "id": 12923044457,
+  "lat": 28.0584130,
+  "lon": -15.6883379,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 12964570814,
+  "lat": 28.0584130,
+  "lon": -15.6883379,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 13255732295,
+  "lat": 27.9743357,
+  "lon": -15.5885689,
+  "tags": {
+    "amenity": "drinking_water",
+    "fee": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13595292701,
+  "lat": 27.9405467,
+  "lon": -15.3882941,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 13652597001,
+  "lat": 27.9381497,
+  "lon": -15.3889680,
+  "tags": {
+    "amenity": "drinking_water"
+  }
+},
+{
+  "type": "node",
+  "id": 13771043603,
+  "lat": 28.0205614,
+  "lon": -15.6466855,
+  "tags": {
+    "amenity": "drinking_water",
+    "name": "Merendero municipal artenara"
+  }
+},
+{
+  "type": "node",
+  "id": 13830837282,
+  "lat": 28.1105184,
+  "lon": -15.4576148,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Calle Agaete",
+    "amenity": "fuel",
+    "name": "E.S. Santana Domínguez"
+  }
+},
+{
+  "type": "node",
+  "id": 14177810202,
+  "lat": 28.1517659,
+  "lon": -15.4163946,
+  "tags": {
+    "amenity": "fuel",
+    "name": "Disa"
+  }
+},
+{
+  "type": "way",
+  "id": 128047286,
+  "center": {
+    "lat": 28.0065139,
+    "lon": -15.4147097
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "landuse": "retail",
+    "name": "Moeve",
+    "name:-2024": "Cepsa"
+  }
+},
+{
+  "type": "way",
+  "id": 179731525,
+  "center": {
+    "lat": 28.1131168,
+    "lon": -15.4283516
+  },
+  "tags": {
+    "addr:city": "Las Palmas de Gran Canaria",
+    "addr:housenumber": "89",
+    "addr:postcode": "35012",
+    "addr:street": "Paseo de San Antonio",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q110716465",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "landuse": "retail",
+    "name": "Shell Schamann",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)"
+  }
+},
+{
+  "type": "way",
+  "id": 268390844,
+  "center": {
+    "lat": 28.1538180,
+    "lon": -15.4173781
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "fuel:GTL_diesel": "yes",
+    "fuel:adblue": "yes",
+    "fuel:autogas": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Disa El Sebadal",
+    "opening_hours": "Mo-Su 06:00-22:00"
+  }
+},
+{
+  "type": "way",
+  "id": 269024951,
+  "center": {
+    "lat": 28.1503107,
+    "lon": -15.4207493
+  },
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Calle Atindana",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "building": "yes",
+    "landuse": "retail",
+    "name": "BP Puerto de la Luz",
+    "operator": "BP"
+  }
+},
+{
+  "type": "way",
+  "id": 330268062,
+  "center": {
+    "lat": 27.8158628,
+    "lon": -15.7640086
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "building": "house",
+    "compressed_air": "no",
+    "landuse": "retail",
+    "name": "Repsol",
+    "operator": "Repsol"
+  }
+},
+{
+  "type": "way",
+  "id": 368455393,
+  "center": {
+    "lat": 27.7670106,
+    "lon": -15.5915028
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Avenida Alejandro del Castillo",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "building": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "old_brand": "Texaco",
+    "old_name": "Texaco Taxistas San Agustín",
+    "opening_hours": "24/7",
+    "operator": "Cepsa"
+  }
+},
+{
+  "type": "way",
+  "id": 402990704,
+  "center": {
+    "lat": 28.1361820,
+    "lon": -15.4878606
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "landuse": "retail",
+    "name": "Moeve",
+    "name:-2024": "Cepsa"
+  }
+},
+{
+  "type": "way",
+  "id": 426459932,
+  "center": {
+    "lat": 27.9408342,
+    "lon": -15.3899783
+  },
+  "tags": {
+    "addr:street": "AUTOVIA GC-1 (AEROPUERTO DE GRAN CANARIA ) KM. 16",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "building": "roof",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Moeve",
+    "name:-2024": "Cepsa",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "way",
+  "id": 429112932,
+  "center": {
+    "lat": 28.1080001,
+    "lon": -15.4149119
+  },
+  "tags": {
+    "addr:housenumber": "6",
+    "addr:street": "Avenida de Canarias",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "BP",
+    "opening_hours": "24/7",
+    "self_service": "only"
+  }
+},
+{
+  "type": "way",
+  "id": 437730743,
+  "center": {
+    "lat": 28.1123380,
+    "lon": -15.4499251
+  },
+  "tags": {
+    "addr:street": "Avenida Juan Carlos I",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Moeve Las Ramblas",
+    "operator:-2024": "Cepsa"
+  }
+},
+{
+  "type": "way",
+  "id": 439377376,
+  "center": {
+    "lat": 28.1149858,
+    "lon": -15.4250310
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q110716465",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "compressed_air": "yes",
+    "landuse": "retail",
+    "name": "Shell Tomás Morales",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)"
+  }
+},
+{
+  "type": "way",
+  "id": 440827726,
+  "center": {
+    "lat": 27.8622495,
+    "lon": -15.4176060
+  },
+  "tags": {
+    "addr:street": "CALLE CANAL DERECHA, S/N",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "building": "roof",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Repsol",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "operator": "Repsol",
+    "self_service": "yes",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "way",
+  "id": 452939409,
+  "center": {
+    "lat": 28.1329426,
+    "lon": -15.4351718
+  },
+  "tags": {
+    "addr:city": "Las Palmas",
+    "addr:housenumber": "303",
+    "addr:street": "Paseo de Chil",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "compressed_air": "yes",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Disa Chil",
+    "phone": "+34 682 26 57 31",
+    "source": "https://www.disagrupo.es/estaciones/canarias/80071/disa-chil"
+  }
+},
+{
+  "type": "way",
+  "id": 520379378,
+  "center": {
+    "lat": 28.0958230,
+    "lon": -15.4127220
+  },
+  "tags": {
+    "addr:housenumber": "44",
+    "addr:street": "Avenida Alcalde Díaz Saavedra Navarro",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q110716465",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "building": "yes",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "layer": "1",
+    "name": "Shell",
+    "opening_hours": "24/7",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "way",
+  "id": 521060035,
+  "center": {
+    "lat": 28.0962118,
+    "lon": -15.4153085
+  },
+  "tags": {
+    "addr:street": "Avenida Eufemiano Jurado",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "building": "roof",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "layer": "1",
+    "name": "Disa",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "way",
+  "id": 525687907,
+  "center": {
+    "lat": 28.1298909,
+    "lon": -15.4415613
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "building": "yes",
+    "compressed_air": "yes",
+    "landuse": "retail",
+    "name": "BP Guanarteme",
+    "opening_hours": "Mo-Su 06:00-01:00",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2008-08-11"
+  }
+},
+{
+  "type": "way",
+  "id": 582581435,
+  "center": {
+    "lat": 27.8749603,
+    "lon": -15.4232813
+  },
+  "tags": {
+    "addr:city": "Cruce De Arinaga",
+    "addr:housenumber": "28",
+    "addr:postcode": "35118",
+    "addr:street": "Calle de la Fresadora",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "BP KM13",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "operator": "BP"
+  }
+},
+{
+  "type": "way",
+  "id": 684682680,
+  "center": {
+    "lat": 28.0143933,
+    "lon": -15.3886895
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:wikidata": "Q5797102",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Disa La Pardilla",
+    "opening_hours": "Mo-Sa 06:00-22:00; Su,PH 08:00-20:00",
+    "phone": "+34 639684873",
+    "source": "https://www.disagrupo.es/estaciones/canarias/80288/disa-la-pardilla"
+  }
+},
+{
+  "type": "way",
+  "id": 715514634,
+  "center": {
+    "lat": 28.1161297,
+    "lon": -15.4367633
+  },
+  "tags": {
+    "addr:street": "Plaza Hermanos Millares",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "building": "yes",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Disa",
+    "nohousenumber": "yes",
+    "opening_hours": "Mo-Su 06:00-22:00"
+  }
+},
+{
+  "type": "way",
+  "id": 718416069,
+  "center": {
+    "lat": 28.1181440,
+    "lon": -15.4297624
+  },
+  "tags": {
+    "addr:housenumber": "68",
+    "addr:street": "Avenida Juan XXIII",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Moeve Juan XXIII",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "way",
+  "id": 734867992,
+  "center": {
+    "lat": 28.1140367,
+    "lon": -15.4343850
+  },
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Calle Obispo Romo",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "building": "yes",
+    "landuse": "retail",
+    "name": "Altavista",
+    "operator": "BP"
+  }
+},
+{
+  "type": "way",
+  "id": 756661943,
+  "center": {
+    "lat": 28.0987217,
+    "lon": -15.4459141
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "compressed_air": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "BP La Paterna",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "way",
+  "id": 824210627,
+  "center": {
+    "lat": 28.0961593,
+    "lon": -15.4682004
+  },
+  "tags": {
+    "addr:postcode": "35018",
+    "addr:street": "Glorieta acceso Sur Tamaraceite",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "email": "es.tamaraceite@disagrupo.es",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Disa Tamaraceite;DISA Tamaraceite",
+    "opening_hours": "24/7",
+    "phone": "+34 616726352",
+    "source": "https://www.disagrupo.es/estaciones/canarias/80287/disa-tamaraceite"
+  }
+},
+{
+  "type": "way",
+  "id": 831920084,
+  "center": {
+    "lat": 28.1012322,
+    "lon": -15.4406627
+  },
+  "tags": {
+    "addr:street": "CALLE GREGORIO MARAÑON, S/N",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Repsol",
+    "opening_hours": "24/7",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "way",
+  "id": 834708231,
+  "center": {
+    "lat": 28.1050592,
+    "lon": -15.4328142
+  },
+  "tags": {
+    "addr:street": "CARRETERA GC 200 KM. 16",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "building": "yes",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Shell Rehoyas",
+    "opening_hours": "Mo-Th 06:00-00:00; Fr 06:00-02:00; Sa 07:00-02:00; Su 07:00-00:00",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "way",
+  "id": 845150582,
+  "center": {
+    "lat": 27.9135309,
+    "lon": -15.4024007
+  },
+  "tags": {
+    "addr:city": "Ingenio",
+    "addr:housenumber": "109",
+    "addr:postcode": "35240",
+    "addr:street": "Avenida Carlos V",
+    "amenity": "fuel",
+    "brand": "Plenergy",
+    "brand:-2025": "Plenoil",
+    "brand:website": "https://plenoil.es",
+    "brand:wikidata": "Q127497985",
+    "building": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Plenergy",
+    "name:-2025": "Plenoil",
+    "operator": "Plenergy",
+    "operator:-2025": "Plenoil",
+    "self_service": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 924101981,
+  "center": {
+    "lat": 27.9177501,
+    "lon": -15.4327633
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:wikidata": "Q5797102",
+    "fuel:GTL_diesel": "yes",
+    "fuel:adblue": "yes",
+    "fuel:autogas": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Disa",
+    "opening_hours": "Mo-Su 06:00-22:00"
+  }
+},
+{
+  "type": "way",
+  "id": 924139204,
+  "center": {
+    "lat": 28.0231336,
+    "lon": -15.3883792
+  },
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:street": "Calle Alegría",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "building": "yes",
+    "landuse": "retail",
+    "name": "Disa"
+  }
+},
+{
+  "type": "way",
+  "id": 924140947,
+  "center": {
+    "lat": 28.0222949,
+    "lon": -15.3876606
+  },
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Calle Alegría",
+    "amenity": "fuel",
+    "brand": "Océano",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Océano Telde",
+    "opening_hours": "24/7",
+    "phone": "+34 928635244",
+    "source": "https://www.grupoinsularoceano.es/gasolinera-telde-oceano-combustibles"
+  }
+},
+{
+  "type": "way",
+  "id": 972203852,
+  "center": {
+    "lat": 28.0479665,
+    "lon": -15.4211156
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "building": "yes",
+    "landuse": "retail",
+    "name": "Moeve",
+    "name:-2024": "Cepsa"
+  }
+},
+{
+  "type": "way",
+  "id": 1025564633,
+  "center": {
+    "lat": 28.1214810,
+    "lon": -15.4477599
+  },
+  "tags": {
+    "addr:milestone": "km. 98",
+    "addr:street": "Carretera de Chile",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "fuel:GTL_diesel": "yes",
+    "fuel:adblue": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Repsol Cred Carretera de Chile",
+    "old_branch": "Shell",
+    "old_branch:wikidata": "Q154950",
+    "old_brand": "Disa",
+    "old_brand:wikidata": "Q5797102",
+    "opening_hours": "Mo-Su 06:00-22:00",
+    "phone": "+34 928 22 76 09"
+  }
+},
+{
+  "type": "way",
+  "id": 1046957694,
+  "center": {
+    "lat": 28.1265012,
+    "lon": -15.4299455
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Calle Maestro Valle",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "building": "roof",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "BP Ciudad Jardín",
+    "opening_hours": "24/7",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "way",
+  "id": 1153590374,
+  "center": {
+    "lat": 27.8596645,
+    "lon": -15.4088265
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Canary Oil",
+    "fuel:adblue": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Canary Oil Arinaga",
+    "opening_hours": "24/7",
+    "website": "https://canaryoil.com"
+  }
+},
+{
+  "type": "way",
+  "id": 1184549108,
+  "center": {
+    "lat": 28.0975835,
+    "lon": -15.4420895
+  },
+  "tags": {
+    "addr:city": "Las Palmas de Gran Canaria",
+    "addr:housenumber": "35",
+    "addr:postcode": "35014",
+    "addr:street": "Calle Eufemiano Fuentes Cabrera",
+    "amenity": "fuel",
+    "brand": "Canary Oil",
+    "landuse": "retail",
+    "name": "Canary Oil"
+  }
+},
+{
+  "type": "way",
+  "id": 1184549273,
+  "center": {
+    "lat": 28.0993433,
+    "lon": -15.4380280
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "landuse": "retail",
+    "name": "Petroprix",
+    "operator": "Petroprix"
+  }
+},
+{
+  "type": "way",
+  "id": 1209719428,
+  "center": {
+    "lat": 27.9171901,
+    "lon": -15.3990217
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "landuse": "retail",
+    "name": "BP",
+    "operator": "BP",
+    "self_service": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1213269748,
+  "center": {
+    "lat": 27.9985540,
+    "lon": -15.4201797
+  },
+  "tags": {
+    "addr:housenumber": "86",
+    "addr:street": "LUGAR EL ROQUE",
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:website": "https://www.disagrupo.es",
+    "brand:wikidata": "Q5797102",
+    "brand:wikipedia": "es:DISA (empresa)",
+    "building": "roof",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "layer": "1",
+    "name": "DISA EL ROQUE",
+    "opening_hours": "Mo-Su 06:30-23:00",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "way",
+  "id": 1213271764,
+  "center": {
+    "lat": 27.9924335,
+    "lon": -15.4149686
+  },
+  "tags": {
+    "addr:housenumber": "39",
+    "addr:street": "CALLE CL OBISPO VERDUGO",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "building": "roof",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "layer": "1",
+    "name": "Repsol",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "operator": "Repsol",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "way",
+  "id": 1213383403,
+  "center": {
+    "lat": 28.0388309,
+    "lon": -15.4186992
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "brand:wikipedia": "es:Repsol",
+    "building": "roof",
+    "landuse": "retail",
+    "layer": "1",
+    "name": "Repsol",
+    "operator": "Repsol"
+  }
+},
+{
+  "type": "way",
+  "id": 1213383409,
+  "center": {
+    "lat": 28.0355514,
+    "lon": -15.4170235
+  },
+  "tags": {
+    "addr:street": "CARRETERA DE JINAMAR KM. S/N",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:website": "https://www.bp.com",
+    "brand:wikidata": "Q152057",
+    "brand:wikipedia": "es:BP",
+    "building": "roof",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "layer": "1",
+    "name": "BP Jinamar",
+    "opening_hours": "24/7",
+    "operator": "BP",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-07-29"
+  }
+},
+{
+  "type": "way",
+  "id": 1238836500,
+  "center": {
+    "lat": 27.9983676,
+    "lon": -15.4143646
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "AVENIDA DE LA CONSTITUCION",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q110716465",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Shell Telde",
+    "opening_hours": "Mo-Su 06:00-00:00",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)"
+  }
+},
+{
+  "type": "way",
+  "id": 1263030567,
+  "center": {
+    "lat": 28.1448347,
+    "lon": -15.6494962
+  },
+  "tags": {
+    "addr:milestone": "Km. 27",
+    "addr:street": "Carretera General",
+    "amenity": "fuel",
+    "brand": "Shell",
+    "brand:website": "https://www.shell.es",
+    "brand:wikidata": "Q154950",
+    "brand:wikipedia": "es:Royal Dutch Shell",
+    "compressed_air": "yes",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Shell Galdar",
+    "opening_hours": "24/7",
+    "operator": "Disa",
+    "operator:website": "https://www.disagrupo.es",
+    "operator:wikidata": "Q5797102",
+    "operator:wikipedia": "es:DISA (empresa)",
+    "source": "https://www.disagrupo.es/estaciones/canarias/80103/shell-galdar"
+  }
+},
+{
+  "type": "way",
+  "id": 1279364593,
+  "center": {
+    "lat": 28.0968375,
+    "lon": -15.4415466
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "landuse": "retail",
+    "name": "Petroprix",
+    "self_service": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1300988520,
+  "center": {
+    "lat": 28.1055336,
+    "lon": -15.4410611
+  },
+  "tags": {
+    "addr:housenumber": "152",
+    "addr:street": "Avenida de Escaleritas",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:website": "https://www.moeve.es",
+    "brand:wikidata": "Q608819",
+    "brand:wikipedia": "es:Moeve",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Moeve Nueva Escaleritas",
+    "opening_hours": "24/7",
+    "operator:-2024": "Cepsa",
+    "source": "Ministerio de Industria, Turismo y Comercio",
+    "source:date": "2010-08-06"
+  }
+},
+{
+  "type": "way",
+  "id": 1393795023,
+  "center": {
+    "lat": 27.7660599,
+    "lon": -15.5712044
+  },
+  "tags": {
+    "addr:housenumber": "317",
+    "addr:street": "Calle Alcalde Enrique Jorge",
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Petroprix San Bartolomé de Tirajana",
+    "opening_hours": "24/7",
+    "self_service": "yes",
+    "source": "https://petroprix.com/gasolineras/petroprix-san-bartolome-de-tirajana"
+  }
+},
+{
+  "type": "way",
+  "id": 1393796250,
+  "center": {
+    "lat": 28.1565106,
+    "lon": -15.4206731
+  },
+  "tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Calle Quito",
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Petroprix Las Palmas de Gran Canaria - Calle Quito",
+    "opening_hours": "24/7",
+    "self_service": "yes",
+    "source": "https://petroprix.com/gasolineras/petroprix-las-palmas-quito"
+  }
+},
+{
+  "type": "way",
+  "id": 1393797019,
+  "center": {
+    "lat": 27.9992010,
+    "lon": -15.3899225
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Calle Antonio José de Sucre",
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Petroprix Telde",
+    "opening_hours": "24/7",
+    "self_service": "yes",
+    "source": "https://petroprix.com/gasolineras/petroprix-telde"
+  }
+},
+{
+  "type": "way",
+  "id": 1393835665,
+  "center": {
+    "lat": 27.9137277,
+    "lon": -15.4390554
+  },
+  "tags": {
+    "addr:housenumber": "99",
+    "addr:street": "Calle Antonio Benítez Galindo",
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Petroprix Ingenio",
+    "opening_hours": "24/7",
+    "self_service": "yes",
+    "source": "https://petroprix.com/gasolineras/petroprix-ingenio"
+  }
+},
+{
+  "type": "way",
+  "id": 1393846131,
+  "center": {
+    "lat": 27.8632280,
+    "lon": -15.4147344
+  },
+  "tags": {
+    "addr:housenumber": "187",
+    "addr:postcode": "35118",
+    "addr:street": "Calle las Adelfas",
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "description:payment": "Pagando con efectivo, el cambio es un voucher para la próxima visita",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Petroprix Agüimes",
+    "opening_hours": "24/7",
+    "operator": "Petroprix",
+    "payment:cash": "yes",
+    "payment:contactless": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:visa": "no",
+    "self_service": "yes",
+    "source": "https://petroprix.com/gasolineras/petroprix-aguimes"
+  }
+},
+{
+  "type": "way",
+  "id": 1394096786,
+  "center": {
+    "lat": 27.8630008,
+    "lon": -15.4342900
+  },
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Calle Hiedra",
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Petroprix Agüimes - Calle Hiedra",
+    "opening_hours": "24/7",
+    "self_service": "yes",
+    "source": "https://petroprix.com/gasolineras/petroprix-aguimes-hiedra"
+  }
+},
+{
+  "type": "way",
+  "id": 1394096788,
+  "center": {
+    "lat": 27.8696772,
+    "lon": -15.4299880
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Avenida de Canarias",
+    "amenity": "fuel",
+    "brand": "Petroprix",
+    "brand:wikidata": "Q128327113",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Petroprix Agüimes - Avenida Sureste",
+    "opening_hours": "24/7",
+    "self_service": "yes",
+    "source": "https://petroprix.com/gasolineras/petroprix-aguimes-sureste"
+  }
+},
+{
+  "type": "way",
+  "id": 1394100166,
+  "center": {
+    "lat": 28.1434679,
+    "lon": -15.6156080
+  },
+  "tags": {
+    "addr:street": "Calle Félix García González",
+    "amenity": "fuel",
+    "brand": "Plenergy",
+    "brand:wikidata": "Q127497985",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Plenergy Santa María de Guía I",
+    "nohousenumber": "yes",
+    "opening_hours": "24/7",
+    "self_service": "yes",
+    "source": "https://plenergy.es/estacion/plenoil-santa-maria-de-guia-i"
+  }
+},
+{
+  "type": "way",
+  "id": 1415354373,
+  "center": {
+    "lat": 27.7607997,
+    "lon": -15.6822231
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BP",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio BP Arguineguín",
+    "opening_hours": "24/7",
+    "source": "https://map.bp.com/es-ES/ES/estacion-de-servicio/mogan/bp-arguineguin/291566174"
+  }
+},
+{
+  "type": "way",
+  "id": 1415356157,
+  "center": {
+    "lat": 27.7670363,
+    "lon": -15.6778210
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Pcan",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Pcan",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "way",
+  "id": 1415359579,
+  "center": {
+    "lat": 27.8775057,
+    "lon": -15.4190850
+  },
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Calle del Martinete",
+    "amenity": "fuel",
+    "brand": "Océano",
+    "fuel:GTL_diesel": "yes",
+    "fuel:adblue": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Océano Arinaga",
+    "opening_hours": "Mo-Fr 06:00-22:00; Sa,Su,PH 07:00-22:00",
+    "phone": "+34 928180546",
+    "source": "https://www.grupoinsularoceano.es/gasolinera-arinaga-oceano-combustibles"
+  }
+},
+{
+  "type": "way",
+  "id": 1415363699,
+  "center": {
+    "lat": 27.8918794,
+    "lon": -15.4152872
+  },
+  "tags": {
+    "addr:street": "Calle Mozart",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Repsol Cred Las Rosas",
+    "nohousenumber": "yes",
+    "opening_hours": "Mo-Su 06:00-22:00",
+    "phone": "+34 928126166",
+    "self_service": "yes",
+    "source": "https://www.repsol.es/buscador-eess-y-puntos-de-recarga/las-palmas/aguimes/cl-mozart-sn"
+  }
+},
+{
+  "type": "way",
+  "id": 1415379613,
+  "center": {
+    "lat": 28.0225853,
+    "lon": -15.6511984
+  },
+  "tags": {
+    "amenity": "fuel",
+    "fuel:diesel": "yes",
+    "landuse": "retail",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1415383838,
+  "center": {
+    "lat": 28.1136235,
+    "lon": -15.5841932
+  },
+  "tags": {
+    "amenity": "fuel",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "landuse": "retail",
+    "name": "Santana Domínguez"
+  }
+},
+{
+  "type": "way",
+  "id": 1415386853,
+  "center": {
+    "lat": 28.1077520,
+    "lon": -15.4894258
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:wikidata": "Q608819",
+    "fuel:GTL_diesel": "yes",
+    "fuel:adblue": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Moeve La Cazuela",
+    "opening_hours": "24/7",
+    "phone": "+34 928439639",
+    "self_service": "yes",
+    "source": "https://www.moeve.es/es/cerca-de-ti/gasolineras/las-palmas/las-palmas-de-gran-canaria-la-cazuela"
+  }
+},
+{
+  "type": "way",
+  "id": 1415438174,
+  "center": {
+    "lat": 28.0998386,
+    "lon": -15.4712670
+  },
+  "tags": {
+    "addr:street": "Avenida Cesar Manrique",
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:wikidata": "Q152057",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio BP Lomo Los Frailes",
+    "nohousenumber": "yes",
+    "opening_hours": "24/7",
+    "phone": "+34 828912563",
+    "self_service": "yes",
+    "source": "https://map.bp.com/es-ES/ES/estacion-de-servicio/las-palmas-de-gran-canaria/e-s-bp-lomo-los-frailes/587923395"
+  }
+},
+{
+  "type": "way",
+  "id": 1415455262,
+  "center": {
+    "lat": 28.0736576,
+    "lon": -15.4176160
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Disa",
+    "brand:wikidata": "Q5797102",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Disa San José",
+    "opening_hours": "24/7",
+    "phone": "+34 628694373",
+    "source": "https://www.disagrupo.es/estaciones/canarias/80089/disa-san-jose"
+  }
+},
+{
+  "type": "way",
+  "id": 1415458135,
+  "center": {
+    "lat": 28.0963507,
+    "lon": -15.4565030
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "building": "yes",
+    "landuse": "retail",
+    "name": "Repsol",
+    "operator": "Repsol"
+  }
+},
+{
+  "type": "way",
+  "id": 1415458136,
+  "center": {
+    "lat": 28.0963119,
+    "lon": -15.4566100
+  },
+  "tags": {
+    "addr:street": "Avenida Hoya De La Gallina",
+    "amenity": "fuel",
+    "brand": "Repsol",
+    "brand:wikidata": "Q174747",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Repsol",
+    "nohousenumber": "yes",
+    "opening_hours": "Mo-Su 07:00-00:00",
+    "self_service": "yes",
+    "source": "https://www.repsol.es/buscador-eess-y-puntos-de-recarga/las-palmas/palmas-de-gran-canarias/av-hoya-de-la-gallina-sn"
+  }
+},
+{
+  "type": "way",
+  "id": 1415460870,
+  "center": {
+    "lat": 28.0848801,
+    "lon": -15.4349900
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:-2024": "Cepsa",
+    "brand:wikidata": "Q608819",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "landuse": "retail",
+    "name": "Estación de Servicio Moeve Sical",
+    "opening_hours": "24/7",
+    "phone": "+34 928336200",
+    "source": "https://www.moeve.es/es/cerca-de-ti/gasolineras/las-palmas/las-palmas-de-gran-canaria-sical"
+  }
+},
+{
+  "type": "way",
+  "id": 1456731785,
+  "center": {
+    "lat": 28.0938650,
+    "lon": -15.4571083
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:wikidata": "Q608819",
+    "landuse": "retail",
+    "layer": "1",
+    "name": "Moeve"
+  }
+},
+{
+  "type": "way",
+  "id": 1456731786,
+  "center": {
+    "lat": 28.0939251,
+    "lon": -15.4572062
+  },
+  "tags": {
+    "addr:city": "Las Palmas de Gran Canaria",
+    "addr:housenumber": "48",
+    "addr:street": "Avenida Pintor Felo Monzón",
+    "amenity": "fuel",
+    "brand": "Moeve",
+    "brand:wikidata": "Q608819",
+    "landuse": "retail",
+    "layer": "1",
+    "name": "Moeve"
+  }
+},
+{
+  "type": "way",
+  "id": 1570026108,
+  "center": {
+    "lat": 27.9945194,
+    "lon": -15.3903468
+  },
+  "tags": {
+    "amenity": "fuel",
+    "brand": "BP",
+    "brand:wikidata": "Q152057",
+    "fuel:GTL_diesel": "yes",
+    "fuel:diesel": "yes",
+    "fuel:octane_95": "yes",
+    "fuel:octane_98": "yes",
+    "name": "BP",
+    "opening_hours": "Mo-Su 06:00-22:00"
+  }
+}
+
+  ]
+}

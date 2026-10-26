@@ -41,7 +41,7 @@ The warning is: “Compass accuracy may be low. Move away from metal objects and
 
 `vision-core.js` contains the reusable, dependency-free maths. `vision.js` owns the dialog, sensors, view lifecycle and Canvas renderer. `vision.css` is scoped to the fullscreen dialog. The existing builder embeds all three in `index.html` alongside Leaflet, the GPX and roadbook data.
 
-The embedded GPX is parsed lazily with `DOMParser`. Coordinates and elevation come from its real track points. Its existing cumulative distance axis is reused to align with roadbook kilometres. A custom GPX gets a cumulative haversine distance axis. Distances are horizontal track distance, not a straight-line radius or slope-adjusted distance.
+The embedded GPX is parsed lazily with `DOMParser`. Coordinates and elevation come from its real track points. Its full `track_km` cumulative distance axis is reused to align with roadbook kilometres; the map’s simplified `route_km` array must not be passed to the full GPX parser. A custom GPX gets a cumulative haversine distance axis. Distances are horizontal track distance, not a straight-line radius or slope-adjusted distance.
 
 Matching projects the GPS fix fractionally onto valid GPX segments. Spatial offset, the prior progress, elapsed time and accuracy constrain plausible passes in both directions, allowing backtracking. Distant progress jumps and unresolved nearby passes produce an ambiguity warning. Accuracy worse than 80 m is rejected. Off-route distance is compared with an accuracy-dependent 35–80 m threshold; fixes older than two minutes are rejected. These are heuristics, not probabilities. A bad fix leaves the preview at its last matched position, with an explicit warning.
 
@@ -49,7 +49,7 @@ GPX track segments are never joined. Missing coordinates split continuity; an in
 
 The next route window is resampled at 5 m intervals: at most 201 points for 1 km. Latitude/longitude become local east/north/up metres around the projected position. The eye is 1.7 m above its interpolated GPX elevation. Elevation receives a short triangular filter with a 10 m radius, preserving window endpoints. Ascent/descent are calculated from that filtered preview; net change is its endpoint difference. A sustained grade of at least 6% over at least 30 m and 3 m of change is shown as an upcoming significant climb or descent. These local totals can differ from the roadbook's coarser elevation-processing method.
 
-Missing, out-of-range or implausibly spiking elevation produces an explicitly labelled flat preview. Vertical exaggeration affects rendering only, not the eye height, horizontal distance or reported gain/loss. The race GPX uses DEM elevations; this is not a surveyed view of steps, rocks, obstacles or the actual horizon.
+Missing, out-of-range or implausibly spiking elevation produces an explicitly labelled flat preview. Vertical exaggeration affects rendering only, not the eye height, horizontal distance or reported gain/loss. The race GPX uses organiser-supplied elevations; this is not a surveyed view of steps, rocks, obstacles or the actual horizon.
 
 ## Rendering, battery and offline use
 
@@ -90,4 +90,4 @@ python3 tests/offline_browser_test.py
 
 The synthetic GPX in `tests/fixtures/trail-vision-synthetic.gpx` contains sharp turns, switchbacks, sustained ascent/descent and a close return loop. It is test data, never part of the published race route. Unit tests cover cumulative distances, interpolation, gaps, ENU coordinates, elevation, matching/backtracking, perspective, compass/screen transforms, quaternion smoothing and confidence transitions. Browser tests exercise real embedded GPX data, simulated GPS/Android/iOS events, world-fixed geometry, permission failures, quality warnings, fallback modes, preferences, cleanup, GPX imports and offline cold reload in Chromium and WebKit. Tests block external data requests, and explicitly run without WebGL.
 
-These are browser emulation tests. Physical Android/iPhone sensor accuracy, magnetic interference, GPS performance, thermal behaviour and battery life have not been field-tested here. Trail Vision previews the candidate GPX; it does not establish trail access, obstacle clearance or event-course correctness.
+These are browser emulation tests. Physical Android/iPhone sensor accuracy, magnetic interference, GPS performance, thermal behaviour and battery life have not been field-tested here. Trail Vision previews the official GPX; it does not establish trail access, obstacle clearance or event-course correctness.

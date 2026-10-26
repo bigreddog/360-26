@@ -1,0 +1,6 @@
+# Development-only route regeneration and data validation; no browser runtime dependencies.
+numpy==2.5.4
+scipy==1.18.1
+shapely==2.2.0
+pyproj==3.8.0
+lxml==6.1.3

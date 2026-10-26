@@ -1,0 +1,14 @@
+{
+  "name": "osm_network.json",
+  "url": "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A240%5D%3B%28way%5B%22highway%22%5D%2827.72%2C-15.84%2C28.20%2C-15.35%29%3Bnode%5B%22place%22%5D%2827.72%2C-15.84%2C28.20%2C-15.35%29%3Bnode%5B%22barrier%22%5D%2827.72%2C-15.84%2C28.20%2C-15.35%29%3B%29%3Bout+body%3B%3E%3Bout+skel+qt%3B",
+  "retrieved_utc": "2026-10-24T21:45:16.836237+00:00",
+  "status": 200,
+  "bytes": 70325119,
+  "sha256": "ec572af432f92bddb4b7f3f82cfbc1a0b078ed4a4b54e589465d74678f5252ef",
+  "derivation": "Mapped OSM intermediate nodes and consecutive way edges from prior trusted pedestrian graph; clipped to 1800m of official 2026 GPX. No geometric connectors added.",
+  "nodes": 205245,
+  "edges": 210249,
+  "graph_sha256": "9de75644a057c2e69e8c3b03ed12a7e88121ac52b6f403640f567c86a9e8b6ce",
+  "corridor_m": 1800,
+  "route_source_sha256": "f8d9839f0f2ac1d718da4e4ff8bd1b9ff0e729e9d6508f7ccfeb50a6ee6b3c23"
+}

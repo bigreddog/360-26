@@ -1,0 +1,21 @@
+{
+  "passed": 16,
+  "checks": [
+    "canonical GPX preserves every nonduplicate source coordinate and height",
+    "exactly the reported zero-length duplicates are removed",
+    "one continuous track and all twenty-nine waypoints",
+    "combined GPX validates against GPX 1.1 schema",
+    "canonical hash is the built data identity",
+    "full preview axis aligns independently with canonical GPX chainage",
+    "official measured distance is not silently scaled to PDF target",
+    "no hidden long source gaps",
+    "display polyline chainage is ordered and shares full source endpoints",
+    "source waypoint geography retained",
+    "all PDF numbers, text and source pages are retained",
+    "all cut-offs are present and ordered",
+    "Artenara is an aid checkpoint without sleep",
+    "only four lifebases",
+    "every leg has a consecutive index and matches its neighbours",
+    "every resupply approach uses consecutive real graph edges with recorded offsets"
+  ]
+}

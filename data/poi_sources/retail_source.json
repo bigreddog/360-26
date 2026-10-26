@@ -1,0 +1,5 @@
+{
+  "url": "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A120%5D%3Bnwr%5B%22shop%22~%22%5E%28supermarket%7Cconvenience%7Cbakery%7Cgreengrocer%7Cdeli%7Cfood%7Ckiosk%7Cconfectionery%7Cgeneral%7Cfarm%7Cpastry%29%24%22%5D%2827.72%2C-15.84%2C28.20%2C-15.35%29%3Bout+center+tags%3B",
+  "query": "[out:json][timeout:120];nwr[\"shop\"~\"^(supermarket|convenience|bakery|greengrocer|deli|food|kiosk|confectionery|general|farm|pastry)$\"](27.72,-15.84,28.20,-15.35);out center tags;",
+  "retrieved_utc": "2026-10-25"
+}

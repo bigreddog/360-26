@@ -1,20 +1,30 @@
 {
   "provider": "Open-Meteo",
-  "documentation": "https://open-meteo.com/en/docs",
-  "license": "https://creativecommons.org/licenses/by/4.0/",
-  "checked_at_utc": "2026-10-25T22:46:27.657384+00:00",
+  "checked_at_utc": "2026-10-26T17:37:19.826665+00:00",
   "http_status": 200,
   "cors_allow_origin": "*",
-  "requested_origin": "https://bigreddog.github.io",
   "locations": 25,
+  "route_sha256": "49b45dd666f4d3d62a6072d5bcc9917a174e7bcfc291fc510e8ca9b6112592dd",
+  "course": "Official 2026 combined GPX",
+  "horizon_hours": 24,
+  "elevation_source": "Official GPX-derived common smoothed elevation profile",
   "requested_period_start_utc": "2026-11-04T09:00:00+00:00",
   "requested_period_end_utc": "2026-11-05T09:00:00+00:00",
-  "gpx_elevation_supplied_per_location": true,
-  "forecast_samples_available": 25,
+  "first_sample": {
+    "km": 0,
+    "lat": 28.144767,
+    "lon": -15.655684,
+    "elevation": 118.96
+  },
+  "last_sample": {
+    "km": 84.99999999997748,
+    "lat": 27.880048949264012,
+    "lon": -15.627558505759122,
+    "elevation": 936.7200000021309
+  },
   "raw_forecast_committed": false,
   "notes": [
-    "Live test used 25 real candidate route coordinates/elevations over 24 hours.",
-    "Deterministic browser tests use mocked forecasts.",
-    "No forecast values are bundled into the published application."
+    "All projected locations/elevations are recalculated from the official course.",
+    "Deterministic browser tests separately mock provider responses."
   ]
 }

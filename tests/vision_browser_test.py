@@ -10,7 +10,7 @@ if(window.DeviceOrientationEvent)Object.defineProperty(DeviceOrientationEvent,'r
 if(window.DeviceMotionEvent)Object.defineProperty(DeviceMotionEvent,'requestPermission',{configurable:true,value:()=>Promise.resolve('granted')});
 if(navigator.mediaDevices)navigator.mediaDevices.getUserMedia=()=>{window.__cameraRequests++;throw Error('Camera must never be requested');};
 const getContext=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){if(type.includes('webgl'))return null;return getContext.call(this,type,...args);};
-window.__sendGPS=(km,accuracy=8)=>{const d=RACER_APP.DATA,i=d.route_km.reduce((best,k,n)=>Math.abs(k-km)<Math.abs(d.route_km[best]-km)?n:best,0);window.__gpsOK({coords:{latitude:d.route[i][0],longitude:d.route[i][1],accuracy},timestamp:Date.now()});};
+window.__sendGPS=(km,accuracy=8)=>{const d=RACER_APP.DATA,j=Math.max(1,d.route_km.findIndex(k=>k>=km)),i=j-1,f=(km-d.route_km[i])/(d.route_km[j]-d.route_km[i]);window.__gpsOK({coords:{latitude:d.route[i][0]+f*(d.route[j][0]-d.route[i][0]),longitude:d.route[i][1]+f*(d.route[j][1]-d.route[i][1]),accuracy},timestamp:Date.now()});};
 window.__pose=(heading,pitch=0,accuracy=null,ios=false)=>{const e=new Event(ios?'deviceorientation':'deviceorientationabsolute');Object.assign(e,{alpha:(360-heading)%360,beta:90+pitch,gamma:0,absolute:!ios});if(ios){e.webkitCompassHeading=heading;e.webkitCompassAccuracy=accuracy;}window.dispatchEvent(e);};
 '''
 def check(cs,name,ok):
@@ -98,7 +98,7 @@ with sync_playwright() as p:
   check(cs,'missing GPX elevation is clearly flat','Flat preview' in page.locator('[data-vision=elevationWarning]').inner_text() and not page.evaluate('RACER_APP.vision().elevationOK'))
   page.locator('[data-vision=file]').set_input_files({'name':'invalid.gpx','mimeType':'application/gpx+xml','buffer':b'not XML'})
   check(cs,'invalid GPX produces an understandable error', 'not valid GPX' in page.locator('[data-vision=fileStatus]').inner_text())
-  page.locator('[data-vision=raceRoute]').click();check(cs,'race GPX can be restored unchanged',page.evaluate('trailVision.route.points.length')==15933 and page.evaluate('RACER_APP.vision().available')==500)
+  page.locator('[data-vision=raceRoute]').click();check(cs,'race GPX can be restored unchanged',page.evaluate('trailVision.route.points.length===RACER_APP.DATA.track_km.length') and page.evaluate('RACER_APP.vision().available')==500)
   page.locator('[data-vision=exit]').click();page.locator('#toolsPanel>summary').click()
   with page.expect_download() as dl:page.locator('#downloadGpx').click()
   gpx=dl.value.path();check(cs,'preview imports do not change the race GPX download',hashlib.sha256(Path(gpx).read_bytes()).hexdigest()==page.evaluate('RACER_APP.DATA.gpx_sha256'))

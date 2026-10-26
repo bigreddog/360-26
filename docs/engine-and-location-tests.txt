@@ -4,7 +4,7 @@
 
 ok 1 - first daily quotas hit 24, 48 and 72 hours
 ok 2 - planning finish and 101h deadline
-ok 3 - 80km start scenario consumes almost the entire cut-off
+ok 3 - 80km start scenario uses about 98 hours on the official course
 ok 4 - ETA curve increases over all 254km
 ok 5 - live progress anchor is exact and does not reset daily fatigue
 ok 6 - extra delay reduces finish margin exactly

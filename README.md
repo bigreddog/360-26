@@ -1,6 +1,6 @@
 # Canarias 360 · Racer roadbook
 
-A self-contained HTML roadbook using the 254.074 km candidate GPX from Gáldar to Tejeda. Open [`index.html`](index.html), or save it to your phone. The ordered route, profile, shop data and calculations work offline. Street tiles and external links need internet; GPS needs a secure browser context.
+A self-contained HTML roadbook using the official 2026 track from Gáldar to Tejeda, combined with all 29 organiser waypoints and PDF instructions. The supplied GPX measures **249.373 km**; the PDF still lists **254.11 km**, which is kept separately. Open [`index.html`](index.html), or save it to your phone. The ordered route, profile, shop data and calculations work offline. Street tiles and external links need internet; GPS needs a secure browser context.
 
 See [PRD.md](PRD.md) for product requirements and the full GPX replacement workflow, including resupply regeneration, weather, Trail Vision and saved-progress migration.
 
@@ -8,7 +8,7 @@ See [PRD.md](PRD.md) for product requirements and the full GPX replacement workf
 
 ## During the race
 
-The main views are **Race**, **Legs**, **Resupply** and **Map**. The race overview shows the next checkpoint, distance and climbing remaining, projected finish and time spare against the final limit. Route legs use readable cards instead of a wide table. Body and form text is 18px, controls have at least 48px touch targets, and supplementary information is folded away.
+The main views are **Race**, **Legs**, **Resupply** and **Map**. The race overview shows the next official checkpoint, distance/climbing remaining, checkpoint type, cut-off and projected time margin. It includes the next numbered route instruction and a folded list of all 29 PDF notes, with page references. Artenara is labelled as an aid station without a sleeping lifebase. The projected finish and final time spare remain visible. Route legs use readable cards instead of a wide table. Body and form text is 18px, controls have at least 48px touch targets, and supplementary information is folded away.
 
 **Daily progress** is collapsed by default. Expand it to change the four net daily distances or open manual timing and delay settings. Notes, saved places, custom hours editing and JSON plan import/export have been removed. Previous browser settings migrate only the pacing and progress fields; old notes and hours overrides are not imported into the new state.
 
@@ -16,7 +16,7 @@ The main views are **Race**, **Legs**, **Resupply** and **Map**. The race overvi
 
 **Resupply** shows six stops at a time, in route order. Each stop leads with its name, distance ahead along the course, outward walking detour, plan arrival and opening status. Map and call are the main actions. **Hours & details** contains the source, weekly schedule, scenario window and separately labelled straight-line GPS distance. Search is visible; additional filters are collapsed with a summary of the current selection. Open details stay open when GPS refreshes.
 
-Use **Downloads & tools** for a portable HTML with your current pace settings, the original GPX, section CSV, evidence data or printing. Printing includes the route legs and the next six matching resupply places. Settings and the last route kilometre are saved locally; the committed app contains no personal progress.
+Use **Downloads & tools** for a portable HTML with your current pace settings, the combined official GPX, section CSV, evidence data or printing. Printing includes the route legs and the next six matching resupply places. Settings and the last route kilometre are saved locally; the committed app contains no personal progress.
 
 ## Install on your phone
 
@@ -41,26 +41,29 @@ GPS requires permission and HTTPS or localhost. Some mobile browsers block it in
 - Start: **Wednesday 4 November 2026, 09:00**, Atlantic/Canary (GMT during the race).
 - Final limit: **101 hours**, Sunday 8 November at 14:00.
 - Default net daily progress: **85 / 70 / 60 / 50 km**. Normal sleep, meals and base stops are already included.
-- Default projection: **Sunday 03:45**, about **10h 15m spare**.
-- Slower **80 / 65 / 55 / 45 km** scenario: about **Sunday 13:50**, only ten minutes spare.
+- Default projection: **Sunday 01:30**, about **12h 30m spare**.
+- Slower **80 / 65 / 55 / 45 km** scenario: about **Sunday 11:20**, about 2h 40m spare.
 
 Each 24-hour block allocates time using distance plus ascent effort while retaining exact daily kilometre quotas. The partial final day uses its proportion of the last quota; that quota repeats if more days are needed. Arrival windows use ±5 km on each daily target and are scenarios, not confidence intervals.
 
-Shop arrivals include the estimated outward detour at 3 km/h plus a climb allowance. The finish model does not automatically add detours, waiting, shopping or rest beyond the normal daily allowance. Add unplanned time under **Extra delay**. Race-base services and intermediate closing times follow the official organiser roadbook; only the final 101-hour limit is modelled. Access is treated as resolved. This app does not change the candidate geometry.
+Shop arrivals include the estimated outward detour at 3 km/h plus a climb allowance. The finish model does not automatically add detours, waiting, shopping or rest beyond the normal daily allowance. Add unplanned time under **Extra delay**. Nine intermediate/final cut-offs from the supplied organiser PDF are now included. Artenara is an aid checkpoint with a Wednesday 19:55 cut-off and **no sleeping lifebase**; only the four life bases provide the sleeping-base designation. Control points do not imply food or sleep services. Access is treated as resolved. The app preserves the official track geometry, apart from documented zero-length duplicate removal.
 
 ## Evidence and elevation
 
-There are 29 terrain legs, five checkpoint stages and 353 mapped places near the route. Of these places, 102 have published hours and 11 have directly checked operator schedules. POIs use the 25 October 2026 OpenStreetMap snapshot, spatially filtered against the candidate and its pedestrian graph. SPAR owner pages provide checked schedules and coordinates; an older generic Tejeda SPAR POI was suppressed as a probable duplicate of the current owner-listed store. Source records are in [`data/roadbook_data.json`](data/roadbook_data.json) and in the app's evidence download.
+There are 47 legs, nine checkpoint stages and 337 mapped places near the route. Of these places, 95 have published hours and nine have directly checked operator schedules. POIs use the 25 October 2026 OpenStreetMap snapshot, with walking approaches recalculated against the official route and versioned pedestrian graph. SPAR owner pages provide checked schedules and coordinates; an older generic Tejeda SPAR POI was suppressed as a probable duplicate of the current owner-listed store. Source records are in [`data/roadbook_data.json`](data/roadbook_data.json) and in the app's evidence download.
 
 Published hours are checked for the arrival date, split sessions, overnight hours and Sundays. Conditional or seasonal expressions remain unknown when they cannot be evaluated conservatively. Published hours do not establish stock, kitchen service or one-off closures. Water-point operability is unverified. Fuel stations are counted as food only when a shop is separately mapped. Walking approaches use mapped ways to a venue's vicinity; the final entrance is not surveyed. Sparse data is not proof that no other service exists.
 
-Elevation uses the candidate's Mapzen/AWS Skadi DEM samples, resampled every 25 m with Gaussian sigma 50 m. Section ascent/descent uses differences of one cumulative smoothed profile, reconciling to approximately **+11,939 / −10,996 m**. The source GPX checksum is verified on every build and the download preserves its full geometry.
+Elevation uses the supplied official GPX heights, resampled every 25 m with Gaussian sigma 50 m. Section ascent/descent uses differences of one cumulative smoothed profile, reconciling to approximately **+11,861 / −10,940 m**. The canonical GPX checksum is verified on every build. The combined download retains the source track geometry/elevations after removing 1,116 consecutive zero-length duplicates, and adds the 29 numbered instruction waypoints. The unchanged root GPXs and PDF remain source evidence.
 
 ## Build and test
 
-There are no npm runtime dependencies. Python standard library builds the HTML; Node runs the engine and route-matching tests.
+There are no npm runtime dependencies. Python standard library assembles the HTML; Node runs the engine and route-matching tests. Route regeneration is a separate development-only process:
 
 ```sh
+python3 -m pip install -r requirements-route-update.txt
+python3 scripts/update_official_route.py
+python3 tests/test_official_data.py
 python3 scripts/build.py
 npm test
 python3 -m http.server 8787 --bind 127.0.0.1
@@ -74,13 +77,14 @@ python3 tests/mobile_controls_test.py --browsers chromium webkit
 python3 tests/geolocation_browser_test.py
 python3 tests/progress_sync_browser_test.py
 python3 tests/install_browser_test.py
+python3 tests/official_route_browser_test.py
 python3 tests/legs_browser_test.py
 ```
 
 The suites use system Chromium (`/usr/bin/chromium`, or `CHROMIUM_PATH` for mobile/GPS tests) and Playwright WebKit. External requests are blocked to check offline operation. Reports in `docs/` record:
 
 - 22 engine/data tests and 18 route-matching/location lifecycle tests.
-- 30 browser journey checks, including feature removal, state migration, collapsed settings, offline HTML reopen, keyboard navigation and byte-identical GPX download.
+- 30 browser journey checks, including feature removal, state migration, collapsed settings, offline HTML reopen, keyboard navigation and byte-identical combined GPX download.
 - Installation checks cover manifest/icons, simulated prompt acceptance/dismissal/fallback, standalone layout, portable HTML and both on/off map preference reloads. The offline suite also checks cached manifest/icons.
 - 276 mobile UX checks across Chromium and WebKit at 320, 360, 390 and 430 CSS pixels, plus 844/932 landscape widths. Expanded numeric controls, filter text clipping, 48px targets, larger text and leg cards are checked.
 - 44 browser Geolocation API checks for permission, actual-position maps, distances, weak/off-route fixes and manual fallback.
@@ -126,3 +130,15 @@ Weather data © Open-Meteo, [CC BY 4.0](https://creativecommons.org/licenses/by/
 The weather panel uses bundled SVG illustrations for clear skies, cloud, rain, snow, fog, ice and thunderstorms, with moon variants for clear/cloudy nights. Direction arrows show where the air is blowing on a north-up compass. The sixteen-point ‘From’ label retains the meteorological source direction: wind from N has an arrow pointing south. The summary pairs direction with the strongest hourly wind sample; gust peaks are listed separately. Wind and gust speeds remain in km/h. Calm conditions show no prevailing direction, and missing data remains unavailable. Icons have adjacent text labels, work offline and require no additional requests.
 
 The hosted app manifest and committed 192/512 px icons support Chrome installation. `install.js` is embedded in the portable page; `scripts/build.py` also includes manifest/icon content in the service-worker revision. The normal build has no extra dependencies. To redraw icons only, run `python3 scripts/generate_icons.py /path/to/OpenSans-Bold.ttf` in a development environment with Pillow installed. Native installation prompts remain browser-controlled; automated prompt tests use simulated events.
+
+## Official course import and comparison
+
+[Official vs candidate comparison](docs/route-comparison.html) includes selectable route layers, common-method elevation profiles and checkpoint tables; [JSON metrics](docs/route-comparison.json) retain the exact results. The official course is 4.702 km shorter; 68.57% lies within 30 m of the candidate (reverse overlap 66.99%). These are measured geometric overlaps, not confidence probabilities. Distances use horizontal WGS84 chainage; the raw source’s elevation-adjusted 3D length is about 253.956 km. The organiser’s exact 254.11 km calculation is not supplied, so the published value is retained separately. The candidate remains archived for review.
+
+`360_2026_Total.gpx` and `360_2026_Waypoints.gpx` are merged before preparation. The [official PDF](docs/evidence/ROAD_BOOK_2026_-ESP_ENG_FRA.pdf) is transcribed into `data/official_waypoint_instructions.json`; waypoint numbers follow track order, independently of the waypoint file’s order. All nine cut-offs and four sleeping lifebases are recorded. The official track’s old internal software timestamp is retained only in its original source file and does not override the supplied 2026 course identity.
+
+The main map uses 18,576 original vertices simplified within 0.75 m for phone performance, retaining full geodesic chainage. Trail Vision uses the full 91,544-point canonical track and its separate `track_km` axis. Never feed the simplified map axis to the full GPX preview.
+
+Resupply approaches were recalculated from versioned 24–25 October OSM/operator snapshots against the official route. `data/routing/approach_graph.npz` is a safe numeric graph cache, with way tags in `way_tags.json.gz`; approaches preserve OSM node/way IDs. Only graph nodes within 3 m of the official course act as attachments, and final entrance offsets are explicitly estimates. Unverified connectors are not drawn. The cache covers an 1,800 m corridor of this route; the updater rejects a different route hash until graph coverage is reviewed/refreshed. One shortest attachment per venue is represented; repeated-pass opportunities are not exhaustively enumerated.
+
+A course identity change resets old candidate progress/time/delay, retaining pace, map and view settings and explaining the reset. Same-route saved HTML and reloads retain progress. Forecast caches reject the old GPX hash, so new weather positions and heights come from the official course. The full source/graph/waypoint acceptance workflow remains in [PRD.md](PRD.md).

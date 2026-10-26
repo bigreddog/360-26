@@ -3,7 +3,7 @@ from pathlib import Path
 import json,base64,hashlib
 ROOT=Path(__file__).resolve().parents[1]
 data=json.loads((ROOT/'data/roadbook_data.json').read_text())
-gpx=(ROOT/'routes/canarias360_best_candidate.gpx').read_bytes()
+gpx=(ROOT/data.get('gpx_file','routes/canarias360_best_candidate.gpx')).read_bytes()
 assert hashlib.sha256(gpx).hexdigest()==data['gpx_sha256'],'GPX changed: update/recalculate roadbook data before building'
 for place in data['pois']:place.pop('osm_tags',None)
 text=(ROOT/'index.template.html').read_text()

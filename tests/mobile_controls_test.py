@@ -50,7 +50,7 @@ with sync_playwright() as p:
    if width==390:
     page.evaluate('window.scrollTo(0,0)');page.screenshot(path=str(OUT/f'{engine}-resupply.png'),full_page=True)
    page.get_by_role('tab',name='Legs',exact=True).click()
-   checks.append(verify('legs use cards without a sideways table',page.locator('.leg-card').count()==29 and page.locator('table').count()==0))
+   checks.append(verify('legs use cards without a sideways table',page.locator('.leg-card').count()==47 and page.locator('table').count()==0))
    checks.append(verify('leg map buttons remain touch-sized',page.locator('[data-section]').evaluate_all('es=>es.every(e=>e.getBoundingClientRect().height>=48)')))
    checks.append(verify('all views fit without horizontal scrolling',page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')))
    # Enlarged browser text: allow wrapping without clipping numeric fields or tabs.

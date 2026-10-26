@@ -59,7 +59,7 @@ with sync_playwright() as p:
   page.evaluate("window.__raceNow=Date.parse('2026-11-10T15:00:00Z');__emitFix(253)")
   check(cs,'race clock is not silently capped at the old 130-hour input limit',page.evaluate('RACER_APP.getState().elapsedHours')==150)
   stored=page.evaluate("JSON.parse(localStorage.getItem('canarias360-roadbook-v2'))")
-  check(cs,'only plan fields are persisted, never raw fixes or an auto-start flag',set(stored)=={'quotas','progressKm','elapsedHours','anchorLive','extraHours','terrainWeight','streetMap','vision'})
+  check(cs,'only plan fields are persisted, never raw fixes or an auto-start flag',set(stored)=={'quotas','progressKm','elapsedHours','anchorLive','extraHours','terrainWeight','streetMap','vision','routeSha256'})
   page.reload();page.wait_for_function('window.RACER_APP')
   check(cs,'reopening keeps last anchor without restarting tracking',not page.locator('#location-main').is_checked() and page.evaluate('window.__watches')==0 and page.evaluate('RACER_APP.getState().elapsedHours')==150)
   check(cs,'sync flows have no script errors',not errors)

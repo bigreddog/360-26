@@ -1,0 +1,293 @@
+{
+  "elements": [
+    {
+      "type": "owner",
+      "id": "spar-galdar",
+      "lat": 28.145542,
+      "lon": -15.65055,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-galdar/",
+      "tags": {
+        "name": "SPAR Galdar",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 08:30-20:30",
+        "phone": "928553369",
+        "website": "https://spargrancanaria.es/tiendas/spar-galdar/"
+      },
+      "published_hours_text": "Horario L-S: 08:30-20:30 Horario festivos: 08:30-14:30",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply. Sunday schedule not explicitly published."
+    },
+    {
+      "type": "owner",
+      "id": "spar-sonnenland",
+      "lat": 27.764111,
+      "lon": -15.60245,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-sonnenland/",
+      "tags": {
+        "name": "SPAR Sonnenland",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Su 08:00-21:30",
+        "phone": "928142600",
+        "website": "https://spargrancanaria.es/tiendas/spar-sonnenland/"
+      },
+      "published_hours_text": "Horario L-S: 08:00-21:30 Horario Domingos y festivos: 08:00-21:30",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-guia",
+      "lat": 28.139507,
+      "lon": -15.63433,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-guia/",
+      "tags": {
+        "name": "SPAR Guia",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 08:00-21:30; Su 09:00-15:00",
+        "phone": "928551990",
+        "website": "https://spargrancanaria.es/tiendas/spar-guia/"
+      },
+      "published_hours_text": "Horario L-S: 08:00-21:30 Horario Domingos y festivos: 09:00-15:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-taidia",
+      "lat": 27.754196,
+      "lon": -15.57816,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-taidia/",
+      "tags": {
+        "name": "SPAR Taidia",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Su 08:00-22:00",
+        "phone": "928764327",
+        "website": "https://spargrancanaria.es/tiendas/spar-taidia/"
+      },
+      "published_hours_text": "Horario L-S: 08:00-22:00 Horario Domingos y festivos: 08:00-22:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-holycan",
+      "lat": 27.759406,
+      "lon": -15.58314,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-holycan/",
+      "tags": {
+        "name": "SPAR Holycan",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Su 08:00-21:00",
+        "phone": "928761385",
+        "website": "https://spargrancanaria.es/tiendas/spar-holycan/"
+      },
+      "published_hours_text": "Horario L-S: 08:00-21:00 Horario Domingos y festivos: 08:00-21:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-espartero",
+      "lat": 28.131265,
+      "lon": -15.44185,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-espartero/",
+      "tags": {
+        "name": "SPAR Espartero",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 08:30-21:30; Su 09:00-15:00",
+        "phone": "928916775",
+        "website": "https://spargrancanaria.es/tiendas/spar-espartero/"
+      },
+      "published_hours_text": "Horario L-S: 08:30-21:30 Horario Domingos y festivos: 09:00-15:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-santa-brigida",
+      "lat": 28.034844,
+      "lon": -15.49842,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-santa-brigida/",
+      "tags": {
+        "name": "SPAR Santa Brigida",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 08:30-21:30; Su 09:00-15:00",
+        "phone": "928641808",
+        "website": "https://spargrancanaria.es/tiendas/spar-santa-brigida/"
+      },
+      "published_hours_text": "Horario L-S: 08:30-21:30 Horario Domingos y festivos: 09:00-15:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-artenara",
+      "lat": 28.0210763,
+      "lon": -15.646427,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-artenara/",
+      "tags": {
+        "name": "SPAR Artenara",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 09:00-13:30,17:00-20:30; Su off",
+        "phone": "928666508",
+        "website": "https://spargrancanaria.es/tiendas/spar-artenara/"
+      },
+      "published_hours_text": "Horario L-S: 09:00-13:30 / 17:00-20:30 Festivos: 09:00-13:30 Domingos cerrado",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-cercados-de-espino",
+      "lat": 27.896085,
+      "lon": -15.6758054,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-cercados-de-espino/",
+      "tags": {
+        "name": "SPAR Cercados De Espino",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 08:00-20:00; Su 08:00-14:00",
+        "phone": "637134785",
+        "website": "https://spargrancanaria.es/tiendas/spar-cercados-de-espino/"
+      },
+      "published_hours_text": "Horario L-S: 08:00-20:00 Horario Domingos y festivos: 08:00-14:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-tejeda",
+      "lat": 27.993716,
+      "lon": -15.61447,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-tejeda/",
+      "tags": {
+        "name": "SPAR Tejeda",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 09:00-13:30,17:00-20:30; Su off",
+        "phone": "928666494",
+        "website": "https://spargrancanaria.es/tiendas/spar-tejeda/"
+      },
+      "published_hours_text": "Horario L-S: 09:00-13:30 / 17:00-20:30 Domingos: cerrado. Horario festivos: 09:00-13:30",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-el-tablero",
+      "lat": 27.7697834,
+      "lon": -15.605616,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-el-tablero/",
+      "tags": {
+        "name": "SPAR El Tablero",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 08:00-21:30; Su 09:00-15:00",
+        "phone": "928143065",
+        "website": "https://spargrancanaria.es/tiendas/spar-el-tablero/"
+      },
+      "published_hours_text": "Horario L-S: 08:00-21:30 Horario Domingos y festivos: 09:00-15:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-atalaya-de-guia",
+      "lat": 28.1505796,
+      "lon": -15.6313727,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-atalaya-de-guia/",
+      "tags": {
+        "name": "SPAR Atalaya De Guia",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 08:30-21:30; Su 08:00-15:00",
+        "phone": "928322728",
+        "website": "https://spargrancanaria.es/tiendas/spar-atalaya-de-guia/"
+      },
+      "published_hours_text": "Horario L-S: 08:30-21:30 Horario Domingos y festivos: 08:00-15:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-tenteniguada",
+      "lat": 27.98621,
+      "lon": -15.52363,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-tenteniguada/",
+      "tags": {
+        "name": "SPAR Tenteniguada",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 08:30-13:30,17:00-20:30; Su 09:00-15:00",
+        "phone": "928705383",
+        "website": "https://spargrancanaria.es/tiendas/spar-tenteniguada/"
+      },
+      "published_hours_text": "Horario L-S: 08:30-13:30 / 17:00-20:30 Horario Domingos y festivos: 09:00-15:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-pasito-blanco",
+      "lat": 27.747929,
+      "lon": -15.62246,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-pasito-blanco/",
+      "tags": {
+        "name": "SPAR Pasito Blanco",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Su 08:00-21:00",
+        "phone": "677953770",
+        "website": "https://spargrancanaria.es/tiendas/spar-pasito-blanco/"
+      },
+      "published_hours_text": "Horario L-S: 08:00-21:00 Horario Domingos y festivos: 08:00-21:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-valleseco",
+      "lat": 28.050372,
+      "lon": -15.576,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-valleseco/",
+      "tags": {
+        "name": "SPAR Valleseco",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Sa 09:00-13:30,17:00-20:30; Su off",
+        "phone": "928618977",
+        "website": "https://spargrancanaria.es/tiendas/spar-valleseco/"
+      },
+      "published_hours_text": "Horario L-S: 09:00-13:30 / 17:00-20:30 Festivos: 09:00-13:30 Domingos cerrado",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-sansofe",
+      "lat": 28.1049392,
+      "lon": -15.4398845,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-sansofe/",
+      "tags": {
+        "name": "SPAR Sansofe",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Fr 08:30-20:30; Sa-Su 09:00-15:00",
+        "phone": "928941225",
+        "website": "https://spargrancanaria.es/tiendas/spar-sansofe/"
+      },
+      "published_hours_text": "Horario L-V: 08:30-20:30 Horario Sábado: 09:00-15:00 Domingos y festivos: 09:00-15:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    },
+    {
+      "type": "owner",
+      "id": "spar-vista-bonita",
+      "lat": 27.760417,
+      "lon": -15.60095,
+      "source_url": "https://spargrancanaria.es/tiendas/spar-vista-bonita/",
+      "tags": {
+        "name": "SPAR Vista Bonita",
+        "brand": "SPAR",
+        "shop": "supermarket",
+        "opening_hours": "Mo-Su 08:00-21:00",
+        "phone": "928140530",
+        "website": "https://spargrancanaria.es/tiendas/spar-vista-bonita/"
+      },
+      "published_hours_text": "Horario L-S: 08:00-21:00 Horario Domingos y festivos: 08:00-21:00",
+      "hours_note": "Operator weekly schedule checked 25 Oct 2026; local holiday exceptions may apply."
+    }
+  ]
+}

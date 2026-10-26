@@ -4,3 +4,6 @@
 *.css text eol=lf
 *.json text eol=lf
 *.gpx text eol=lf
+# Preserve original organiser uploads byte-for-byte as source evidence.
+360_2026_Total.gpx -text
+360_2026_Waypoints.gpx -text

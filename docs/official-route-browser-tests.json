@@ -1,0 +1,72 @@
+{
+  "passed": 54,
+  "results": [
+    {
+      "browser": "chromium",
+      "passed": 27,
+      "checks": [
+        "official route uses measured GPX distance without stretching",
+        "incompatible legacy progress and timing are reset explicitly",
+        "migration retains pacing, map and view preferences",
+        "Artenara is the next aid checkpoint, not a sleeping lifebase",
+        "official Artenara cut-off and predicted margin are visible",
+        "upcoming instruction is tied to the PDF waypoint number",
+        "all twenty-nine numbered organiser instructions are available",
+        "official instruction retained: high seas",
+        "official instruction retained: pedestrian footbridge",
+        "official instruction retained: Close the gate",
+        "official instruction retained: Trail washout",
+        "official instruction retained: Slippery ground",
+        "official instruction retained: Alternative passage",
+        "PDF provenance and page references are exposed",
+        "explicit coastal instruction remains active throughout its 3.5km span",
+        "open instructions survive progress updates",
+        "next checkpoint advances from aid station to official control",
+        "a late checkpoint plan is visibly flagged",
+        "next lifebase retains distinct sleeping-service label",
+        "official map includes checkpoint and navigation waypoint layers",
+        "download combines full track and official waypoint instructions",
+        "portable HTML retains same-route progress without a stale migration notice",
+        "new route progress survives reload without recurring reset",
+        "official panel and instructions fit 320px",
+        "official panel and instructions fit 390px",
+        "official panel and instructions fit 844px",
+        "no runtime errors throughout official course journeys"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "passed": 27,
+      "checks": [
+        "official route uses measured GPX distance without stretching",
+        "incompatible legacy progress and timing are reset explicitly",
+        "migration retains pacing, map and view preferences",
+        "Artenara is the next aid checkpoint, not a sleeping lifebase",
+        "official Artenara cut-off and predicted margin are visible",
+        "upcoming instruction is tied to the PDF waypoint number",
+        "all twenty-nine numbered organiser instructions are available",
+        "official instruction retained: high seas",
+        "official instruction retained: pedestrian footbridge",
+        "official instruction retained: Close the gate",
+        "official instruction retained: Trail washout",
+        "official instruction retained: Slippery ground",
+        "official instruction retained: Alternative passage",
+        "PDF provenance and page references are exposed",
+        "explicit coastal instruction remains active throughout its 3.5km span",
+        "open instructions survive progress updates",
+        "next checkpoint advances from aid station to official control",
+        "a late checkpoint plan is visibly flagged",
+        "next lifebase retains distinct sleeping-service label",
+        "official map includes checkpoint and navigation waypoint layers",
+        "download combines full track and official waypoint instructions",
+        "portable HTML retains same-route progress without a stale migration notice",
+        "new route progress survives reload without recurring reset",
+        "official panel and instructions fit 320px",
+        "official panel and instructions fit 390px",
+        "official panel and instructions fit 844px",
+        "no runtime errors throughout official course journeys"
+      ]
+    }
+  ],
+  "physical_device_test": false
+}

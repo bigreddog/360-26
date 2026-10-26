@@ -3,7 +3,7 @@
 Status: specification of the current product and required maintenance workflow  
 Repository: [bigreddog/360-26](https://github.com/bigreddog/360-26)  
 Application: [bigreddog.github.io/360-26](https://bigreddog.github.io/360-26/)  
-Baseline: integrated roadbook with 12/24-hour forecasts, app installation and remembered street-map settings; updated 25 October 2026
+Baseline: official 2026 GPX + 29 organiser waypoints/PDF, 12/24-hour forecasts, app installation and remembered map settings; updated 26 October 2026
 
 ## 1. Purpose and user
 
@@ -20,34 +20,43 @@ This is a personal, static web application with a downloadable, self-contained H
 | Race start | Wednesday 4 November 2026, 09:00, Atlantic/Canary |
 | Final time limit | 101 hours; Sunday 8 November 2026, 14:00 |
 | Published target distance | 254.11 km |
-| Candidate GPX distance | 254.07419869370452 km, displayed as 254.1 km |
-| Roadbook elevation | Approximately +11,939 / −10,996 m, using the method below |
+| Official GPX distance | 249.37268507008034 km, displayed as 249.4 km; the PDF still lists 254.11 km |
+| Archived candidate | 254.07419869370452 km; retained for comparison |
+| Roadbook elevation | Approximately +11,861 / −10,940 m, using the method below |
 | Original ascent estimate | Approximately 10,500 m with substantial uncertainty; do not force the calculated total to match it |
 | Default daily distances | 85 / 70 / 60 / 50 km; later days reflect fatigue |
 | Stronger / slower presets | 90 / 75 / 65 / 55 km and 80 / 65 / 55 / 45 km |
-| Route structure | 29 terrain legs, 30 anchors, five checkpoint stages |
-| Resupply dataset | 353 places; 102 with published hours, 11 with operator-checked schedules |
-| Canonical GPX | [`routes/canarias360_best_candidate.gpx`](routes/canarias360_best_candidate.gpx) |
+| Route structure | 47 legs, 48 anchors, nine checkpoint stages; four sleeping lifebases |
+| Resupply dataset | 337 places; 95 with published hours, nine with operator-checked schedules |
+| Canonical GPX | [`routes/canarias360_official_2026.gpx`](routes/canarias360_official_2026.gpx) |
 | Canonical roadbook data | [`data/roadbook_data.json`](data/roadbook_data.json) |
 
-The organiser target distances and actual candidate distances are separate quantities:
+The organiser's published distance and the supplied track's actual distance are separate quantities. Do not stretch the track or change geography to match the PDF.
 
-| Checkpoint | Organiser cumulative km | Candidate cumulative km, rounded |
-| --- | ---: | ---: |
-| Gáldar | 0.00 | 0.000 |
-| Cercados de Araña | 79.20 | 79.174 |
-| Parque Sur | 121.68 | 121.631 |
-| Santa Lucía | 163.60 | 163.482 |
-| Santa Brígida | 212.99 | 212.918 |
-| Tejeda | 254.11 | 254.074 |
+| WP | Official checkpoint | Actual GPX km | PDF km where supplied | Cut-off, Canary time | Service |
+| --- | --- | ---: | ---: | --- | --- |
+| 1 | Gáldar | 0.000 | 0.00 | Start Wed 4, 09:00 | Start |
+| 4 | Artenara | 34.248 | — | Wed 4, 19:55 | Aid station; **no sleeping lifebase** |
+| 9 | Aserrador | 63.530 | — | Thu 5, 05:35 | Cut-off control |
+| 10 | Cercados de Araña | 77.594 | 79.20 | Thu 5, 10:05 | Life base 1 |
+| 15 | Parque Sur | 119.576 | 121.68 | Fri 6, 01:35 | Life base 2 |
+| 20 | Santa Lucía | 160.792 | 163.60 | Fri 6, 19:40 | Life base 3 |
+| 21 | La Pasadilla | 179.973 | — | Sat 7, 05:50 | Cut-off control |
+| 26 | Santa Brígida | 209.212 | 212.99 | Sat 7, 18:30 | Life base 4 |
+| 28 | Balcón de Zamora | 231.629 | — | Sun 8, 06:10 | Cut-off control |
+| 29 | Tejeda | 249.373 | 254.11 | Sun 8, 14:00 | Finish |
 
-The application uses the candidate's actual distance axis for progress, section boundaries, forecasts and matching. It must not stretch the route to the organiser distances. Counts, distances and example finish times in this document describe this revision; they must be recalculated if the route changes.
+The raw source’s elevation-adjusted 3D length is approximately 253.956 km. This illustrates why distance conventions matter; the organiser’s exact 254.11 km calculation is not supplied. The application retains its consistent horizontal geodesic convention.
+
+The application uses actual official GPX chainage for progress, legs, forecasts and matching. Artenara is an official checkpoint without a sleeping lifebase, per the runner's clarification. Control points do not imply food or sleep services. All nine cut-offs are now supplied by the PDF and must be shown against the runner's projected arrival.
 
 ### Route evidence and scope
 
-The race route remains labelled a **candidate**, unless reliable evidence establishes that a replacement is the actual event course. Historical GPX files are research evidence, not proof of the current edition. The supplied organiser elevation profiles and checkpoint distances were primary evidence for reconstruction. Preserve provenance, qualitative confidence and unresolved alternatives; never express a heuristic score as a calibrated probability.
+Canonical sources are the runner-uploaded root files [360_2026_Total.gpx](360_2026_Total.gpx), [360_2026_Waypoints.gpx](360_2026_Waypoints.gpx), and [the official 2026 roadbook PDF](docs/evidence/ROAD_BOOK_2026_-ESP_ENG_FRA.pdf). Combine track and waypoints before processing. The source track contains 92,660 points; the combined canonical download removes 1,116 consecutive duplicate positions, retains the other 91,544 points unchanged, and includes all 29 supplied waypoint locations with numbered English instructions. Zero waypoint-elevation placeholders are replaced by nearby official track elevations. Original uploads remain unchanged. An old internal software timestamp is not treated as evidence of the course edition.
 
-Access flags are treated as **resolved**, following the user's instruction. Do not reintroduce the retired access-warning workflow. This does not authorize inventing geometry: replacement tracks and resupply approaches still require real connected paths or roads. If a route must be inferred again, begin with evidence discovery, compare checkpoint stages and distance-constrained elevation profiles, and retain alternatives. Do not generate a convenient synthetic track merely to hit distance or ascent targets. Historical holdouts must be identified by their actual provenance; an uncertain planning track is not a verified completed-race benchmark.
+The prior candidate remains archived in [routes/canarias360_best_candidate.gpx](routes/canarias360_best_candidate.gpx) and [data/candidate_roadbook_reference.json](data/candidate_roadbook_reference.json). The [comparison report](docs/route-comparison.html) documents a 4.702 km reduction and similar smoothed ascent (11,861 m official vs 11,939 m candidate). At 25 m sampling, 68.57% of the official course lies within 30 m of the candidate; reverse overlap is 66.99%. These are geometric overlap measures, not probabilities.
+
+The supplied official source supersedes the inferred candidate. Historical GPX files and organiser profile artwork remain research evidence, rather than substitutes for the new geographic track. Preserve provenance and unresolved differences, including the PDF's 254.11 km versus measured 249.373 km. Access flags remain **resolved** per user instruction. Do not introduce invented route or resupply connectors. The PDF's rough-sea coastal alternative and collapsed-trail warning are instructions; no replacement geometry was supplied, so the app must not invent a diversion.
 
 ## 3. Product principles and scope boundaries
 
@@ -72,11 +81,11 @@ Sync must request GPS when necessary, wait for a usable route match, calculate e
 
 The fatigue model allocates each 24-hour block using distance plus ascent effort, while retaining its daily distance quota. The final quota repeats if more days are needed. Ordinary meals, sleep and stops are included in daily targets. **Extra delay** adds further time. Opening-hour ETA scenarios use daily quotas ±5 km; they are scenarios, not statistical confidence intervals.
 
-The candidate's default projected finish is approximately Sunday 03:45, with 10 h 15 m spare. The slower preset is approximately Sunday 13:50. Recalculate these examples for a replacement route; do not hardcode them into the model. Retain a warning when a plan actually misses the final limit. Intermediate race cut-offs and base services are not inferred when organiser details are unavailable.
+The official course's default projected finish is approximately Sunday 01:30, with 12 h 30 m spare. The slower preset is approximately Sunday 11:20, with 2 h 40 m spare. Recalculate these examples for a replacement route; do not hardcode them into the model. Retain a warning when a plan actually misses the final limit. Use the nine supplied checkpoint cut-offs. Do not infer additional services or other unpublished barriers.
 
 ### 4.2 Race tab
 
-Lead with a prominent next-checkpoint panel: dark green, gold accent, large checkpoint name, distance remaining, ascent/descent remaining and planned arrival. It must be easy to distinguish from surrounding panels. Completion must display the finish state.
+Lead with a prominent next-checkpoint panel: dark green, gold accent, large checkpoint name, distance remaining, ascent/descent remaining and planned arrival. It must be easy to distinguish from surrounding panels. Include checkpoint service type, the official cut-off and planned margin or lateness. Show the next numbered PDF route instruction and any active explicit-distance warning; fold remaining notes before that checkpoint and the full 29-waypoint list. Preserve open lists during GPS updates. Include PDF source/page references. Never label Artenara as a sleeping base. Completion must display the finish state.
 
 Place **Weather ahead** immediately above **Route profile**. Show the full elevation profile with checkpoint and progress markers; tapping it selects the corresponding leg on the map. Provide folded stage details and the food-gap summary.
 
@@ -108,7 +117,7 @@ Shop ETAs include the outward detour. The finish model does not silently add eve
 
 ### 4.5 Map and location
 
-Use bundled Leaflet to show the candidate polyline, filtered resupply pins, checkpoint markers, selected legs and mapped stop approaches. Display actual GPS position plus accuracy and provide centre-on-me, whole-route and progress actions. Label candidate and pin semantics clearly.
+Use bundled Leaflet to show the official polyline, filtered resupply pins, checkpoint markers, selected legs and mapped stop approaches. Display actual GPS position plus accuracy and provide centre-on-me, whole-route and progress actions. Label the official course, checkpoint numbers/types and organiser waypoint notes clearly.
 
 Route geometry, pins and selection must work without online tiles. Street-map tiles are on by default when the Map view opens and need internet. Persist the on/off choice as a boolean `streetMap` in the existing plan settings, restore it before map initialization, and preserve it in saved HTML. Older settings without this field default to on. Do not request tiles before the map opens or when the saved preference is off. Tile failure must not disable route geometry or pins; do not bulk-cache OSM tiles. Never substitute straight-line proximity for a pedestrian route to a shop.
 
@@ -181,7 +190,8 @@ Use plain JavaScript/CSS/HTML and bundled Leaflet. There are no npm runtime depe
 | `vision-core.js` | GPX parsing, geometry, matching, elevation and orientation maths |
 | `vision.js`, `vision.css` | Trail Vision lifecycle, controls, sensors and renderer |
 | `data/roadbook_data.json` | Canonical derived race, route, terrain, POI and evidence data |
-| `routes/canarias360_best_candidate.gpx` | Canonical downloadable race candidate with elevations and checkpoint waypoints |
+| `routes/canarias360_official_2026.gpx` | Canonical combined official track with all 29 numbered instruction waypoints |
+| `scripts/update_official_route.py`, `data/poi_sources/`, `data/routing/` | Reproducible comparison, terrain and resupply regeneration with source snapshots |
 | `scripts/build.py` | Validates GPX hash and embeds assets/data/GPX into generated `index.html` |
 | `sw.template.js` → `sw.js` | Hosted offline navigation cache, versioned from built HTML, manifest and icon content |
 | `tests/`, `docs/` | Pure/browser verification, evidence, screenshots and sensor documentation |
@@ -193,19 +203,21 @@ Use plain JavaScript/CSS/HTML and bundled Leaflet. There are no npm runtime depe
 | Field | Required meaning and consistency |
 | --- | --- |
 | `gpx_sha256` | SHA-256 of the exact canonical GPX bytes; must match the download and embedded GPX |
-| `route` | Ordered `[latitude, longitude]` points corresponding to the canonical GPX track-point sequence |
-| `route_km` | Cumulative horizontal geodesic kilometres, same length/order as `route`; zero start and increasing axis |
+| `route` | Display/matching/weather `[latitude, longitude]` polyline using original official vertices simplified within 0.75 m; 18,576 points in this revision |
+| `track_km` | Full official GPX point-by-point cumulative axis (91,544 entries), used by Trail Vision; distinct from simplified map geometry |
+| `route_km` | Cumulative horizontal geodesic kilometres, same length/order as `route`, retaining full-track chainage at selected vertices; zero start and increasing axis |
 | `distance_km` | Full route length on that same axis; avoid accumulated display rounding |
 | `profile` | Ordered `[km, elevation_m, cumulative_ascent_m, cumulative_descent_m]` samples covering the whole route |
 | `gain_m`, `loss_m`, `profile_method` | Totals from that common processed profile and an explicit processing description |
-| `checkpoints` | Ordered `name`, actual route `km`, `lat`, `lon` for start, bases and finish |
+| `checkpoints` | Ten ordered official checkpoint locations, including start, aid, controls, four lifebases and finish; names, WP number, type, actual km, coordinates and published cut-offs |
+| `waypoints` | All 29 supplied waypoint locations with original names, numbered English instructions, PDF page, explicit instruction extent where supplied, service type and cut-off |
 | `anchors` | Ordered named route locations with actual `km` and `checkpoint` flag |
 | `sections` | Consecutive zero-based IDs, names, `from_km`, `to_km`, distance, gain/loss, end height/location, stage and checkpoint flag |
 | `pois` | Stable source ID, name/category, coordinates, route km/index, approach distances/geometry/time, opening-hours evidence, contacts and type flags |
 | `start`, `timezone`, `limit_hours`, `daylight` | Race-clock context and dated sunrise/sunset data |
 | `based_on`, `researched`, `access_assumption`, `sources`, `source_decisions`, `notes` | Source identity, dates, hashes/URLs, decisions and limitations |
 
-The current roadbook method resamples elevation at 25 m, applies a Gaussian filter with sigma 50 m, and sums positive/negative increments on that grid. The stored display profile is reduced to roughly 100 m spacing while retaining the cumulative totals and endpoints. Calculate leg gain/loss by differences of cumulative totals, not by separately smoothing each leg or summing differences of the coarser display elevations. Whole-metre rounding may produce small section-sum differences.
+The current roadbook uses official GPX elevations, resamples elevation at 25 m, applies a Gaussian filter with sigma 50 m, and sums positive/negative increments on that grid. The stored display profile is reduced to roughly 100 m spacing while retaining the cumulative totals and endpoints. Calculate leg gain/loss by differences of cumulative totals, not by separately smoothing each leg or summing differences of the coarser display elevations. Whole-metre rounding may produce small section-sum differences.
 
 Trail Vision independently uses the GPX elevation with a short local filter. Its 500 m totals need not exactly match the coarser roadbook profile; retain the documented distinction.
 
@@ -221,9 +233,13 @@ Downloaded files may restrict GPS and motion permissions. Recommend the cached H
 
 **Replacing the GPX file alone is not a route update. Updating only its checksum is also insufficient.** The GPX, distance axis, terrain, checkpoints, POIs, weather and Trail Vision must describe the same revision before publishing.
 
-The checked-in `scripts/build.py` is an **assembler**, not a resupply/elevation regeneration pipeline. It checks the GPX checksum but does not establish data correctness. There is currently no complete route-update command in this repository. The original preparation scripts and graph/DEM inputs existed in a separate reconstruction workspace; they are not dependencies that a fresh clone can assume are present. If recovering them, port and review the data-generation logic into this repository before relying on it. In particular, do not run the historical `prepare_repo.py` scaffolder against the live app: it copies old application sources and would overwrite later features.
+The checked-in `scripts/build.py` remains an **assembler**. The reproducible preparation command is now `scripts/update_official_route.py`, with development dependencies in `requirements-route-update.txt`. It merges both root GPXs, reviews correspondence against `data/official_waypoint_instructions.json`, writes the combined canonical GPX, compares the candidate, rebuilds terrain/legs/checkpoints, and recalculates resupply against the versioned `data/routing/approach_graph.npz` and `data/poi_sources/` snapshots. `way_tags.json.gz` preserves underlying OSM way classifications/access/surfaces. No Python preprocessing dependencies are added to the browser runtime.
 
-The following is the required maintainer procedure. It specifies work to perform for an actual replacement; this documentation change does not implement an uploader or automated regeneration tool.
+The approach graph is clipped to 1,800 m of the current official track and its source hash is checked. A different track must have its graph coverage reviewed/refreshed before regeneration; do not relabel an incomplete corridor cache as complete new-route coverage. Venue final-entrance offsets (up to 100 m) and GPX-to-OSM attachment offsets (at most 3 m) are recorded estimates; only mapped graph edges are drawn. One shortest network attachment per venue is represented, so repeated-pass opportunities are not exhaustively enumerated. Original OSM/operator snapshots remain dated 24–25 October, with approaches recalculated on 26 October.
+
+Do not run the historical `prepare_repo.py` scaffolder against the live app; it would overwrite later features.
+
+The following remains the required maintainer procedure. The implemented preparation script automates the current two-GPX update; it is not an in-browser race GPX uploader. Review and update the PDF transcription when source waypoints or instructions change.
 
 ### 7.1 Record and validate the replacement
 
@@ -235,8 +251,8 @@ The following is the required maintainer procedure. It specifies work to perform
 
 ### 7.2 Rebuild geometry and terrain
 
-1. Replace `routes/canarias360_best_candidate.gpx` with the validated canonical revision; preserve/check its checkpoint waypoints. The public filename can stay stable, but source identity and checksum must change appropriately.
-2. Recompute cumulative WGS84 horizontal geodesic distance from the new point sequence. Produce aligned `route` and `route_km` arrays. Keep full computational precision until display; match the GPX parser's point count and ordering, including at repeated passes. If duplicate removal is needed, apply the same documented normalization to the canonical GPX and derived arrays.
+1. Write the canonical route named by `gpx_file` (currently `routes/canarias360_official_2026.gpx`) from the validated merged sources; preserve/check its checkpoint waypoints. The public filename can stay stable, but source identity and checksum must change appropriately.
+2. Recompute cumulative WGS84 horizontal geodesic distance from the new point sequence. Produce full `track_km` aligned with the canonical GPX parser, and simplified map `route`/`route_km` arrays retaining those original chainages. Keep full computational precision until display, including repeated passes. If duplicate removal is needed, apply the same documented normalization to the canonical GPX and derived arrays.
 3. Recompute the common 25 m elevation grid, 50 m Gaussian smoothing, cumulative gain/loss and reduced display profile, or document a justified revised method. Recalculate total distance/ascent/descent and start/end heights. Do not reuse the previous route's totals.
 4. Reproject all checkpoints and named anchors to their correct occurrence on the new route. Remove anchors that are no longer on the course, add meaningful new terrain/town boundaries, and rebuild every leg and stage. Do not scale old kilometres by the new length ratio.
 5. Make section IDs consecutive and zero-based: map selection currently indexes `DATA.sections[id]`. Ensure sections partition the entire route without gaps or overlaps, and that stage/checkpoint endpoints reconcile with actual checkpoint positions.
@@ -265,7 +281,7 @@ The following is the required maintainer procedure. It specifies work to perform
 
 ### 7.5 Update Trail Vision and location matching
 
-1. Rebuild the embedded canonical GPX and aligned `getAxis()` input (`DATA.route_km` converted to metres). Verify the preview parser consumes exactly the corresponding sequence of points. The downloaded GPX, map route, preview and progress HUD must agree on route identity and kilometre positions.
+1. Rebuild the embedded canonical GPX and aligned `getAxis()` input (`DATA.track_km` converted to metres; `route_km` remains a compatibility fallback). Verify the preview parser consumes exactly the corresponding sequence of points. The downloaded GPX, map route, preview and progress HUD must agree on route identity and kilometre positions.
 2. Use the replacement GPX elevations for the preview. Confirm its local filtering, ascent/descent/net change, significant climbs, true-scale rendering and optional exaggeration. A flat fallback is valid only with its missing/unreliable-height warning.
 3. Reset stale preview routes, prior matches, hints and windows when the route revision changes. The current deployed route is loaded with the page; a full reload acquires the new embedded GPX. If implementing hot replacement, dispose/recreate cached Trail Vision state and rebind the shared tracker explicitly.
 4. Exercise new sharp turns, switchbacks, overlapping passes, backtracking and the approach to the finish. Confirm GPS projection picks the intended pass and does not jump between nearby parts. Show uncertainty instead of snapping to a convenient far-away course kilometre.
@@ -274,14 +290,18 @@ The following is the required maintainer procedure. It specifies work to perform
 
 ### 7.6 Migrate saved progress and refresh all release metadata
 
-The current plan key stores kilometre progress without a route identity. Clamping an old kilometre to a new route length does **not** map the runner to the new course. A production route replacement must handle this explicitly: add route identity to saved-plan migration, retain compatible pacing and street-map preferences, and reset or geographically rematch progress and time anchoring with a visible explanation. An unchanged section before a late-course correction may permit a documented mapping, but never assume equal kilometres represent equal positions. Include embedded `savedPlanData` in this review.
+Plan state now includes `routeSha256`. A different or missing route identity resets progress, elapsed anchor and extra delay, retains pace/map/view preferences, and displays an explanation. Same-route progress survives reload and portable HTML saves. Previously the plan stored kilometres without route identity. Clamping an old kilometre to a new route length does **not** map the runner to the new course. Maintain this explicit route-identity migration on every replacement: retain compatible pacing and street-map preferences and reset or geographically rematch progress/time with a visible explanation. An unchanged section before a late-course correction may permit a documented mapping, but never assume equal kilometres represent equal positions. Include embedded `savedPlanData` in this review.
 
 Update `gpx_sha256` only after derived data has been regenerated. Update `based_on`, `researched`, sources/hashes/decisions, profile method, count references and route documentation. If the event date/time or island coverage changes, update race metadata, daylight data, explicit start-time copy and relevant timezone/opening-hours assumptions. Keep the original source and new validation evidence attributable.
 
 ### 7.7 Build, verify and publish the route revision together
 
 ```sh
-# Run after regenerating and reviewing GPX + roadbook_data.json.
+# Install development-only preprocessing dependencies.
+python3 -m pip install -r requirements-route-update.txt
+# Review both root GPXs, PDF transcription and graph/source coverage first.
+python3 scripts/update_official_route.py
+python3 tests/test_official_data.py
 python3 scripts/build.py
 npm test
 python3 -m http.server 8787 --bind 127.0.0.1
@@ -310,6 +330,8 @@ python3 tests/weather_browser_test.py
 python3 tests/vision_browser_test.py
 python3 tests/offline_browser_test.py
 python3 tests/install_browser_test.py
+python3 tests/official_route_browser_test.py
+python3 tests/test_official_data.py
 ```
 
 Existing suites include route-specific counts, town names, fixed kilometre examples and expected finish times. A new route legitimately changes some expectations: recompute them from reviewed reference data, retain independent invariants, and do not delete failing connectivity, matching or provenance checks to make a replacement pass. Keep the synthetic Trail Vision fixture strictly as test data, separate from the published race route.
@@ -317,7 +339,7 @@ Existing suites include route-specific counts, town names, fixed kilometre examp
 A route revision is acceptable only when:
 
 - The canonical GPX is valid, real, continuous and ordered, with usable elevation and checkpoint waypoints; every required connection is evidenced. No unreported bridge or invented off-trail shortcut is introduced.
-- GPX hash, embedded/downloaded bytes, route point order/count, distance axis, profile endpoint and total distance reconcile. Each GPX point must have the correct route-axis correspondence.
+- GPX hash, embedded/downloaded bytes, full `track_km` point order/count, display `route`/`route_km` alignment, profile endpoint and total distance reconcile. Every canonical GPX point must have the correct full-track axis correspondence.
 - Checkpoints occur in the correct order and distances are measured on the replacement, with organiser target errors documented separately. Legs cover the route once, and their distance/elevation totals reconcile within documented rounding tolerances.
 - Every displayed POI is reattached to the new route with source-backed position, current approach metrics and reviewed opening evidence. No old-route stop survives solely because its stale kilometre still fits the new length.
 - Completion ticks, active-leg selection, endpoint POI allocation, backwards corrections, GPS/time sync and manual fallback work through the new course and finish.
@@ -332,6 +354,6 @@ Browser simulations verify software behaviour, not physical compass/GPS accuracy
 
 The maintained deliverable is the integrated application plus its canonical GPX/data, generated HTML/service worker, source provenance, automated checks, brief user documentation and this root-level PRD. Existing reconstruction alternatives/reports remain evidence artifacts; do not imply they are hosted app features when they are not in the repository.
 
-The main maintenance gap is a checked-in, reproducible GPX-to-roadbook preparation pipeline. Before the next route replacement, recover or implement that pipeline with graph/DEM/source inputs and route-version-aware plan migration. Keep it separate from the lightweight runtime. This is a requirement for safe future route maintenance, not a claim that the current build command performs it.
+The preparation pipeline and source snapshots are checked in and separate from the lightweight runtime. On future replacements, refresh route-corridor graph/POI coverage, review the organiser PDF mapping and regenerate everything coherently. Source files, derived geometry, current application identity and saved-state migration must continue to agree.
 
 Keep [README.md](README.md) as the short usage/build guide and [docs/trail-vision.md](docs/trail-vision.md) as detailed sensor/browser documentation. When product behaviour changes, update this PRD, the affected guide, and the relevant validation evidence in the same change.
