@@ -176,7 +176,7 @@
       <xsd:element name="time"			type="xsd:dateTime"		minOccurs="0">
 		<xsd:annotation>
 		  <xsd:documentation>
-			Creation/modification timestamp for element. Date and time in are in Univeral Coordinated Time (UTC), not local time! Conforms to ISO 8601 specification for date/time representation. Fractional seconds are allowed for millisecond timing in tracklogs. 
+			Creation/modification timestamp for element. Date and time in are in Univeral Coordinated Time (UTC), not local time! Conforms to ISO 8601 specification for date/time representation. Fractional seconds are allowed for millisecond timing in tracklogs.
 		  </xsd:documentation>
 		</xsd:annotation>
 	  </xsd:element>
@@ -206,7 +206,7 @@
 	  <xsd:element name="cmt"			type="xsd:string"		minOccurs="0">
 		<xsd:annotation>
 		  <xsd:documentation>
-			GPS waypoint comment. Sent to GPS as comment. 
+			GPS waypoint comment. Sent to GPS as comment.
 		  </xsd:documentation>
 		</xsd:annotation>
 	  </xsd:element>
@@ -386,7 +386,7 @@
 	   </xsd:documentation>
 	  </xsd:annotation>
 	 </xsd:element>
- 
+
       <xsd:element name="rtept"	type="wptType" minOccurs="0" maxOccurs="unbounded">
 	  <xsd:annotation>
 	   <xsd:documentation>
@@ -461,7 +461,7 @@
 	   </xsd:documentation>
 	  </xsd:annotation>
 	 </xsd:element>
-  
+
      <xsd:element name="trkseg"		type="trksegType"		minOccurs="0" maxOccurs="unbounded">
       <xsd:annotation>
        <xsd:documentation>
@@ -471,7 +471,7 @@
 	 </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
- 
+
   <xsd:complexType name="extensionsType">
    <xsd:annotation>
     <xsd:documentation>
@@ -492,7 +492,7 @@
   <xsd:complexType name="trksegType">
    <xsd:annotation>
     <xsd:documentation>
- 	 A Track Segment holds a list of Track Points which are logically connected in order. To represent a single GPS track where GPS reception was lost, or the GPS receiver was turned off, start a new Track Segment for each continuous span of track data.
+	 A Track Segment holds a list of Track Points which are logically connected in order. To represent a single GPS track where GPS reception was lost, or the GPS receiver was turned off, start a new Track Segment for each continuous span of track data.
     </xsd:documentation>
    </xsd:annotation>
    <xsd:sequence>	<!-- elements must appear in this order -->

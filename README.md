@@ -102,6 +102,7 @@ For GitHub Pages, select the `main` branch and repository root. No hosting accou
 - Shop schedules: [SPAR Gran Canaria owner pages](https://spargrancanaria.es/tiendas/), linked individually in the app.
 - DEM: Mapzen Terrain Tiles / AWS Skadi composite; [Joerd documentation](https://github.com/tilezen/joerd/tree/master/docs).
 - Leaflet 1.9.4, BSD-2-Clause, bundled with its license in `vendor/`.
+- GPX 1.1 validation schema: [TopoGrafix](https://www.topografix.com/GPX/1/1/gpx.xsd), vendored with documentation intact.
 - Day/night markers: Astral island-centre sunrise/sunset calculations, not terrain-shadow or weather predictions.
 
 ## Trail Vision
