@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx creator="CompeGPS" version="1.1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/WaypointExtension/v1 http://www8.garmin.com/xmlschemas/WaypointExtensionv1.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www8.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/ActivityExtension/v1 http://www8.garmin.com/xmlschemas/ActivityExtensionv1.xsd http://www.garmin.com/xmlschemas/AdventuresExtensions/v1 http://www8.garmin.com/xmlschemas/AdventuresExtensionv1.xsd http://www.garmin.com/xmlschemas/PressureExtension/v1 http://www.garmin.com/xmlschemas/PressureExtensionv1.xsd http://www.garmin.com/xmlschemas/TripExtensions/v1 http://www.garmin.com/xmlschemas/TripExtensionsv1.xsd http://www.garmin.com/xmlschemas/TripMetaDataExtensions/v1 http://www.garmin.com/xmlschemas/TripMetaDataExtensionsv1.xsd http://www.garmin.com/xmlschemas/ViaPointTransportationModeExtensions/v1 http://www.garmin.com/xmlschemas/ViaPointTransportationModeExtensionsv1.xsd http://www.garmin.com/xmlschemas/CreationTimeExtension/v1 http://www.garmin.com/xmlschemas/CreationTimeExtensionsv1.xsd http://www.garmin.com/xmlschemas/AccelerationExtension/v1 http://www.garmin.com/xmlschemas/AccelerationExtensionv1.xsd http://www.garmin.com/xmlschemas/PowerExtension/v1 http://www.garmin.com/xmlschemas/PowerExtensionv1.xsd http://www.garmin.com/xmlschemas/VideoExtension/v1 http://www.garmin.com/xmlschemas/VideoExtensionv1.xsd" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wptx1="http://www.garmin.com/xmlschemas/WaypointExtension/v1" xmlns:gpxtrx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:trp="http://www.garmin.com/xmlschemas/TripExtensions/v1" xmlns:adv="http://www.garmin.com/xmlschemas/AdventuresExtensions/v1" xmlns:prs="http://www.garmin.com/xmlschemas/PressureExtension/v1" xmlns:tmd="http://www.garmin.com/xmlschemas/TripMetaDataExtensions/v1" xmlns:vptm="http://www.garmin.com/xmlschemas/ViaPointTransportationModeExtensions/v1" xmlns:ctx="http://www.garmin.com/xmlschemas/CreationTimeExtension/v1" xmlns:gpxacc="http://www.garmin.com/xmlschemas/AccelerationExtension/v1" xmlns:gpxpx="http://www.garmin.com/xmlschemas/PowerExtension/v1" xmlns:vidx1="http://www.garmin.com/xmlschemas/VideoExtension/v1" xmlns:twonav="http://twonav.com/twonav">
+  <metadata>
+    <author>
+      <email id="" domain=""/>
+    </author>
+    <copyright author="">
+      <license></license>
+    </copyright>
+    <link href="http://www.compegps.com">
+      <text>CompeGPS TEAM, SL</text>
+    </link>
+    <time>2026-10-24T09:49:23.046Z</time>
+    <bounds maxlat="28.145988" maxlon="-15.471524" minlat="27.750472" minlon="-15.673628"/>
+  </metadata>
+  <wpt lat="27.791445" lon="-15.587023">
+    <ele>0</ele>
+    <name>ATENCIÓN A LA NAVEGACIÓN EN LOS PRÓXIMOS 7 KM. hASTA CONECTAR CON LA PISTA DE TIERRA.</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.825284" lon="-15.587965">
+    <ele>0</ele>
+    <name>PRECAUCIÓN. RIESGO DE CAÍDA A DISTINTO NIVEL EN LOS PRÓXIMOS METROS</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.895611" lon="-15.578118">
+    <ele>0</ele>
+    <name>ATENCIÓN A LA NAVEGACIÓN EN EL PRÓXIMO KM.</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.074196" lon="-15.541325">
+    <ele>0</ele>
+    <name>PASO ALTERNATIVO A LA PUERTA PRINCIPAL</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.751084" lon="-15.639823">
+    <ele>0</ele>
+    <name>EN LOS PRÓXIMOS 3.5 KM USAR ALTERNATIVA DE SENDERO MÁS LEJOS DE LA COSTA EN CASO DE TEMPORAL DE MAR</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.957236" lon="-15.656302">
+    <ele>0</ele>
+    <name>ATENCIÓN A LA NAVEGACIÓN EN LOS PRÓXIMOS 1.5 KM.</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.782130" lon="-15.652551">
+    <ele>0</ele>
+    <name>EXTREME PRECAUCIÓN. RIESGO DE CAÍDA A DISTINTO NIVEL</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.759383" lon="-15.598812">
+    <ele>0</ele>
+    <name>USAR PASO PEATONAL ELEVADO PARA CRUZAR LA VÍA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.020165" lon="-15.482157">
+    <ele>0</ele>
+    <name>PRECAUCIÓN. FIRME RESBALADIZO</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.015095" lon="-15.645190">
+    <ele>0</ele>
+    <name>VEGETACIÓN HASTA EL PRÓXIMO CRUCE DE PISTA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.001937" lon="-15.649327">
+    <ele>0</ele>
+    <name>EXTREME PRECAUCIÓN Y ATENCIÓN A LA NAVEGACIÓN</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.818117" lon="-15.586891">
+    <ele>0</ele>
+    <name>ATENCIÓN A LA NAVEGACIÓN HASTA CONECTAR CON LA PISTA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.855761" lon="-15.627930">
+    <ele>0</ele>
+    <name>ATENCIÓN A LA NAVEGACIÓN</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.968610" lon="-15.674469">
+    <ele>0</ele>
+    <name>ATENCIÓN A LA NAVEGACIÓN HASTA LLEGAR A LA CARRETERA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.025853" lon="-15.627137">
+    <ele>0</ele>
+    <name>ATENCIÓN A LA NAVEGACIÓN EN LOS PRÓXIMOS 700 METROS</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.030621" lon="-15.635482">
+    <ele>0</ele>
+    <name>ATENCIÓN A LA NAVEGACIÓN HASTA ALCANZAR LA POBLACIÓN</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.943455" lon="-15.508521">
+    <ele>0</ele>
+    <name>CERRAR CANCELA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.959431" lon="-15.521765">
+    <ele>0</ele>
+    <name>DERRUMBE SENDERO</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.009590" lon="-15.500976">
+    <ele>0</ele>
+    <name>ENTRADA SENDERO ESTRECHO</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.144779" lon="-15.655717">
+    <ele>0</ele>
+    <name>SALIDA. GÁLDAR</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.019978" lon="-15.646547">
+    <ele>0</ele>
+    <name>AVIT. ARTENARA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.963613" lon="-15.631983">
+    <ele>0</ele>
+    <name>PC 1. ASERRADOR</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.914486" lon="-15.629658">
+    <ele>0</ele>
+    <name>BV 1. CERCADOS DE ARAÑA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.764578" lon="-15.596587">
+    <ele>0</ele>
+    <name>BV 2. PARQUE SUR</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.913873" lon="-15.533594">
+    <ele>0</ele>
+    <name>BV 3. SANTA LUCÍA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.034526" lon="-15.500327">
+    <ele>0</ele>
+    <name>BV 4 SANTA BRÍGIDA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.945674" lon="-15.471159">
+    <ele>0</ele>
+    <name>PC 2. LA PASADILLA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="28.054469" lon="-15.567958">
+    <ele>0</ele>
+    <name>PC3. BALCÓN DE ZAMORA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+  <wpt lat="27.995765" lon="-15.615400">
+    <ele>0</ele>
+    <name>META. TEJEDA</name>
+    <desc></desc>
+    <sym></sym>
+  </wpt>
+</gpx>
