@@ -3,7 +3,7 @@
 Status: specification of the current product and required maintenance workflow  
 Repository: [bigreddog/360-26](https://github.com/bigreddog/360-26)  
 Application: [bigreddog.github.io/360-26](https://bigreddog.github.io/360-26/)  
-Baseline: official 2026 GPX + 29 organiser waypoints/PDF, 12/24-hour forecasts, app installation and remembered map settings; updated 26 October 2026
+Baseline: official 2026 GPX + 29 organiser waypoints/PDF, 12/24-hour forecasts, app installation and remembered map settings; updated 1 November 2026; AEMET numerical forecasts with explicit route fallback
 
 ## 1. Purpose and user
 
@@ -125,17 +125,17 @@ Route geometry, pins and selection must work without online tiles. Street-map ti
 
 Provide only **12 / 24 hour** views, with **12 hours** selected initially, for the locations and heights the runner is projected to reach. Use the existing fatigue/ascent pacing model and latest progress/time anchor. Extra delay holds projected position before travel resumes. Before the start, use the race schedule or a later explicit elapsed anchor; during the race, begin at the current clock time and last route progress.
 
-Request up to 25 hourly positions (start plus 24 hours) in a single Open-Meteo multi-location request, using projected latitude, longitude and the GPX-derived roadbook elevation. Include an exact fractional finish endpoint when needed and stop the outlook at the finish. Do not use only the start-town forecast, a single island-wide forecast, or today's weather in place of unsupported race dates.
+Calculate up to 25 hourly positions (start plus 24 hours). Prefer AEMET numerical municipal hourly forecasts where a verified capital is within 8 km, within 250 m elevation, downloaded within six hours, and has valid temperature/time coverage. Rank eligible towns by distance/2000 + absolute height difference/100; try the next if time coverage is missing. These are heuristics, not calibrated accuracy limits. Display town altitude, route separation and signed height mismatch, and retain the town forecast without inventing an altitude correction. For uncovered hours, use the existing Open-Meteo multi-location request with projected latitude/longitude and GPX elevation. Do not mix providers within an individual forecast record. Skip Open-Meteo when the entire trajectory has AEMET coverage. Include an exact fractional finish endpoint when needed and stop the outlook at the finish. Do not use only the start-town forecast, a single island-wide forecast, or today's weather in place of unsupported race dates.
 
-Show weather icons and text, temperature and feels-like ranges, approximate moving-route rain in mm, maximum individual hourly rain chance, peak hourly wind and gusts in **km/h**, and highest/lowest route terrain. Terrain ranges must include crests between hourly samples. Expand timed route stops for places, kilometres, elevations and detailed conditions. Use night variants where appropriate.
+Show weather icons and text, temperature and feels-like ranges, approximate moving-route rain in mm, maximum published rain chance with AEMET six-hour and Open-Meteo hourly periods distinguished, peak hourly wind and gusts in **km/h**, and highest/lowest route terrain. Terrain ranges must include crests between hourly samples. Expand timed route stops for places, kilometres, elevations and detailed conditions. Use night variants where appropriate.
 
 **Wind convention:** the provider's degrees and **From N / NE / …** labels describe the source. The north-up arrow shows the direction the air travels: `arrow bearing = (source bearing + 180) mod 360`. A northerly wind therefore points south. Apply this convention in both summary and stop cards. Pair summary direction with the strongest hourly wind sample; peak gusts may occur elsewhere. Calm conditions have no prevailing-direction arrow; missing direction remains unavailable. Do not add Beaufort scales.
 
 Use hourly Celsius/km/h/mm fields, UNIX times and GMT requests, displayed in Atlantic/Canary time. The current API request uses explicit start/end hours; do not add a mutually exclusive `forecast_days` parameter. Respect the provider's approximately 16-day forecast window and label distant, partial or unavailable forecasts. Never invent missing values or extrapolate beyond response times.
 
-Rain totals are approximate sums along the moving route, excluding the hour before outlook start and weighting a partial finish hour. A maximum hourly probability is not a combined whole-window probability. Elevation downscaling does not make exposed-ridge wind or local mountain weather certain.
+Rain totals are approximate sums along the moving route, excluding the hour before outlook start and weighting a partial finish hour. A maximum published probability is not a combined whole-window probability. AEMET six-hour probabilities must never be relabelled or divided into invented hourly chances. Normalize AEMET following-hour rain/gust records explicitly; preserve missing values and do not interpolate across absent hours. Elevation downscaling does not make exposed-ridge wind or local mountain weather certain.
 
-Refresh normally every 30 minutes while the Race tab is visible, after relevant plan changes or explicit time/location sync, and after substantial progress. Reuse the same trajectory when switching horizons and rate-limit failed requests. Cache fetched forecasts with route identity, original positions, dates and fetch time. Use cache schema version 2 and `canarias360-weather-v2`; do not reuse the former 18-hour cache as a full-day forecast. Switching between 12 and 24 hours must use the same newly calculated 24-hour trajectory without another request. Mark offline/stale data, and suppress expired numerical outlooks. Saved HTML should include the current forecast snapshot. Attribute Open-Meteo and its licence.
+Refresh normally every 30 minutes while the Race tab is visible, after relevant plan changes or explicit time/location sync, and after substantial progress. Reuse the same trajectory when switching horizons and rate-limit failed requests. Cache fetched forecasts with route identity, original positions, dates and fetch time. Use cache schema version 3 and `canarias360-weather-v3`, preserving per-record provider, town altitude/location offsets, original source download time and probability period. Reject older forecast schemas; pace/progress/map state is unchanged. Switching between 12 and 24 hours must use the same newly calculated 24-hour trajectory without another request. Mark offline/stale data, and suppress expired numerical outlooks. Saved HTML should include the current forecast snapshot and source provenance. Attribute AEMET and Open-Meteo and their reuse terms. Prefer the public AEMET numerical XML; no AEMET key is needed. Do not recover precise scalars from colour-banded HARMONIE cartographic images. Maintain a bounded two-hour GitHub workflow cache for all 21 Gran Canaria towns, published on the `weather-data` branch, separate from app deployments; retain original per-town download age on failure and keep all-feed failures visible. Browser Refresh checks that cache, throttled to ten minutes except explicit Refresh. Source badges must explain AEMET vs Open-Meteo fallback, including pre-race dates beyond AEMET's approximately 48-hour horizon. Full implementation and source evaluation: [docs/aemet-weather.md](docs/aemet-weather.md).
 
 ### 4.7 Trail Vision
 
@@ -186,7 +186,8 @@ Use plain JavaScript/CSS/HTML and bundled Leaflet. There are no npm runtime depe
 | `engine.js` | Pacing, interpolation, opening hours, leg progress and leg POI assignment |
 | `location.js` | Shared opt-in tracker and main-map segment matching |
 | `install.js`, `manifest.webmanifest`, `icons/` | Browser install action, scoped app metadata and home-screen icons |
-| `weather.js`, `weather.css` | Projected forecast trajectory, API/cache, summary and cards |
+| `aemet.js`, `weather.js`, `weather.css` | AEMET eligibility/source handling, projected forecast trajectory, fallback/cache, summary and cards |
+| `scripts/update_aemet_weather.py`, `scripts/publish_aemet_weather.py`, `.github/workflows/aemet-weather.yml` | Numerical AEMET feed ingestion and two-hour public weather-only cache |
 | `vision-core.js` | GPX parsing, geometry, matching, elevation and orientation maths |
 | `vision.js`, `vision.css` | Trail Vision lifecycle, controls, sensors and renderer |
 | `data/roadbook_data.json` | Canonical derived race, route, terrain, POI and evidence data |
@@ -225,7 +226,7 @@ Trail Vision independently uses the GPX elevation with a short local filter. Its
 
 The built HTML contains route, GPX, POIs, libraries and preview code. After a successful hosted load, the service worker caches that HTML, the web app manifest and the install icons; navigation tries the network for about 3.5 seconds before fallback. Changing the built HTML, manifest or bundled install icons changes the cache revision. An installed app uses the same offline route/map/preview and settings as the hosted app; new forecasts and street tiles still require network access. Confirm offline readiness before the race. Street tiles and business links are not bundled; forecasts require an initial online request and remain dated when cached.
 
-The app stores plan settings, street-map preference and matched progress under `canarias360-roadbook-v2`; forecasts use `canarias360-weather-v2`. A saved HTML includes an embedded plan and, when present, a forecast snapshot. Do not persist raw GPS fixes, sensor histories or preview-uploaded GPX files. Forecast requests send projected course positions/elevations to Open-Meteo; raw GPS fixes are not sent to an application server.
+The app stores plan settings, street-map preference and matched progress under `canarias360-roadbook-v2`; forecasts use `canarias360-weather-v3`. A saved HTML includes an embedded plan and, when present, a forecast snapshot. Do not persist raw GPS fixes, sensor histories or preview-uploaded GPX files. The AEMET cache download contains public island-wide town forecasts without runner data. Fallback forecast requests send projected course positions/elevations to Open-Meteo; raw GPS fixes are not sent to an application server.
 
 Downloaded files may restrict GPS and motion permissions. Recommend the cached HTTPS app for live sensors and keep saved HTML as backup. Storage eviction, device clock error and background sensor suspension remain browser limitations.
 
@@ -275,7 +276,7 @@ The following remains the required maintainer procedure. The implemented prepara
 
 1. Ensure `routePoint()` now interpolates the replacement `route`, `route_km` and `profile`, and uses the rebuilt anchors/legs for place labels. Recalculate pacing from the new ascent and distance; do not reuse old projected hourly coordinates.
 2. Generate a fresh outlook with `createPlan()` from the runner's validated new progress/time anchor. Verify 12/24 h positions and heights at coast, inland slopes, high ground, overnight transitions and the finish.
-3. Request fresh forecast data for the new hourly latitude/longitude/elevation sequence. Open-Meteo supplied elevation must come from the new profile. Preserve units, date limits, partial coverage handling and the corrected wind-arrow convention.
+3. Re-evaluate AEMET town assignment against every new hourly latitude/longitude/elevation; never retain old assignments. Check verified capital coverage and the 8 km / 250 m limits, refresh municipality metadata/timezones and the scheduled feed if island coverage changes. Request fresh forecast data for the new hourly latitude/longitude/elevation sequence. Open-Meteo supplied elevation must come from the new profile. Preserve units, date limits, partial coverage handling and the corrected wind-arrow convention.
 4. Invalidate old route forecasts and embedded `savedWeatherData`. The existing cache checks `routeSha256` against `gpx_sha256`, so a changed GPX hash rejects the previous route's cache. If derived elevations, race date or projection logic change while GPX bytes remain identical, extend/bump cache identity or clear the affected cache; the GPX hash alone does not detect those changes.
 5. Verify that old saved weather cannot appear as an outlook for the new route. When offline without a matching forecast, show unavailable/connect-once status. Never relabel old-route forecasts as new-route data.
 
@@ -326,6 +327,8 @@ python3 tests/mobile_controls_test.py --browsers chromium webkit
 python3 tests/geolocation_browser_test.py
 python3 tests/progress_sync_browser_test.py
 python3 tests/legs_browser_test.py
+python3 -m unittest discover -s tests -p test_aemet_weather.py
+python3 tests/aemet_browser_test.py
 python3 tests/weather_browser_test.py
 python3 tests/vision_browser_test.py
 python3 tests/offline_browser_test.py

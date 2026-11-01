@@ -1,0 +1,237 @@
+{
+  "source": "AEMET official municipal forecast pages; capital coordinates and altitude as published",
+  "retrievedAt": "2026-11-01T20:10:40.624584+00:00",
+  "towns": [
+    {
+      "id": "35001",
+      "name": "Agaete",
+      "lat": 28.09862641,
+      "lon": -15.69904438,
+      "elevation": 45,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/agaete-id35001",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35001.xml",
+      "metadata_sha256": "32adfb219f7375808a1880a242638b72988e3ab0e7d1a41aac70ea1d84ce25f2"
+    },
+    {
+      "id": "35002",
+      "name": "Agüimes",
+      "lat": 27.90513756,
+      "lon": -15.44475728,
+      "elevation": 279,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/aguimes-id35002",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35002.xml",
+      "metadata_sha256": "8a19cda6545739e79d8603fa6849b4565c62d1c9dfd16fa62b2d522170cf1d26"
+    },
+    {
+      "id": "35005",
+      "name": "Artenara",
+      "lat": 28.01838212,
+      "lon": -15.6449521,
+      "elevation": 1189,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/artenara-id35005",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35005.xml",
+      "metadata_sha256": "f68dd73b6224d6ec23335629dd09b3cab63561deaa2c1731f14a86a46e399a44"
+    },
+    {
+      "id": "35006",
+      "name": "Arucas",
+      "lat": 28.11709976,
+      "lon": -15.52148745,
+      "elevation": 237,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/arucas-id35006",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35006.xml",
+      "metadata_sha256": "a14e77d46f1d9cc608090c001bb2d60d0503de1cfa03d9f6562e9a00795d7cba"
+    },
+    {
+      "id": "35008",
+      "name": "Firgas",
+      "lat": 28.10598434,
+      "lon": -15.56124728,
+      "elevation": 503,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/firgas-id35008",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35008.xml",
+      "metadata_sha256": "cf344d336e6aab794b9e5d25a499a0c0bff8d6f871503e6dbc3141ab9239ce10"
+    },
+    {
+      "id": "35009",
+      "name": "Gáldar",
+      "lat": 28.14347581,
+      "lon": -15.65408077,
+      "elevation": 104,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/galdar-id35009",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35009.xml",
+      "metadata_sha256": "98d292f53f741a2a2db31e1f692e4b4377e42cb378815ce0ad8d99b8c1b15bcd"
+    },
+    {
+      "id": "35011",
+      "name": "Ingenio",
+      "lat": 27.91838839,
+      "lon": -15.4422404,
+      "elevation": 317,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/ingenio-id35011",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35011.xml",
+      "metadata_sha256": "c451d2ae5bba18a70225ce2ece6f6a30493080526bf70183105c4731d59147ff"
+    },
+    {
+      "id": "35012",
+      "name": "Mogán",
+      "lat": 27.88249513,
+      "lon": -15.72255059,
+      "elevation": 288,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/mogan-id35012",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35012.xml",
+      "metadata_sha256": "2194a77577083de7810377a1936bdd4d024a6087212ab936f4dd488f688899b5"
+    },
+    {
+      "id": "35013",
+      "name": "Moya",
+      "lat": 28.10941605,
+      "lon": -15.58252139,
+      "elevation": 480,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/moya-id35013",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35013.xml",
+      "metadata_sha256": "ea93e66e4e168c07e74cd7650b822a92b7aa620e329bdca71a65323d4c765555"
+    },
+    {
+      "id": "35016",
+      "name": "Palmas de Gran Canaria, Las",
+      "lat": 28.09937855,
+      "lon": -15.41336841,
+      "elevation": 6,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/palmas-de-gran-canaria-las-id35016",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35016.xml",
+      "metadata_sha256": "0c62e841d1e00955b3fca69ad57636a1099384b5bad22d478fbd733195b68d54"
+    },
+    {
+      "id": "35019",
+      "name": "San Bartolomé de Tirajana",
+      "lat": 27.92399728,
+      "lon": -15.57142263,
+      "elevation": 842,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/san-bartolome-de-tirajana-id35019",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35019.xml",
+      "metadata_sha256": "196bde818b1da09fe5fc35529d26af9c6735aa3d14bb6e7629ec63bd4dea1323"
+    },
+    {
+      "id": "35020",
+      "name": "Aldea de San Nicolás, La",
+      "lat": 27.98416471,
+      "lon": -15.78024028,
+      "elevation": 69,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/aldea-de-san-nicolas-la-id35020",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35020.xml",
+      "metadata_sha256": "89619f8c88b18b3e8bb6533f77ecfbe9cb7441519045f045b9e1e61cf21f2685"
+    },
+    {
+      "id": "35021",
+      "name": "Santa Brígida",
+      "lat": 28.03191886,
+      "lon": -15.4982278,
+      "elevation": 524,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/santa-brigida-id35021",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35021.xml",
+      "metadata_sha256": "cb1ee96af1de5b611660f389faffc2edb55b1f0f22db85c03b4aea88bb367a40"
+    },
+    {
+      "id": "35022",
+      "name": "Santa Lucía de Tirajana",
+      "lat": 27.91144865,
+      "lon": -15.54038408,
+      "elevation": 699,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/santa-lucia-de-tirajana-id35022",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35022.xml",
+      "metadata_sha256": "59c2d38b0260bedb715e3c3eca3177c901ed08accc68a24c7f41d59883e0c6c1"
+    },
+    {
+      "id": "35023",
+      "name": "Santa María de Guía de Gran Canaria",
+      "lat": 28.13769858,
+      "lon": -15.63102238,
+      "elevation": 203,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/santa-maria-de-guia-de-gran-canaria-id35023",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35023.xml",
+      "metadata_sha256": "419186541c5094429a66477900ca16cdf4cee10277f0f9658fd807f7700ec5ee"
+    },
+    {
+      "id": "35025",
+      "name": "Tejeda",
+      "lat": 27.99374658,
+      "lon": -15.61370784,
+      "elevation": 1076,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/tejeda-id35025",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35025.xml",
+      "metadata_sha256": "daeed7958e4f938cd88f90409dd99f17f72c576afa1d2dedd1e54bc82be30179"
+    },
+    {
+      "id": "35026",
+      "name": "Telde",
+      "lat": 27.9942018,
+      "lon": -15.41666551,
+      "elevation": 147,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/telde-id35026",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35026.xml",
+      "metadata_sha256": "abcbac10422b9b3a0f92b2c9a52c912ed6e91b59800216f3ccd3f03370c454f9"
+    },
+    {
+      "id": "35027",
+      "name": "Teror",
+      "lat": 28.05843717,
+      "lon": -15.54591284,
+      "elevation": 562,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/teror-id35027",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35027.xml",
+      "metadata_sha256": "0d37c68800ddd4320156c5b2c72c0aa7d1f8cf13666d96555a9ddd92d86673aa"
+    },
+    {
+      "id": "35031",
+      "name": "Valsequillo de Gran Canaria",
+      "lat": 27.98926186,
+      "lon": -15.49707567,
+      "elevation": 503,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/valsequillo-de-gran-canaria-id35031",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35031.xml",
+      "metadata_sha256": "389b157f035d067c19993d7bc0b128c13182b8a8c85a1a3bbe5702527bab9780"
+    },
+    {
+      "id": "35032",
+      "name": "Valleseco",
+      "lat": 28.04857994,
+      "lon": -15.57294466,
+      "elevation": 1057,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/valleseco-id35032",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35032.xml",
+      "metadata_sha256": "a13795bdc066302d29614a72b15614914d7789d759715b22f942dd58bdcfa352"
+    },
+    {
+      "id": "35033",
+      "name": "Vega de San Mateo",
+      "lat": 28.00908468,
+      "lon": -15.53095404,
+      "elevation": 831,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/vega-de-san-mateo-id35033",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35033.xml",
+      "metadata_sha256": "f48e1586f9b97c8dc20b7408a0ee74230141daf24afefeb998017e1aa8e5d60c"
+    }
+  ]
+}

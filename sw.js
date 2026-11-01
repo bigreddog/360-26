@@ -1,5 +1,5 @@
 /* Offline navigation cache: the HTML already embeds GPX, Leaflet and Trail Vision. */
-const CACHE='canarias360-offline-4666a45a37d0';
+const CACHE='canarias360-offline-5d7b12db66b7';
 const INDEX=new URL('index.html',self.registration.scope).href;
 const ASSETS=['manifest.webmanifest','icons/icon-192.png','icons/icon-512.png'].map(path=>new URL(path,self.registration.scope).href);
 self.addEventListener('install',event=>event.waitUntil((async()=>{

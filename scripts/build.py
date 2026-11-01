@@ -18,7 +18,7 @@ assets={
  '/*VISION_CORE_JS*/':(ROOT/'vision-core.js').read_text(),
  '/*VISION_JS*/':(ROOT/'vision.js').read_text(),
  '/*WEATHER_CSS*/':(ROOT/'weather.css').read_text(),
- '/*WEATHER_JS*/':(ROOT/'weather.js').read_text(),
+ '/*WEATHER_JS*/':(ROOT/'aemet.js').read_text()+'\n'+(ROOT/'weather.js').read_text(),
  '/*INSTALL_JS*/':(ROOT/'install.js').read_text(),
  '/*APP_JS*/':(ROOT/'app.js').read_text(),
 }

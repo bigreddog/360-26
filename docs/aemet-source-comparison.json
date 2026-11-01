@@ -1,0 +1,497 @@
+{
+  "reviewedAt": "2026-11-01T20:15:19.306496+00:00",
+  "routeSha256": "49b45dd666f4d3d62a6072d5bcc9917a174e7bcfc291fc510e8ca9b6112592dd",
+  "purpose": "Compare forecasts at identical course positions and times. No observations were used; this does not establish which provider is more accurate.",
+  "selection": {
+    "maxTownDistanceM": 8000,
+    "maxTownElevationDifferenceM": 250,
+    "maxAemetDownloadAgeHours": 6,
+    "meaning": "Heuristic eligibility limits; not calibrated accuracy bounds. Town forecast remains uncorrected."
+  },
+  "aemetFeedTowns": 21,
+  "aemetSource": "https://www.aemet.es/xml/municipios_h/localidad_h_{municipality}.xml",
+  "openMeteoRequest": "https://api.open-meteo.com/v1/forecast?latitude=28.14477%2C28.02004%2C27.96352%2C27.91454%2C27.76449%2C27.91390%2C27.94569%2C28.03453%2C28.05451%2C27.99574%2C28.02116&longitude=-15.65568%2C-15.64656%2C-15.63198%2C-15.62988%2C-15.59662%2C-15.53358%2C-15.47116%2C-15.50028%2C-15.56795%2C-15.61540%2C-15.61649&elevation=119%2C1232%2C1340%2C931%2C32%2C790%2C716%2C507%2C907%2C1040%2C1694&hourly=temperature_2m%2Capparent_temperature%2Cprecipitation_probability%2Cprecipitation%2Cweather_code%2Cwind_speed_10m%2Cwind_gusts_10m%2Cwind_direction_10m%2Cis_day&start_hour=2026-11-01T21%3A00&end_hour=2026-11-02T03%3A00&timeformat=unixtime&timezone=GMT&temperature_unit=celsius&wind_speed_unit=kmh&precipitation_unit=mm&cell_selection=land",
+  "openMeteoResponseSha256": "9c50702f7ab4cca4f3ea549c24e64f7ec98cd55b92e21b1b3ce1012a15f536c5",
+  "harmonieReview": {
+    "source": "https://www.aemet.es/es/api-eltiempo/modelos/download/harmonie/CAN",
+    "archiveSha256": "0576845ba9213e493d6e365abd20b360a19452e1cc0a7d29426b1c076ddd0744",
+    "archiveBytes": 8625070,
+    "finding": "440 cartographic GeoTIFF/GeoJSON members. RGBA/JPEG raster colour bins, not raw scalar model fields; temperature bins 2 C, wind speed bins 10 km/h, direction grid 0.20 degrees. No colour-to-value estimates used as precise point forecasts.",
+    "decision": "Use numerical AEMET municipal hourly XML where height/distance/time coverage is eligible; retain explicit Open-Meteo fallback otherwise."
+  },
+  "comparisons": [
+    {
+      "point": {
+        "km": 0,
+        "lat": 28.144767,
+        "lon": -15.655684,
+        "elevation": 118.96,
+        "place": "Near Gáldar",
+        "name": "Gáldar",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": {
+        "temperature": 23,
+        "feels": 23,
+        "wind": 8,
+        "gust": 17,
+        "direction": 0,
+        "code": 3,
+        "day": 0,
+        "rain": 0,
+        "chance": 25,
+        "chanceHours": 6,
+        "source": {
+          "provider": "aemet",
+          "town": "Gáldar",
+          "id": "35009",
+          "elevation": 104,
+          "separation": 212.8924238452403,
+          "heightDelta": 14.959999999999994,
+          "issuedLocal": "2026-11-01T19:05:12",
+          "fetchedAt": 1793563957027,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/galdar-id35009"
+        }
+      },
+      "openMeteo": {
+        "temperature": 21,
+        "feels": 21.4,
+        "chance": 3,
+        "rain": 0,
+        "code": 3,
+        "wind": 4.8,
+        "gust": 7.6,
+        "direction": 167,
+        "day": 0
+      },
+      "temperatureDifference": 2
+    },
+    {
+      "point": {
+        "km": 34.24781073621239,
+        "lat": 28.02003866573538,
+        "lon": -15.646557514605012,
+        "elevation": 1232.0681849378195,
+        "place": "Near Artenara",
+        "name": "Artenara",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": {
+        "temperature": 15,
+        "feels": 15,
+        "wind": 8,
+        "gust": 19,
+        "direction": 180,
+        "code": 1,
+        "day": 0,
+        "rain": 0,
+        "chance": 25,
+        "chanceHours": 6,
+        "source": {
+          "provider": "aemet",
+          "town": "Artenara",
+          "id": "35005",
+          "elevation": 1189,
+          "separation": 242.41355918349424,
+          "heightDelta": 43.068184937819524,
+          "issuedLocal": "2026-11-01T19:05:12",
+          "fetchedAt": 1793563955552,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/artenara-id35005"
+        }
+      },
+      "openMeteo": {
+        "temperature": 15.1,
+        "feels": 13.9,
+        "chance": 10,
+        "rain": 0,
+        "code": 3,
+        "wind": 6.8,
+        "gust": 21.2,
+        "direction": 148,
+        "day": 0
+      },
+      "temperatureDifference": -0.09999999999999964
+    },
+    {
+      "point": {
+        "km": 63.52950511928084,
+        "lat": 27.963522511642342,
+        "lon": -15.631979978426088,
+        "elevation": 1340.3684675643644,
+        "place": "Near Aserrador",
+        "name": "Aserrador",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": {
+        "temperature": 15,
+        "feels": 15,
+        "wind": 8,
+        "gust": 19,
+        "direction": 180,
+        "code": 1,
+        "day": 0,
+        "rain": 0,
+        "chance": 25,
+        "chanceHours": 6,
+        "source": {
+          "provider": "aemet",
+          "town": "Artenara",
+          "id": "35005",
+          "elevation": 1189,
+          "separation": 6231.6742666626205,
+          "heightDelta": 151.36846756436444,
+          "issuedLocal": "2026-11-01T19:05:12",
+          "fetchedAt": 1793563955552,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/artenara-id35005"
+        }
+      },
+      "openMeteo": {
+        "temperature": 14.4,
+        "feels": 13.1,
+        "chance": 10,
+        "rain": 0,
+        "code": 3,
+        "wind": 6.8,
+        "gust": 21.2,
+        "direction": 148,
+        "day": 0
+      },
+      "temperatureDifference": 0.5999999999999996
+    },
+    {
+      "point": {
+        "km": 77.59446025349921,
+        "lat": 27.914538,
+        "lon": -15.62988,
+        "elevation": 930.6279130779155,
+        "place": "Near Cercados de Araña",
+        "name": "Cercados de Araña",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": {
+        "temperature": 16,
+        "feels": 16,
+        "wind": 6,
+        "gust": 16,
+        "direction": 0,
+        "code": 1,
+        "day": 0,
+        "rain": 0,
+        "chance": 25,
+        "chanceHours": 6,
+        "source": {
+          "provider": "aemet",
+          "town": "San Bartolomé de Tirajana",
+          "id": "35019",
+          "elevation": 842,
+          "separation": 5839.121463564107,
+          "heightDelta": 88.62791307791554,
+          "issuedLocal": "2026-11-01T19:05:12",
+          "fetchedAt": 1793563958293,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/san-bartolome-de-tirajana-id35019"
+        }
+      },
+      "openMeteo": {
+        "temperature": 16.5,
+        "feels": 15.9,
+        "chance": 10,
+        "rain": 0,
+        "code": 2,
+        "wind": 6.1,
+        "gust": 19.1,
+        "direction": 87,
+        "day": 0
+      },
+      "temperatureDifference": -0.5
+    },
+    {
+      "point": {
+        "km": 119.57599445541072,
+        "lat": 27.76449,
+        "lon": -15.596616,
+        "elevation": 32.14566598061236,
+        "place": "Near Parque Sur",
+        "name": "Parque Sur",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": null,
+      "openMeteo": {
+        "temperature": 23.1,
+        "feels": 23.5,
+        "chance": 5,
+        "rain": 0,
+        "code": 2,
+        "wind": 8.9,
+        "gust": 13.7,
+        "direction": 47,
+        "day": 0
+      },
+      "temperatureDifference": null
+    },
+    {
+      "point": {
+        "km": 160.791620978457,
+        "lat": 27.913901,
+        "lon": -15.53358,
+        "elevation": 790.0811120314124,
+        "place": "Near Santa Lucía",
+        "name": "Santa Lucía",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": {
+        "temperature": 18,
+        "feels": 18,
+        "wind": 6,
+        "gust": 17,
+        "direction": 315,
+        "code": 1,
+        "day": 0,
+        "rain": 0,
+        "chance": 20,
+        "chanceHours": 6,
+        "source": {
+          "provider": "aemet",
+          "town": "Santa Lucía de Tirajana",
+          "id": "35022",
+          "elevation": 699,
+          "separation": 722.0343428007383,
+          "heightDelta": 91.08111203141243,
+          "issuedLocal": "2026-11-01T19:05:12",
+          "fetchedAt": 1793563958222,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/santa-lucia-de-tirajana-id35022"
+        }
+      },
+      "openMeteo": {
+        "temperature": 17.9,
+        "feels": 17.9,
+        "chance": 10,
+        "rain": 0,
+        "code": 3,
+        "wind": 2.7,
+        "gust": 20.5,
+        "direction": 247,
+        "day": 0
+      },
+      "temperatureDifference": 0.10000000000000142
+    },
+    {
+      "point": {
+        "km": 179.9727713841945,
+        "lat": 27.94569,
+        "lon": -15.471157,
+        "elevation": 716.1748578565937,
+        "place": "Near La Pasadilla",
+        "name": "La Pasadilla",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": {
+        "temperature": 18,
+        "feels": 18,
+        "wind": 6,
+        "gust": 17,
+        "direction": 315,
+        "code": 1,
+        "day": 0,
+        "rain": 0,
+        "chance": 20,
+        "chanceHours": 6,
+        "source": {
+          "provider": "aemet",
+          "town": "Santa Lucía de Tirajana",
+          "id": "35022",
+          "elevation": 699,
+          "separation": 7794.408901679248,
+          "heightDelta": 17.17485785659369,
+          "issuedLocal": "2026-11-01T19:05:12",
+          "fetchedAt": 1793563958222,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/santa-lucia-de-tirajana-id35022"
+        }
+      },
+      "openMeteo": {
+        "temperature": 18.4,
+        "feels": 18.5,
+        "chance": 10,
+        "rain": 0,
+        "code": 3,
+        "wind": 2.7,
+        "gust": 20.5,
+        "direction": 247,
+        "day": 0
+      },
+      "temperatureDifference": -0.3999999999999986
+    },
+    {
+      "point": {
+        "km": 209.2124240017575,
+        "lat": 28.03453,
+        "lon": -15.500278,
+        "elevation": 507.36057361564195,
+        "place": "Near Santa Brígida",
+        "name": "Santa Brígida",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": {
+        "temperature": 17,
+        "feels": 17,
+        "wind": 7,
+        "gust": 18,
+        "direction": 180,
+        "code": 1,
+        "day": 0,
+        "rain": 0,
+        "chance": 25,
+        "chanceHours": 6,
+        "source": {
+          "provider": "aemet",
+          "town": "Santa Brígida",
+          "id": "35021",
+          "elevation": 524,
+          "separation": 353.2596823187951,
+          "heightDelta": -16.639426384358046,
+          "issuedLocal": "2026-11-01T19:05:12",
+          "fetchedAt": 1793563958581,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/santa-brigida-id35021"
+        }
+      },
+      "openMeteo": {
+        "temperature": 18.6,
+        "feels": 18,
+        "chance": 3,
+        "rain": 0,
+        "code": 3,
+        "wind": 8.7,
+        "gust": 23,
+        "direction": 187,
+        "day": 0
+      },
+      "temperatureDifference": -1.6000000000000014
+    },
+    {
+      "point": {
+        "km": 231.6288325470311,
+        "lat": 28.054506030599402,
+        "lon": -15.567948410167867,
+        "elevation": 906.8336379636946,
+        "place": "Near Balcón de Zamora",
+        "name": "Balcón de Zamora",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": {
+        "temperature": 14,
+        "feels": 14,
+        "wind": 6,
+        "gust": 16,
+        "direction": 180,
+        "code": 1,
+        "day": 0,
+        "rain": 0,
+        "chance": 25,
+        "chanceHours": 6,
+        "source": {
+          "provider": "aemet",
+          "town": "Valleseco",
+          "id": "35032",
+          "elevation": 1057,
+          "separation": 821.3441563227564,
+          "heightDelta": -150.16636203630537,
+          "issuedLocal": "2026-11-01T19:05:12",
+          "fetchedAt": 1793563960850,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/valleseco-id35032"
+        }
+      },
+      "openMeteo": {
+        "temperature": 16.5,
+        "feels": 15.4,
+        "chance": 0,
+        "rain": 0,
+        "code": 3,
+        "wind": 7.6,
+        "gust": 19.1,
+        "direction": 161,
+        "day": 0
+      },
+      "temperatureDifference": -2.5
+    },
+    {
+      "point": {
+        "km": 249.37268507008034,
+        "lat": 27.995742,
+        "lon": -15.615403,
+        "elevation": 1040.39,
+        "place": "Near Tejeda",
+        "name": "Tejeda",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": {
+        "temperature": 14,
+        "feels": 14,
+        "wind": 13,
+        "gust": 27,
+        "direction": 180,
+        "code": 1,
+        "day": 0,
+        "rain": 0,
+        "chance": 30,
+        "chanceHours": 6,
+        "source": {
+          "provider": "aemet",
+          "town": "Tejeda",
+          "id": "35025",
+          "elevation": 1076,
+          "separation": 277.3674843878283,
+          "heightDelta": -35.6099999999999,
+          "issuedLocal": "2026-11-01T19:05:12",
+          "fetchedAt": 1793563959413,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/tejeda-id35025"
+        }
+      },
+      "openMeteo": {
+        "temperature": 15.9,
+        "feels": 14.6,
+        "chance": 10,
+        "rain": 0,
+        "code": 2,
+        "wind": 8,
+        "gust": 24.5,
+        "direction": 117,
+        "day": 0
+      },
+      "temperatureDifference": -1.9000000000000004
+    },
+    {
+      "point": {
+        "km": 26.6,
+        "lat": 28.021160767003142,
+        "lon": -15.616489358895103,
+        "elevation": 1693.86,
+        "place": "Near Summit approach",
+        "name": "Highest GPX profile point",
+        "time": 1793588400000,
+        "hour": 6
+      },
+      "aemet": null,
+      "openMeteo": {
+        "temperature": 12.1,
+        "feels": 10.2,
+        "chance": 10,
+        "rain": 0,
+        "code": 3,
+        "wind": 6.8,
+        "gust": 21.2,
+        "direction": 148,
+        "day": 0
+      },
+      "temperatureDifference": null
+    }
+  ]
+}

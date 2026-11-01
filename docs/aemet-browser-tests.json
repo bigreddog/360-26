@@ -1,0 +1,61 @@
+{
+  "passed": 42,
+  "results": [
+    {
+      "browser": "chromium",
+      "passed": 21,
+      "checks": [
+        "AEMET is used alongside explicitly identified remote/high-route fallback",
+        "visible provider badge identifies both sources",
+        "six-hour AEMET probabilities are not labelled hourly",
+        "AEMET northerly wind arrow points south",
+        "only near-height near-distance towns supply the preview",
+        "new cache schema preserves source attribution",
+        "horizon switch uses the same mixed forecast without new requests",
+        "stop cards name the town, mismatch and uncorrected altitude",
+        "AEMET six-hour chance is labelled at the stop",
+        "source badges and detailed cards fit 320px",
+        "source badges and detailed cards fit 390px",
+        "source badges and detailed cards fit 844px",
+        "fully covered short outlook skips Open-Meteo",
+        "old AEMET downloads are rejected and fallback is visible",
+        "unavailable AEMET feed leaves a usable labelled fallback",
+        "fallback outage retains AEMET while leaving remote hours missing",
+        "partial-provider outage is explained",
+        "missing rain samples stay unavailable",
+        "portable offline HTML retains mixed source provenance and original forecasts",
+        "hidden panel does not poll providers",
+        "no JavaScript errors during AEMET journeys"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "passed": 21,
+      "checks": [
+        "AEMET is used alongside explicitly identified remote/high-route fallback",
+        "visible provider badge identifies both sources",
+        "six-hour AEMET probabilities are not labelled hourly",
+        "AEMET northerly wind arrow points south",
+        "only near-height near-distance towns supply the preview",
+        "new cache schema preserves source attribution",
+        "horizon switch uses the same mixed forecast without new requests",
+        "stop cards name the town, mismatch and uncorrected altitude",
+        "AEMET six-hour chance is labelled at the stop",
+        "source badges and detailed cards fit 320px",
+        "source badges and detailed cards fit 390px",
+        "source badges and detailed cards fit 844px",
+        "fully covered short outlook skips Open-Meteo",
+        "old AEMET downloads are rejected and fallback is visible",
+        "unavailable AEMET feed leaves a usable labelled fallback",
+        "fallback outage retains AEMET while leaving remote hours missing",
+        "partial-provider outage is explained",
+        "missing rain samples stay unavailable",
+        "portable offline HTML retains mixed source provenance and original forecasts",
+        "hidden panel does not poll providers",
+        "no JavaScript errors during AEMET journeys"
+      ]
+    }
+  ],
+  "mocked_forecasts": true,
+  "physical_device_test": false
+}

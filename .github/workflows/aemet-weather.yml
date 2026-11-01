@@ -1,0 +1,38 @@
+name: Refresh AEMET weather
+on:
+  schedule:
+    - cron: '17 */2 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/aemet-weather.yml
+      - scripts/update_aemet_weather.py
+      - scripts/publish_aemet_weather.py
+      - data/weather/aemet-towns.json
+permissions:
+  contents: write
+concurrency:
+  group: aemet-weather-cache
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check numerical feed parser
+        run: python -m unittest discover -s tests -p test_aemet_weather.py
+      - name: Restore last snapshots for failed-town retention
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/publish_aemet_weather.py --download-only
+      - name: Download AEMET hourly forecasts
+        run: python scripts/update_aemet_weather.py
+      - name: Publish weather-only JSON
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/publish_aemet_weather.py
