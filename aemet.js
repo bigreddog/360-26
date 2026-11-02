@@ -6,10 +6,11 @@ const FEED='https://raw.githubusercontent.com/bigreddog/360-26/weather-data/aeme
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
 function distance(a,b){const r=Math.PI/180,x=(b.lon-a.lon)*r*Math.cos((a.lat+b.lat)/2*r),y=(b.lat-a.lat)*r;return 6371008.8*Math.hypot(x,y);}
 function validFeed(feed){return feed?.version===1&&feed.provider==='aemet'&&Array.isArray(feed.towns)&&feed.towns.length<=50&&feed.towns.every(t=>typeof t.id==='string'&&typeof t.name==='string'&&finite(t.lat)&&finite(t.lon)&&finite(t.elevation)&&finite(t.fetchedAt)&&Array.isArray(t.hourly)&&t.hourly.length<=100&&t.hourly.every((r,i)=>finite(r.time)&&(!i||r.time>t.hourly[i-1].time))&&Array.isArray(t.probabilities));}
-function eligible(town,sample,now){
+function locationMatch(town,sample){
  const separation=distance(town,sample),heightDelta=sample.elevation-town.elevation;
- return now-town.fetchedAt<=MAX_AGE&&now>=town.fetchedAt-5*60000&&separation<=MAX_DISTANCE&&Math.abs(heightDelta)<=MAX_HEIGHT?{town,separation,heightDelta,score:separation/2000+Math.abs(heightDelta)/100}:null;
+ return separation<=MAX_DISTANCE&&Math.abs(heightDelta)<=MAX_HEIGHT?{town,separation,heightDelta,score:separation/2000+Math.abs(heightDelta)/100}:null;
 }
+function eligible(town,sample,now){return now-town.fetchedAt<=MAX_AGE&&now>=town.fetchedAt-5*60000?locationMatch(town,sample):null;}
 function readTown(match,sample){
  const {town,separation,heightDelta}=match,rows=town.hourly,time=sample.time/1000;
  if(!rows.length||time<rows[0].time||time>rows.at(-1).time)return null;
@@ -31,8 +32,29 @@ function select(feed,sample,now){
  for(const match of matches){const weather=readTown(match,sample);if(weather)return weather;}
  return null;
 }
+function availability(feed,sample,now){
+ if(!validFeed(feed)||!feed.towns.length)return {kind:'unavailable'};
+ const nearby=feed.towns.map(t=>locationMatch(t,sample)).filter(Boolean).sort((a,b)=>a.score-b.score||a.town.id.localeCompare(b.town.id));
+ if(!nearby.length)return {kind:'location'};
+ const fresh=nearby.filter(m=>eligible(m.town,sample,now));
+ if(!fresh.length)return {kind:'stale'};
+ if(fresh.some(m=>readTown(m,sample)))return {kind:'covered'};
+ const ranges=fresh.map(m=>{const times=m.town.hourly.filter(r=>finite(r.temperature)).map(r=>r.time*1000);return times.length?{town:m.town.name,from:times[0],until:times.at(-1),fetchedAt:m.town.fetchedAt}:null;}).filter(Boolean);
+ if(!ranges.length)return {kind:'gap'};
+ const latest=ranges.reduce((a,b)=>b.until>a.until?b:a),earliest=ranges.reduce((a,b)=>b.from<a.from?b:a);
+ if(sample.time>latest.until)return {kind:'after',...latest};
+ if(sample.time<earliest.from)return {kind:'before',...earliest};
+ return {kind:'gap'};
+}
 function rows(feed,plan,now){return plan.samples.map(sample=>({sample,weather:select(feed,sample,now)}));}
 function merge(aemet,fallback){return aemet.map((row,i)=>row.weather?row:{sample:row.sample,weather:fallback?.[i]?.weather?{...fallback[i].weather,source:{provider:'open-meteo'}}:null});}
 function counts(rows){return {aemet:rows.filter(r=>r.weather?.source?.provider==='aemet').length,openMeteo:rows.filter(r=>r.weather&&(r.weather.source?.provider||'open-meteo')==='open-meteo').length,missing:rows.filter(r=>!r.weather).length};}
-const api={HOUR,MAX_AGE,MAX_DISTANCE,MAX_HEIGHT,FEED,distance,validFeed,eligible,readTown,select,rows,merge,counts};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.AemetWeather=api;
+function validOutlook(outlook){const stamp=t=>finite(t)&&Math.abs(t)<=8640000000000000;return outlook?.version===1&&Array.isArray(outlook.entries)&&outlook.entries.length<=8&&outlook.entries.every(b=>['Gran Canaria','Canary Islands'].includes(b.area)&&b.language==='es'&&stamp(b.from)&&stamp(b.until)&&b.until>b.from&&stamp(b.fetchedAt)&&typeof b.issuedLocal==='string'&&Array.isArray(b.paragraphs)&&b.paragraphs.length>0&&b.paragraphs.every(p=>typeof p==='string'&&p.length<=12000)&&Array.isArray(b.significant)&&b.significant.every(p=>typeof p==='string'&&p.length<=12000));}
+function outlookWindow(outlook,now){
+ const end=now+72*HOUR;
+ const entries=validOutlook(outlook)?outlook.entries.filter(b=>b.until>now&&b.from<end&&now-b.fetchedAt<=24*HOUR&&now>=b.fetchedAt-5*60000).sort((a,b)=>a.from-b.from):[];
+ let cursor=now,covered=0;for(const b of entries){const from=Math.max(cursor,b.from),until=Math.min(end,b.until);if(until>from){covered+=until-from;cursor=until;}}
+ return {entries,coveredHours:covered/HOUR,end};
+}
+const api={HOUR,MAX_AGE,MAX_DISTANCE,MAX_HEIGHT,FEED,distance,validFeed,eligible,readTown,select,availability,rows,merge,counts,validOutlook,outlookWindow};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.AemetWeather=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

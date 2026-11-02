@@ -1,0 +1,53 @@
+{
+  "checkedAt": 1793618029008,
+  "browser": "Chromium mobile 390px",
+  "live_http_data_replayed_in_local_browser": true,
+  "physical_phone_test": false,
+  "forecast_accuracy_test": false,
+  "javascript_errors": [],
+  "routeSha256": "49b45dd666f4d3d62a6072d5bcc9917a174e7bcfc291fc510e8ca9b6112592dd",
+  "aemetAvailabilityAtStart": {
+    "kind": "after",
+    "town": "Gáldar",
+    "from": 1793602800000,
+    "until": 1793768400000,
+    "fetchedAt": 1793617574863
+  },
+  "startForecastProvider": "open-meteo",
+  "status": "AEMET hourly data near Gáldar ends Wed 4 Nov 05:00. Your outlook starts Wed 4 Nov 09:00. Open-Meteo covers the later hours.",
+  "outlookEntries": [
+    {
+      "date": "2026-11-02",
+      "area": "Gran Canaria",
+      "issuedLocal": "2026-11-01T14:35:18",
+      "sourceUrl": "https://www.aemet.es/es/api-eltiempo/prediccion/2026-11-02/CAN/9/6590",
+      "sourceSha256": "f3fb15809eda794ca8e163f59d9a8e0b235b462cd808d2b4bd9cf904f930b763"
+    },
+    {
+      "date": "2026-11-03",
+      "area": "Gran Canaria",
+      "issuedLocal": "2026-11-01T15:42:01",
+      "sourceUrl": "https://www.aemet.es/es/api-eltiempo/prediccion/2026-11-03/CAN/9/6590",
+      "sourceSha256": "8d3dfb5b5d45f9a6904b007f9365f6f6b4732d01c2b214366be328b83bfa5462"
+    },
+    {
+      "date": "2026-11-04",
+      "area": "Canary Islands",
+      "issuedLocal": "2026-11-01T15:36:46",
+      "sourceUrl": "https://www.aemet.es/es/api-eltiempo/prediccion/2026-11-04/CAN/9/6590",
+      "sourceSha256": "7e8a1f19e7c8156554d3d269c5e0cc994de17ce59c5582d26ebd4c6c9fb66c2b"
+    },
+    {
+      "date": "2026-11-05",
+      "area": "Canary Islands",
+      "issuedLocal": "2026-11-01T15:36:46",
+      "sourceUrl": "https://www.aemet.es/es/api-eltiempo/prediccion/2026-11-05/CAN/9/6590",
+      "sourceSha256": "0aeba51ebd2b058873d906c798200ee6803727df9cc443faf9f6a556dce9f144"
+    }
+  ],
+  "httpChecks": {
+    "aemetTownCount": 21,
+    "aemetBulletinCount": 4,
+    "openMeteoRoutePositions": 25
+  }
+}

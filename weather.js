@@ -1,7 +1,7 @@
 /* Route-aware forecast: same pacing curve and distance axis as the roadbook. */
 (function(root){
 'use strict';
-const HOUR=3600000,MAX_HOURS=24,CACHE_KEY='canarias360-weather-v3';
+const HOUR=3600000,MAX_HOURS=24,CACHE_KEY='canarias360-weather-v3',OUTLOOK_KEY='canarias360-island-outlook-v1';
 const A=root.AemetWeather||(typeof require==='function'?require('./aemet.js'):null);
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -55,6 +55,18 @@ function summarize(rows,hours,profile){
 function sourceSummary(rows){const c=A.counts(rows);return c.aemet?`AEMET town forecasts · ${c.aemet}/${rows.length} points${c.openMeteo?` · Open-Meteo route fallback · ${c.openMeteo}/${rows.length} points`:''}${c.missing?` · ${c.missing} unavailable`:''}`:'Open-Meteo route forecast · AEMET unavailable for these times, heights or locations';}
 function chanceLabel(rows){const periods=[...new Set(rows.filter(r=>r.weather?.source?.provider==='aemet'&&finite(r.weather?.chance)).map(r=>r.weather.chanceHours).filter(finite))].sort((a,b)=>a-b);return periods.length?`AEMET ${periods.join('/')}-h${A.counts(rows).openMeteo?' / fallback hourly':' chance'}`:'hourly chance';}
 function sourceNote(weather){const s=weather?.source;if(s?.provider!=='aemet')return 'Open-Meteo · route position and GPX elevation';return `AEMET · ${s.town} (${Math.round(s.elevation)} m) · ${(s.separation/1000).toFixed(1)} km away · route ${s.heightDelta>=0?'+':'−'}${Math.round(Math.abs(s.heightDelta))} m vs town. Town forecast; no altitude correction. Downloaded ${clock(s.fetchedAt,'Atlantic/Canary',true)}.`;}
+function coverageText(availability,base,zone){
+ if(!availability||availability.kind==='covered')return '';
+ if(availability.kind==='after')return `AEMET hourly data near ${availability.town} ends ${clock(availability.until,zone,true)}. Your outlook starts ${clock(base,zone,true)}. Open-Meteo covers the later hours.`;
+ if(availability.kind==='before')return `Your outlook starts before AEMET’s available hourly data near ${availability.town} (${clock(availability.from,zone,true)}). Using Open-Meteo where needed.`;
+ return {unavailable:'Could not load the AEMET feed. Using Open-Meteo where available.',stale:'Nearby AEMET forecasts were downloaded over 6 hours ago or have an invalid download time. Using Open-Meteo where available.',location:'No AEMET forecast town is within the distance and elevation limits at your outlook start. Using Open-Meteo where needed.',gap:'Nearby AEMET forecasts have missing hourly values at your outlook start. Using Open-Meteo where needed.'}[availability.kind]||'';
+}
+function outlookHTML(outlook,now,zone,offline=false){
+ const {entries,coveredHours,end}=A.outlookWindow(outlook,now),heading='<h3>Island outlook · next 72 hours</h3>';
+ if(!entries.length)return heading+'<p class="small muted">No current AEMET text outlook is available. Refresh when connected. Old or expired bulletins are not presented as upcoming weather.</p>';
+ const day=ms=>new Intl.DateTimeFormat('en-GB',{timeZone:zone,weekday:'long',day:'numeric',month:'short'}).format(new Date(ms));
+ return heading+`<p class="small muted">Daily bulletins overlapping now to ${clock(end,zone,true)}. ${coveredHours<71.99?`Partial coverage · about ${Math.round(coveredHours)} of 72 hours available. `:''}${offline?'Offline · saved bulletins. ':''}Official AEMET wording in Spanish; later days may cover all Canary Islands.</p>`+entries.map(b=>`<article class="island-day"><h4>${esc(day(b.from))} <span>${esc(b.area)}</span></h4>${b.significant.map(t=>`<p class="island-significant" lang="es"><strong>${esc(t)}</strong></p>`).join('')}${b.paragraphs.map(t=>`<p lang="es">${esc(t)}</p>`).join('')}</article>`).join('')+`<details data-outlook-sources><summary>Bulletin issue times & sources</summary>${entries.map(b=>`<p class="small">${esc(day(b.from))} · ${esc(b.area)}<br>Issued ${esc(b.issuedLocal.replace('T',' '))} (time as supplied by AEMET). Downloaded ${clock(b.fetchedAt,zone,true)}.${now-b.fetchedAt>=12*HOUR?' Saved bulletin is over 12 hours old.':''}</p>`).join('')}<p class="small"><a href="https://www.aemet.es/es/eltiempo/prediccion/espana?p=353" target="_blank" rel="noopener">Official AEMET outlook ↗</a> · Weather text © AEMET.</p></details>`;
+}
 function codeLabel(code){const groups=[[[0],'Clear'],[[1,2],'Some cloud'],[[3],'Overcast'],[[45,48],'Fog'],[[51,53,55],'Drizzle'],[[56,57],'Freezing drizzle'],[[61,63,65],'Rain'],[[66,67],'Freezing rain'],[[71,73,75,77],'Snow'],[[80,81,82],'Rain showers'],[[85,86],'Snow showers'],[[95,96,99],'Thunderstorm signal']];return groups.find(([codes])=>codes.includes(code))?.[1]||'Conditions unavailable';}
 function compass(degrees){return finite(degrees)?['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][Math.round(((degrees%360)+360)%360/22.5)%16]:'';}
 function windInfo(weather={}){const speed=finite(weather.wind)&&weather.wind>=0?weather.wind:null,direction=finite(weather.direction)?((weather.direction%360)+360)%360:null,calm=speed!==null&&speed<1;return {calm,direction:calm?null:direction,speed,from:calm?'Calm · no prevailing direction':direction===null?'Direction unavailable':'From '+compass(direction),gust:finite(weather.gust)&&weather.gust>=0?weather.gust:null};}
@@ -91,6 +103,7 @@ function range(a,b,unit){return finite(a)&&finite(b)?`${round(a)}${Math.round(a)
 class Panel{
  constructor({element,data,getState,engine,fetcher=(...a)=>fetch(...a),now=()=>Date.now()}){
   Object.assign(this,{el:element,data,getState,E:engine,fetcher,now});this.hours=12;this.visible=false;this.loading=false;this.message='';this.cache=null;this.sequence=0;
+  try{const stored=JSON.parse(document.getElementById('savedOutlookData')?.textContent||localStorage.getItem(OUTLOOK_KEY)||'null');if(A.validOutlook(stored))this.outlook=stored;}catch(e){}
   try{const stored=JSON.parse(document.getElementById('savedWeatherData')?.textContent||localStorage.getItem(CACHE_KEY)||'null');if(stored?.version===3&&stored.routeSha256===data.gpx_sha256&&finite(stored.base)&&Math.abs(stored.base)<=8640000000000000&&finite(stored.fromKm)&&finite(stored.remaining)&&typeof stored.signature==='string'&&finite(stored.fetchedAt)&&Math.abs(stored.fetchedAt)<=8640000000000000&&Array.isArray(stored.rows)&&stored.rows.length>0&&stored.rows.length<=MAX_HOURS+1&&stored.rows.every(r=>finite(r.sample?.time)&&Math.abs(r.sample.time)<=8640000000000000&&finite(r.sample?.hour)&&finite(r.sample?.km)&&finite(r.sample?.elevation)))this.cache=stored;}catch(e){}
   this.el.querySelectorAll('[data-weather-hours]').forEach(b=>b.onclick=()=>{this.hours=Number(b.dataset.weatherHours);this.render();});
   this.el.querySelector('[data-weather-refresh]').onclick=()=>this.refresh(true);
@@ -105,23 +118,33 @@ class Panel{
    const state=this.getState(),age=this.cache?this.now()-this.cache.fetchedAt:Infinity;
    const relocated=this.cache&&Math.abs(this.cache.fromKm-state.progressKm)>=5;
    const changed=this.cache&&(this.cache.signature!==signature(state)||relocated||Math.abs(this.cache.fromKm-state.progressKm)>=2&&age>10*60000);
-   if(force||!this.cache||age>=30*60000||changed)this.refresh(force||!!relocated&&(!finite(this.lastAttemptFromKm)||Math.abs(this.lastAttemptFromKm-state.progressKm)>=5));else this.render();
+   if(force||!this.cache||!this.cache.aemetStartAvailability||age>=30*60000||changed)this.refresh(force||!!relocated&&(!finite(this.lastAttemptFromKm)||Math.abs(this.lastAttemptFromKm-state.progressKm)>=5));else this.render();
   },500);
  }
- async aemetRows(plan,manual){
+ async fetchAemet(manual){
+  if(this.feedPromise)return this.feedPromise;
+  this.feedPromise=this.loadAemet(manual);try{await this.feedPromise;}finally{this.feedPromise=null;}
+ }
+ async loadAemet(manual){
   if(manual||!this.feedCheckedAt||this.now()-this.feedCheckedAt>=10*60000){
-   const controller=new AbortController(),cancel=()=>controller.abort();this.controller.signal.addEventListener('abort',cancel,{once:true});const timeout=setTimeout(cancel,6000);
-   try{const r=await this.fetcher(A.FEED,{signal:controller.signal,cache:'no-cache',credentials:'omit',referrerPolicy:'no-referrer'});if(!r.ok)throw Error('AEMET cache unavailable');const feed=await r.json();if(!A.validFeed(feed))throw Error('Invalid AEMET cache');this.feed=feed;this.feedError=false;}
+   const controller=new AbortController(),parent=this.controller?.signal,cancel=()=>controller.abort();parent?.addEventListener('abort',cancel,{once:true});const timeout=setTimeout(cancel,6000);
+   try{const r=await this.fetcher(A.FEED,{signal:controller.signal,cache:'no-cache',credentials:'omit',referrerPolicy:'no-referrer'});if(!r.ok)throw Error('AEMET cache unavailable');const feed=await r.json();if(!A.validFeed(feed))throw Error('Invalid AEMET cache');this.feed=feed;this.feedError=false;if(A.validOutlook(feed.outlook)){this.outlook=feed.outlook;try{localStorage.setItem(OUTLOOK_KEY,JSON.stringify(this.outlook));}catch(e){}}}
    catch(e){this.feedError=true;}
-   finally{clearTimeout(timeout);this.controller.signal.removeEventListener('abort',cancel);this.feedCheckedAt=this.now();}
+   finally{clearTimeout(timeout);parent?.removeEventListener('abort',cancel);this.feedCheckedAt=this.now();}
   }
+ }
+ async aemetRows(plan,manual){
+  await this.fetchAemet(manual);
   return A.rows(this.feed,plan,this.now());
  }
  async refresh(manual=false){
   if(this.loading){this.pendingManual=this.pendingManual||manual;return;}if(!this.visible)return;
   this.suppressCache=false;const now=this.now(),state=structuredClone(this.getState()),plan=createPlan(this.data,state,now,this.E);this.plan=plan;
-  if(plan.remaining<=.00001){this.message='Route complete. There is no upcoming race section to forecast.';this.cache=null;this.render();return;}
-  if(!forecastRange(plan,now)){this.suppressCache=true;this.message='The planned race dates are outside the provider’s forecast window (up to 16 days). Refresh closer to the race.';this.render();return;}
+  if(plan.remaining<=.00001||!forecastRange(plan,now)){
+   if(plan.remaining<=.00001){this.message='Route complete. There is no upcoming race section to forecast.';this.cache=null;}
+   else{this.suppressCache=true;this.message='The planned race dates are outside the provider’s forecast window (up to 16 days). Refresh closer to the race.';}
+   this.render();if(navigator.onLine!==false){await this.fetchAemet(manual);this.render();}return;
+  }
   if(navigator.onLine===false){this.message=this.cache?'Offline · showing the saved forecast for its original time and route positions.':'Connect once to load weather for the route ahead.';this.render();return;}
   if(!manual&&this.lastAttempt&&now-this.lastAttempt<(this.lastError?5:1)*60000){this.render();return;}
   this.lastAttempt=now;this.lastAttemptFromKm=state.progressKm;this.loading=true;this.message='Loading weather along your projected route…';this.render();const sequence=++this.sequence;this.controller=new AbortController();const timeout=setTimeout(()=>this.controller.abort(),20000);
@@ -134,13 +157,14 @@ class Panel{
    const rows=A.merge(localRows,fallback);
    if(!rows.some(r=>r.weather))throw fallbackError||Error('No forecast is available yet for these race dates. Refresh closer to the race.');
    if(sequence!==this.sequence)return;
-   this.lastError=!!fallbackError;this.cache={version:3,routeSha256:this.data.gpx_sha256,base:plan.base,fromKm:plan.fromKm,remaining:plan.remaining,signature:plan.signature,fetchedAt:this.now(),aemetCheckedAt:this.feedCheckedAt,aemetGeneratedAt:this.feed?.generatedAt??null,aemetFeedError:this.feedError,rows};this.message=fallbackError?'AEMET available for part of the route; fallback unavailable. Missing hours stay unavailable.':'';
+   this.lastError=!!fallbackError;this.cache={version:3,routeSha256:this.data.gpx_sha256,base:plan.base,fromKm:plan.fromKm,remaining:plan.remaining,signature:plan.signature,fetchedAt:this.now(),aemetCheckedAt:this.feedCheckedAt,aemetGeneratedAt:this.feed?.generatedAt??null,aemetFeedError:this.feedError,aemetStartAvailability:A.availability(this.feed,plan.samples[0],this.now()),rows};this.message=fallbackError?'AEMET available for part of the route; fallback unavailable. Missing hours stay unavailable.':'';
    try{localStorage.setItem(CACHE_KEY,JSON.stringify(this.cache));}catch(e){this.message='Forecast loaded. This browser could not save it for offline use.';}
   }catch(e){this.lastError=true;if(sequence===this.sequence)this.message=e.name==='AbortError'?'Weather request timed out or was interrupted. Try Refresh.':e instanceof TypeError?'Could not load weather. Check your connection and tap Refresh.':e instanceof SyntaxError?'Forecast response was unreadable. Try Refresh.':e.message;if(this.cache)this.message+=' Saved forecast retains its original times and positions.';}
   finally{clearTimeout(timeout);if(sequence===this.sequence){this.loading=false;this.render();if(this.pendingManual){this.pendingManual=false;this.update(true);}}}
  }
  render(){
   const now=this.now(),cache=this.cache,hours=this.hours,button=this.el.querySelector('[data-weather-refresh]');button.disabled=this.loading;button.textContent=this.loading?'Loading…':'Refresh';
+  const outlook=this.el.querySelector('[data-weather-outlook]');if(outlook){const html=outlookHTML(this.outlook,now,this.data.timezone,navigator.onLine===false);if(outlook.innerHTML!==html){const open=outlook.querySelector('[data-outlook-sources]')?.open;outlook.innerHTML=html;const sources=outlook.querySelector('[data-outlook-sources]');if(open&&sources)sources.open=true;}}
   this.el.querySelectorAll('[data-weather-hours]').forEach(b=>{const selected=Number(b.dataset.weatherHours)===hours;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected));});
   const route=this.el.querySelector('[data-weather-route]'),destination=this.el.querySelector('[data-weather-destination]');
   const status=this.el.querySelector('[data-weather-status]'),summary=this.el.querySelector('[data-weather-summary]'),cards=this.el.querySelector('[data-weather-cards]'),context=this.el.querySelector('[data-weather-context]'),conditionRow=this.el.querySelector('[data-weather-conditions]'),source=this.el.querySelector('[data-weather-provider]');
@@ -148,7 +172,7 @@ class Panel{
   if(!cache||this.suppressCache){status.textContent=this.message||'Forecast follows your pace, route position and GPX elevation.';context.textContent='';summary.innerHTML='';conditionRow.innerHTML='';cards.innerHTML='';destination.textContent='';route.hidden=true;return;}
   const age=Math.max(0,(now-cache.fetchedAt)/60000),end=cache.base+Math.min(hours,cache.remaining)*HOUR,expired=end<now;
   const changed=cache.signature!==signature(this.getState())||Math.abs(cache.fromKm-this.getState().progressKm)>=2;
-  status.textContent=expired?'This saved forecast window has passed. Refresh for the route ahead.':navigator.onLine===false?'Offline · saved forecast for its original times and route positions.':this.message||(age>=120?'Saved forecast is over 2 hours old. Refresh when connected.':changed?'Progress or pace has changed. Refresh to update forecast locations.':cache.base-now>7*24*HOUR?'Long-range outlook · refresh nearer race day.':'Forecast for the places you are projected to reach.');
+  status.textContent=expired?'This saved forecast window has passed. Refresh for the route ahead.':navigator.onLine===false?'Offline · saved forecast for its original times and route positions.':this.message||(age>=120?'Saved forecast is over 2 hours old. Refresh when connected.':changed?'Progress or pace has changed. Refresh to update forecast locations.':coverageText(cache.aemetStartAvailability,cache.base,this.data.timezone)||(cache.base-now>7*24*HOUR?'Long-range outlook · refresh nearer race day.':'Forecast for the places you are projected to reach.'));
   context.textContent=`${hours}-hour outlook from ${clock(cache.base,this.data.timezone,true)} · route km ${cache.fromKm.toFixed(1)}. Fetched ${clock(cache.fetchedAt,this.data.timezone,true)}${age>=120?' · saved / stale':''}.`;
   if(expired){summary.innerHTML='';conditionRow.innerHTML='';cards.innerHTML='';destination.textContent='';route.hidden=true;return;}
   route.hidden=false;
@@ -163,5 +187,5 @@ class Panel{
   this.el.querySelector('[data-weather-coverage]').textContent=`${available} of ${s.total} hourly route samples have forecast data. ${sourceSummary(s.rows)}. AEMET eligibility: ≤8 km away, ≤250 m height difference, downloaded within 6 h. These limits are heuristics, not accuracy guarantees.${cache.remaining<hours?' Outlook stops at your projected finish.':''}`;
  }
 }
-const api={HOUR,MAX_HOURS,CACHE_KEY,signature,routePoint,createPlan,forecastRange,requestURL,readLocation,readResponses,summarize,sourceSummary,sourceNote,chanceLabel,codeLabel,compass,windInfo,weatherKind,conditions,weatherIcon,Panel};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.RouteWeather=api;
+const api={HOUR,MAX_HOURS,CACHE_KEY,OUTLOOK_KEY,signature,routePoint,createPlan,forecastRange,requestURL,readLocation,readResponses,summarize,sourceSummary,sourceNote,chanceLabel,coverageText,outlookHTML,codeLabel,compass,windInfo,weatherKind,conditions,weatherIcon,Panel};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.RouteWeather=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

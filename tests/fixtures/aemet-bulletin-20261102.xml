@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='ISO-8859-15'?>
+<root id="90">
+  <elaborado>2026-11-01T14:35:18</elaborado>
+  <validez_ini>2026-11-02T00:00:00</validez_ini>
+  <validez_fin>2026-11-03T00:00:00</validez_fin>
+  <actualizacion/>
+  <prediccion>
+    <txt_prediccion>
+      <p>Nuboso de madrugada, tendiendo a intervalos de nubes medias y altas con probables amplios claros durante las horas centrales. Baja probabilidad de lluvias ocasionales, débiles a moderadas. Calima ligera. Temperaturas mínimas sin cambios o en ligero descenso, máximas en ligero ascenso. Viento flojo a moderado del noreste.</p>
+    </txt_prediccion>
+    <ciudad>
+      <id>6535016</id>
+      <nombre>Palmas de Gran Canaria, Las</nombre>
+      <minima>22</minima>
+      <maxima>26</maxima>
+    </ciudad>
+  </prediccion>
+</root>

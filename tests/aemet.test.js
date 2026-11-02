@@ -26,4 +26,29 @@ test('mixed probabilities are labelled with period differences',()=>assert.match
 test('town warnings never claim GPX altitude downscaling',()=>assert.match(W.sourceNote(A.select(feed,sample,now)),/Town forecast; no altitude correction/));
 test('source summary distinguishes AEMET and route fallback',()=>{assert.match(W.sourceSummary([{weather:A.select(feed,sample,now)},{weather:{source:{provider:'open-meteo'}}}]),/AEMET.*Open-Meteo route fallback/);});
 test('six-hour matching thresholds are explicitly heuristics rather than probabilities',()=>{assert.equal(A.MAX_HEIGHT,250);assert.equal(A.MAX_DISTANCE,8000);assert.equal(A.MAX_AGE,6*A.HOUR);});
+test('fresh live Galdar data can still end before the start when less than 48 clock hours remain',()=>{
+ const feed=require('./fixtures/aemet-galdar-20261102.json'),now=Date.parse('2026-11-02T10:53:00Z'),sample={lat:28.144767,lon:-15.655684,elevation:118.96,time:Date.parse('2026-11-04T09:00:00Z')};
+ assert(sample.time-now<48*A.HOUR);assert(A.eligible(feed.towns[0],sample,now));assert.equal(A.select(feed,sample,now),null);
+ const availability=A.availability(feed,sample,now);assert.equal(availability.kind,'after');assert.equal(availability.town,'Gáldar');assert.equal(availability.until,Date.parse('2026-11-04T05:00:00Z'));
+ assert.match(W.coverageText(availability,sample.time,'Atlantic/Canary'),/05:00.*09:00/);
+});
+test('coverage explains a missing interior hour without calling it a horizon limit',()=>{const gap={...feed,towns:[{...town,hourly:[town.hourly[0],town.hourly[3]]}]};assert.equal(A.availability(gap,sample,now).kind,'gap');});
+test('stale and unavailable AEMET feeds have distinct fallback explanations',()=>{
+ assert.equal(A.availability(null,sample,now).kind,'unavailable');assert.equal(A.availability({...feed,towns:[{...town,fetchedAt:now-7*A.HOUR}]},sample,now).kind,'stale');
+ assert.match(W.coverageText({kind:'stale'},now,'Atlantic/Canary'),/6 hours/);assert.match(W.coverageText({kind:'unavailable'},now,'Atlantic/Canary'),/Could not load/);
+});
+test('distance and altitude mismatch are distinguished from missing forecast times',()=>assert.equal(A.availability({...feed,towns:[{...town,elevation:0}]},sample,now).kind,'location'));
+test('coverage diagnostics use the last temperature rather than later rain-only rows',()=>{const x={...feed,towns:[{...town,hourly:[...town.hourly,{time:t+10*3600,rain:0}]}]};const a=A.availability(x,{...sample,time:now+3*A.HOUR},now);assert.equal(a.kind,'after');assert.equal(a.until,now+2*A.HOUR);});
+test('covering neighbouring forecast avoids a false end-of-horizon message',()=>{const later={...town,id:'35005',hourly:[...town.hourly,{...town.hourly.at(-1),time:t+3*3600}]};assert.equal(A.availability({...feed,towns:[town,later]},{...sample,time:now+3*A.HOUR},now).kind,'covered');});
+test('covered forecast has no fallback explanation',()=>{assert.equal(A.availability(feed,sample,now).kind,'covered');assert.equal(W.coverageText({kind:'covered'},now,'Atlantic/Canary'),'');});
+const outlook=require('./fixtures/aemet-island-outlook-20261102.json'),outlookNow=Date.parse('2026-11-02T11:30:00Z');
+test('official island and regional outlook retain their distinct areas',()=>{assert(A.validOutlook(outlook));const window=A.outlookWindow(outlook,outlookNow);assert.equal(window.entries.length,4);assert.equal(window.entries[0].area,'Gran Canaria');assert.equal(window.entries[2].area,'Canary Islands');});
+test('four calendar-day bulletins can cover exactly the next rolling 72 hours',()=>assert.equal(A.outlookWindow(outlook,outlookNow).coveredHours,72));
+test('outlook stays anchored to current time rather than race start or route progress',()=>assert.equal(A.outlookWindow(outlook,outlookNow).end,outlookNow+72*A.HOUR));
+test('missing outlook days reduce coverage rather than inventing text',()=>assert.equal(A.outlookWindow({...outlook,entries:outlook.entries.filter((b,i)=>i!==1)},outlookNow).coveredHours,48));
+test('expired daily bulletins are never displayed as upcoming',()=>assert.equal(A.outlookWindow(outlook,Date.parse('2026-11-10T00:00:00Z')).entries.length,0));
+test('old or future-dated downloads are not silently refreshed',()=>{const b=outlook.entries[0];for(const fetchedAt of [outlookNow-25*A.HOUR,outlookNow+A.HOUR])assert.equal(A.outlookWindow({...outlook,entries:[{...b,fetchedAt}]},outlookNow).entries.length,0);});
+test('text outlook is escaped and its Spanish language is explicit',()=>{const b={...outlook.entries[0],paragraphs:['<img src=x onerror=alert(1)>']},html=W.outlookHTML({...outlook,entries:[b]},outlookNow,'Atlantic/Canary');assert(!html.includes('<img'));assert(html.includes('&lt;img'));assert(html.includes('lang="es"'));assert(html.includes('Spanish'));});
+test('partial, offline and source issue information are visible',()=>{const html=W.outlookHTML({...outlook,entries:outlook.entries.slice(0,2)},outlookNow,'Atlantic/Canary',true);assert.match(html,/Partial coverage/);assert.match(html,/Offline/);assert.match(html,/Issued 2026-11-01/);});
+test('missing and malformed outlooks show unavailable rather than synthetic trend',()=>{assert(!A.validOutlook({...outlook,entries:[{...outlook.entries[0],until:1e30}]}));assert.match(W.outlookHTML(null,outlookNow,'Atlantic/Canary'),/No current AEMET/);});
 console.log(`${passed} AEMET matching tests passed`);

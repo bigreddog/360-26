@@ -96,6 +96,36 @@ class TestAemet(unittest.TestCase):
             self.assertTrue(t['url'].startswith('https://www.aemet.es/'))
             self.assertEqual(len(t['metadata_sha256']), 64)
 
+    def test_island_text_is_parsed_without_city_temperature_table(self):
+        raw = (ROOT / 'tests/fixtures/aemet-bulletin-20261102.xml').read_bytes()
+        data = A.parse_bulletin(raw, '2026-11-02', 'https://www.aemet.es/source', NOW)
+        self.assertEqual(data['area'], 'Gran Canaria')
+        self.assertEqual(data['language'], 'es')
+        self.assertIn('Nuboso', data['paragraphs'][0])
+        self.assertNotIn('6535016', ' '.join(data['paragraphs']))
+        self.assertEqual(data['until'] - data['from'], 24 * 3600000)
+        self.assertEqual(data['issuedLocal'], '2026-11-01T14:35:18')
+
+    def test_regional_fallback_keeps_its_broader_scope(self):
+        raw = (ROOT / 'tests/fixtures/aemet-bulletin-20261104.xml').read_bytes()
+        data = A.parse_bulletin(raw, '2026-11-04', 'https://www.aemet.es/source', NOW)
+        self.assertEqual(data['area'], 'Canary Islands')
+
+    def test_national_fallback_is_rejected(self):
+        raw = (ROOT / 'tests/fixtures/aemet-bulletin-20261104.xml').read_bytes().replace(b'id="coo"', b'id="esp1"')
+        with self.assertRaises(ValueError):
+            A.parse_bulletin(raw, '2026-11-04', 'https://www.aemet.es/source', NOW)
+
+    def test_wrong_bulletin_date_rejected(self):
+        raw = (ROOT / 'tests/fixtures/aemet-bulletin-20261104.xml').read_bytes()
+        with self.assertRaises(ValueError):
+            A.parse_bulletin(raw, '2026-11-05', 'https://www.aemet.es/source', NOW)
+
+    def test_empty_bulletin_not_invented(self):
+        raw = b'<root id="90"><validez_ini>2026-11-02T00:00:00</validez_ini><validez_fin>2026-11-03T00:00:00</validez_fin><prediccion><txt_prediccion/></prediccion></root>'
+        with self.assertRaises(ValueError):
+            A.parse_bulletin(raw, '2026-11-02', 'https://www.aemet.es/source', NOW)
+
 
 if __name__ == '__main__':
     unittest.main()

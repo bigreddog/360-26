@@ -109,6 +109,59 @@ def download(town):
             time.sleep(attempt + 1)
 
 
+def parse_bulletin(raw: bytes, requested_date: str, url: str, fetched: datetime) -> dict:
+    """Public website XML can fall back to regional text; never mislabel it."""
+    root = ET.fromstring(raw)
+    areas = {'90': 'Gran Canaria', 'coo': 'Canary Islands'}
+    area = areas.get(root.get('id'))
+    if not area:
+        raise ValueError('Unexpected forecast area (national fallback is not an island outlook)')
+    zone = ZoneInfo('Atlantic/Canary')
+    start = datetime.fromisoformat(root.findtext('validez_ini'))
+    end = datetime.fromisoformat(root.findtext('validez_fin'))
+    if start.date().isoformat() != requested_date or end <= start:
+        raise ValueError('Unexpected bulletin validity dates')
+    if start.tzinfo is None:
+        start = start.replace(tzinfo=zone)
+    if end.tzinfo is None:
+        end = end.replace(tzinfo=zone)
+
+    def paragraphs(path):
+        node = root.find(path)
+        if node is None:
+            return []
+        nodes = node.findall('p') or [node]
+        return [text for n in nodes if (text := ' '.join(''.join(n.itertext()).split()))]
+
+    text = paragraphs('./prediccion/txt_prediccion')
+    if not text or sum(map(len, text)) > 12000:
+        raise ValueError('Missing or oversized outlook text')
+    return {'date': requested_date, 'area': area, 'language': 'es',
+            'from': int(start.timestamp() * 1000), 'until': int(end.timestamp() * 1000),
+            'issuedLocal': root.findtext('elaborado'), 'fetchedAt': int(fetched.timestamp() * 1000),
+            'paragraphs': text, 'significant': paragraphs('./prediccion/fenom_sign'),
+            'sourceUrl': url, 'pageUrl': 'https://www.aemet.es/es/eltiempo/prediccion/espana?p=353',
+            'sourceSha256': hashlib.sha256(raw).hexdigest()}
+
+
+def download_bulletin(date):
+    # This is the same public endpoint used by AEMET's own general-forecast
+    # page for Gran Canaria (map location 6590). Later dates can return coo.
+    url = f'https://www.aemet.es/es/api-eltiempo/prediccion/{date}/CAN/9/6590'
+    for attempt in range(3):
+        try:
+            request = Request(url, headers={'User-Agent': 'Canarias360-Roadbook/1.0'})
+            with urlopen(request, timeout=25) as response:
+                raw = response.read(2_000_001)
+            if len(raw) > 2_000_000:
+                raise ValueError('Oversized bulletin')
+            return parse_bulletin(raw, date, url, datetime.now(UTC))
+        except Exception as error:
+            if attempt == 2:
+                return {'date': date, 'error': type(error).__name__}
+            time.sleep(attempt + 1)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=ROOT / 'data/weather/aemet.json')
@@ -118,11 +171,19 @@ def main():
         results = list(pool.map(download, towns))
     usable = [r for r in results if 'hourly' in r]
     errors = [r for r in results if 'error' in r]
-    if not usable:
-        raise RuntimeError('All AEMET feeds failed; leaving the previous snapshot untouched')
     # Preserve a failed town's last snapshot with its ORIGINAL fetch timestamp.
     # Browser eligibility rejects old data rather than refreshing its age.
     old = json.loads(args.output.read_text()) if args.output.exists() else {}
+    today = datetime.now(ZoneInfo('Atlantic/Canary')).date()
+    dates = [(today + timedelta(days=i)).isoformat() for i in range(4)]
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        bulletins = list(pool.map(download_bulletin, dates))
+    fresh = [b for b in bulletins if 'paragraphs' in b]
+    if not usable and not fresh:
+        raise RuntimeError('All AEMET feeds failed; leaving the previous snapshot untouched')
+    # Also retain failed bulletin downloads with their original dates and age.
+    failed_dates = {b['date'] for b in bulletins if 'error' in b}
+    retained = [b for b in old.get('outlook', {}).get('entries', []) if b.get('date') in failed_dates]
     usable += [t for t in old.get('towns', []) if t['id'] in {e['id'] for e in errors}]
     result = {'version': 1, 'provider': 'aemet', 'product': 'municipal-hourly',
               'generatedAt': int(datetime.now(UTC).timestamp() * 1000),
@@ -130,12 +191,14 @@ def main():
               'source': 'https://www.aemet.es/es/eltiempo/prediccion/municipios/',
               'units': {'temperature': '°C', 'wind': 'km/h', 'rain': 'mm'},
               'rainInterval': 'following hour', 'probabilityPeriods': 'UTC',
-              'towns': sorted(usable, key=lambda t: t['id']), 'errors': errors}
+              'towns': sorted(usable, key=lambda t: t['id']), 'errors': errors,
+              'outlook': {'version': 1, 'entries': sorted(fresh + retained, key=lambda b: b['from']),
+                          'errors': [b for b in bulletins if 'error' in b]}}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     temporary = args.output.with_suffix('.tmp')
     temporary.write_text(json.dumps(result, ensure_ascii=False, separators=(',', ':')) + '\n')
     temporary.replace(args.output)
-    print(f'AEMET: {len(usable)} town forecasts, {len(errors)} fetch failures; {args.output.stat().st_size:,} bytes')
+    print(f'AEMET: {len(usable)} town forecasts, {len(errors)} fetch failures, {len(fresh)} current outlook bulletins; {args.output.stat().st_size:,} bytes')
 
 
 if __name__ == '__main__':

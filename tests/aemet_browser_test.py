@@ -23,7 +23,15 @@ def feed(mode='ok'):
               'probabilities': [{'start': NOW - 10800 + i * 21600,
                                  'end': NOW - 10800 + (i + 1) * 21600,
                                  'value': 70, 'hours': 6} for i in range(13)]} for town in TOWNS]
-    return {'version': 1, 'provider': 'aemet', 'generatedAt': NOW * 1000, 'towns': towns}
+    day = NOW - 9 * 3600
+    entries = [{'date': f'2026-11-{4+i:02}', 'area': 'Gran Canaria' if i < 2 else 'Canary Islands',
+                'language': 'es', 'from': (day + i * 86400) * 1000,
+                'until': (day + (i + 1) * 86400) * 1000, 'fetchedAt': (NOW - 3600) * 1000,
+                'issuedLocal': '2026-11-04T08:00:00',
+                'paragraphs': ['Intervalos nubosos. Temperaturas sin cambios.'],
+                'significant': ['Lluvias localmente fuertes.'] if i == 1 else []} for i in range(4)]
+    return {'version': 1, 'provider': 'aemet', 'generatedAt': NOW * 1000, 'towns': towns,
+            'outlook': {'version': 1, 'entries': entries}}
 
 
 def fallback(url):
@@ -81,9 +89,14 @@ with sync_playwright() as p:
         check(checks, 'AEMET northerly wind arrow points south', page.locator('.weather-wind-summary [data-wind-bearing="0"] g').get_attribute('transform') == 'rotate(180 24 26)')
         check(checks, 'only near-height near-distance towns supply the preview', page.evaluate('weatherPanel.cache.rows.filter(r=>r.weather?.source?.provider==="aemet").every(r=>Math.abs(r.weather.source.heightDelta)<=250&&r.weather.source.separation<=8000)'))
         check(checks, 'new cache schema preserves source attribution', page.evaluate('JSON.parse(localStorage.getItem(RouteWeather.CACHE_KEY)).version') == 3)
+        outlook_text = page.locator('[data-weather-outlook]').inner_text()
+        check(checks, 'island outlook shows four dated daily bulletins overlapping the next 72 hours', page.locator('.island-day').count() == 4 and 'next 72 hours' in outlook_text)
+        check(checks, 'regional later days are labelled and original Spanish is explicit', 'Gran Canaria' in outlook_text and 'Canary Islands' in outlook_text and 'Spanish' in outlook_text)
+        check(checks, 'significant bulletin text remains visible', 'Lluvias localmente fuertes' in outlook_text)
         before = len(calls)
         page.locator('[data-weather-hours="24"]').click()
         check(checks, 'horizon switch uses the same mixed forecast without new requests', len(calls) == before)
+        check(checks, '12/24-hour route control does not change 72-hour island outlook', page.locator('[data-weather-outlook]').inner_text() == outlook_text)
         page.locator('[data-weather-route]>summary').click()
         text = page.locator('[data-weather-cards]').inner_text()
         check(checks, 'stop cards name the town, mismatch and uncorrected altitude', 'Gáldar' in text and 'vs town' in text and 'no altitude correction' in text)
@@ -121,6 +134,7 @@ with sync_playwright() as p:
             page.locator('#downloadHtml').click()
         file = ROOT / 'data/test_aemet_saved.html'
         info.value.save_as(str(file))
+        check(checks, 'portable HTML embeds separately dated official outlook text', 'id="savedOutlookData"' in file.read_text())
         offline = browser.new_context(service_workers='block', viewport={'width': 390, 'height': 844})
         offline.add_init_script(INIT + "Object.defineProperty(navigator,'onLine',{get:()=>false});")
         offline.route('**/*', lambda r: r.continue_() if r.request.url.startswith('http://127.0.0.1:8787/') else r.abort())
@@ -128,12 +142,55 @@ with sync_playwright() as p:
         o.goto('http://127.0.0.1:8787/data/test_aemet_saved.html')
         o.wait_for_function('typeof weatherPanel!=="undefined"&&weatherPanel.cache')
         check(checks, 'portable offline HTML retains mixed source provenance and original forecasts', 'AEMET' in o.locator('[data-weather-provider]').inner_text() and 'Offline' in o.locator('[data-weather-status]').inner_text())
+        check(checks, 'offline HTML also restores original regional text and its scope', o.locator('.island-day').count() == 4 and 'Offline' in o.locator('[data-weather-outlook]').inner_text())
+        o.locator('[data-outlook-sources]>summary').click()
+        o.evaluate('weatherPanel.now=()=>Date.now()+5*24*3600000;weatherPanel.render()')
+        check(checks, 'expired island bulletins are hidden rather than relabelled', o.locator('.island-day').count() == 0 and 'No current AEMET' in o.locator('[data-weather-outlook]').inner_text())
         offline.close()
         page.get_by_role('tab', name='Map', exact=True).click()
         before = len(calls)
         page.evaluate('weatherPanel.update(true)')
         page.wait_for_timeout(800)
         check(checks, 'hidden panel does not poll providers', len(calls) == before)
+        # Real captured 2 Nov feed: fresh but its fixed model run ends at 05:00
+        # on 4 Nov, before the 09:00 start despite <48 clock hours remaining.
+        pre = browser.new_context(viewport={'width': 390, 'height': 844}, is_mobile=True,
+                                  has_touch=True, service_workers='block')
+        pre.add_init_script("Date.now=()=>Date.parse('2026-11-02T10:53:00Z');")
+        legacy = page.evaluate('weatherPanel.cache')
+        legacy.pop('aemetStartAvailability', None)
+        legacy['fetchedAt'] = int(datetime(2026, 11, 2, 10, 53, tzinfo=timezone.utc).timestamp() * 1000)
+        pre.add_init_script("localStorage.setItem('canarias360-weather-v3'," + json.dumps(json.dumps(legacy)) + ');')
+        fixture = json.loads((ROOT / 'tests/fixtures/aemet-galdar-20261102.json').read_text())
+        def pre_intercept(route):
+            url = route.request.url
+            if 'raw.githubusercontent.com/bigreddog/360-26/weather-data/aemet.json' in url:
+                route.fulfill(status=200, content_type='application/json', body=json.dumps(fixture))
+            elif url.startswith('https://api.open-meteo.com/'):
+                route.fulfill(status=200, content_type='application/json', body=json.dumps(fallback(url)))
+            elif url.startswith('http://127.0.0.1:8787/'):
+                route.continue_()
+            else:
+                route.abort()
+        pre.route('**/*', pre_intercept)
+        f = pre.new_page()
+        f.on('pageerror', lambda e: errors.append(str(e)))
+        f.goto('http://127.0.0.1:8787')
+        f.wait_for_function('typeof weatherPanel!=="undefined"&&weatherPanel.cache?.aemetStartAvailability&&!weatherPanel.loading')
+        check(checks, 'recent legacy v3 cache is refreshed once to add actual coverage diagnostics', f.evaluate('weatherPanel.cache.aemetStartAvailability.kind') == 'after')
+        status = f.locator('[data-weather-status]').inner_text()
+        check(checks, 'fresh short model horizon visibly explains 05:00 coverage vs 09:00 start', 'Gáldar' in status and '05:00' in status and '09:00' in status and 'Open-Meteo' in status)
+        check(checks, 'out-of-coverage start retains valid fallback rather than extending AEMET', f.evaluate('weatherPanel.cache.rows[0].weather.source.provider') == 'open-meteo')
+        check(checks, 'coverage explanation fits phone width', f.evaluate('document.documentElement.scrollWidth<=innerWidth+1'))
+        f.locator('#weatherPanel').evaluate('e=>window.scrollTo(0,e.offsetTop-75)')
+        f.screenshot(path=str(OUT / f'{engine}-start-coverage.png'))
+        # Simulate the next published run, not invented production weather.
+        last = fixture['towns'][0]['hourly'][-1]
+        fixture['towns'][0]['hourly'].extend([{**last, 'time': last['time'] + i * 3600} for i in range(1, 7)])
+        f.locator('[data-weather-refresh]').click()
+        f.wait_for_function('!weatherPanel.loading&&weatherPanel.cache.rows[0].weather.source.provider==="aemet"')
+        check(checks, 'next run automatically supplies AEMET when its actual coverage reaches the start', f.evaluate('weatherPanel.cache.aemetStartAvailability.kind') == 'covered' and '05:00' not in f.locator('[data-weather-status]').inner_text())
+        pre.close()
         check(checks, 'no JavaScript errors during AEMET journeys', not errors)
         ctx.close()
         browser.close()

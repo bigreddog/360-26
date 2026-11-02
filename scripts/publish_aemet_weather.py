@@ -41,7 +41,7 @@ def main():
             args.file.write_bytes(base64.b64decode(old['content']))
         return
     data = json.loads(args.file.read_text())
-    assert data['version'] == 1 and data['provider'] == 'aemet' and data['towns']
+    assert data['version'] == 1 and data['provider'] == 'aemet' and (data['towns'] or data.get('outlook', {}).get('entries'))
     if not old:
         try:
             api('git/ref/heads/' + BRANCH)

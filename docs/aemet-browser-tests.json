@@ -1,9 +1,9 @@
 {
-  "passed": 42,
+  "passed": 66,
   "results": [
     {
       "browser": "chromium",
-      "passed": 21,
+      "passed": 33,
       "checks": [
         "AEMET is used alongside explicitly identified remote/high-route fallback",
         "visible provider badge identifies both sources",
@@ -11,7 +11,11 @@
         "AEMET northerly wind arrow points south",
         "only near-height near-distance towns supply the preview",
         "new cache schema preserves source attribution",
+        "island outlook shows four dated daily bulletins overlapping the next 72 hours",
+        "regional later days are labelled and original Spanish is explicit",
+        "significant bulletin text remains visible",
         "horizon switch uses the same mixed forecast without new requests",
+        "12/24-hour route control does not change 72-hour island outlook",
         "stop cards name the town, mismatch and uncorrected altitude",
         "AEMET six-hour chance is labelled at the stop",
         "source badges and detailed cards fit 320px",
@@ -23,14 +27,22 @@
         "fallback outage retains AEMET while leaving remote hours missing",
         "partial-provider outage is explained",
         "missing rain samples stay unavailable",
+        "portable HTML embeds separately dated official outlook text",
         "portable offline HTML retains mixed source provenance and original forecasts",
+        "offline HTML also restores original regional text and its scope",
+        "expired island bulletins are hidden rather than relabelled",
         "hidden panel does not poll providers",
+        "recent legacy v3 cache is refreshed once to add actual coverage diagnostics",
+        "fresh short model horizon visibly explains 05:00 coverage vs 09:00 start",
+        "out-of-coverage start retains valid fallback rather than extending AEMET",
+        "coverage explanation fits phone width",
+        "next run automatically supplies AEMET when its actual coverage reaches the start",
         "no JavaScript errors during AEMET journeys"
       ]
     },
     {
       "browser": "webkit",
-      "passed": 21,
+      "passed": 33,
       "checks": [
         "AEMET is used alongside explicitly identified remote/high-route fallback",
         "visible provider badge identifies both sources",
@@ -38,7 +50,11 @@
         "AEMET northerly wind arrow points south",
         "only near-height near-distance towns supply the preview",
         "new cache schema preserves source attribution",
+        "island outlook shows four dated daily bulletins overlapping the next 72 hours",
+        "regional later days are labelled and original Spanish is explicit",
+        "significant bulletin text remains visible",
         "horizon switch uses the same mixed forecast without new requests",
+        "12/24-hour route control does not change 72-hour island outlook",
         "stop cards name the town, mismatch and uncorrected altitude",
         "AEMET six-hour chance is labelled at the stop",
         "source badges and detailed cards fit 320px",
@@ -50,8 +66,16 @@
         "fallback outage retains AEMET while leaving remote hours missing",
         "partial-provider outage is explained",
         "missing rain samples stay unavailable",
+        "portable HTML embeds separately dated official outlook text",
         "portable offline HTML retains mixed source provenance and original forecasts",
+        "offline HTML also restores original regional text and its scope",
+        "expired island bulletins are hidden rather than relabelled",
         "hidden panel does not poll providers",
+        "recent legacy v3 cache is refreshed once to add actual coverage diagnostics",
+        "fresh short model horizon visibly explains 05:00 coverage vs 09:00 start",
+        "out-of-coverage start retains valid fallback rather than extending AEMET",
+        "coverage explanation fits phone width",
+        "next run automatically supplies AEMET when its actual coverage reaches the start",
         "no JavaScript errors during AEMET journeys"
       ]
     }
