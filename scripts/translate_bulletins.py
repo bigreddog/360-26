@@ -17,6 +17,30 @@ from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 SENTENCE = re.compile(r'(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÜÑ¿¡0-9])')
+TRANSLATION_RECIPE = 2
+MAX_NEW_TOKENS = 256
+
+
+def prepare_sentences(text):
+    # Split the original first: replacing initial "Calima" with lower-case
+    # glossary wording must not merge it into the preceding sentence.
+    originals = SENTENCE.split(text)
+    prepared = []
+    for sentence in originals:
+        sentence = re.sub(r'\bcalima\b', 'polvo atmosférico en suspensión', sentence, flags=re.I)
+        sentence = re.sub(r'\bmedianías\b', 'zonas de altitud media', sentence, flags=re.I)
+        sentence = re.sub(r'\brachas\b', 'ráfagas de viento', sentence, flags=re.I)
+        sentence = re.sub(r'\bgranizo menudo\b', 'granizo de pequeño tamaño', sentence, flags=re.I)
+        prepared.append(sentence)
+    return originals, prepared
+
+
+def validate_completion(tokens, eos_token_id):
+    # Batched outputs are padded after EOS; the last token alone cannot tell
+    # whether a sentence completed. Reject forced EOS at the decoding cap too.
+    end = next((i for i, token in enumerate(tokens[1:], 1) if int(token) == eos_token_id), None)
+    if end is None or end >= MAX_NEW_TOKENS:
+        raise ValueError('Translation reached output limit')
 
 
 def source_key(bulletin):
@@ -49,12 +73,14 @@ def validate_text(source, english):
         raise ValueError('Translation changed numerical values')
     if re.search(r'baja probabilidad', source, re.I) and not re.search(r'low (?:chance|probability)|small chance', english, re.I):
         raise ValueError('Translation lost low-probability qualifier')
-    if re.search(r'no se descarta|sin descartar', source, re.I) and not re.search(r'ruled out|cannot|can.not|could|possible|may|might|not excluded', english, re.I):
+    if re.search(r'no se descarta|sin descartar', source, re.I) and not re.search(r'ruled out|cannot|can.not|could|possible|may|might|not excluded|without (?:ruling out|excluding|discarding)', english, re.I):
         raise ValueError('Translation lost possibility qualifier')
     if re.search(r'calima', source, re.I) and not re.search(r'haze|dust', english, re.I):
         raise ValueError('Dust-haze terminology lost')
     if re.search(r'rachas', source, re.I) and not re.search(r'gust', english, re.I):
         raise ValueError('Wind-gust terminology lost')
+    if re.search(r'granizo menudo', source, re.I) and not re.search(r'(?:small|fine)[^.]*hail|hail[^.]*(?:small|fine)', english, re.I):
+        raise ValueError('Small-hail terminology lost')
 
 
 def ensure_model():
@@ -96,22 +122,23 @@ class Translator:
                                                    use_safetensors=False, weights_only=True).eval()
 
     def translate(self, text):
-        # Explain regional weather terms to the general translation model. These
-        # are equivalent Spanish phrases; the stored source stays untouched.
-        normalized = re.sub(r'\bcalima\b', 'polvo atmosférico en suspensión', text, flags=re.I)
-        normalized = re.sub(r'\bmedianías\b', 'zonas de altitud media', normalized, flags=re.I)
-        normalized = re.sub(r'\brachas\b', 'ráfagas de viento', normalized, flags=re.I)
-        sentences = SENTENCE.split(normalized)
+        originals, sentences = prepare_sentences(text)
         # Do not truncate a long source or silently accept an output token cap.
         for sentence in sentences:
             if len(self.tokenizer.encode(sentence)) > 400:
                 raise ValueError('Source sentence exceeds translation input limit')
         inputs = self.tokenizer(sentences, return_tensors='pt', padding=True, truncation=False)
         with self.torch.inference_mode():
-            result = self.model.generate(**inputs, num_beams=4, max_new_tokens=256)
-        if any(len(tokens) >= 257 and int(tokens[-1]) != self.tokenizer.eos_token_id for tokens in result):
-            raise ValueError('Translation reached output limit')
-        english = ' '.join(self.tokenizer.batch_decode(result, skip_special_tokens=True))
+            result = self.model.generate(**inputs, num_beams=4, max_new_tokens=MAX_NEW_TOKENS,
+                                         early_stopping=True)
+        for tokens in result:
+            validate_completion(tokens, self.tokenizer.eos_token_id)
+        translated = self.tokenizer.batch_decode(result, skip_special_tokens=True)
+        if len(translated) != len(originals):
+            raise ValueError('Incomplete sentence translation')
+        for source, english in zip(originals, translated):
+            validate_text(source, english)
+        english = ' '.join(sentence[:1].upper() + sentence[1:] for sentence in translated)
         # Resolve literal dictionary senses in weather context, preserving
         # intensity, direction and all numerical values from the translation.
         if re.search(r'viento flojo', text, re.I):
@@ -129,7 +156,8 @@ def translate_outlook(entries, previous=(), translator_factory=Translator, curat
     if curated is None:
         curated = json.loads((ROOT / 'data/weather/curated-english-bulletins.json').read_text())['entries']
     known = {source_key({'paragraphs': e['sourceParagraphs'], 'significant': e['sourceSignificant']}): e for e in curated}
-    reusable = {source_key(b): b['english'] for b in previous if valid_english(b.get('english'), b)}
+    reusable = {source_key(b): b['english'] for b in previous if valid_english(b.get('english'), b)
+                and (b['english']['method'] == 'curated' or b['english'].get('recipe') == TRANSLATION_RECIPE)}
     translator, model_error, errors = None, None, []
     for bulletin in entries:
         bulletin.pop('english', None)
@@ -156,6 +184,7 @@ def translate_outlook(entries, previous=(), translator_factory=Translator, curat
                 english['model'] = 'Helsinki-NLP/opus-mt-es-en'
                 english['modelRevision'] = json.loads((ROOT / 'data/weather/translation-model.json').read_text())['revision']
             english.update({'version': 1, 'language': 'en', 'sourceTextSha256': key,
+                            'recipe': TRANSLATION_RECIPE,
                             'sourceParagraphs': bulletin['paragraphs'][:],
                             'sourceSignificant': bulletin['significant'][:],
                             'translatedAt': int(datetime.now(timezone.utc).timestamp() * 1000)})
@@ -165,7 +194,8 @@ def translate_outlook(entries, previous=(), translator_factory=Translator, curat
         except Exception as error:
             # Fresh Spanish remains publishable; an old English forecast never
             # substitutes for changed source text. Workflow verifies after publish.
-            errors.append({'date': bulletin['date'], 'error': type(error).__name__})
+            reason = str(error)[:200] if isinstance(error, ValueError) else type(error).__name__
+            errors.append({'date': bulletin['date'], 'error': type(error).__name__, 'reason': reason})
     return errors
 
 
@@ -183,8 +213,15 @@ def main():
              'Viento flojo de componente sur, aumentando a moderado en cumbres.',
              'Temperaturas máximas en ascenso y mínimas en descenso.',
              'Rachas de 70 km/h en cumbres.']
+    # Exercise real long-form bulletins which failed the 2 November schedule.
+    # This deliberately calls the model directly, bypassing curated English.
+    regression = ROOT / 'tests/fixtures/aemet-island-outlook-rejected-20261102.json'
+    if regression.exists():
+        texts.extend(p for b in json.loads(regression.read_text())['entries']
+                     for p in b['paragraphs'] + b['significant'])
     results = [{'spanish': text, 'english': translator.translate(text)} for text in texts]
     result = {'model': translator.manifest['name'], 'revision': translator.manifest['revision'],
+              'recipe': TRANSLATION_RECIPE,
               'checkedAt': datetime.now(timezone.utc).isoformat(), 'results': results}
     if args.report:
         args.report.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')

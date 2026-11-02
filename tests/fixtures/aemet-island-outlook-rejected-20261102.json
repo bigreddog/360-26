@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "date": "2026-11-02",
+      "area": "Gran Canaria",
+      "language": "es",
+      "from": 1793577600000,
+      "until": 1793664000000,
+      "issuedLocal": "2026-11-02T14:00:05",
+      "fetchedAt": 1793651037168,
+      "paragraphs": [
+        "Intervalos de nubes medias y altas. Probables chubascos ocasionales, especialmente en zonas de interior del norte durante la tarde, cuando localmente podrán ser fuertes. Calima ligera. Temperaturas mínimas sin cambios o en ligero descenso; máximas en ligero a moderado ascenso en zonas de interior y con pocos cambios en costas. Viento flojo a moderado del nordeste. En cumbres, viento flojo del sur, rolando al oeste al final de la jornada."
+      ],
+      "significant": [],
+      "sourceUrl": "https://www.aemet.es/es/api-eltiempo/prediccion/2026-11-02/CAN/9/6590",
+      "pageUrl": "https://www.aemet.es/es/eltiempo/prediccion/espana?p=353",
+      "sourceSha256": "9dadf225f33e8da2043611e3add158d6ad3e00c678e85355dd64fbecd7444a9b"
+    },
+    {
+      "date": "2026-11-03",
+      "area": "Gran Canaria",
+      "language": "es",
+      "from": 1793664000000,
+      "until": 1793750400000,
+      "issuedLocal": "2026-11-02T19:41:22",
+      "fetchedAt": 1793651037171,
+      "paragraphs": [
+        "Intervalos de nubosidad media y alta. Durante las horas diurnas, crecimiento de nubosidad de evolución, con probabilidad de chubascos tormentosos fuertes, ocasionales y dispersos en zonas de interior, que al final de la jornada podrán acabar afectando a zonas costeras. No se descarta que los aguaceros localmente sean muy fuertes y vayan acompañados de granizo menudo. Calima ligera en disminución. Temperaturas sin cambios o en ligero descenso. Viento flojo a moderado de dirección variable, siguiendo el régimen de brisas."
+      ],
+      "significant": [],
+      "sourceUrl": "https://www.aemet.es/es/api-eltiempo/prediccion/2026-11-03/CAN/9/6590",
+      "pageUrl": "https://www.aemet.es/es/eltiempo/prediccion/espana?p=353",
+      "sourceSha256": "5a963a5fc506f8ef1fc6518aa85592aa3322a6ec314e406d36cafe69e9f489d1"
+    },
+    {
+      "date": "2026-11-04",
+      "area": "Gran Canaria",
+      "language": "es",
+      "from": 1793750400000,
+      "until": 1793836800000,
+      "issuedLocal": "2026-11-02T19:47:22",
+      "fetchedAt": 1793651037167,
+      "paragraphs": [
+        "Intervalos de nubosidad media y alta. Durante las horas diurnas, crecimiento de nubosidad de evolución, con probabilidad de chubascos moderados a fuertes, ocasionales y dispersos en zonas de interior, más probables en el norte y al este, que al final de la jornada podrán acabar afectando a zonas costeras. No se descarta que vayan acompañados de tormentas. Temperaturas con pocos cambios o en ligero descenso. Viento flojo de dirección variable, siguiendo el régimen de brisas."
+      ],
+      "significant": [],
+      "sourceUrl": "https://www.aemet.es/es/api-eltiempo/prediccion/2026-11-04/CAN/9/6590",
+      "pageUrl": "https://www.aemet.es/es/eltiempo/prediccion/espana?p=353",
+      "sourceSha256": "4224e5afa7715fe77e45469188648aff8266b80209f070ce9f868c1e72bf2ce9"
+    },
+    {
+      "date": "2026-11-05",
+      "area": "Canary Islands",
+      "language": "es",
+      "from": 1793836800000,
+      "until": 1793923200000,
+      "issuedLocal": "2026-11-02T14:54:59",
+      "fetchedAt": 1793651037168,
+      "paragraphs": [
+        "Intervalos de nubosidad alta. Nubosidad de evolución diurna en el interior de las islas montañosas, sin descartar precipitaciones dispersas, de carácter débil a moderado, siendo más probables en las vertientes norte y este. Temperaturas sin apenas cambios. Viento flojo de componente sur, modulado por el régimen de brisas, aumentando a moderado de componente oeste en cumbres."
+      ],
+      "significant": [],
+      "sourceUrl": "https://www.aemet.es/es/api-eltiempo/prediccion/2026-11-05/CAN/9/6590",
+      "pageUrl": "https://www.aemet.es/es/eltiempo/prediccion/espana?p=353",
+      "sourceSha256": "6540bbecb33f44c24b226f9953cdc46e7eed822aa96a71b0b8e5aa9bdd092a92"
+    }
+  ],
+  "translationErrors": [
+    {
+      "date": "2026-11-03",
+      "error": "ValueError"
+    },
+    {
+      "date": "2026-11-04",
+      "error": "ValueError"
+    },
+    {
+      "date": "2026-11-05",
+      "error": "ValueError"
+    }
+  ],
+  "errors": []
+}

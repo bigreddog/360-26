@@ -59,6 +59,8 @@ jobs:
           python - <<'PY'
           import json
           data = json.load(open('data/weather/aemet.json'))
+          for error in data['outlook'].get('translationErrors', []):
+              print(f"{error['date']}: {error.get('reason', error['error'])}")
           assert not data['outlook'].get('translationErrors'), 'Fresh Spanish published; English translation failed'
           PY
       - name: Verify translator weather wording

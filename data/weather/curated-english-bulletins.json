@@ -42,6 +42,46 @@
         "Cloudy intervals, more extensive over inland areas during the afternoon, when some occasional rain cannot be ruled out. Little change in temperatures. Light southerly winds, increasing to moderate on the summits."
       ],
       "significant": []
+    },
+    {
+      "sourceParagraphs": [
+        "Intervalos de nubes medias y altas. Probables chubascos ocasionales, especialmente en zonas de interior del norte durante la tarde, cuando localmente podrán ser fuertes. Calima ligera. Temperaturas mínimas sin cambios o en ligero descenso; máximas en ligero a moderado ascenso en zonas de interior y con pocos cambios en costas. Viento flojo a moderado del nordeste. En cumbres, viento flojo del sur, rolando al oeste al final de la jornada."
+      ],
+      "sourceSignificant": [],
+      "paragraphs": [
+        "Intervals of medium and high cloud. Occasional showers are likely, especially over inland areas of the north in the afternoon, when they may be locally heavy. Light dust haze. Minimum temperatures unchanged or slightly lower; maximum temperatures rising slightly to moderately inland and changing little on the coast. Light to moderate northeasterly winds. On the summits, light southerly winds turning westerly late in the day."
+      ],
+      "significant": []
+    },
+    {
+      "sourceParagraphs": [
+        "Intervalos de nubosidad media y alta. Durante las horas diurnas, crecimiento de nubosidad de evolución, con probabilidad de chubascos tormentosos fuertes, ocasionales y dispersos en zonas de interior, que al final de la jornada podrán acabar afectando a zonas costeras. No se descarta que los aguaceros localmente sean muy fuertes y vayan acompañados de granizo menudo. Calima ligera en disminución. Temperaturas sin cambios o en ligero descenso. Viento flojo a moderado de dirección variable, siguiendo el régimen de brisas."
+      ],
+      "sourceSignificant": [],
+      "paragraphs": [
+        "Intervals of medium and high cloud. Cloud will develop during daylight hours, with a chance of occasional, scattered heavy thundery showers inland, potentially reaching coastal areas late in the day. Very heavy localised downpours accompanied by small hail cannot be ruled out. Light dust haze, decreasing. Temperatures unchanged or slightly lower. Light to moderate variable winds, following the local breeze pattern."
+      ],
+      "significant": []
+    },
+    {
+      "sourceParagraphs": [
+        "Intervalos de nubosidad media y alta. Durante las horas diurnas, crecimiento de nubosidad de evolución, con probabilidad de chubascos moderados a fuertes, ocasionales y dispersos en zonas de interior, más probables en el norte y al este, que al final de la jornada podrán acabar afectando a zonas costeras. No se descarta que vayan acompañados de tormentas. Temperaturas con pocos cambios o en ligero descenso. Viento flojo de dirección variable, siguiendo el régimen de brisas."
+      ],
+      "sourceSignificant": [],
+      "paragraphs": [
+        "Intervals of medium and high cloud. Cloud will develop during daylight hours, with a chance of occasional, scattered moderate to heavy showers inland, more likely in the north and east. These could reach coastal areas late in the day. Thunderstorms cannot be ruled out. Temperatures changing little or falling slightly. Light variable winds, following the local breeze pattern."
+      ],
+      "significant": []
+    },
+    {
+      "sourceParagraphs": [
+        "Intervalos de nubosidad alta. Nubosidad de evolución diurna en el interior de las islas montañosas, sin descartar precipitaciones dispersas, de carácter débil a moderado, siendo más probables en las vertientes norte y este. Temperaturas sin apenas cambios. Viento flojo de componente sur, modulado por el régimen de brisas, aumentando a moderado de componente oeste en cumbres."
+      ],
+      "sourceSignificant": [],
+      "paragraphs": [
+        "Intervals of high cloud. Daytime cloud development inland on the mountainous islands, with scattered light to moderate rain possible, more likely on north- and east-facing slopes. Temperatures changing very little. Light southerly winds influenced by local breezes, increasing to moderate westerly winds on the summits."
+      ],
+      "significant": []
     }
   ]
 }

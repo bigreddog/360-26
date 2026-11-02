@@ -124,6 +124,56 @@ class TranslationTests(unittest.TestCase):
         self.assertEqual(T.SENTENCE.split('Lluvia de 0.5 mm. Viento flojo.'),
                          ['Lluvia de 0.5 mm.', 'Viento flojo.'])
 
+    def test_glossary_does_not_merge_dust_haze_into_previous_sentence(self):
+        original = 'No se descarta granizo menudo. Calima ligera. Temperaturas sin cambios.'
+        source, prepared = T.prepare_sentences(original)
+        self.assertEqual(len(source), 3)
+        self.assertEqual(len(prepared), 3)
+        self.assertEqual(source[1], 'Calima ligera.')
+        self.assertIn('polvo atmosférico en suspensión', prepared[1])
+        self.assertIn('granizo de pequeño tamaño', prepared[0])
+
+    def test_valid_literal_without_discarding_is_not_a_lost_qualifier(self):
+        T.validate_text('Sin descartar precipitaciones dispersas.',
+                        'Without discarding scattered precipitation.')
+        with self.assertRaises(ValueError):
+            T.validate_text('Sin descartar precipitaciones dispersas.',
+                            'Scattered precipitation will occur.')
+
+    def test_finished_padded_sentence_is_not_mistaken_for_truncation(self):
+        T.validate_completion([99, 23, 0] + [99] * 254, eos_token_id=0)
+
+    def test_forced_eos_at_limit_and_unfinished_translation_are_rejected(self):
+        for tokens in [[99] + [23] * 255 + [0], [99, 23, 23]]:
+            with self.assertRaisesRegex(ValueError, 'output limit'):
+                T.validate_completion(tokens, eos_token_id=0)
+
+    def test_rejected_schedule_has_faithful_curated_recovery(self):
+        rows = json.loads((ROOT / 'tests/fixtures/aemet-island-outlook-rejected-20261102.json').read_text())['entries']
+        self.assertEqual(T.translate_outlook(rows), [])
+        for row in rows:
+            self.assertTrue(T.valid_english(row['english'], row))
+        self.assertIn('small hail cannot be ruled out', rows[1]['english']['paragraphs'][0])
+        self.assertIn('north and east', rows[2]['english']['paragraphs'][0])
+
+    def test_translation_failures_include_diagnostic_reason(self):
+        def broken():
+            raise ValueError('Translation reached output limit')
+        rows = deepcopy(ORIGINAL[:1])
+        errors = T.translate_outlook(rows, translator_factory=broken, curated=[])
+        self.assertEqual(errors[0]['reason'], 'Translation reached output limit')
+
+    def test_old_machine_recipe_is_regenerated(self):
+        old = deepcopy(ORIGINAL[:1])
+        T.translate_outlook(old)
+        old[0]['english']['method'] = 'machine'
+        old[0]['english']['recipe'] = 1
+        current = deepcopy(ORIGINAL[:1])
+        FakeTranslator.calls = []
+        self.assertEqual(T.translate_outlook(current, old, FakeTranslator, curated=[]), [])
+        self.assertEqual(len(FakeTranslator.calls), 1)
+        self.assertEqual(current[0]['english']['recipe'], 2)
+
 
 if __name__ == '__main__':
     unittest.main()
