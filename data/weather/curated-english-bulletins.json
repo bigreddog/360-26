@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "created": "2026-11-02",
+  "note": "English translations of these exact AEMET source texts. Reuse only when all original forecast and significant-phenomena paragraphs match.",
+  "entries": [
+    {
+      "sourceParagraphs": [
+        "Nuboso de madrugada, tendiendo a intervalos de nubes medias y altas con probables amplios claros durante las horas centrales. Baja probabilidad de lluvias ocasionales, débiles a moderadas. Calima ligera. Temperaturas mínimas sin cambios o en ligero descenso, máximas en ligero ascenso. Viento flojo a moderado del noreste."
+      ],
+      "sourceSignificant": [],
+      "paragraphs": [
+        "Cloudy overnight, giving way to intervals of medium and high cloud, with broad clear spells likely around the middle of the day. A low chance of occasional light to moderate rain. Light dust haze. Minimum temperatures unchanged or slightly lower; maximum temperatures slightly higher. Light to moderate northeasterly winds."
+      ],
+      "significant": []
+    },
+    {
+      "sourceParagraphs": [
+        "Intervalos nubosos en general, ocasionalmente nuboso con probables lluvias o chubascos localmente fuertes y que podrían ir acompañados de tormenta, especialmente durante la tarde. Al final del día tenderá a poco nuboso. Calima ligera y disminuyendo. Temperaturas sin cambios o en ligero descenso. Viento flojo a moderado de componente norte."
+      ],
+      "sourceSignificant": [],
+      "paragraphs": [
+        "Cloudy intervals overall, becoming cloudy at times, with rain or showers likely, locally heavy and possibly accompanied by thunderstorms, especially in the afternoon. Becoming mostly clear late in the day. Light dust haze, decreasing. Temperatures unchanged or slightly lower. Light to moderate northerly winds."
+      ],
+      "significant": []
+    },
+    {
+      "sourceParagraphs": [
+        "Intervalos nubosos, más compactos en zonas de interior durante la tarde cuando son probables las lluvias o chubascos. Temperaturas sin cambios o en ligero descenso. Viento flojo de componente oeste, algo más intenso en cumbres."
+      ],
+      "sourceSignificant": [],
+      "paragraphs": [
+        "Cloudy intervals, more extensive over inland areas during the afternoon, when rain or showers are likely. Temperatures unchanged or slightly lower. Light westerly winds, somewhat stronger on the summits."
+      ],
+      "significant": []
+    },
+    {
+      "sourceParagraphs": [
+        "Intervalos nubosos, más compactos en zonas de interior durante la tarde cuando no se descarta alguna lluvia ocasional. Temperaturas con pocos cambios. Viento flojo de componente sur, aumentando a moderado en cumbres."
+      ],
+      "sourceSignificant": [],
+      "paragraphs": [
+        "Cloudy intervals, more extensive over inland areas during the afternoon, when some occasional rain cannot be ruled out. Little change in temperatures. Light southerly winds, increasing to moderate on the summits."
+      ],
+      "significant": []
+    }
+  ]
+}

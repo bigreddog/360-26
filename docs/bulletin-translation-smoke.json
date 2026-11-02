@@ -1,0 +1,31 @@
+{
+  "model": "Helsinki-NLP/opus-mt-es-en",
+  "revision": "c96e2c5399ebfae4fc43d9669556b9afa74bb69d",
+  "checkedAt": "2026-11-02T12:02:47.369989+00:00",
+  "results": [
+    {
+      "spanish": "No se descartan lluvias localmente fuertes.",
+      "english": "Local heavy rains are not ruled out."
+    },
+    {
+      "spanish": "Baja probabilidad de lluvias ocasionales, débiles a moderadas.",
+      "english": "Low probability of occasional, weak to moderate rains."
+    },
+    {
+      "spanish": "Calima ligera y disminuyendo.",
+      "english": "Atmospheric dust in light suspension and decreasing."
+    },
+    {
+      "spanish": "Viento flojo de componente sur, aumentando a moderado en cumbres.",
+      "english": "Light wind of southern component, increasing to moderate on the summits."
+    },
+    {
+      "spanish": "Temperaturas máximas en ascenso y mínimas en descenso.",
+      "english": "Maximum temperatures rising and minimum temperatures falling."
+    },
+    {
+      "spanish": "Rachas de 70 km/h en cumbres.",
+      "english": "Wind gusts of 70 km/h at peaks."
+    }
+  ]
+}

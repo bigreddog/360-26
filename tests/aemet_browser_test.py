@@ -30,6 +30,11 @@ def feed(mode='ok'):
                 'issuedLocal': '2026-11-04T08:00:00',
                 'paragraphs': ['Intervalos nubosos. Temperaturas sin cambios.'],
                 'significant': ['Lluvias localmente fuertes.'] if i == 1 else []} for i in range(4)]
+    for b in entries:
+        b['english'] = {'version': 1, 'language': 'en', 'method': 'machine',
+                        'sourceParagraphs': b['paragraphs'][:], 'sourceSignificant': b['significant'][:],
+                        'paragraphs': ['Cloudy intervals. Temperatures unchanged.'],
+                        'significant': ['Locally heavy rain.'] if b['significant'] else []}
     return {'version': 1, 'provider': 'aemet', 'generatedAt': NOW * 1000, 'towns': towns,
             'outlook': {'version': 1, 'entries': entries}}
 
@@ -92,7 +97,19 @@ with sync_playwright() as p:
         outlook_text = page.locator('[data-weather-outlook]').inner_text()
         check(checks, 'island outlook shows four dated daily bulletins overlapping the next 72 hours', page.locator('.island-day').count() == 4 and 'next 72 hours' in outlook_text)
         check(checks, 'regional later days are labelled and original Spanish is explicit', 'Gran Canaria' in outlook_text and 'Canary Islands' in outlook_text and 'Spanish' in outlook_text)
-        check(checks, 'significant bulletin text remains visible', 'Lluvias localmente fuertes' in outlook_text)
+        check(checks, 'significant bulletin text is translated and remains visible', 'Locally heavy rain' in outlook_text)
+        check(checks, 'English paragraphs are shown by default on every day', page.locator('.island-day>p[lang=en]:not(.island-significant)').count() == 4)
+        check(checks, 'Spanish originals start folded', page.locator('.island-day details').evaluate_all('es=>es.every(e=>!e.open)'))
+        original = page.locator('.island-day details').first
+        original.locator('summary').click()
+        check(checks, 'Spanish source can be opened for comparison', 'Intervalos nubosos' in original.inner_text())
+        page.evaluate('weatherPanel.now=()=>Date.now()+60000;weatherPanel.render()')
+        check(checks, 'source disclosure stays open when forecast UI rerenders', page.locator('.island-day details').first.evaluate('e=>e.open'))
+        page.evaluate('weatherPanel.now=()=>Date.now();weatherPanel.render()')
+        page.locator('.island-day details').first.locator('summary').click()
+        page.evaluate('weatherPanel.outlook.entries[0].paragraphs=["Predicción nueva."];weatherPanel.render()')
+        check(checks, 'changed Spanish cannot retain an English translation of older weather', 'English translation unavailable' in page.locator('.island-day').first.inner_text() and 'Cloudy intervals' not in page.locator('.island-day').first.inner_text())
+        page.evaluate('weatherPanel.outlook=JSON.parse(localStorage.getItem(RouteWeather.OUTLOOK_KEY));weatherPanel.render()')
         before = len(calls)
         page.locator('[data-weather-hours="24"]').click()
         check(checks, 'horizon switch uses the same mixed forecast without new requests', len(calls) == before)
@@ -143,6 +160,7 @@ with sync_playwright() as p:
         o.wait_for_function('typeof weatherPanel!=="undefined"&&weatherPanel.cache')
         check(checks, 'portable offline HTML retains mixed source provenance and original forecasts', 'AEMET' in o.locator('[data-weather-provider]').inner_text() and 'Offline' in o.locator('[data-weather-status]').inner_text())
         check(checks, 'offline HTML also restores original regional text and its scope', o.locator('.island-day').count() == 4 and 'Offline' in o.locator('[data-weather-outlook]').inner_text())
+        check(checks, 'English translations are available offline without a translation service', o.locator('.island-day>p[lang=en]:not(.island-significant)').count() == 4 and 'Cloudy intervals' in o.locator('[data-weather-outlook]').inner_text())
         o.locator('[data-outlook-sources]>summary').click()
         o.evaluate('weatherPanel.now=()=>Date.now()+5*24*3600000;weatherPanel.render()')
         check(checks, 'expired island bulletins are hidden rather than relabelled', o.locator('.island-day').count() == 0 and 'No current AEMET' in o.locator('[data-weather-outlook]').inner_text())

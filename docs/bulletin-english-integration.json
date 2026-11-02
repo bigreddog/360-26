@@ -1,0 +1,14 @@
+{
+  "checkedAt": 1793621350729,
+  "source": "Published AEMET cache; actual English and Spanish bulletin text",
+  "renderedIn": "Local Chromium mobile 390px with captured weather HTTP response",
+  "allFourDaysEnglishByDefault": true,
+  "spanishOriginalsFolded": true,
+  "javascriptErrors": [],
+  "translationMethods": [
+    "curated",
+    "curated",
+    "curated",
+    "curated"
+  ]
+}

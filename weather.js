@@ -65,7 +65,8 @@ function outlookHTML(outlook,now,zone,offline=false){
  const {entries,coveredHours,end}=A.outlookWindow(outlook,now),heading='<h3>Island outlook · next 72 hours</h3>';
  if(!entries.length)return heading+'<p class="small muted">No current AEMET text outlook is available. Refresh when connected. Old or expired bulletins are not presented as upcoming weather.</p>';
  const day=ms=>new Intl.DateTimeFormat('en-GB',{timeZone:zone,weekday:'long',day:'numeric',month:'short'}).format(new Date(ms));
- return heading+`<p class="small muted">Daily bulletins overlapping now to ${clock(end,zone,true)}. ${coveredHours<71.99?`Partial coverage · about ${Math.round(coveredHours)} of 72 hours available. `:''}${offline?'Offline · saved bulletins. ':''}Official AEMET wording in Spanish; later days may cover all Canary Islands.</p>`+entries.map(b=>`<article class="island-day"><h4>${esc(day(b.from))} <span>${esc(b.area)}</span></h4>${b.significant.map(t=>`<p class="island-significant" lang="es"><strong>${esc(t)}</strong></p>`).join('')}${b.paragraphs.map(t=>`<p lang="es">${esc(t)}</p>`).join('')}</article>`).join('')+`<details data-outlook-sources><summary>Bulletin issue times & sources</summary>${entries.map(b=>`<p class="small">${esc(day(b.from))} · ${esc(b.area)}<br>Issued ${esc(b.issuedLocal.replace('T',' '))} (time as supplied by AEMET). Downloaded ${clock(b.fetchedAt,zone,true)}.${now-b.fetchedAt>=12*HOUR?' Saved bulletin is over 12 hours old.':''}</p>`).join('')}<p class="small"><a href="https://www.aemet.es/es/eltiempo/prediccion/espana?p=353" target="_blank" rel="noopener">Official AEMET outlook ↗</a> · Weather text © AEMET.</p></details>`;
+ const text=(b,lang)=>b.significant.map(t=>`<p class="island-significant" lang="${lang}"><strong>${esc(t)}</strong></p>`).join('')+b.paragraphs.map(t=>`<p lang="${lang}">${esc(t)}</p>`).join('');
+ return heading+`<p class="small muted">Daily bulletins overlapping now to ${clock(end,zone,true)}. ${coveredHours<71.99?`Partial coverage · about ${Math.round(coveredHours)} of 72 hours available. `:''}${offline?'Offline · saved bulletins. ':''}English translations of AEMET bulletins; later days may cover all Canary Islands.</p>`+entries.map(b=>{const e=A.englishBulletin(b);return `<article class="island-day"><h4>${esc(day(b.from))} <span>${esc(b.area)}</span></h4>${e?`${e.method==='machine'?'<p class="small muted">Machine translation</p>':''}${text(e,'en')}<details data-outlook-fold="${esc(b.from+'-'+b.area)}"><summary>Spanish original</summary>${text(b,'es')}</details>`:'<p class="small muted">English translation unavailable. Original Spanish:</p>'+text(b,'es')}</article>`;}).join('')+`<details data-outlook-sources data-outlook-fold="sources"><summary>Bulletin issue times & sources</summary>${entries.map(b=>`<p class="small">${esc(day(b.from))} · ${esc(b.area)}<br>Issued ${esc(b.issuedLocal.replace('T',' '))} (time as supplied by AEMET). Downloaded ${clock(b.fetchedAt,zone,true)}.${now-b.fetchedAt>=12*HOUR?' Saved bulletin is over 12 hours old.':''}</p>`).join('')}<p class="small"><a href="https://www.aemet.es/es/eltiempo/prediccion/espana?p=353" target="_blank" rel="noopener">Official AEMET outlook ↗</a> · Weather text © AEMET. English translation by this app.</p></details>`;
 }
 function codeLabel(code){const groups=[[[0],'Clear'],[[1,2],'Some cloud'],[[3],'Overcast'],[[45,48],'Fog'],[[51,53,55],'Drizzle'],[[56,57],'Freezing drizzle'],[[61,63,65],'Rain'],[[66,67],'Freezing rain'],[[71,73,75,77],'Snow'],[[80,81,82],'Rain showers'],[[85,86],'Snow showers'],[[95,96,99],'Thunderstorm signal']];return groups.find(([codes])=>codes.includes(code))?.[1]||'Conditions unavailable';}
 function compass(degrees){return finite(degrees)?['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][Math.round(((degrees%360)+360)%360/22.5)%16]:'';}
@@ -118,7 +119,8 @@ class Panel{
    const state=this.getState(),age=this.cache?this.now()-this.cache.fetchedAt:Infinity;
    const relocated=this.cache&&Math.abs(this.cache.fromKm-state.progressKm)>=5;
    const changed=this.cache&&(this.cache.signature!==signature(state)||relocated||Math.abs(this.cache.fromKm-state.progressKm)>=2&&age>10*60000);
-   if(force||!this.cache||!this.cache.aemetStartAvailability||age>=30*60000||changed)this.refresh(force||!!relocated&&(!finite(this.lastAttemptFromKm)||Math.abs(this.lastAttemptFromKm-state.progressKm)>=5));else this.render();
+   const needsEnglish=!this.translationChecked&&(!this.outlook||this.outlook.entries.some(b=>!A.englishBulletin(b)));
+   if(force||!this.cache||!this.cache.aemetStartAvailability||needsEnglish||age>=30*60000||changed)this.refresh(force||!!relocated&&(!finite(this.lastAttemptFromKm)||Math.abs(this.lastAttemptFromKm-state.progressKm)>=5));else this.render();
   },500);
  }
  async fetchAemet(manual){
@@ -130,7 +132,7 @@ class Panel{
    const controller=new AbortController(),parent=this.controller?.signal,cancel=()=>controller.abort();parent?.addEventListener('abort',cancel,{once:true});const timeout=setTimeout(cancel,6000);
    try{const r=await this.fetcher(A.FEED,{signal:controller.signal,cache:'no-cache',credentials:'omit',referrerPolicy:'no-referrer'});if(!r.ok)throw Error('AEMET cache unavailable');const feed=await r.json();if(!A.validFeed(feed))throw Error('Invalid AEMET cache');this.feed=feed;this.feedError=false;if(A.validOutlook(feed.outlook)){this.outlook=feed.outlook;try{localStorage.setItem(OUTLOOK_KEY,JSON.stringify(this.outlook));}catch(e){}}}
    catch(e){this.feedError=true;}
-   finally{clearTimeout(timeout);parent?.removeEventListener('abort',cancel);this.feedCheckedAt=this.now();}
+   finally{clearTimeout(timeout);parent?.removeEventListener('abort',cancel);this.feedCheckedAt=this.now();this.translationChecked=true;}
   }
  }
  async aemetRows(plan,manual){
@@ -164,7 +166,7 @@ class Panel{
  }
  render(){
   const now=this.now(),cache=this.cache,hours=this.hours,button=this.el.querySelector('[data-weather-refresh]');button.disabled=this.loading;button.textContent=this.loading?'Loading…':'Refresh';
-  const outlook=this.el.querySelector('[data-weather-outlook]');if(outlook){const html=outlookHTML(this.outlook,now,this.data.timezone,navigator.onLine===false);if(outlook.innerHTML!==html){const open=outlook.querySelector('[data-outlook-sources]')?.open;outlook.innerHTML=html;const sources=outlook.querySelector('[data-outlook-sources]');if(open&&sources)sources.open=true;}}
+  const outlook=this.el.querySelector('[data-weather-outlook]');if(outlook){const html=outlookHTML(this.outlook,now,this.data.timezone,navigator.onLine===false);if(outlook.innerHTML!==html){const open=new Set([...outlook.querySelectorAll('[data-outlook-fold][open]')].map(d=>d.dataset.outlookFold));outlook.innerHTML=html;for(const d of outlook.querySelectorAll('[data-outlook-fold]'))d.open=open.has(d.dataset.outlookFold);}}
   this.el.querySelectorAll('[data-weather-hours]').forEach(b=>{const selected=Number(b.dataset.weatherHours)===hours;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected));});
   const route=this.el.querySelector('[data-weather-route]'),destination=this.el.querySelector('[data-weather-destination]');
   const status=this.el.querySelector('[data-weather-status]'),summary=this.el.querySelector('[data-weather-summary]'),cards=this.el.querySelector('[data-weather-cards]'),context=this.el.querySelector('[data-weather-context]'),conditionRow=this.el.querySelector('[data-weather-conditions]'),source=this.el.querySelector('[data-weather-provider]');

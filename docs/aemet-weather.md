@@ -35,11 +35,32 @@ On 2 November at 10:53 UTC, the official Gáldar XML and the scheduled cache mat
 
 The same scheduled feed now also downloads four dated daily text bulletins overlapping the next 72 hours from `https://www.aemet.es/es/api-eltiempo/prediccion/{date}/CAN/9/6590`, the public endpoint used by AEMET's own [Gran Canaria general forecast](https://www.aemet.es/es/eltiempo/prediccion/espana?p=353). The endpoint can return **Gran Canaria** (root ID `90`) for the near term and **Canary Islands** (`coo`) for later dates. Preserve that scope; never label the regional bulletin as island-specific. Reject national (`esp1`) fallback responses, wrong validity dates and empty text.
 
-The application shows the original **Spanish** forecast paragraphs and any significant-phenomena text under dated, region-labelled headings. No translation service, generated trend, invented probability or weather rating is added. Bulletin issue times and links are folded below the readable overview. Four calendar days may overlap a rolling 72-hour window; full daily text can also describe parts of the boundary days outside that exact interval. The heading therefore explains that these are daily bulletins overlapping the window. Missing days produce a visible partial-coverage label.
+The application shows **English translations** of the forecast paragraphs and significant-phenomena text under dated, region-labelled headings. Each day has a folded **Spanish original**. Machine-translated new text is labelled; English is attributed to the app. No generated trend, invented probability or weather rating is added. Bulletin issue times and links are folded below the readable overview. Four calendar days may overlap a rolling 72-hour window; full daily text can also describe parts of the boundary days outside that exact interval. The heading therefore explains that these are daily bulletins overlapping the window. Missing days produce a visible partial-coverage label.
 
 This outlook is independent of route progress and of the 12/24-hour selector. It remains useful when the route forecast is unavailable or the runner has finished. Separate local storage `canarias360-island-outlook-v1` and portable HTML `savedOutlookData` preserve original source dates and age. Expired bulletins, invalid/future download times and downloads over 24 hours old are excluded; offline data is labelled. A download over 12 hours old is flagged in its source information. Failed server downloads retain the old bulletin and its original fetch time. Changing to a different island requires replacing this source and invalidating the separate regional cache.
 
-Actual source snapshots are in `tests/fixtures/aemet-bulletin-20261102.xml`, `aemet-bulletin-20261104.xml` and `aemet-island-outlook-20261102.json`. Tests cover scope fallbacks, dates, missing days, escaping, stale/expired text, 72-hour coverage, mobile layout and offline HTML. The existing workflow's parser-test step includes these checks without extra dependencies.
+Actual source snapshots are in `tests/fixtures/aemet-bulletin-20261102.xml`, `aemet-bulletin-20261104.xml` and `aemet-island-outlook-20261102.json`. Tests cover scope fallbacks, dates, missing days, escaping, stale/expired text, 72-hour coverage, mobile layout and offline HTML. The existing workflow's parser-test step includes these checks; translation-specific checks and dependencies are isolated in the server job.
+
+## English translation
+
+`data/weather/curated-english-bulletins.json` supplies carefully worded English for the four exact original texts first published with this feature. Reuse requires equality of **all** forecast and significant-phenomena paragraphs, rather than just the bulletin date or area. Known text can therefore retain its English when only its issue metadata changes. The source issue, validity and download time remain untouched.
+
+`scripts/translate_bulletins.py` translates new text using the local [Helsinki-NLP OPUS-MT Spanish-to-English model](https://huggingface.co/Helsinki-NLP/opus-mt-es-en), revision `c96e2c5399ebfae4fc43d9669556b9afa74bb69d`, Apache-2.0. Model files are pinned by SHA-256 in `data/weather/translation-model.json`. Sentence splitting preserves decimal values; no source sentence is silently truncated. A small weather glossary explains *calima*, *medianías* and *rachas* before model inference, and corrects literal wind/temperature wording in context. Checks reject empty/repetitive output, changed numbers and several lost qualifiers/terms. These checks do not certify every nuance of a machine translation; the complete original stays available.
+
+The job installs CPU-only PyTorch and pinned translation packages from `requirements-weather-translation.txt`; model weights are cached by GitHub Actions. The model and these dependencies are **server-only**. No model, API key, translation request, rider location or extra runtime dependency is added to the phone. Public model downloads happen when preparing the job; bulletin translation itself runs locally. Forecast data and the original text stay in the existing AEMET cache, with an additional `english` object containing exact source paragraphs, translated paragraphs, method, model revision when used and translation time.
+
+A failed translation never reuses English belonging to changed Spanish. Fresh original weather remains publishable and is visibly labelled **English translation unavailable**; the workflow checks translation failures after publishing to keep numerical weather current and surface the failure. Older untranslated browser snapshots receive one normal online refresh. Both languages are included in the existing regional local-storage cache and portable HTML; source disclosures remain open through routine UI updates.
+
+Reproduce the translator check:
+
+```sh
+python3 -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+python3 -m pip install -r requirements-weather-translation.txt
+python3 scripts/translate_bulletins.py --smoke-test
+python3 -m unittest discover -s tests -p test_bulletin_translation.py
+```
+
+Set `CANARIAS360_TRANSLATION_MODEL_DIR` to a writable directory for a non-default model cache. `docs/bulletin-translation-smoke.json` records real model outputs for probability, dust haze, wind, summits, temperature trend and gust-value cases. Software/browser tests cover exact-source reuse, changed-source rejection, English as default, original disclosure, translated warnings and offline HTML. Model attribution: OPUS-MT, Helsinki-NLP; see the linked model card and its licence.
 
 ## Scheduled cache and offline use
 

@@ -1,0 +1,5 @@
+# Scheduled server job only; install the CPU torch wheel first (see docs).
+torch==2.6.0
+transformers==4.51.3
+sentencepiece==0.2.1
+sacremoses==0.1.1

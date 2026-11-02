@@ -50,11 +50,12 @@ function rows(feed,plan,now){return plan.samples.map(sample=>({sample,weather:se
 function merge(aemet,fallback){return aemet.map((row,i)=>row.weather?row:{sample:row.sample,weather:fallback?.[i]?.weather?{...fallback[i].weather,source:{provider:'open-meteo'}}:null});}
 function counts(rows){return {aemet:rows.filter(r=>r.weather?.source?.provider==='aemet').length,openMeteo:rows.filter(r=>r.weather&&(r.weather.source?.provider||'open-meteo')==='open-meteo').length,missing:rows.filter(r=>!r.weather).length};}
 function validOutlook(outlook){const stamp=t=>finite(t)&&Math.abs(t)<=8640000000000000;return outlook?.version===1&&Array.isArray(outlook.entries)&&outlook.entries.length<=8&&outlook.entries.every(b=>['Gran Canaria','Canary Islands'].includes(b.area)&&b.language==='es'&&stamp(b.from)&&stamp(b.until)&&b.until>b.from&&stamp(b.fetchedAt)&&typeof b.issuedLocal==='string'&&Array.isArray(b.paragraphs)&&b.paragraphs.length>0&&b.paragraphs.every(p=>typeof p==='string'&&p.length<=12000)&&Array.isArray(b.significant)&&b.significant.every(p=>typeof p==='string'&&p.length<=12000));}
+function englishBulletin(b){if(!Array.isArray(b?.paragraphs)||!Array.isArray(b?.significant))return null;const e=b.english,strings=a=>Array.isArray(a)&&a.every(t=>typeof t==='string'&&t.trim().length>0&&t.length<=12000);return e?.version===1&&e.language==='en'&&['curated','machine'].includes(e.method)&&strings(e.paragraphs)&&e.paragraphs.length===b.paragraphs.length&&strings(e.significant)&&e.significant.length===b.significant.length&&JSON.stringify(e.sourceParagraphs)===JSON.stringify(b.paragraphs)&&JSON.stringify(e.sourceSignificant)===JSON.stringify(b.significant)?e:null;}
 function outlookWindow(outlook,now){
  const end=now+72*HOUR;
  const entries=validOutlook(outlook)?outlook.entries.filter(b=>b.until>now&&b.from<end&&now-b.fetchedAt<=24*HOUR&&now>=b.fetchedAt-5*60000).sort((a,b)=>a.from-b.from):[];
  let cursor=now,covered=0;for(const b of entries){const from=Math.max(cursor,b.from),until=Math.min(end,b.until);if(until>from){covered+=until-from;cursor=until;}}
  return {entries,coveredHours:covered/HOUR,end};
 }
-const api={HOUR,MAX_AGE,MAX_DISTANCE,MAX_HEIGHT,FEED,distance,validFeed,eligible,readTown,select,availability,rows,merge,counts,validOutlook,outlookWindow};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.AemetWeather=api;
+const api={HOUR,MAX_AGE,MAX_DISTANCE,MAX_HEIGHT,FEED,distance,validFeed,eligible,readTown,select,availability,rows,merge,counts,validOutlook,englishBulletin,outlookWindow};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.AemetWeather=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

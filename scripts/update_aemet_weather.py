@@ -184,6 +184,9 @@ def main():
     # Also retain failed bulletin downloads with their original dates and age.
     failed_dates = {b['date'] for b in bulletins if 'error' in b}
     retained = [b for b in old.get('outlook', {}).get('entries', []) if b.get('date') in failed_dates]
+    from translate_bulletins import translate_outlook
+    outlook_entries = sorted(fresh + retained, key=lambda b: b['from'])
+    translation_errors = translate_outlook(outlook_entries, old.get('outlook', {}).get('entries', []))
     usable += [t for t in old.get('towns', []) if t['id'] in {e['id'] for e in errors}]
     result = {'version': 1, 'provider': 'aemet', 'product': 'municipal-hourly',
               'generatedAt': int(datetime.now(UTC).timestamp() * 1000),
@@ -192,13 +195,15 @@ def main():
               'units': {'temperature': '°C', 'wind': 'km/h', 'rain': 'mm'},
               'rainInterval': 'following hour', 'probabilityPeriods': 'UTC',
               'towns': sorted(usable, key=lambda t: t['id']), 'errors': errors,
-              'outlook': {'version': 1, 'entries': sorted(fresh + retained, key=lambda b: b['from']),
+              'outlook': {'version': 1, 'entries': outlook_entries, 'translationErrors': translation_errors,
                           'errors': [b for b in bulletins if 'error' in b]}}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     temporary = args.output.with_suffix('.tmp')
     temporary.write_text(json.dumps(result, ensure_ascii=False, separators=(',', ':')) + '\n')
     temporary.replace(args.output)
     print(f'AEMET: {len(usable)} town forecasts, {len(errors)} fetch failures, {len(fresh)} current outlook bulletins; {args.output.stat().st_size:,} bytes')
+    if translation_errors:
+        print(f'::warning::English translation unavailable for {len(translation_errors)} bulletin(s); Spanish retained')
 
 
 if __name__ == '__main__':

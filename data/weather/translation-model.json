@@ -1,0 +1,43 @@
+{
+  "name": "Helsinki-NLP/opus-mt-es-en",
+  "revision": "c96e2c5399ebfae4fc43d9669556b9afa74bb69d",
+  "license": "Apache-2.0",
+  "source": "https://huggingface.co/Helsinki-NLP/opus-mt-es-en",
+  "files": [
+    {
+      "name": "config.json",
+      "sha256": "374443eacf8986c21386503e2fcd52eae6952ac09c87fd36695f5c12259a4cd1",
+      "bytes": 1438
+    },
+    {
+      "name": "generation_config.json",
+      "sha256": "837839ed0534a27084f9b980fc33f47729052dd89cb26cca7ac830765ed30e49",
+      "bytes": 293
+    },
+    {
+      "name": "pytorch_model.bin",
+      "sha256": "586a4e69e0804459ac7c176a5dc76852652100d9af1ee0db796de719899a5deb",
+      "bytes": 312087523
+    },
+    {
+      "name": "source.spm",
+      "sha256": "e236ee6d866b635c0142114f8647f39831f9d92534aa2aad75c942f6a78ad0e3",
+      "bytes": 825924
+    },
+    {
+      "name": "target.spm",
+      "sha256": "4dd547c24816a335e7b0b2e63376a8f1b3cbfc671eda5ab808dd44fdadaa8791",
+      "bytes": 801636
+    },
+    {
+      "name": "tokenizer_config.json",
+      "sha256": "dd009536f1cd954180a3004be20e9963eaf3d68b485d062ea1b90d3b9ded2bc5",
+      "bytes": 44
+    },
+    {
+      "name": "vocab.json",
+      "sha256": "257f346d7a6b2ecceafcca8ba05648ce2fd68dfaf105fb0e913dca7198f3f6d5",
+      "bytes": 1590040
+    }
+  ]
+}
