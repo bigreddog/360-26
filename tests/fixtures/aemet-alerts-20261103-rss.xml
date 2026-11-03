@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>AEMET - Avisos de fenómenos meteorológicos adversos - Gran Canaria</title>
+    <link>https://www.aemet.es/es/eltiempo/prediccion/avisos?p=6590</link>
+    <description>Avisos de fenómenos meteorológicos adversos según el Plan Meteoalerta de la Agencia Estatal de Meteorología (AEMET) para Gran Canaria.</description>
+    <language>es</language>
+    <copyright>https://www.aemet.es/es/nota_legal</copyright>
+    <pubDate>2026-11-03T10:35:35+00:00</pubDate>
+    <lastBuildDate>2026-11-03T10:35:35+00:00</lastBuildDate>
+    <image>
+      <url>https://www.aemet.es/imagenes/gif/logo_AEMET_web.gif</url>
+    </image>
+    <item>
+      <title>Estado completo de avisos para Gran Canaria</title>
+      <description>Fichero tar.gz que contiene todos los avisos para Gran Canaria de 10:35 03-11-2026 WET (UTC) a 23:59 05-11-2026 WET (UTC).</description>
+      <link>https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261103103535_AFAP6590.tar.gz</link>
+      <guid>Z_CAP_C_LEMM_20261103103535_AFAP6590.tar.gz</guid>
+      <pubDate>2026-11-03T10:35:35+00:00</pubDate>
+    </item>
+    <item>
+      <title>Aviso. Nivel amarillo. Lluvias. Norte de Gran Canaria</title>
+      <description>Aviso de precipitación acumulada en una hora de nivel amarillo de 11:00 04-11-2026 WET (UTC) a 19:59 04-11-2026 WET (UTC).</description>
+      <link>https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261103102759_AFAZ659001PRP10420.xml</link>
+      <guid>Z_CAP_C_LEMM_20261103102759_AFAZ659001PRP10420.xml</guid>
+      <pubDate>2026-11-03T10:27:59+00:00</pubDate>
+    </item>
+    <item>
+      <title>Aviso. Nivel amarillo. Lluvias. Cumbres de Gran Canaria</title>
+      <description>Aviso de precipitación acumulada en una hora de nivel amarillo de 11:00 04-11-2026 WET (UTC) a 19:59 04-11-2026 WET (UTC).</description>
+      <link>https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261103102759_AFAZ659003PRP10420.xml</link>
+      <guid>Z_CAP_C_LEMM_20261103102759_AFAZ659003PRP10420.xml</guid>
+      <pubDate>2026-11-03T10:27:59+00:00</pubDate>
+    </item>
+    <item>
+      <title>Aviso. Nivel amarillo. Lluvias. Este, sur y oeste de Gran Canaria</title>
+      <description>Aviso de precipitación acumulada en una hora de nivel amarillo de 11:00 04-11-2026 WET (UTC) a 19:59 04-11-2026 WET (UTC).</description>
+      <link>https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261103102759_AFAZ659004PRP10420.xml</link>
+      <guid>Z_CAP_C_LEMM_20261103102759_AFAZ659004PRP10420.xml</guid>
+      <pubDate>2026-11-03T10:27:59+00:00</pubDate>
+    </item>
+    <item>
+      <title>Aviso. Nivel amarillo. Lluvias. Norte de Gran Canaria</title>
+      <description>Aviso de precipitación acumulada en una hora de nivel amarillo de 10:00 03-11-2026 WET (UTC) a 20:59 03-11-2026 WET (UTC).</description>
+      <link>https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659001PRP10321.xml</link>
+      <guid>Z_CAP_C_LEMM_20261102173119_AFAZ659001PRP10321.xml</guid>
+      <pubDate>2026-11-02T17:31:19+00:00</pubDate>
+    </item>
+    <item>
+      <title>Aviso. Nivel amarillo. Lluvias. Cumbres de Gran Canaria</title>
+      <description>Aviso de precipitación acumulada en una hora de nivel amarillo de 10:00 03-11-2026 WET (UTC) a 20:59 03-11-2026 WET (UTC).</description>
+      <link>https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659003PRP10321.xml</link>
+      <guid>Z_CAP_C_LEMM_20261102173119_AFAZ659003PRP10321.xml</guid>
+      <pubDate>2026-11-02T17:31:19+00:00</pubDate>
+    </item>
+    <item>
+      <title>Aviso. Nivel amarillo. Lluvias. Este, sur y oeste de Gran Canaria</title>
+      <description>Aviso de precipitación acumulada en una hora de nivel amarillo de 10:00 03-11-2026 WET (UTC) a 20:59 03-11-2026 WET (UTC).</description>
+      <link>https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659004PRP10321.xml</link>
+      <guid>Z_CAP_C_LEMM_20261102173119_AFAZ659004PRP10321.xml</guid>
+      <pubDate>2026-11-02T17:31:19+00:00</pubDate>
+    </item>
+    <item>
+      <title>Aviso. Nivel amarillo. Tormentas. Norte de Gran Canaria</title>
+      <description>Aviso de tormentas de nivel amarillo de 10:00 03-11-2026 WET (UTC) a 20:59 03-11-2026 WET (UTC).</description>
+      <link>https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659001TOTO0321.xml</link>
+      <guid>Z_CAP_C_LEMM_20261102173119_AFAZ659001TOTO0321.xml</guid>
+      <pubDate>2026-11-02T17:31:19+00:00</pubDate>
+    </item>
+    <item>
+      <title>Aviso. Nivel amarillo. Tormentas. Cumbres de Gran Canaria</title>
+      <description>Aviso de tormentas de nivel amarillo de 10:00 03-11-2026 WET (UTC) a 20:59 03-11-2026 WET (UTC).</description>
+      <link>https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659003TOTO0321.xml</link>
+      <guid>Z_CAP_C_LEMM_20261102173119_AFAZ659003TOTO0321.xml</guid>
+      <pubDate>2026-11-02T17:31:19+00:00</pubDate>
+    </item>
+    <item>
+      <title>Aviso. Nivel amarillo. Tormentas. Este, sur y oeste de Gran Canaria</title>
+      <description>Aviso de tormentas de nivel amarillo de 10:00 03-11-2026 WET (UTC) a 20:59 03-11-2026 WET (UTC).</description>
+      <link>https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659004TOTO0321.xml</link>
+      <guid>Z_CAP_C_LEMM_20261102173119_AFAZ659004TOTO0321.xml</guid>
+      <pubDate>2026-11-02T17:31:19+00:00</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -177,12 +177,14 @@ def main():
     # Preserve a failed town's last snapshot with its ORIGINAL fetch timestamp.
     # Browser eligibility rejects old data rather than refreshing its age.
     old = json.loads(args.output.read_text()) if args.output.exists() else {}
+    from aemet_alerts import download_alerts
+    alerts = download_alerts(old.get('alerts'))
     today = datetime.now(ZoneInfo('Atlantic/Canary')).date()
     dates = [(today + timedelta(days=i)).isoformat() for i in range(4)]
     with ThreadPoolExecutor(max_workers=4) as pool:
         bulletins = list(pool.map(download_bulletin, dates))
     fresh = [b for b in bulletins if 'paragraphs' in b]
-    if not usable and not fresh:
+    if not usable and not fresh and (not alerts.get('fetchedAt') or alerts.get('error')):
         raise RuntimeError('All AEMET feeds failed; leaving the previous snapshot untouched')
     # Also retain failed bulletin downloads with their original dates and age.
     failed_dates = {b['date'] for b in bulletins if 'error' in b}
@@ -197,7 +199,7 @@ def main():
               'source': 'https://www.aemet.es/es/eltiempo/prediccion/municipios/',
               'units': {'temperature': '°C', 'wind': 'km/h', 'rain': 'mm'},
               'rainInterval': 'following hour', 'probabilityPeriods': 'UTC',
-              'towns': sorted(usable, key=lambda t: t['id']), 'errors': errors,
+              'towns': sorted(usable, key=lambda t: t['id']), 'errors': errors, 'alerts': alerts,
               'outlook': {'version': 1, 'entries': outlook_entries, 'translationErrors': translation_errors,
                           'errors': [b for b in bulletins if 'error' in b]}}
     args.output.parent.mkdir(parents=True, exist_ok=True)

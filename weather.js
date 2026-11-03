@@ -1,7 +1,7 @@
 /* Route-aware forecast: same pacing curve and distance axis as the roadbook. */
 (function(root){
 'use strict';
-const HOUR=3600000,MAX_HOURS=24,CACHE_KEY='canarias360-weather-v3',OUTLOOK_KEY='canarias360-island-outlook-v1';
+const HOUR=3600000,MAX_HOURS=24,CACHE_KEY='canarias360-weather-v3',OUTLOOK_KEY='canarias360-island-outlook-v1',ALERTS_KEY='canarias360-weather-alerts-v1';
 const A=root.AemetWeather||(typeof require==='function'?require('./aemet.js'):null);
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -93,6 +93,27 @@ function outlookHTML(outlook,now,zone,offline=false){
  const text=(b,lang)=>b.significant.map(t=>`<p class="island-significant" lang="${lang}"><strong>${esc(t)}</strong></p>`).join('')+b.paragraphs.map(t=>`<p lang="${lang}">${esc(t)}</p>`).join('');
  return heading+`<p class="small muted">Daily bulletins overlapping now to ${clock(end,zone,true)}. ${coveredHours<71.99?`Partial coverage · about ${Math.round(coveredHours)} of 72 hours available. `:''}${offline?'Offline · saved bulletins. ':''}English translations of AEMET bulletins; later days may cover all Canary Islands.</p>`+entries.map(b=>{const e=A.englishBulletin(b);return `<article class="island-day"><h4>${esc(day(b.from))} <span>${esc(b.area)}</span></h4>${e?`${e.method==='machine'?'<p class="small muted">Machine translation</p>':''}${text(e,'en')}<details data-outlook-fold="${esc(b.from+'-'+b.area)}"><summary>Spanish original</summary>${text(b,'es')}</details>`:'<p class="small muted">English translation unavailable. Original Spanish:</p>'+text(b,'es')}</article>`;}).join('')+`<details data-outlook-sources data-outlook-fold="sources"><summary>Bulletin issue times & sources</summary>${entries.map(b=>`<p class="small">${esc(day(b.from))} · ${esc(b.area)}<br>Issued ${esc(b.issuedLocal.replace('T',' '))} (time as supplied by AEMET). Downloaded ${clock(b.fetchedAt,zone,true)}.${now-b.fetchedAt>=12*HOUR?' Saved bulletin is over 12 hours old.':''}</p>`).join('')}<p class="small"><a href="https://www.aemet.es/es/eltiempo/prediccion/espana?p=353" target="_blank" rel="noopener">Official AEMET outlook ↗</a> · Weather text © AEMET. English translation by this app.</p></details>`;
 }
+function alertsHTML(alerts,now,zone,{base=null,end=null,offline=false,error=false}={}){
+ const w=A.alertWindow(alerts,now),link='<a href="https://www.aemet.es/es/eltiempo/prediccion/avisos?w=hoy&p=6590" target="_blank" rel="noopener">Official AEMET warnings ↗</a>';
+ const status=offline?'Offline · saved warning snapshot. ':'';
+ const problem=error||w.error?'Could not update warnings. Check AEMET directly. ':w.stale?'Warning snapshot is over 6 hours old. Check AEMET directly. ':w.delayed?'Warning update delayed · snapshot is over 2 hours old. ':'';
+ const updated=w.fetchedAt!==null?'Downloaded '+clock(w.fetchedAt,zone,true)+'. ':'';
+ const coverage=w.coverageUntil!==null?'Published coverage through '+clock(w.coverageUntil,zone,true)+'. ':'';
+ let html='<h3>AEMET warnings · Gran Canaria</h3>';
+ if(!w.entries.length)return html+`<p class="small">${esc(status+problem+(w.available&&!error?'No active or upcoming warnings in this downloaded snapshot. ':'Warning status unavailable; do not assume there are no warnings. ')+updated+coverage)}</p><p class="small">${link}</p>`;
+ const groups=new Map();
+ for(const e of w.entries){const key=JSON.stringify([e.level,e.eventCode,e.from,e.until,e.parameters]);if(!groups.has(key))groups.set(key,{...e,items:[]});groups.get(key).items.push(e);}
+ html+=`<p class="weather-alert-caution"><strong>Official warnings take priority over the small rain totals below.</strong> Point forecasts can miss local hazards. Follow the latest organiser and AEMET guidance.</p><p class="small">${esc(status+problem+updated+coverage)}</p>`;
+ html+=[...groups.values()].map(g=>{
+  const active=g.from<=now,saved=offline||error||w.stale||w.error,overlap=finite(base)&&finite(end)&&g.until>base&&g.from<end;
+  const amount=g.parameters.filter(p=>p.value).map(p=>p.code==='P1'?p.value+' in 1 hour':p.label+': '+p.value).join(' · ');
+  const names={'659001':'North','659003':'Summits','659004':'East / south / west'},areas=[...new Set(g.items.map(e=>names[e.zone]||e.area))].join(' · ');
+  const date=new Intl.DateTimeFormat('en-GB',{timeZone:zone,year:'numeric',month:'2-digit',day:'2-digit'}),sameDay=date.format(new Date(g.from))===date.format(new Date(g.until));
+  const validity=clock(g.from,zone,true)+' – '+(sameDay?clock(g.until,zone).split(' ').at(-1):clock(g.until,zone,true));
+  return `<article class="weather-alert weather-alert-${g.level}"><h4><span>${saved?(active?'Saved · active window':'Saved · upcoming'):(active?'Active now':'Upcoming')} · ${g.level[0].toUpperCase()+g.level.slice(1)}</span>${esc(g.event)}</h4><p><strong>${esc(amount||g.event)}</strong></p><p>${esc(validity)}</p><p>Areas: ${esc(areas)}</p>${overlap?'<p class="weather-alert-overlap">Overlaps your forecast window</p>':''}<details data-alert-fold="${esc(g.id)}"><summary>AEMET details & sources</summary>${g.instruction?'<p>'+esc(g.instruction)+'</p>':''}${g.items.map(e=>`<p class="small"><b>${esc(e.area)}</b><br>Issued ${esc(clock(e.sent,zone,true))}<br><span lang="es">${esc(e.descriptionOriginal||'')}</span><br><a href="${esc(e.sourceUrl)}" target="_blank" rel="noopener">Original warning ↗</a></p>`).join('')}</details></article>`;
+ }).join('');
+ return html+`<p class="small">Warnings cover the listed areas. Check AEMET’s map for precise boundaries. ${link} <a href="https://www.gobiernodecanarias.org/emergencias/alertas/Alerta_vigente.html" target="_blank" rel="noopener">Canary emergency declarations ↗</a></p>`;
+}
 function codeLabel(code){const groups=[[[0],'Clear'],[[1,2],'Some cloud'],[[3],'Overcast'],[[45,48],'Fog'],[[51,53,55],'Drizzle'],[[56,57],'Freezing drizzle'],[[61,63,65],'Rain'],[[66,67],'Freezing rain'],[[71,73,75,77],'Snow'],[[80,81,82],'Rain showers'],[[85,86],'Snow showers'],[[95,96,99],'Thunderstorm signal']];return groups.find(([codes])=>codes.includes(code))?.[1]||'Conditions unavailable';}
 function compass(degrees){return finite(degrees)?['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][Math.round(((degrees%360)+360)%360/22.5)%16]:'';}
 function windInfo(weather={}){const speed=finite(weather.wind)&&weather.wind>=0?weather.wind:null,direction=finite(weather.direction)?((weather.direction%360)+360)%360:null,calm=speed!==null&&speed<1;return {calm,direction:calm?null:direction,speed,from:calm?'Calm · no prevailing direction':direction===null?'Direction unavailable':'From '+compass(direction),gust:finite(weather.gust)&&weather.gust>=0?weather.gust:null};}
@@ -131,6 +152,7 @@ class Panel{
   Object.assign(this,{el:element,data,getState,E:engine,fetcher,now});this.hours=12;this.visible=false;this.loading=false;this.message='';this.cache=null;this.sequence=0;
   try{const stored=JSON.parse(document.getElementById('savedOutlookData')?.textContent||localStorage.getItem(OUTLOOK_KEY)||'null');if(A.validOutlook(stored))this.outlook=stored;}catch(e){}
   try{const stored=JSON.parse(document.getElementById('savedWeatherData')?.textContent||localStorage.getItem(CACHE_KEY)||'null');if(stored?.version===3&&stored.routeSha256===data.gpx_sha256&&finite(stored.base)&&Math.abs(stored.base)<=8640000000000000&&finite(stored.fromKm)&&finite(stored.remaining)&&typeof stored.signature==='string'&&finite(stored.fetchedAt)&&Math.abs(stored.fetchedAt)<=8640000000000000&&Array.isArray(stored.rows)&&stored.rows.length>0&&stored.rows.length<=MAX_HOURS+1&&stored.rows.every(r=>finite(r.sample?.time)&&Math.abs(r.sample.time)<=8640000000000000&&finite(r.sample?.hour)&&finite(r.sample?.km)&&finite(r.sample?.elevation)))this.cache=stored;}catch(e){}
+  try{const stored=JSON.parse(document.getElementById('savedAlertsData')?.textContent||localStorage.getItem(ALERTS_KEY)||'null');if(A.validAlerts(stored))this.alerts=stored;}catch(e){}
   this.el.querySelectorAll('[data-weather-hours]').forEach(b=>b.onclick=()=>{this.hours=Number(b.dataset.weatherHours);this.render();});
   this.el.querySelector('[data-weather-refresh]').onclick=()=>this.refresh(true);
   this.timer=setInterval(()=>this.update(),60000);
@@ -145,7 +167,7 @@ class Panel{
    const relocated=this.cache&&Math.abs(this.cache.fromKm-state.progressKm)>=5;
    const changed=this.cache&&(this.cache.signature!==signature(state)||relocated||Math.abs(this.cache.fromKm-state.progressKm)>=2&&age>10*60000);
    const needsEnglish=!this.translationChecked&&(!this.outlook||this.outlook.entries.some(b=>!A.englishBulletin(b)));
-   if(force||!this.cache||this.cache.aemetPolicyVersion!==A.POLICY_VERSION||!this.cache.aemetStartAvailability||needsEnglish||age>=30*60000||changed)this.refresh(force||!!relocated&&(!finite(this.lastAttemptFromKm)||Math.abs(this.lastAttemptFromKm-state.progressKm)>=5));else this.render();
+   if(force||!this.cache||this.cache.aemetPolicyVersion!==A.POLICY_VERSION||!this.cache.aemetStartAvailability||needsEnglish||!this.alertsChecked||age>=30*60000||changed)this.refresh(force||!!relocated&&(!finite(this.lastAttemptFromKm)||Math.abs(this.lastAttemptFromKm-state.progressKm)>=5));else this.render();
   },500);
  }
  async fetchAemet(manual){
@@ -155,9 +177,9 @@ class Panel{
  async loadAemet(manual){
   if(manual||!this.feedCheckedAt||this.now()-this.feedCheckedAt>=10*60000){
    const controller=new AbortController(),parent=this.controller?.signal,cancel=()=>controller.abort();parent?.addEventListener('abort',cancel,{once:true});const timeout=setTimeout(cancel,6000);
-   try{const r=await this.fetcher(A.FEED,{signal:controller.signal,cache:'no-cache',credentials:'omit',referrerPolicy:'no-referrer'});if(!r.ok)throw Error('AEMET cache unavailable');const feed=await r.json();if(!A.validFeed(feed))throw Error('Invalid AEMET cache');this.feed=feed;this.feedError=false;if(A.validOutlook(feed.outlook)){this.outlook=feed.outlook;try{localStorage.setItem(OUTLOOK_KEY,JSON.stringify(this.outlook));}catch(e){}}}
-   catch(e){this.feedError=true;}
-   finally{clearTimeout(timeout);parent?.removeEventListener('abort',cancel);this.feedCheckedAt=this.now();this.translationChecked=true;}
+   try{const r=await this.fetcher(A.FEED,{signal:controller.signal,cache:'no-cache',credentials:'omit',referrerPolicy:'no-referrer'});if(!r.ok)throw Error('AEMET cache unavailable');const feed=await r.json();if(!A.validFeed(feed))throw Error('Invalid AEMET cache');this.feed=feed;this.feedError=false;if(A.validAlerts(feed.alerts)){this.alerts=feed.alerts;this.alertError=!!feed.alerts.error;try{localStorage.setItem(ALERTS_KEY,JSON.stringify(this.alerts));}catch(e){}}else this.alertError=true;if(A.validOutlook(feed.outlook)){this.outlook=feed.outlook;try{localStorage.setItem(OUTLOOK_KEY,JSON.stringify(this.outlook));}catch(e){}}}
+   catch(e){this.feedError=true;this.alertError=true;}
+   finally{clearTimeout(timeout);parent?.removeEventListener('abort',cancel);this.feedCheckedAt=this.now();this.translationChecked=true;this.alertsChecked=true;}
   }
  }
  async aemetRows(plan,manual){
@@ -191,6 +213,7 @@ class Panel{
  }
  render(){
   const now=this.now(),cache=this.cache,hours=this.hours,button=this.el.querySelector('[data-weather-refresh]');button.disabled=this.loading;button.textContent=this.loading?'Loading…':'Refresh';
+  const alerts=this.el.querySelector('[data-weather-alerts]');if(alerts){const html=alertsHTML(this.alerts,now,this.data.timezone,{base:cache?.base,end:cache?cache.base+Math.min(hours,cache.remaining)*HOUR:null,offline:navigator.onLine===false,error:this.alertError});if(alerts.innerHTML!==html){const open=new Set([...alerts.querySelectorAll('[data-alert-fold][open]')].map(d=>d.dataset.alertFold));alerts.innerHTML=html;alerts.classList.toggle('has-warnings',!!alerts.querySelector('.weather-alert'));for(const d of alerts.querySelectorAll('[data-alert-fold]'))d.open=open.has(d.dataset.alertFold);}}
   const outlook=this.el.querySelector('[data-weather-outlook]');if(outlook){const html=outlookHTML(this.outlook,now,this.data.timezone,navigator.onLine===false);if(outlook.innerHTML!==html){const open=new Set([...outlook.querySelectorAll('[data-outlook-fold][open]')].map(d=>d.dataset.outlookFold));outlook.innerHTML=html;for(const d of outlook.querySelectorAll('[data-outlook-fold]'))d.open=open.has(d.dataset.outlookFold);}}
   this.el.querySelectorAll('[data-weather-hours]').forEach(b=>{const selected=Number(b.dataset.weatherHours)===hours;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected));});
   const route=this.el.querySelector('[data-weather-route]'),destination=this.el.querySelector('[data-weather-destination]');
@@ -215,5 +238,5 @@ class Panel{
   this.el.querySelector('[data-weather-coverage]').textContent=`${available} of ${s.total} hourly route samples have forecast data. ${sourceSummary(s.rows)}. AEMET eligibility: ≤8 km away, ≤250 m height difference, fresh downloads preferred (≤6 h); saved downloads allowed up to 12 h with a delay warning. These limits are heuristics, not accuracy guarantees. Rain is an approximate sum of hourly amounts at moving route positions; it is not a Gáldar daily total. Rain probability describes likelihood, not quantity.${cache.remaining<hours?' Outlook stops at your projected finish.':''}`;
  }
 }
-const api={HOUR,MAX_HOURS,CACHE_KEY,OUTLOOK_KEY,signature,routePoint,createPlan,forecastRange,requestURL,readLocation,readResponses,summarize,rainSummary,rainPoint,hourlyRainHTML,sourceSummary,sourceNote,delayedText,chanceLabel,coverageText,outlookHTML,codeLabel,compass,windInfo,weatherKind,conditions,weatherIcon,Panel};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.RouteWeather=api;
+const api={HOUR,MAX_HOURS,CACHE_KEY,OUTLOOK_KEY,ALERTS_KEY,signature,routePoint,createPlan,forecastRange,requestURL,readLocation,readResponses,summarize,rainSummary,rainPoint,hourlyRainHTML,sourceSummary,sourceNote,delayedText,chanceLabel,coverageText,outlookHTML,alertsHTML,codeLabel,compass,windInfo,weatherKind,conditions,weatherIcon,Panel};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.RouteWeather=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

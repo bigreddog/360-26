@@ -11,6 +11,7 @@ OUT = ROOT / 'docs/aemet-qa'
 OUT.mkdir(exist_ok=True)
 NOW = int(datetime(2026, 11, 4, 9, tzinfo=timezone.utc).timestamp())
 TOWNS = json.loads((ROOT / 'data/weather/aemet-towns.json').read_text())['towns']
+WARNINGS = json.loads((ROOT / 'tests/fixtures/aemet-alerts-20261103.json').read_text())
 INIT = f'Date.now=()=>{NOW * 1000};'
 
 
@@ -42,7 +43,15 @@ def feed(mode='ok'):
                         'sourceParagraphs': b['paragraphs'][:], 'sourceSignificant': b['significant'][:],
                         'paragraphs': ['Cloudy intervals. Temperatures unchanged.'],
                         'significant': ['Locally heavy rain.'] if b['significant'] else []}
-    return {'version': 1, 'provider': 'aemet', 'generatedAt': NOW * 1000, 'towns': towns,
+    warnings = json.loads(json.dumps(WARNINGS))
+    warnings['fetchedAt'] = (NOW - (7 * 3600 if mode == 'alerts_stale' else 3600)) * 1000
+    if mode == 'alerts_none':
+        warnings['entries'] = []
+    if mode == 'alerts_missing':
+        warnings = None
+    if mode == 'alerts_only':
+        towns = []
+    return {'version': 1, 'provider': 'aemet', 'generatedAt': NOW * 1000, 'towns': towns, 'alerts': warnings,
             'outlook': {'version': 1, 'entries': entries}}
 
 
@@ -101,6 +110,38 @@ with sync_playwright() as p:
         check(checks, 'AEMET northerly wind arrow points south', page.locator('.weather-wind-summary [data-wind-bearing="0"] g').get_attribute('transform') == 'rotate(180 24 26)')
         check(checks, 'only near-height near-distance towns supply the preview', page.evaluate('weatherPanel.cache.rows.filter(r=>r.weather?.source?.provider==="aemet").every(r=>Math.abs(r.weather.source.heightDelta)<=250&&r.weather.source.separation<=8000)'))
         check(checks, 'new cache schema preserves source attribution', page.evaluate('JSON.parse(localStorage.getItem(RouteWeather.CACHE_KEY)).version') == 3)
+        warning = page.locator('[data-weather-alerts]')
+        check(checks, 'official warnings appear above the numerical weather controls', warning.bounding_box()['y'] < page.locator('.weather-views').bounding_box()['y'])
+        check(checks, 'expired warnings disappear while tomorrow warnings group across three zones', page.locator('.weather-alert').count() == 1 and '15 mm in 1 hour' in warning.inner_text() and '20 mm in 1 hour' not in warning.inner_text())
+        check(checks, 'warning area, local validity and forecast overlap are explicit', all(t in warning.inner_text() for t in ['Summits', '11:00', '19:59', 'Overlaps your forecast window']))
+        for width in [320, 390, 844]:
+            page.set_viewport_size({'width': width, 'height': 844 if width < 800 else 390})
+            check(checks, f'warning cards fit {width}px phone width', page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'))
+        page.set_viewport_size({'width': 390, 'height': 844})
+        warning.scroll_into_view_if_needed()
+        page.screenshot(path=str(OUT / f'{engine}-official-warnings.png'))
+        warning.locator('details>summary').first.click()
+        page.evaluate('weatherPanel.alerts.entries.find(e=>e.from>Date.now()).descriptionOriginal+=" Updated source.";weatherPanel.render()')
+        check(checks, 'warning source disclosure stays open through rerenders', warning.locator('details').first.evaluate('e=>e.open'))
+        scenario['aemet'] = 'alerts_missing'
+        page.evaluate('weatherPanel.refresh(true)')
+        page.wait_for_function('!weatherPanel.loading')
+        check(checks, 'failed warning update retains dated warnings with a recheck message', page.locator('.weather-alert').count() == 1 and 'Could not update warnings' in warning.inner_text())
+        scenario['aemet'] = 'alerts_none'
+        page.evaluate('weatherPanel.refresh(true)')
+        page.wait_for_function('!weatherPanel.loading')
+        check(checks, 'fresh authoritative empty snapshot clears superseded warnings', page.locator('.weather-alert').count() == 0 and 'No active or upcoming warnings in this downloaded snapshot' in warning.inner_text())
+        scenario['aemet'] = 'alerts_missing'
+        page.evaluate('weatherPanel.refresh(true)')
+        page.wait_for_function('!weatherPanel.loading')
+        check(checks, 'failed empty snapshot update does not imply an all-clear', 'No active or upcoming warnings' not in warning.inner_text() and 'status unavailable' in warning.inner_text())
+        scenario['aemet'] = 'alerts_stale'
+        page.evaluate('weatherPanel.refresh(true)')
+        page.wait_for_function('!weatherPanel.loading')
+        check(checks, 'old warnings remain labelled saved and stale', 'over 6 hours old' in warning.inner_text() and 'Saved' in warning.inner_text())
+        scenario['aemet'] = 'ok'
+        page.evaluate('weatherPanel.refresh(true)')
+        page.wait_for_function('!weatherPanel.loading')
         page.evaluate('weatherPanel.cache.aemetPolicyVersion=1;weatherPanel.lastAttempt=0;weatherPanel.update()')
         page.wait_for_function('weatherPanel.cache.aemetPolicyVersion===AemetWeather.POLICY_VERSION&&!weatherPanel.loading')
         check(checks, 'recent snapshots refresh after a source-selection policy upgrade', page.evaluate('weatherPanel.cache.aemetPolicyVersion') == 4)
@@ -184,6 +225,10 @@ with sync_playwright() as p:
         check(checks, 'fallback outage retains AEMET while leaving remote hours missing', page.evaluate('AemetWeather.counts(weatherPanel.cache.rows).aemet>0&&AemetWeather.counts(weatherPanel.cache.rows).missing>0'))
         check(checks, 'partial-provider outage is explained', 'fallback unavailable' in page.locator('[data-weather-status]').inner_text())
         check(checks, 'missing rain samples stay unavailable', 'Unavailable' in page.locator('.weather-rainfall').inner_text())
+        scenario['aemet'] = 'alerts_only'
+        page.evaluate('weatherPanel.cache=null;weatherPanel.refresh(true)')
+        page.wait_for_function('!weatherPanel.loading')
+        check(checks, 'warnings remain visible when every numerical forecast is unavailable', page.evaluate('weatherPanel.cache===null') and page.locator('.weather-alert').count() == 1)
         scenario.update(aemet='trace', fallback='ok')
         page.evaluate('weatherPanel.refresh(true)')
         page.wait_for_function('!weatherPanel.loading')
@@ -194,6 +239,7 @@ with sync_playwright() as p:
         file = ROOT / 'data/test_aemet_saved.html'
         info.value.save_as(str(file))
         check(checks, 'portable HTML embeds separately dated official outlook text', 'id="savedOutlookData"' in file.read_text())
+        check(checks, 'portable HTML embeds the independently dated warning snapshot', 'id="savedAlertsData"' in file.read_text())
         offline = browser.new_context(service_workers='block', viewport={'width': 390, 'height': 844})
         offline.add_init_script(INIT + "Object.defineProperty(navigator,'onLine',{get:()=>false});")
         offline.route('**/*', lambda r: r.continue_() if r.request.url.startswith('http://127.0.0.1:8787/') else r.abort())
@@ -203,12 +249,22 @@ with sync_playwright() as p:
         check(checks, 'portable offline HTML retains mixed source provenance and original forecasts', 'AEMET' in o.locator('[data-weather-provider]').inner_text() and 'Offline' in o.locator('[data-weather-status]').inner_text())
         check(checks, 'trace rain survives portable offline export without becoming unavailable', 'mm + trace' in o.locator('.weather-rainfall').inner_text())
         check(checks, 'hourly rain amounts and all forecast-point rain survive offline export', o.locator('.weather-stop-rain').count() > 0 and o.locator('.weather-rain-hours li').count() == 12)
+        check(checks, 'offline HTML restores the warning, source times and offline label', o.locator('.weather-alert').count() == 1 and 'Offline' in o.locator('[data-weather-alerts]').inner_text() and '15 mm in 1 hour' in o.locator('[data-weather-alerts]').inner_text())
         check(checks, 'offline HTML also restores original regional text and its scope', o.locator('.island-day').count() == 4 and 'Offline' in o.locator('[data-weather-outlook]').inner_text())
         check(checks, 'English translations are available offline without a translation service', o.locator('.island-day>p[lang=en]:not(.island-significant)').count() == 4 and 'Cloudy intervals' in o.locator('[data-weather-outlook]').inner_text())
         o.locator('[data-outlook-sources]>summary').click()
         o.evaluate('weatherPanel.now=()=>Date.now()+5*24*3600000;weatherPanel.render()')
         check(checks, 'expired island bulletins are hidden rather than relabelled', o.locator('.island-day').count() == 0 and 'No current AEMET' in o.locator('[data-weather-outlook]').inner_text())
+        check(checks, 'expired warnings never reappear as current or imply future safety', o.locator('.weather-alert').count() == 0 and 'status unavailable' in o.locator('[data-weather-alerts]').inner_text())
         offline.close()
+        cached = browser.new_context(service_workers='block', storage_state=ctx.storage_state(), viewport={'width': 390, 'height': 844})
+        cached.add_init_script(INIT + "Object.defineProperty(navigator,'onLine',{get:()=>false});")
+        cached.route('**/*', lambda r: r.continue_() if r.request.url.startswith('http://127.0.0.1:8787/') else r.abort())
+        c = cached.new_page()
+        c.goto('http://127.0.0.1:8787')
+        c.wait_for_function('typeof weatherPanel!=="undefined"&&weatherPanel.alerts')
+        check(checks, 'ordinary offline app reload restores warnings from local storage with their original age', c.locator('.weather-alert').count() == 1 and 'Offline' in c.locator('[data-weather-alerts]').inner_text() and c.evaluate('weatherPanel.alerts.fetchedAt') == (NOW - 3600) * 1000)
+        cached.close()
         page.get_by_role('tab', name='Map', exact=True).click()
         before = len(calls)
         page.evaluate('weatherPanel.update(true)')

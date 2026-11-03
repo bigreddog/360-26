@@ -59,5 +59,14 @@ function outlookWindow(outlook,now){
  let cursor=now,covered=0;for(const b of entries){const from=Math.max(cursor,b.from),until=Math.min(end,b.until);if(until>from){covered+=until-from;cursor=until;}}
  return {entries,coveredHours:covered/HOUR,end};
 }
-const api={HOUR,FRESH_AGE,MAX_AGE,POLICY_VERSION,MAX_DISTANCE,MAX_HEIGHT,FEED,distance,validFeed,eligible,readTown,select,availability,rows,merge,counts,validOutlook,englishBulletin,outlookWindow};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.AemetWeather=api;
+function validAlerts(a){
+ const stamp=x=>finite(x)&&Math.abs(x)<=8640000000000000,str=(x,max=12000)=>typeof x==='string'&&x.length<=max;
+ return a?.version===1&&a.provider==='aemet'&&a.scope==='Gran Canaria'&&stamp(a.fetchedAt)&&stamp(a.issuedAt)&&stamp(a.coverageUntil)&&Array.isArray(a.entries)&&a.entries.length<=300&&a.entries.every(e=>str(e.id,1000)&&stamp(e.sent)&&stamp(e.from)&&stamp(e.until)&&e.until>e.from&&['yellow','orange','red'].includes(e.level)&&str(e.event,1000)&&str(e.eventCode,30)&&str(e.zone,100)&&str(e.area,1000)&&Array.isArray(e.parameters)&&e.parameters.length<=10&&e.parameters.every(p=>str(p.code,30)&&str(p.label,1000)&&str(p.value,1000))&&str(e.descriptionOriginal)&&str(e.descriptionOfficialEnglish)&&str(e.instruction)&&typeof e.sourceUrl==='string'&&/^https:\/\/www\.aemet\.es\/documentos_d\/eltiempo\/prediccion\/avisos\/cap\/[A-Za-z0-9_.-]+\.xml$/.test(e.sourceUrl));
+}
+function alertWindow(a,now){
+ const valid=validAlerts(a),age=valid?now-a.fetchedAt:Infinity,usable=valid&&age>=-5*60000;
+ const entries=usable?a.entries.filter(e=>e.until>now&&e.from<now+72*HOUR).sort((a,b)=>({red:3,orange:2,yellow:1}[b.level]-{red:3,orange:2,yellow:1}[a.level])||Number(a.from>now)-Number(b.from>now)||a.from-b.from):[];
+ return {entries,available:usable&&a.coverageUntil>now&&age<=6*HOUR&&!a.error,stale:usable&&age>6*HOUR,delayed:usable&&age>2*HOUR,error:!usable||!!a.error,coverageUntil:usable?a.coverageUntil:null,fetchedAt:usable?a.fetchedAt:null};
+}
+const api={HOUR,FRESH_AGE,MAX_AGE,POLICY_VERSION,MAX_DISTANCE,MAX_HEIGHT,FEED,distance,validFeed,eligible,readTown,select,availability,rows,merge,counts,validOutlook,englishBulletin,outlookWindow,validAlerts,alertWindow};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.AemetWeather=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

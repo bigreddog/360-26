@@ -1,0 +1,239 @@
+{
+  "version": 1,
+  "provider": "aemet",
+  "scope": "Gran Canaria",
+  "fetchedAt": 1793707911459,
+  "issuedAt": 1793702135000,
+  "coverageUntil": 1793923199000,
+  "sourceUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/rss/CAP_AFAP6590_RSS.xml",
+  "pageUrl": "https://www.aemet.es/es/eltiempo/prediccion/avisos?w=hoy&p=6590",
+  "archiveUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261103103535_AFAP6590.tar.gz",
+  "sourceSha256": "f7a1b094068af13fbc77944f192fd0416e29f82cb62d574a20731b80ed275409",
+  "entries": [
+    {
+      "id": "2.49.0.0.724.0.ES.20261102173119.659001PRP103211793640679:659001",
+      "capId": "2.49.0.0.724.0.ES.20261102173119.659001PRP103211793640679",
+      "sent": 1793640679000,
+      "from": 1793700000000,
+      "until": 1793739599000,
+      "level": "yellow",
+      "eventCode": "PR",
+      "event": "Rain",
+      "zone": "659001",
+      "area": "North of Gran Canaria",
+      "areaOriginal": "Norte de Gran Canaria",
+      "parameters": [
+        {
+          "code": "P1",
+          "label": "One-hour accumulated precipitation",
+          "value": "20 mm"
+        }
+      ],
+      "descriptionOriginal": "Precipitación acumulada en una hora: 20 mm. Chubascos que afectarán principalmente a zonas de interior, sin descartar que localmente vayan acompañados de granizo medio y/o se supere el umbral establecido.",
+      "descriptionOfficialEnglish": "One-hour accumulated precipitation: 20 mm. Chubascos que afectarán principalmente a zonas de interior, sin descartar que localmente vayan acompañados de granizo medio y/o se supere el umbral establecido.",
+      "instruction": "Be aware, keep up to date with the latest weather forecast. Moderate damages to people and properties may occur, especially to those vulnerable or in exposed areas.",
+      "sourceUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659001PRP10321.xml",
+      "sourceSha256": "4c8d97330b6fde5a43e50469a77fc92f093b29418143dab016dfee02f083062e"
+    },
+    {
+      "id": "2.49.0.0.724.0.ES.20261102173119.659003PRP103211793640679:659003",
+      "capId": "2.49.0.0.724.0.ES.20261102173119.659003PRP103211793640679",
+      "sent": 1793640679000,
+      "from": 1793700000000,
+      "until": 1793739599000,
+      "level": "yellow",
+      "eventCode": "PR",
+      "event": "Rain",
+      "zone": "659003",
+      "area": "Gran Canaria summits",
+      "areaOriginal": "Cumbres de Gran Canaria",
+      "parameters": [
+        {
+          "code": "P1",
+          "label": "One-hour accumulated precipitation",
+          "value": "20 mm"
+        }
+      ],
+      "descriptionOriginal": "Precipitación acumulada en una hora: 20 mm. Chubascos que afectarán principalmente a zonas de interior, sin descartar que localmente vayan acompañados de granizo medio y/o se supere el umbral establecido.",
+      "descriptionOfficialEnglish": "One-hour accumulated precipitation: 20 mm. Chubascos que afectarán principalmente a zonas de interior, sin descartar que localmente vayan acompañados de granizo medio y/o se supere el umbral establecido.",
+      "instruction": "Be aware, keep up to date with the latest weather forecast. Moderate damages to people and properties may occur, especially to those vulnerable or in exposed areas.",
+      "sourceUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659003PRP10321.xml",
+      "sourceSha256": "2802d61dd7d53bc6d6ee4fb02238b2252bd4271c63c30c90317fade24fcab56c"
+    },
+    {
+      "id": "2.49.0.0.724.0.ES.20261102173119.659004PRP103211793640679:659004",
+      "capId": "2.49.0.0.724.0.ES.20261102173119.659004PRP103211793640679",
+      "sent": 1793640679000,
+      "from": 1793700000000,
+      "until": 1793739599000,
+      "level": "yellow",
+      "eventCode": "PR",
+      "event": "Rain",
+      "zone": "659004",
+      "area": "East, south and west of Gran Canaria",
+      "areaOriginal": "Este, sur y oeste de Gran Canaria",
+      "parameters": [
+        {
+          "code": "P1",
+          "label": "One-hour accumulated precipitation",
+          "value": "20 mm"
+        }
+      ],
+      "descriptionOriginal": "Precipitación acumulada en una hora: 20 mm. Chubascos que afectarán principalmente a zonas de interior, sin descartar que localmente vayan acompañados de granizo medio y/o se supere el umbral establecido.",
+      "descriptionOfficialEnglish": "One-hour accumulated precipitation: 20 mm. Chubascos que afectarán principalmente a zonas de interior, sin descartar que localmente vayan acompañados de granizo medio y/o se supere el umbral establecido.",
+      "instruction": "Be aware, keep up to date with the latest weather forecast. Moderate damages to people and properties may occur, especially to those vulnerable or in exposed areas.",
+      "sourceUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659004PRP10321.xml",
+      "sourceSha256": "7a58270da88c53695e55a69b0d433ecb5830be64b327a336823eccfb332a1c3f"
+    },
+    {
+      "id": "2.49.0.0.724.0.ES.20261102173119.659001TOTO03211793640679:659001",
+      "capId": "2.49.0.0.724.0.ES.20261102173119.659001TOTO03211793640679",
+      "sent": 1793640679000,
+      "from": 1793700000000,
+      "until": 1793739599000,
+      "level": "yellow",
+      "eventCode": "TO",
+      "event": "Thunderstorms",
+      "zone": "659001",
+      "area": "North of Gran Canaria",
+      "areaOriginal": "Norte de Gran Canaria",
+      "parameters": [
+        {
+          "code": "TO",
+          "label": "Thunderstorm",
+          "value": ""
+        }
+      ],
+      "descriptionOriginal": "",
+      "descriptionOfficialEnglish": "",
+      "instruction": "Be aware, keep up to date with the latest weather forecast. Moderate damages to people and properties may occur, especially to those vulnerable or in exposed areas.",
+      "sourceUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659001TOTO0321.xml",
+      "sourceSha256": "6d4178960b9469f886186773e72ca8e58dff7bf086c85e5c69202a92776f5f3c"
+    },
+    {
+      "id": "2.49.0.0.724.0.ES.20261102173119.659003TOTO03211793640679:659003",
+      "capId": "2.49.0.0.724.0.ES.20261102173119.659003TOTO03211793640679",
+      "sent": 1793640679000,
+      "from": 1793700000000,
+      "until": 1793739599000,
+      "level": "yellow",
+      "eventCode": "TO",
+      "event": "Thunderstorms",
+      "zone": "659003",
+      "area": "Gran Canaria summits",
+      "areaOriginal": "Cumbres de Gran Canaria",
+      "parameters": [
+        {
+          "code": "TO",
+          "label": "Thunderstorm",
+          "value": ""
+        }
+      ],
+      "descriptionOriginal": "",
+      "descriptionOfficialEnglish": "",
+      "instruction": "Be aware, keep up to date with the latest weather forecast. Moderate damages to people and properties may occur, especially to those vulnerable or in exposed areas.",
+      "sourceUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659003TOTO0321.xml",
+      "sourceSha256": "2603ca92d029cb81812ca2d711aab73260b1b341a98d7f30ab1b527432c238c2"
+    },
+    {
+      "id": "2.49.0.0.724.0.ES.20261102173119.659004TOTO03211793640679:659004",
+      "capId": "2.49.0.0.724.0.ES.20261102173119.659004TOTO03211793640679",
+      "sent": 1793640679000,
+      "from": 1793700000000,
+      "until": 1793739599000,
+      "level": "yellow",
+      "eventCode": "TO",
+      "event": "Thunderstorms",
+      "zone": "659004",
+      "area": "East, south and west of Gran Canaria",
+      "areaOriginal": "Este, sur y oeste de Gran Canaria",
+      "parameters": [
+        {
+          "code": "TO",
+          "label": "Thunderstorm",
+          "value": ""
+        }
+      ],
+      "descriptionOriginal": "",
+      "descriptionOfficialEnglish": "",
+      "instruction": "Be aware, keep up to date with the latest weather forecast. Moderate damages to people and properties may occur, especially to those vulnerable or in exposed areas.",
+      "sourceUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261102173119_AFAZ659004TOTO0321.xml",
+      "sourceSha256": "4d4f67dd5b3460f70e0ec7af32d1d0771428d87c2334a7dd9fee91374c8041aa"
+    },
+    {
+      "id": "2.49.0.0.724.0.ES.20261103102759.659001PRP104201793701679:659001",
+      "capId": "2.49.0.0.724.0.ES.20261103102759.659001PRP104201793701679",
+      "sent": 1793701679000,
+      "from": 1793790000000,
+      "until": 1793822399000,
+      "level": "yellow",
+      "eventCode": "PR",
+      "event": "Rain",
+      "zone": "659001",
+      "area": "North of Gran Canaria",
+      "areaOriginal": "Norte de Gran Canaria",
+      "parameters": [
+        {
+          "code": "P1",
+          "label": "One-hour accumulated precipitation",
+          "value": "15 mm"
+        }
+      ],
+      "descriptionOriginal": "Precipitación acumulada en una hora: 15 mm. Afectando principalmente a zonas de interior.",
+      "descriptionOfficialEnglish": "One-hour accumulated precipitation: 15 mm. Afectando principalmente a zonas de interior.",
+      "instruction": "Be aware, keep up to date with the latest weather forecast. Moderate damages to people and properties may occur, especially to those vulnerable or in exposed areas.",
+      "sourceUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261103102759_AFAZ659001PRP10420.xml",
+      "sourceSha256": "33ad9ffefbb95ac756cab278e6ba55a3f1fff6ed432d8a336703ae8bd878c80b"
+    },
+    {
+      "id": "2.49.0.0.724.0.ES.20261103102759.659003PRP104201793701679:659003",
+      "capId": "2.49.0.0.724.0.ES.20261103102759.659003PRP104201793701679",
+      "sent": 1793701679000,
+      "from": 1793790000000,
+      "until": 1793822399000,
+      "level": "yellow",
+      "eventCode": "PR",
+      "event": "Rain",
+      "zone": "659003",
+      "area": "Gran Canaria summits",
+      "areaOriginal": "Cumbres de Gran Canaria",
+      "parameters": [
+        {
+          "code": "P1",
+          "label": "One-hour accumulated precipitation",
+          "value": "15 mm"
+        }
+      ],
+      "descriptionOriginal": "Precipitación acumulada en una hora: 15 mm. Afectando principalmente a zonas de interior.",
+      "descriptionOfficialEnglish": "One-hour accumulated precipitation: 15 mm. Afectando principalmente a zonas de interior.",
+      "instruction": "Be aware, keep up to date with the latest weather forecast. Moderate damages to people and properties may occur, especially to those vulnerable or in exposed areas.",
+      "sourceUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261103102759_AFAZ659003PRP10420.xml",
+      "sourceSha256": "b6aa29ac5a407c8bbc0cfce7f2f1af2a083a749fe9281d047645633599f1a221"
+    },
+    {
+      "id": "2.49.0.0.724.0.ES.20261103102759.659004PRP104201793701679:659004",
+      "capId": "2.49.0.0.724.0.ES.20261103102759.659004PRP104201793701679",
+      "sent": 1793701679000,
+      "from": 1793790000000,
+      "until": 1793822399000,
+      "level": "yellow",
+      "eventCode": "PR",
+      "event": "Rain",
+      "zone": "659004",
+      "area": "East, south and west of Gran Canaria",
+      "areaOriginal": "Este, sur y oeste de Gran Canaria",
+      "parameters": [
+        {
+          "code": "P1",
+          "label": "One-hour accumulated precipitation",
+          "value": "15 mm"
+        }
+      ],
+      "descriptionOriginal": "Precipitación acumulada en una hora: 15 mm. Afectando principalmente a zonas de interior.",
+      "descriptionOfficialEnglish": "One-hour accumulated precipitation: 15 mm. Afectando principalmente a zonas de interior.",
+      "instruction": "Be aware, keep up to date with the latest weather forecast. Moderate damages to people and properties may occur, especially to those vulnerable or in exposed areas.",
+      "sourceUrl": "https://www.aemet.es/documentos_d/eltiempo/prediccion/avisos/cap/Z_CAP_C_LEMM_20261103102759_AFAZ659004PRP10420.xml",
+      "sourceSha256": "91717064aeb90b53d89e2832eee5c51aef8ed21bc7f718133131110801e19711"
+    }
+  ]
+}

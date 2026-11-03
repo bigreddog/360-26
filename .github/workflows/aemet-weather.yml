@@ -8,6 +8,7 @@ on:
     paths:
       - .github/workflows/aemet-weather.yml
       - scripts/update_aemet_weather.py
+      - scripts/aemet_alerts.py
       - scripts/publish_aemet_weather.py
       - data/weather/aemet-towns.json
       - scripts/translate_bulletins.py
@@ -44,6 +45,8 @@ jobs:
         run: node tests/weather.test.js && node tests/aemet.test.js
       - name: Check numerical feed parser
         run: python -m unittest discover -s tests -p test_aemet_weather.py
+      - name: Check official warning snapshots
+        run: python -m unittest discover -s tests -p test_aemet_alerts.py
       - name: Check English source matching
         run: python -m unittest discover -s tests -p test_bulletin_translation.py
       - name: Restore last snapshots for failed-town retention
@@ -56,6 +59,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/publish_aemet_weather.py
+      - name: Verify warning snapshot after publishing
+        run: |
+          python - <<'PYTEST'
+          import json
+          alerts = json.load(open('data/weather/aemet.json')).get('alerts', {})
+          assert alerts.get('fetchedAt') and not alerts.get('error'), 'Warning update failed; original saved age retained'
+          print(f"Published {len(alerts['entries'])} official warning records")
+          PYTEST
       - name: Verify English bulletin coverage after publishing
         run: |
           python - <<'PY'
