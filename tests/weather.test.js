@@ -38,6 +38,34 @@ test('trace in the hour before the outlook is excluded from the sum',()=>{
  const rows=[{sample:{hour:0},weather:{rain:null,rainTrace:true}},{sample:{hour:1},weather:{rain:0}}],s=W.summarize(rows,12);
  assert.equal(s.rainTraceHours,0);assert.equal(s.rain,0);assert.equal(W.rainSummary(s).html,'~0.0 <small>mm</small>');
 });
+test('fractional forecast time reads accumulated rain from its containing hour',()=>{
+ const h=Date.parse('2026-11-04T09:00:00Z'),response={hourly:{time:[h/1000,h/1000+3600],precipitation:[1,3]}};
+ const w=W.readLocation(response,{time:h+15*60000});assert.equal(w.rain,3);assert.equal(w.rainFrom,h);assert.equal(w.rainUntil,h+W.HOUR);
+ assert.equal(W.readLocation(response,{time:h}).rain,1);
+ response.hourly.precipitation[1]=null;assert.equal(W.readLocation(response,{time:h+15*60000}),null);
+});
+test('rain points distinguish zero, trace and missing amounts and label the actual interval',()=>{
+ const p={hour:3,time:Date.parse('2026-11-04T12:00:00Z')},w={rain:0,rainFrom:p.time-W.HOUR,rainUntil:p.time};
+ assert.equal(W.rainPoint(w,p,'Atlantic/Canary').amount,'0.0 mm');assert.match(W.rainPoint(w,p,'Atlantic/Canary').period,/11:00.*12:00/);
+ assert.equal(W.rainPoint({rain:null,rainTrace:true},p,'Atlantic/Canary').amount,'Trace (<0.1 mm)');assert.equal(W.rainPoint({},p,'Atlantic/Canary').amount,'Unavailable');
+ assert(W.rainPoint(w,{...p,hour:0},'Atlantic/Canary').beforeOutlook);
+});
+test('legacy offline rain points keep their original provider interval convention',()=>{
+ const p={hour:1,time:Date.parse('2026-11-04T09:15:00Z')};
+ assert.equal(W.rainPoint({source:{provider:'open-meteo'}},p,'Atlantic/Canary').until,Date.parse('2026-11-04T09:00:00Z'));
+ assert.equal(W.rainPoint({source:{provider:'aemet'}},p,'Atlantic/Canary').until,Date.parse('2026-11-04T10:00:00Z'));
+});
+test('hourly audit includes only contributing intervals and escapes source/place names',()=>{
+ const rows=[0,1,2,3].map(hour=>({sample:{hour,time:Date.parse('2026-11-04T09:00:00Z')+hour*W.HOUR,km:hour,place:'<test>'},weather:{rain:.1,chance:100,source:{provider:'aemet',town:'A&B'}}}));
+ const html=W.hourlyRainHTML(rows,2,'Atlantic/Canary');assert.equal((html.match(/<li>/g)||[]).length,2);assert(!html.includes('<test>'));assert(html.includes('&lt;test&gt;'));assert(html.includes('A&amp;B'));
+ assert.equal(W.summarize(rows,3).rain,.1*3);
+});
+test('real 3 November route audit reconciles the small 24-hour amount without scaling by probability',()=>{
+ const audit=require('../docs/rainfall-audit-20261103.json'),s=W.summarize(audit.rows,24);
+ assert(Math.abs(s.rainKnown-.6)<1e-9);assert.equal(s.rainTraceHours,1);
+ const numeric=s.rows.filter(r=>r.sample.hour>0&&r.weather?.rain>0);assert.deepEqual(numeric.map(r=>r.weather.rain),[.1,.3,.2]);
+ assert.equal(audit.rows[0].weather.source.town,'Gáldar');assert.equal(audit.rows[0].weather.rain,.1);
+});
 test('temperature ranges, hourly chance maxima and gusts cover the chosen window',()=>{const s=W.summarize(W.readResponses(payload(plan),plan),6);assert.equal(s.temperatureMin,17);assert.equal(s.temperatureMax,20);assert.equal(s.gustMax,26);assert.equal(s.chanceMax,12);});
 test('null probability and calm zero wind are distinguished',()=>{assert.equal(W.compass(0),'N');assert.equal(W.compass(null),'');assert.equal(W.compass(360),'N');});
 test('standard weather codes are labelled while unsupported codes remain unknown',()=>{assert.equal(W.codeLabel(45),'Fog');assert.equal(W.codeLabel(95),'Thunderstorm signal');assert.equal(W.codeLabel(999),'Conditions unavailable');assert.equal(W.codeLabel(null),'Conditions unavailable');});

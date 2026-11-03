@@ -1,0 +1,957 @@
+{
+  "now": "2026-11-03T11:45:53.426Z",
+  "plan": {
+    "base": 1793782800000,
+    "fromKm": 0
+  },
+  "rows": [
+    {
+      "sample": {
+        "km": 0,
+        "lat": 28.144767,
+        "lon": -15.655684,
+        "elevation": 118.96,
+        "place": "Near Gáldar",
+        "hour": 0,
+        "time": 1793782800000
+      },
+      "weather": {
+        "temperature": 23,
+        "feels": 23,
+        "wind": 8,
+        "gust": 13,
+        "direction": 225,
+        "code": 61,
+        "day": 1,
+        "rain": 0.1,
+        "rainTrace": false,
+        "chance": 50,
+        "chanceHours": 6,
+        "rainFrom": 1793779200000,
+        "rainUntil": 1793782800000,
+        "source": {
+          "provider": "aemet",
+          "town": "Gáldar",
+          "id": "35009",
+          "elevation": 104,
+          "separation": 212.8924238452403,
+          "heightDelta": 14.959999999999994,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705363550,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/galdar-id35009"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 3.8631358333348005,
+        "lat": 28.12995809439071,
+        "lon": -15.666961578010854,
+        "elevation": 218.37160416662996,
+        "place": "Gáldar → Route km 9.1",
+        "hour": 1,
+        "time": 1793786400000
+      },
+      "weather": {
+        "temperature": 23,
+        "feels": 23,
+        "wind": 5,
+        "gust": 11,
+        "direction": 135,
+        "code": 1,
+        "day": 1,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 25,
+        "chanceHours": 6,
+        "rainFrom": 1793782800000,
+        "rainUntil": 1793786400000,
+        "source": {
+          "provider": "aemet",
+          "town": "Santa María de Guía de Gran Canaria",
+          "id": "35023",
+          "elevation": 203,
+          "separation": 3627.68230229764,
+          "heightDelta": 15.371604166629965,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705364000,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/santa-maria-de-guia-de-gran-canaria-id35023"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 7.856211666664006,
+        "lat": 28.11879886455349,
+        "lon": -15.68822518506934,
+        "elevation": 129.21486100025066,
+        "place": "Near Route km 9.1",
+        "hour": 2,
+        "time": 1793790000000
+      },
+      "weather": {
+        "temperature": 25,
+        "feels": 25,
+        "wind": 7,
+        "gust": 16,
+        "direction": 135,
+        "code": 3,
+        "day": 1,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 45,
+        "chanceHours": 6,
+        "rainFrom": 1793786400000,
+        "rainUntil": 1793790000000,
+        "source": {
+          "provider": "aemet",
+          "town": "Agaete",
+          "id": "35001",
+          "elevation": 45,
+          "separation": 2481.4178231850547,
+          "heightDelta": 84.21486100025066,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705363150,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/agaete-id35001"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 11.65905186181315,
+        "lat": 28.11165412927274,
+        "lon": -15.669072752821009,
+        "elevation": 251.37233537862434,
+        "place": "Near Route km 9.1",
+        "hour": 3,
+        "time": 1793793600000
+      },
+      "weather": {
+        "temperature": 23,
+        "feels": 23,
+        "wind": 9,
+        "gust": 19,
+        "direction": 90,
+        "code": 3,
+        "day": 1,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 100,
+        "chanceHours": 6,
+        "rainFrom": 1793790000000,
+        "rainUntil": 1793793600000,
+        "source": {
+          "provider": "aemet",
+          "town": "Santa María de Guía de Gran Canaria",
+          "id": "35023",
+          "elevation": 203,
+          "separation": 4723.3983241184105,
+          "heightDelta": 48.37233537862434,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705364000,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/santa-maria-de-guia-de-gran-canaria-id35023"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 14.023891066394953,
+        "lat": 28.10183500468919,
+        "lon": -15.662958707751573,
+        "elevation": 565.7781823292535,
+        "place": "Route km 9.1 → Caideros vicinity",
+        "hour": 4,
+        "time": 1793797200000
+      },
+      "weather": {
+        "temperature": 22,
+        "feels": 22,
+        "wind": 8,
+        "gust": 19,
+        "direction": 45,
+        "code": 61,
+        "day": 1,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 100,
+        "chanceHours": 6,
+        "rainFrom": 1793793600000,
+        "rainUntil": 1793797200000,
+        "source": {
+          "provider": "aemet",
+          "town": "Moya",
+          "id": "35013",
+          "elevation": 480,
+          "separation": 7934.442397706758,
+          "heightDelta": 85.77818232925347,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705363603,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/moya-id35013"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 16.97253371044222,
+        "lat": 28.08791979706726,
+        "lon": -15.646927630357931,
+        "elevation": 817.5877216328213,
+        "place": "Near Caideros vicinity",
+        "hour": 5,
+        "time": 1793800800000
+      },
+      "weather": {
+        "temperature": 20,
+        "feels": 19.9,
+        "chance": 33,
+        "rain": 0,
+        "code": 3,
+        "wind": 10.4,
+        "gust": 28.1,
+        "direction": 284,
+        "day": 1,
+        "rainFrom": 1793797200000,
+        "rainUntil": 1793800800000,
+        "source": {
+          "provider": "open-meteo"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 19.669162165312194,
+        "lat": 28.070037994568686,
+        "lon": -15.638057430351417,
+        "elevation": 1076.9392086036082,
+        "place": "Near Caideros vicinity",
+        "hour": 6,
+        "time": 1793804400000
+      },
+      "weather": {
+        "temperature": 19,
+        "feels": 19,
+        "wind": 11,
+        "gust": 25,
+        "direction": 45,
+        "code": 61,
+        "day": 1,
+        "rain": 0.1,
+        "rainTrace": false,
+        "chance": 95,
+        "chanceHours": 6,
+        "rainFrom": 1793800800000,
+        "rainUntil": 1793804400000,
+        "source": {
+          "provider": "aemet",
+          "town": "Valleseco",
+          "id": "35032",
+          "elevation": 1057,
+          "separation": 6820.203649898866,
+          "heightDelta": 19.939208603608222,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705364272,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/valleseco-id35032"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 22.980789433818153,
+        "lat": 28.04777775690916,
+        "lon": -15.626236713254427,
+        "elevation": 1275.3687557467947,
+        "place": "Caideros vicinity → Summit approach",
+        "hour": 7,
+        "time": 1793808000000
+      },
+      "weather": {
+        "temperature": 19,
+        "feels": 19,
+        "wind": 6,
+        "gust": 20,
+        "direction": 45,
+        "code": 61,
+        "day": 1,
+        "rain": 0.3,
+        "rainTrace": false,
+        "chance": 95,
+        "chanceHours": 6,
+        "rainFrom": 1793804400000,
+        "rainUntil": 1793808000000,
+        "source": {
+          "provider": "aemet",
+          "town": "Artenara",
+          "id": "35005",
+          "elevation": 1189,
+          "separation": 3749.4375078682274,
+          "heightDelta": 86.3687557467947,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705363142,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/artenara-id35005"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 25.2523666666724,
+        "lat": 28.03184445489919,
+        "lon": -15.618107056862398,
+        "elevation": 1594.313439999766,
+        "place": "Near Summit approach",
+        "hour": 8,
+        "time": 1793811600000
+      },
+      "weather": {
+        "temperature": 14.9,
+        "feels": 13.3,
+        "chance": 8,
+        "rain": 0,
+        "code": 2,
+        "wind": 6.6,
+        "gust": 19.1,
+        "direction": 229,
+        "day": 1,
+        "rainFrom": 1793808000000,
+        "rainUntil": 1793811600000,
+        "source": {
+          "provider": "open-meteo"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 29.613600936785858,
+        "lat": 28.029707283429776,
+        "lon": -15.627249319042596,
+        "elevation": 1274.0349727402877,
+        "place": "Near Navigation · next 700 m",
+        "hour": 9,
+        "time": 1793815200000
+      },
+      "weather": {
+        "temperature": 17,
+        "feels": 17,
+        "wind": 3,
+        "gust": 9,
+        "direction": 90,
+        "code": 45,
+        "day": 1,
+        "rain": 0.2,
+        "rainTrace": false,
+        "chance": 0,
+        "chanceHours": 6,
+        "rainFrom": 1793811600000,
+        "rainUntil": 1793815200000,
+        "source": {
+          "provider": "aemet",
+          "town": "Artenara",
+          "id": "35005",
+          "elevation": 1189,
+          "separation": 2145.9981873202064,
+          "heightDelta": 85.03497274028769,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705363142,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/artenara-id35005"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 33.16253833331372,
+        "lat": 28.02019964290259,
+        "lon": -15.64006964283677,
+        "elevation": 1330.787780167163,
+        "place": "Near Artenara",
+        "hour": 10,
+        "time": 1793818800000
+      },
+      "weather": {
+        "temperature": 16,
+        "feels": 16,
+        "wind": 2,
+        "gust": 8,
+        "direction": 180,
+        "code": 0,
+        "day": 0,
+        "rain": null,
+        "rainTrace": true,
+        "chance": 0,
+        "chanceHours": 6,
+        "rainFrom": 1793815200000,
+        "rainUntil": 1793818800000,
+        "source": {
+          "provider": "aemet",
+          "town": "Artenara",
+          "id": "35005",
+          "elevation": 1189,
+          "separation": 520.139359055043,
+          "heightDelta": 141.78778016716296,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705363142,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/artenara-id35005"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 38.29492744759416,
+        "lat": 28.001860987470007,
+        "lon": -15.647817072217778,
+        "elevation": 629.1915704657173,
+        "place": "Near Navigation · extreme caution",
+        "hour": 11,
+        "time": 1793822400000
+      },
+      "weather": {
+        "temperature": 17.3,
+        "feels": 19.5,
+        "chance": 0,
+        "rain": 0,
+        "code": 45,
+        "wind": 1.8,
+        "gust": 18.4,
+        "direction": 281,
+        "day": 0,
+        "rainFrom": 1793818800000,
+        "rainUntil": 1793822400000,
+        "source": {
+          "provider": "open-meteo"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 40.54743956224178,
+        "lat": 27.993496513309942,
+        "lon": -15.647944982253408,
+        "elevation": 954.8239925688335,
+        "place": "Near Navigation · extreme caution",
+        "hour": 12,
+        "time": 1793826000000
+      },
+      "weather": {
+        "temperature": 14,
+        "feels": 14,
+        "wind": 7,
+        "gust": 12,
+        "direction": 180,
+        "code": 1,
+        "day": 0,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 0,
+        "chanceHours": 6,
+        "rainFrom": 1793822400000,
+        "rainUntil": 1793826000000,
+        "source": {
+          "provider": "aemet",
+          "town": "Tejeda",
+          "id": "35025",
+          "elevation": 1076,
+          "separation": 3361.6970065720866,
+          "heightDelta": -121.17600743116645,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705364047,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/tejeda-id35025"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 44.06778583334871,
+        "lat": 27.986818999009117,
+        "lon": -15.641999463477202,
+        "elevation": 1068.0418706647233,
+        "place": "Near Route km 44.1",
+        "hour": 13,
+        "time": 1793829600000
+      },
+      "weather": {
+        "temperature": 14,
+        "feels": 14,
+        "wind": 9,
+        "gust": 15,
+        "direction": 180,
+        "code": 2,
+        "day": 0,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 0,
+        "chanceHours": 6,
+        "rainFrom": 1793826000000,
+        "rainUntil": 1793829600000,
+        "source": {
+          "provider": "aemet",
+          "town": "Tejeda",
+          "id": "35025",
+          "elevation": 1076,
+          "separation": 2882.7318600745025,
+          "heightDelta": -7.958129335276681,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705364047,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/tejeda-id35025"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 48.25311195929423,
+        "lat": 27.984170722073532,
+        "lon": -15.669397468275209,
+        "elevation": 695.8529707394374,
+        "place": "Near El Carrizal",
+        "hour": 14,
+        "time": 1793833200000
+      },
+      "weather": {
+        "temperature": 16.7,
+        "feels": 14.9,
+        "chance": 0,
+        "rain": 0,
+        "code": 2,
+        "wind": 7.9,
+        "gust": 26.3,
+        "direction": 129,
+        "day": 0,
+        "rainFrom": 1793829600000,
+        "rainUntil": 1793833200000,
+        "source": {
+          "provider": "open-meteo"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 52.1860375000083,
+        "lat": 27.970811333779626,
+        "lon": -15.676926291099994,
+        "elevation": 719.9377949992469,
+        "place": "Near Navigation · until the road",
+        "hour": 15,
+        "time": 1793836800000
+      },
+      "weather": {
+        "temperature": 16,
+        "feels": 14.1,
+        "chance": 0,
+        "rain": 0,
+        "code": 1,
+        "wind": 7.6,
+        "gust": 26.6,
+        "direction": 135,
+        "day": 0,
+        "rainFrom": 1793833200000,
+        "rainUntil": 1793836800000,
+        "source": {
+          "provider": "open-meteo"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 54.075125336514276,
+        "lat": 27.970769861205483,
+        "lon": -15.667669919946487,
+        "elevation": 1045.3113072074266,
+        "place": "Near Navigation · until the road",
+        "hour": 16,
+        "time": 1793840400000
+      },
+      "weather": {
+        "temperature": 13,
+        "feels": 13,
+        "wind": 9,
+        "gust": 19,
+        "direction": 180,
+        "code": 2,
+        "day": 0,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 0,
+        "chanceHours": 6,
+        "rainFrom": 1793836800000,
+        "rainUntil": 1793840400000,
+        "source": {
+          "provider": "aemet",
+          "town": "Tejeda",
+          "id": "35025",
+          "elevation": 1076,
+          "separation": 5882.617655524157,
+          "heightDelta": -30.68869279257342,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705364047,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/tejeda-id35025"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 57.12881916664571,
+        "lat": 27.959393132612604,
+        "lon": -15.655918706090082,
+        "elevation": 1220.134268169085,
+        "place": "Near Navigation · next 1.5 km",
+        "hour": 17,
+        "time": 1793844000000
+      },
+      "weather": {
+        "temperature": 14,
+        "feels": 14,
+        "wind": 5,
+        "gust": 10,
+        "direction": 180,
+        "code": 2,
+        "day": 0,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 0,
+        "chanceHours": 6,
+        "rainFrom": 1793840400000,
+        "rainUntil": 1793844000000,
+        "source": {
+          "provider": "aemet",
+          "town": "Artenara",
+          "id": "35005",
+          "elevation": 1189,
+          "separation": 6647.084592971855,
+          "heightDelta": 31.13426816908509,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705363142,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/artenara-id35005"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 61.197407849717465,
+        "lat": 27.955110535295145,
+        "lon": -15.647888534924505,
+        "elevation": 1102.1117409462101,
+        "place": "Near Aserrador",
+        "hour": 18,
+        "time": 1793847600000
+      },
+      "weather": {
+        "temperature": 13,
+        "feels": 13,
+        "wind": 8,
+        "gust": 17,
+        "direction": 180,
+        "code": 2,
+        "day": 0,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 0,
+        "chanceHours": 6,
+        "rainFrom": 1793844000000,
+        "rainUntil": 1793847600000,
+        "source": {
+          "provider": "aemet",
+          "town": "Tejeda",
+          "id": "35025",
+          "elevation": 1076,
+          "separation": 5451.95517369887,
+          "heightDelta": 26.111740946210148,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705364047,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/tejeda-id35025"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 63.971016774344776,
+        "lat": 27.96116919996795,
+        "lon": -15.629290844426073,
+        "elevation": 1375.6459855608784,
+        "place": "Near Aserrador",
+        "hour": 19,
+        "time": 1793851200000
+      },
+      "weather": {
+        "temperature": 14,
+        "feels": 14,
+        "wind": 3,
+        "gust": 9,
+        "direction": 225,
+        "code": 2,
+        "day": 0,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 0,
+        "chanceHours": 6,
+        "rainFrom": 1793847600000,
+        "rainUntil": 1793851200000,
+        "source": {
+          "provider": "aemet",
+          "town": "Artenara",
+          "id": "35005",
+          "elevation": 1189,
+          "separation": 6545.008884627751,
+          "heightDelta": 186.64598556087844,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705363142,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/artenara-id35005"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 68.17650666666516,
+        "lat": 27.94733039490117,
+        "lon": -15.619792449338327,
+        "elevation": 1197.5884133335223,
+        "place": "Near Ayacata junction vicinity",
+        "hour": 20,
+        "time": 1793854800000
+      },
+      "weather": {
+        "temperature": 13,
+        "feels": 13,
+        "wind": 9,
+        "gust": 17,
+        "direction": 180,
+        "code": 2,
+        "day": 0,
+        "rain": 0,
+        "rainTrace": false,
+        "chance": 0,
+        "chanceHours": 6,
+        "rainFrom": 1793851200000,
+        "rainUntil": 1793854800000,
+        "source": {
+          "provider": "aemet",
+          "town": "Tejeda",
+          "id": "35025",
+          "elevation": 1076,
+          "separation": 5195.726932973908,
+          "heightDelta": 121.58841333352234,
+          "issuedLocal": "2026-11-03T11:03:07",
+          "fetchedAt": 1793705364047,
+          "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/tejeda-id35025"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 72.01150342155084,
+        "lat": 27.936720241082252,
+        "lon": -15.617823785077128,
+        "elevation": 1196.7585763459415,
+        "place": "Ayacata junction vicinity → Cercados de Araña",
+        "hour": 21,
+        "time": 1793858400000
+      },
+      "weather": {
+        "temperature": 13.6,
+        "feels": 11.2,
+        "chance": 0,
+        "rain": 0,
+        "code": 3,
+        "wind": 7.1,
+        "gust": 32,
+        "direction": 150,
+        "day": 0,
+        "rainFrom": 1793854800000,
+        "rainUntil": 1793858400000,
+        "source": {
+          "provider": "open-meteo"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 77.00957833336098,
+        "lat": 27.916428886102263,
+        "lon": -15.631260886102263,
+        "elevation": 906.9744148321917,
+        "place": "Near Cercados de Araña",
+        "hour": 22,
+        "time": 1793862000000
+      },
+      "weather": {
+        "temperature": 15.7,
+        "feels": 14.7,
+        "chance": 0,
+        "rain": 0,
+        "code": 3,
+        "wind": 1.5,
+        "gust": 21.2,
+        "direction": 104,
+        "day": 0,
+        "rainFrom": 1793858400000,
+        "rainUntil": 1793862000000,
+        "source": {
+          "provider": "open-meteo"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 79.96686416668426,
+        "lat": 27.910611579676747,
+        "lon": -15.61773505805104,
+        "elevation": 1136.5326529993456,
+        "place": "Near Cercados de Araña",
+        "hour": 23,
+        "time": 1793865600000
+      },
+      "weather": {
+        "temperature": 14.7,
+        "feels": 13.4,
+        "chance": 0,
+        "rain": 0,
+        "code": 2,
+        "wind": 0.8,
+        "gust": 22.3,
+        "direction": 117,
+        "day": 1,
+        "rainFrom": 1793862000000,
+        "rainUntil": 1793865600000,
+        "source": {
+          "provider": "open-meteo"
+        }
+      }
+    },
+    {
+      "sample": {
+        "km": 84.99999999997748,
+        "lat": 27.880048949264012,
+        "lon": -15.627558505759122,
+        "elevation": 936.7200000021309,
+        "place": "Near Route km 83.6",
+        "hour": 24,
+        "time": 1793869200000
+      },
+      "weather": {
+        "temperature": 17.2,
+        "feels": 16,
+        "chance": 0,
+        "rain": 0,
+        "code": 3,
+        "wind": 4.3,
+        "gust": 27.7,
+        "direction": 228,
+        "day": 1,
+        "rainFrom": 1793865600000,
+        "rainUntil": 1793869200000,
+        "source": {
+          "provider": "open-meteo"
+        }
+      }
+    }
+  ],
+  "summary": {
+    "html": "~0.6 <small>mm + trace</small>",
+    "note": "Trace rain: less than 0.1 mm in each affected hour."
+  },
+  "method": "Hourly rain sampled at projected end-of-interval locations; start record excluded. Forecast quantity is not scaled by rain probability.",
+  "caveats": [
+    "Default pace at km 0.",
+    "Heuristic municipal matching and route-position fallback; not an exposed-terrain guarantee.",
+    "Source/arithmetic audit, not rain-observation validation."
+  ],
+  "galdar_comparison": {
+    "source": "https://www.aemet.es/xml/municipios_h/localidad_h_35009.xml",
+    "issuedLocal": "2026-11-03T11:39:08",
+    "sourceSha256": "23928667db8b7abc6f9480322e6fde32a8da9a3e6ca3fb5326c0653902aef09b",
+    "rainFollowingHour": [
+      {
+        "time": "2026-11-04T00:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T01:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T02:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T03:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T04:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T05:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T06:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T07:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T08:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T09:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T10:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T11:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T12:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T13:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T14:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T15:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T16:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T17:00",
+        "amount": "0.1"
+      },
+      {
+        "time": "2026-11-04T18:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T19:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T20:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T21:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T22:00",
+        "amount": "0"
+      },
+      {
+        "time": "2026-11-04T23:00",
+        "amount": "0"
+      }
+    ]
+  }
+}
