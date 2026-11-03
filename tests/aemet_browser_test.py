@@ -15,7 +15,7 @@ INIT = f'Date.now=()=>{NOW * 1000};'
 
 
 def feed(mode='ok'):
-    towns = [{**town, 'fetchedAt': (NOW - (7 * 3600 if mode == 'stale' else 3600)) * 1000,
+    towns = [{**town, 'fetchedAt': (NOW - (13 * 3600 if mode == 'stale' else 8 * 3600 if mode == 'delayed' else 3600)) * 1000,
               'issuedLocal': '2026-11-04T08:00:00',
               'hourly': [{'time': NOW + i * 3600, 'temperature': 12, 'feels': 10,
                           'wind': 22, 'gust': 35, 'direction': 0, 'rain': .5,
@@ -94,6 +94,9 @@ with sync_playwright() as p:
         check(checks, 'AEMET northerly wind arrow points south', page.locator('.weather-wind-summary [data-wind-bearing="0"] g').get_attribute('transform') == 'rotate(180 24 26)')
         check(checks, 'only near-height near-distance towns supply the preview', page.evaluate('weatherPanel.cache.rows.filter(r=>r.weather?.source?.provider==="aemet").every(r=>Math.abs(r.weather.source.heightDelta)<=250&&r.weather.source.separation<=8000)'))
         check(checks, 'new cache schema preserves source attribution', page.evaluate('JSON.parse(localStorage.getItem(RouteWeather.CACHE_KEY)).version') == 3)
+        page.evaluate('weatherPanel.cache.aemetPolicyVersion=1;weatherPanel.lastAttempt=0;weatherPanel.update()')
+        page.wait_for_function('weatherPanel.cache.aemetPolicyVersion===AemetWeather.POLICY_VERSION&&!weatherPanel.loading')
+        check(checks, 'recent snapshots refresh after a source-selection policy upgrade', page.evaluate('weatherPanel.cache.aemetPolicyVersion') == 2)
         outlook_text = page.locator('[data-weather-outlook]').inner_text()
         check(checks, 'island outlook shows four dated daily bulletins overlapping the next 72 hours', page.locator('.island-day').count() == 4 and 'next 72 hours' in outlook_text)
         check(checks, 'regional later days are labelled and original Spanish is explicit', 'Gran Canaria' in outlook_text and 'Canary Islands' in outlook_text and 'Spanish' in outlook_text)
@@ -130,6 +133,15 @@ with sync_playwright() as p:
         page.evaluate('state.progressKm=DATA.distance_km-.5;weatherPanel.update(true)')
         page.wait_for_function('!weatherPanel.loading&&weatherPanel.cache.fromKm>248')
         check(checks, 'fully covered short outlook skips Open-Meteo', calls.count('fallback') == before and page.evaluate('weatherPanel.cache.rows.every(r=>r.weather?.source?.provider==="aemet")'))
+        scenario['aemet'] = 'delayed'
+        page.evaluate('state.progressKm=0;weatherPanel.refresh(true)')
+        page.wait_for_function('!weatherPanel.loading&&weatherPanel.cache.fromKm===0')
+        check(checks, 'eight-hour saved AEMET remains usable with a visible update-delay warning', page.evaluate('AemetWeather.counts(weatherPanel.cache.rows).aemet') > 0 and 'AEMET update delayed' in page.locator('[data-weather-status]').inner_text())
+        page.locator('[data-weather-route]>summary').click()
+        check(checks, 'AEMET source cards preserve issue time and delayed download age', 'Issued 2026-11-04T08:00:00' in page.locator('[data-weather-cards]').inner_text() and 'Update delayed' in page.locator('[data-weather-cards]').inner_text())
+        page.locator('[data-weather-status]').scroll_into_view_if_needed()
+        page.screenshot(path=str(OUT / f'{engine}-delayed-update.png'))
+        page.locator('[data-weather-route]>summary').click()
         # Stale AEMET snapshots must not gain a new age through reprojection.
         scenario['aemet'] = 'stale'
         page.evaluate('state.progressKm=0;weatherPanel.refresh(true)')

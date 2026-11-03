@@ -1,9 +1,9 @@
 {
-  "passed": 78,
+  "passed": 84,
   "results": [
     {
       "browser": "chromium",
-      "passed": 39,
+      "passed": 42,
       "checks": [
         "AEMET is used alongside explicitly identified remote/high-route fallback",
         "visible provider badge identifies both sources",
@@ -11,6 +11,7 @@
         "AEMET northerly wind arrow points south",
         "only near-height near-distance towns supply the preview",
         "new cache schema preserves source attribution",
+        "recent snapshots refresh after a source-selection policy upgrade",
         "island outlook shows four dated daily bulletins overlapping the next 72 hours",
         "regional later days are labelled and original Spanish is explicit",
         "significant bulletin text is translated and remains visible",
@@ -27,6 +28,8 @@
         "source badges and detailed cards fit 390px",
         "source badges and detailed cards fit 844px",
         "fully covered short outlook skips Open-Meteo",
+        "eight-hour saved AEMET remains usable with a visible update-delay warning",
+        "AEMET source cards preserve issue time and delayed download age",
         "old AEMET downloads are rejected and fallback is visible",
         "unavailable AEMET feed leaves a usable labelled fallback",
         "fallback outage retains AEMET while leaving remote hours missing",
@@ -48,7 +51,7 @@
     },
     {
       "browser": "webkit",
-      "passed": 39,
+      "passed": 42,
       "checks": [
         "AEMET is used alongside explicitly identified remote/high-route fallback",
         "visible provider badge identifies both sources",
@@ -56,6 +59,7 @@
         "AEMET northerly wind arrow points south",
         "only near-height near-distance towns supply the preview",
         "new cache schema preserves source attribution",
+        "recent snapshots refresh after a source-selection policy upgrade",
         "island outlook shows four dated daily bulletins overlapping the next 72 hours",
         "regional later days are labelled and original Spanish is explicit",
         "significant bulletin text is translated and remains visible",
@@ -72,6 +76,8 @@
         "source badges and detailed cards fit 390px",
         "source badges and detailed cards fit 844px",
         "fully covered short outlook skips Open-Meteo",
+        "eight-hour saved AEMET remains usable with a visible update-delay warning",
+        "AEMET source cards preserve issue time and delayed download age",
         "old AEMET downloads are rejected and fallback is visible",
         "unavailable AEMET feed leaves a usable labelled fallback",
         "fallback outage retains AEMET while leaving remote hours missing",

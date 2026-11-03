@@ -1,7 +1,7 @@
 /* AEMET municipal forecasts: explicit town/height limits; never treated as a GPX grid. */
 (function(root){
 'use strict';
-const HOUR=3600000,MAX_AGE=6*HOUR,MAX_DISTANCE=8000,MAX_HEIGHT=250;
+const HOUR=3600000,FRESH_AGE=6*HOUR,MAX_AGE=12*HOUR,POLICY_VERSION=2,MAX_DISTANCE=8000,MAX_HEIGHT=250;
 const FEED='https://raw.githubusercontent.com/bigreddog/360-26/weather-data/aemet.json';
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
 function distance(a,b){const r=Math.PI/180,x=(b.lon-a.lon)*r*Math.cos((a.lat+b.lat)/2*r),y=(b.lat-a.lat)*r;return 6371008.8*Math.hypot(x,y);}
@@ -28,7 +28,8 @@ function readTown(match,sample){
 }
 function select(feed,sample,now){
  if(!validFeed(feed))return null;
- const matches=feed.towns.map(t=>eligible(t,sample,now)).filter(Boolean).sort((a,b)=>a.score-b.score||a.town.id.localeCompare(b.town.id));
+ // Prefer usable fresh towns before the bounded delayed-update tier.
+ const matches=feed.towns.map(t=>eligible(t,sample,now)).filter(Boolean).sort((a,b)=>Number(now-a.town.fetchedAt>FRESH_AGE)-Number(now-b.town.fetchedAt>FRESH_AGE)||a.score-b.score||a.town.id.localeCompare(b.town.id));
  for(const match of matches){const weather=readTown(match,sample);if(weather)return weather;}
  return null;
 }
@@ -38,7 +39,8 @@ function availability(feed,sample,now){
  if(!nearby.length)return {kind:'location'};
  const fresh=nearby.filter(m=>eligible(m.town,sample,now));
  if(!fresh.length)return {kind:'stale'};
- if(fresh.some(m=>readTown(m,sample)))return {kind:'covered'};
+ const weather=select(feed,sample,now);
+ if(weather)return {kind:now-weather.source.fetchedAt>FRESH_AGE?'delayed':'covered',town:weather.source.town,fetchedAt:weather.source.fetchedAt};
  const ranges=fresh.map(m=>{const times=m.town.hourly.filter(r=>finite(r.temperature)).map(r=>r.time*1000);return times.length?{town:m.town.name,from:times[0],until:times.at(-1),fetchedAt:m.town.fetchedAt}:null;}).filter(Boolean);
  if(!ranges.length)return {kind:'gap'};
  const latest=ranges.reduce((a,b)=>b.until>a.until?b:a),earliest=ranges.reduce((a,b)=>b.from<a.from?b:a);
@@ -57,5 +59,5 @@ function outlookWindow(outlook,now){
  let cursor=now,covered=0;for(const b of entries){const from=Math.max(cursor,b.from),until=Math.min(end,b.until);if(until>from){covered+=until-from;cursor=until;}}
  return {entries,coveredHours:covered/HOUR,end};
 }
-const api={HOUR,MAX_AGE,MAX_DISTANCE,MAX_HEIGHT,FEED,distance,validFeed,eligible,readTown,select,availability,rows,merge,counts,validOutlook,englishBulletin,outlookWindow};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.AemetWeather=api;
+const api={HOUR,FRESH_AGE,MAX_AGE,POLICY_VERSION,MAX_DISTANCE,MAX_HEIGHT,FEED,distance,validFeed,eligible,readTown,select,availability,rows,merge,counts,validOutlook,englishBulletin,outlookWindow};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.AemetWeather=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

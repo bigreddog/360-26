@@ -6,9 +6,34 @@ const town={id:'35025',name:'Test town',lat:28,lon:-15.6,elevation:950,fetchedAt
 const feed={version:1,provider:'aemet',towns:[town]};
 test('numerical feed validates but missing or unrelated payloads do not',()=>{assert(A.validFeed(feed));assert(!A.validFeed(null));assert(!A.validFeed({...feed,provider:'other'}));});
 test('nearby similar-height town is eligible',()=>assert(A.eligible(town,sample,now)));
+test('a delayed eight-hour snapshot remains usable with an explicit warning',()=>{
+ const delayed={...feed,towns:[{...town,fetchedAt:now-8*A.HOUR}]},w=A.select(delayed,sample,now);
+ assert(w);assert.equal(A.availability(delayed,sample,now).kind,'delayed');
+ assert.match(W.delayedText([{weather:w}],now),/update delayed.*8 hours/);
+ assert.match(W.sourceNote(w,now),/Issued.*Downloaded.*Update delayed/);
+ assert.equal(W.delayedText([{weather:A.select(feed,sample,now)}],now),'');
+});
+test('fresh usable towns take priority over a closer delayed town',()=>{
+ const delayed={...town,id:'35001',elevation:1000,fetchedAt:now-8*A.HOUR};
+ assert.equal(A.select({...feed,towns:[delayed,town]},sample,now).source.id,town.id);
+ const emptyFresh={...town,hourly:[]};
+ assert.equal(A.select({...feed,towns:[emptyFresh,delayed]},sample,now).source.id,delayed.id);
+});
+test('twelve-hour boundary is enforced without extending time coverage',()=>{
+ const delayed={...feed,towns:[{...town,fetchedAt:now-12*A.HOUR}]};
+ assert(A.select(delayed,sample,now));assert.equal(A.select(delayed,sample,now+1),null);
+ assert.equal(A.select(delayed,{...sample,time:now+3*A.HOUR},now),null);
+});
+test('actual successful 03:30 job snapshot still covers the start after six hours',()=>{
+ const live=require('./fixtures/aemet-galdar-20261103.json'),clock=Date.parse('2026-11-03T11:10:00Z');
+ const start={lat:28.144767,lon:-15.655684,elevation:118.96,time:Date.parse('2026-11-04T09:00:00Z')};
+ const w=A.select(live,start,clock);assert.equal(w.source.provider,'aemet');assert.equal(w.temperature,23);
+ assert.equal(A.availability(live,start,clock).kind,'delayed');
+ assert.equal(A.select(live,start,Date.parse('2026-11-03T16:00:00Z')),null);
+});
 test('coastal town cannot supply mountain weather',()=>assert(!A.eligible({...town,elevation:0},sample,now)));
 test('town beyond 8 km is rejected',()=>assert(!A.eligible({...town,lat:28.2},sample,now)));
-test('six-hour-old and implausibly future downloads are rejected',()=>{assert(!A.eligible({...town,fetchedAt:now-7*A.HOUR},sample,now));assert(!A.eligible({...town,fetchedAt:now+A.HOUR},sample,now));});
+test('downloads beyond twelve hours and implausibly future downloads are rejected',()=>{assert(!A.eligible({...town,fetchedAt:now-13*A.HOUR},sample,now));assert(!A.eligible({...town,fetchedAt:now+A.HOUR},sample,now));});
 test('temperature interpolates in time without an altitude correction',()=>assert.equal(A.select(feed,sample,now).temperature,11));
 test('AEMET probability retains its six-hour period',()=>{const w=A.select(feed,sample,now);assert.equal(w.chance,70);assert.equal(w.chanceHours,6);});
 test('rain reads the preceding interval while preserving following-hour XML convention',()=>{const w=A.select(feed,{...sample,time:now+A.HOUR},now);assert.equal(w.rain,2);assert.equal(w.gust,20);});
@@ -25,7 +50,7 @@ test('unavailable fallback keeps partial AEMET data and missing hours',()=>{cons
 test('mixed probabilities are labelled with period differences',()=>assert.match(W.chanceLabel([{weather:A.select(feed,sample,now)}]),/6-h/));
 test('town warnings never claim GPX altitude downscaling',()=>assert.match(W.sourceNote(A.select(feed,sample,now)),/Town forecast; no altitude correction/));
 test('source summary distinguishes AEMET and route fallback',()=>{assert.match(W.sourceSummary([{weather:A.select(feed,sample,now)},{weather:{source:{provider:'open-meteo'}}}]),/AEMET.*Open-Meteo route fallback/);});
-test('six-hour matching thresholds are explicitly heuristics rather than probabilities',()=>{assert.equal(A.MAX_HEIGHT,250);assert.equal(A.MAX_DISTANCE,8000);assert.equal(A.MAX_AGE,6*A.HOUR);});
+test('fresh and delayed matching thresholds are explicitly heuristics rather than probabilities',()=>{assert.equal(A.MAX_HEIGHT,250);assert.equal(A.MAX_DISTANCE,8000);assert.equal(A.FRESH_AGE,6*A.HOUR);assert.equal(A.MAX_AGE,12*A.HOUR);});
 test('fresh live Galdar data can still end before the start when less than 48 clock hours remain',()=>{
  const feed=require('./fixtures/aemet-galdar-20261102.json'),now=Date.parse('2026-11-02T10:53:00Z'),sample={lat:28.144767,lon:-15.655684,elevation:118.96,time:Date.parse('2026-11-04T09:00:00Z')};
  assert(sample.time-now<48*A.HOUR);assert(A.eligible(feed.towns[0],sample,now));assert.equal(A.select(feed,sample,now),null);
@@ -34,8 +59,8 @@ test('fresh live Galdar data can still end before the start when less than 48 cl
 });
 test('coverage explains a missing interior hour without calling it a horizon limit',()=>{const gap={...feed,towns:[{...town,hourly:[town.hourly[0],town.hourly[3]]}]};assert.equal(A.availability(gap,sample,now).kind,'gap');});
 test('stale and unavailable AEMET feeds have distinct fallback explanations',()=>{
- assert.equal(A.availability(null,sample,now).kind,'unavailable');assert.equal(A.availability({...feed,towns:[{...town,fetchedAt:now-7*A.HOUR}]},sample,now).kind,'stale');
- assert.match(W.coverageText({kind:'stale'},now,'Atlantic/Canary'),/6 hours/);assert.match(W.coverageText({kind:'unavailable'},now,'Atlantic/Canary'),/Could not load/);
+ assert.equal(A.availability(null,sample,now).kind,'unavailable');assert.equal(A.availability({...feed,towns:[{...town,fetchedAt:now-13*A.HOUR}]},sample,now).kind,'stale');
+ assert.match(W.coverageText({kind:'stale'},now,'Atlantic/Canary'),/12 hours/);assert.match(W.coverageText({kind:'unavailable'},now,'Atlantic/Canary'),/Could not load/);
 });
 test('distance and altitude mismatch are distinguished from missing forecast times',()=>assert.equal(A.availability({...feed,towns:[{...town,elevation:0}]},sample,now).kind,'location'));
 test('coverage diagnostics use the last temperature rather than later rain-only rows',()=>{const x={...feed,towns:[{...town,hourly:[...town.hourly,{time:t+10*3600,rain:0}]}]};const a=A.availability(x,{...sample,time:now+3*A.HOUR},now);assert.equal(a.kind,'after');assert.equal(a.until,now+2*A.HOUR);});

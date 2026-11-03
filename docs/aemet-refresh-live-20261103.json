@@ -1,0 +1,38 @@
+{
+  "now": "2026-11-03T11:15:35.774Z",
+  "source": {
+    "provider": "aemet",
+    "town": "G\u00e1ldar",
+    "id": "35009",
+    "elevation": 104,
+    "separation": 212.8924238452403,
+    "heightDelta": 14.959999999999994,
+    "issuedLocal": "2026-11-03T11:03:07",
+    "fetchedAt": 1793704346387,
+    "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/galdar-id35009"
+  },
+  "start": {
+    "km": 0,
+    "lat": 28.144767,
+    "lon": -15.655684,
+    "elevation": 118.96,
+    "place": "Near G\u00e1ldar",
+    "hour": 0,
+    "time": 1793782800000
+  },
+  "counts": {
+    "aemet": 16,
+    "openMeteo": 9,
+    "missing": 0
+  },
+  "availability": {
+    "kind": "covered",
+    "town": "G\u00e1ldar",
+    "fetchedAt": 1793704346387
+  },
+  "provider": "AEMET town forecasts \u00b7 10/13 points \u00b7 Open-Meteo route fallback \u00b7 3/13 points",
+  "status": "Forecast for the places you are projected to reach.",
+  "errors": [],
+  "mocked_forecasts": false,
+  "test_transport": "Managed HTTPS proxy; browser TLS verification bypassed for the proxy certificate in this test context only."
+}

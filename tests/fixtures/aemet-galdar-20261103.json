@@ -1,0 +1,607 @@
+{
+  "version": 1,
+  "provider": "aemet",
+  "product": "municipal-hourly",
+  "generatedAt": 1793676633852,
+  "attribution": "Weather data © AEMET. Reused with attribution.",
+  "source": "https://www.aemet.es/es/eltiempo/prediccion/municipios/",
+  "units": {
+    "temperature": "°C",
+    "wind": "km/h",
+    "rain": "mm"
+  },
+  "rainInterval": "following hour",
+  "probabilityPeriods": "UTC",
+  "towns": [
+    {
+      "id": "35009",
+      "name": "Gáldar",
+      "lat": 28.14347581,
+      "lon": -15.65408077,
+      "elevation": 104,
+      "timezone": "Atlantic/Canary",
+      "url": "https://www.aemet.es/es/eltiempo/prediccion/municipios/horas/galdar-id35009",
+      "xml_url": "https://www.aemet.es/xml/municipios_h/localidad_h_35009.xml",
+      "metadata_sha256": "98d292f53f741a2a2db31e1f692e4b4377e42cb378815ce0ad8d99b8c1b15bcd",
+      "issuedLocal": "2026-11-02T20:55:10",
+      "fetchedAt": 1793676626651,
+      "sourceSha256": "cb6829d0f352a504fb0f9d618e00f69645bd5aebeb47271fae312143233889d3",
+      "hourly": [
+        {
+          "time": 1793642400,
+          "code": 2,
+          "day": 1,
+          "rain": 0
+        },
+        {
+          "time": 1793646000,
+          "code": 1,
+          "day": 0,
+          "rain": 0,
+          "temperature": 25,
+          "feels": 25,
+          "wind": 13,
+          "direction": 0,
+          "gust": 20
+        },
+        {
+          "time": 1793649600,
+          "code": 1,
+          "day": 0,
+          "rain": 0,
+          "temperature": 25,
+          "feels": 25,
+          "wind": 12,
+          "direction": 0,
+          "gust": 19
+        },
+        {
+          "time": 1793653200,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 13,
+          "direction": 0,
+          "gust": 21
+        },
+        {
+          "time": 1793656800,
+          "code": 1,
+          "day": 0,
+          "rain": 0,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 14,
+          "direction": 0,
+          "gust": 21
+        },
+        {
+          "time": 1793660400,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 4,
+          "direction": 270,
+          "gust": 5
+        },
+        {
+          "time": 1793664000,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 23,
+          "feels": 23,
+          "wind": 4,
+          "direction": 225,
+          "gust": 6
+        },
+        {
+          "time": 1793667600,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 23,
+          "feels": 23,
+          "wind": 4,
+          "direction": 270,
+          "gust": 7
+        },
+        {
+          "time": 1793671200,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 5,
+          "direction": 0,
+          "gust": 10
+        },
+        {
+          "time": 1793674800,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 6,
+          "direction": 0,
+          "gust": 13
+        },
+        {
+          "time": 1793678400,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 9,
+          "direction": 225,
+          "gust": 14
+        },
+        {
+          "time": 1793682000,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 20,
+          "feels": 20,
+          "wind": 10,
+          "direction": 270,
+          "gust": 14
+        },
+        {
+          "time": 1793685600,
+          "code": 61,
+          "day": 0,
+          "rain": 0.1,
+          "temperature": 21,
+          "feels": 21,
+          "wind": 3,
+          "direction": 315,
+          "gust": 5
+        },
+        {
+          "time": 1793689200,
+          "code": 61,
+          "day": 0,
+          "rain": 0.1,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 3,
+          "direction": 0,
+          "gust": 9
+        },
+        {
+          "time": 1793692800,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 23,
+          "feels": 23,
+          "wind": 7,
+          "direction": 270,
+          "gust": 24
+        },
+        {
+          "time": 1793696400,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 23,
+          "feels": 23,
+          "wind": 16,
+          "direction": 270,
+          "gust": 25
+        },
+        {
+          "time": 1793700000,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 9,
+          "direction": 225,
+          "gust": 23
+        },
+        {
+          "time": 1793703600,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 11,
+          "direction": 90,
+          "gust": 22
+        },
+        {
+          "time": 1793707200,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 10,
+          "direction": 135,
+          "gust": 23
+        },
+        {
+          "time": 1793710800,
+          "code": 95,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 10,
+          "direction": 90,
+          "gust": 39
+        },
+        {
+          "time": 1793714400,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 21,
+          "direction": 0,
+          "gust": 50
+        },
+        {
+          "time": 1793718000,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 31,
+          "direction": 315,
+          "gust": 54
+        },
+        {
+          "time": 1793721600,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 22,
+          "direction": 0,
+          "gust": 35
+        },
+        {
+          "time": 1793725200,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 18,
+          "direction": 180,
+          "gust": 36
+        },
+        {
+          "time": 1793728800,
+          "code": 3,
+          "day": 1,
+          "rain": 0,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 10,
+          "direction": 45,
+          "gust": 24
+        },
+        {
+          "time": 1793732400,
+          "code": 1,
+          "day": 0,
+          "rain": 0,
+          "temperature": 23,
+          "feels": 23,
+          "wind": 15,
+          "direction": 45,
+          "gust": 23
+        },
+        {
+          "time": 1793736000,
+          "code": 1,
+          "day": 0,
+          "rain": 0,
+          "temperature": 23,
+          "feels": 23,
+          "wind": 10,
+          "direction": 0,
+          "gust": 15
+        },
+        {
+          "time": 1793739600,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 23,
+          "feels": 23,
+          "wind": 7,
+          "direction": 0,
+          "gust": 16
+        },
+        {
+          "time": 1793743200,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 11,
+          "direction": 0,
+          "gust": 16
+        },
+        {
+          "time": 1793746800,
+          "code": 0,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 8,
+          "direction": 270,
+          "gust": 14
+        },
+        {
+          "time": 1793750400,
+          "code": 2,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 6,
+          "direction": 270,
+          "gust": 8
+        },
+        {
+          "time": 1793754000,
+          "code": 2,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 6,
+          "direction": 0,
+          "gust": 11
+        },
+        {
+          "time": 1793757600,
+          "code": 2,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 8,
+          "direction": 0,
+          "gust": 14
+        },
+        {
+          "time": 1793761200,
+          "code": 2,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 9,
+          "direction": 0,
+          "gust": 13
+        },
+        {
+          "time": 1793764800,
+          "code": 2,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 5,
+          "direction": 315,
+          "gust": 7
+        },
+        {
+          "time": 1793768400,
+          "code": 2,
+          "day": 0,
+          "rain": 0,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 4,
+          "direction": 0,
+          "gust": 5
+        },
+        {
+          "time": 1793772000,
+          "code": 61,
+          "day": 0,
+          "rain": 0.1,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 4,
+          "direction": 315,
+          "gust": 17
+        },
+        {
+          "time": 1793775600,
+          "code": 61,
+          "day": 0,
+          "rain": 0.1,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 11,
+          "direction": 0,
+          "gust": 18
+        },
+        {
+          "time": 1793779200,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 22,
+          "feels": 22,
+          "wind": 11,
+          "direction": 0,
+          "gust": 22
+        },
+        {
+          "time": 1793782800,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 23,
+          "feels": 23,
+          "wind": 13,
+          "direction": 0,
+          "gust": 22
+        },
+        {
+          "time": 1793786400,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 12,
+          "direction": 45,
+          "gust": 21
+        },
+        {
+          "time": 1793790000,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 11,
+          "direction": 90,
+          "gust": 26
+        },
+        {
+          "time": 1793793600,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 13,
+          "direction": 90,
+          "gust": 27
+        },
+        {
+          "time": 1793797200,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 23,
+          "feels": 23,
+          "wind": 14,
+          "direction": 90,
+          "gust": 27
+        },
+        {
+          "time": 1793800800,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 13,
+          "direction": 90,
+          "gust": 25
+        },
+        {
+          "time": 1793804400,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 12,
+          "direction": 90,
+          "gust": 23
+        },
+        {
+          "time": 1793808000,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 24,
+          "feels": 24,
+          "wind": 11,
+          "direction": 90,
+          "gust": 22
+        },
+        {
+          "time": 1793811600,
+          "code": 61,
+          "day": 1,
+          "rain": 0.1,
+          "temperature": 23,
+          "feels": 23,
+          "wind": 11,
+          "direction": 90,
+          "gust": 20
+        }
+      ],
+      "probabilities": [
+        {
+          "start": 1793642400,
+          "end": 1793664000,
+          "value": 10,
+          "hours": 6
+        },
+        {
+          "start": 1793664000,
+          "end": 1793685600,
+          "value": 5,
+          "hours": 6
+        },
+        {
+          "start": 1793685600,
+          "end": 1793707200,
+          "value": 85,
+          "hours": 6
+        },
+        {
+          "start": 1793707200,
+          "end": 1793728800,
+          "value": 100,
+          "hours": 6
+        },
+        {
+          "start": 1793728800,
+          "end": 1793750400,
+          "value": 30,
+          "hours": 6
+        },
+        {
+          "start": 1793750400,
+          "end": 1793772000,
+          "value": 10,
+          "hours": 6
+        },
+        {
+          "start": 1793772000,
+          "end": 1793793600,
+          "value": 55,
+          "hours": 6
+        },
+        {
+          "start": 1793793600,
+          "end": 1793815200,
+          "value": 100,
+          "hours": 6
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
