@@ -49,6 +49,7 @@ test('rain points distinguish zero, trace and missing amounts and label the actu
  assert.equal(W.rainPoint(w,p,'Atlantic/Canary').amount,'0.0 mm');assert.match(W.rainPoint(w,p,'Atlantic/Canary').period,/11:00.*12:00/);
  assert.equal(W.rainPoint({rain:null,rainTrace:true},p,'Atlantic/Canary').amount,'Trace (<0.1 mm)');assert.equal(W.rainPoint({},p,'Atlantic/Canary').amount,'Unavailable');
  assert(W.rainPoint(w,{...p,hour:0},'Atlantic/Canary').beforeOutlook);
+ assert.equal(W.rainPoint({...w,rain:.03},p,'Atlantic/Canary').amount,'0.03 mm');assert.equal(W.rainPoint({...w,rain:.001},p,'Atlantic/Canary').amount,'<0.01 mm');
 });
 test('legacy offline rain points keep their original provider interval convention',()=>{
  const p={hour:1,time:Date.parse('2026-11-04T09:15:00Z')};

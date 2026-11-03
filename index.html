@@ -1273,7 +1273,7 @@ function rainSummary(s){
  return {html:'Unavailable',note:'Some hourly rain amounts are missing.'};
 }
 function rainPoint(weather,sample,zone){
- const amount=finite(weather?.rain)&&weather.rain>=0?weather.rain.toFixed(1)+' mm':weather?.rainTrace===true?'Trace (<0.1 mm)':'Unavailable';
+ const amount=finite(weather?.rain)&&weather.rain>=0?(weather.rain>0&&weather.rain<.01?'<0.01 mm':weather.rain.toFixed(2).replace(/0$/,'')+' mm'):weather?.rainTrace===true?'Trace (<0.1 mm)':'Unavailable';
  // Legacy saved snapshots retain their original nearest-hour convention.
  const legacy=weather?.source?.provider==='aemet'?Math.ceil(sample.time/HOUR):Math.ceil(sample.time/HOUR-.5);
  const until=finite(weather?.rainUntil)?weather.rainUntil:legacy*HOUR,from=finite(weather?.rainFrom)?weather.rainFrom:until-HOUR;
