@@ -83,6 +83,9 @@ def parse_xml(raw: bytes, town: dict, fetched: datetime) -> dict:
                     # Rain and gusts describe the following hour; keep this
                     # explicit rather than confusing them with instantaneous data.
                     row[key] = number(child.text)
+                    if key == 'rain' and (child.text or '').strip() == 'Ip':
+                        # AEMET: inapreciable (<0.1 mm), not zero or unknown.
+                        row['rainTrace'] = True
     hourly = sorted(rows.values(), key=lambda r: r['time'])
     if not any(number(r.get('temperature')) is not None for r in hourly):
         raise ValueError('No numerical hourly temperatures in AEMET response')

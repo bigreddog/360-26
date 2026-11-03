@@ -37,6 +37,12 @@ test('downloads beyond twelve hours and implausibly future downloads are rejecte
 test('temperature interpolates in time without an altitude correction',()=>assert.equal(A.select(feed,sample,now).temperature,11));
 test('AEMET probability retains its six-hour period',()=>{const w=A.select(feed,sample,now);assert.equal(w.chance,70);assert.equal(w.chanceHours,6);});
 test('rain reads the preceding interval while preserving following-hour XML convention',()=>{const w=A.select(feed,{...sample,time:now+A.HOUR},now);assert.equal(w.rain,2);assert.equal(w.gust,20);});
+test('trace rain uses the preceding interval and remains distinct from missing and zero',()=>{
+ const x={...feed,towns:[{...town,hourly:town.hourly.map(r=>r.time===t?{...r,rain:null,rainTrace:true}:r)}]};
+ const w=A.select(x,{...sample,time:now+A.HOUR},now);
+ assert.equal(w.rain,null);assert.equal(w.rainTrace,true);
+ assert.equal(A.select(x,{...sample,time:now+2*A.HOUR},now).rainTrace,false);
+});
 test('town provenance includes height mismatch and distance',()=>{const w=A.select(feed,sample,now);assert.equal(w.source.provider,'aemet');assert.equal(w.source.heightDelta,50);assert.equal(w.source.separation,0);assert.equal(w.source.elevation,950);});
 test('forecasts never extrapolate beyond the town horizon',()=>assert.equal(A.select(feed,{...sample,time:now+10*A.HOUR},now),null));
 test('a missing interior hour does not become a straight temporal interpolation',()=>assert.equal(A.select({...feed,towns:[{...town,hourly:[town.hourly[0],town.hourly[3]]}]},sample,now),null));

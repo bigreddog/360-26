@@ -24,6 +24,20 @@ test('malformed timestamps cannot be read as valid weather',()=>assert.equal(W.r
 test('summary rainfall excludes the preceding hour at the starting point',()=>{const s=W.summarize(W.readResponses(payload(plan),plan),6);assert(Math.abs(s.rain-1.2)<1e-8);});
 test('rainfall is unavailable if any future hour is missing',()=>{const x=payload(plan);x[3].hourly.precipitation.fill(null);assert.equal(W.summarize(W.readResponses(x,plan),6).rain,null);});
 test('fractional final hour only contributes its fraction of rainfall',()=>{const rows=[{sample:{hour:0,elevation:0},weather:{rain:10}},{sample:{hour:1,elevation:0},weather:{rain:2}},{sample:{hour:1.25,elevation:0},weather:{rain:2}}];assert.equal(W.summarize(rows,6).rain,2.5);});
+test('trace rain adds an explicit trace label to known amounts without inventing a total',()=>{
+ const rows=[{sample:{hour:0},weather:{rain:100}},{sample:{hour:1},weather:{rain:2}},{sample:{hour:2},weather:{rain:null,rainTrace:true}}],s=W.summarize(rows,12);
+ assert.equal(s.rain,null);assert.equal(s.rainKnown,2);assert.equal(s.rainTraceHours,1);
+ assert.match(W.rainSummary(s).html,/2.0.*mm \+ trace/);assert.match(W.rainSummary(s).note,/less than 0.1 mm/);
+ rows[1].weather.rain=null;assert.equal(W.summarize(rows,12).rainKnown,null);assert.equal(W.rainSummary(W.summarize(rows,12)).html,'Unavailable');
+});
+test('trace-only forecast and fractional finish stay explicit, not zero or unavailable',()=>{
+ const rows=[{sample:{hour:0},weather:{rain:1}},{sample:{hour:.25},weather:{rain:null,rainTrace:true}}],s=W.summarize(rows,12);
+ assert.equal(s.rain,null);assert.equal(s.rainKnown,0);assert.equal(s.rainTraceHours,.25);assert.equal(W.rainSummary(s).html,'Trace only');
+});
+test('trace in the hour before the outlook is excluded from the sum',()=>{
+ const rows=[{sample:{hour:0},weather:{rain:null,rainTrace:true}},{sample:{hour:1},weather:{rain:0}}],s=W.summarize(rows,12);
+ assert.equal(s.rainTraceHours,0);assert.equal(s.rain,0);assert.equal(W.rainSummary(s).html,'~0.0 <small>mm</small>');
+});
 test('temperature ranges, hourly chance maxima and gusts cover the chosen window',()=>{const s=W.summarize(W.readResponses(payload(plan),plan),6);assert.equal(s.temperatureMin,17);assert.equal(s.temperatureMax,20);assert.equal(s.gustMax,26);assert.equal(s.chanceMax,12);});
 test('null probability and calm zero wind are distinguished',()=>{assert.equal(W.compass(0),'N');assert.equal(W.compass(null),'');assert.equal(W.compass(360),'N');});
 test('standard weather codes are labelled while unsupported codes remain unknown',()=>{assert.equal(W.codeLabel(45),'Fog');assert.equal(W.codeLabel(95),'Thunderstorm signal');assert.equal(W.codeLabel(999),'Conditions unavailable');assert.equal(W.codeLabel(null),'Conditions unavailable');});

@@ -1,7 +1,7 @@
 /* AEMET municipal forecasts: explicit town/height limits; never treated as a GPX grid. */
 (function(root){
 'use strict';
-const HOUR=3600000,FRESH_AGE=6*HOUR,MAX_AGE=12*HOUR,POLICY_VERSION=2,MAX_DISTANCE=8000,MAX_HEIGHT=250;
+const HOUR=3600000,FRESH_AGE=6*HOUR,MAX_AGE=12*HOUR,POLICY_VERSION=3,MAX_DISTANCE=8000,MAX_HEIGHT=250;
 const FEED='https://raw.githubusercontent.com/bigreddog/360-26/weather-data/aemet.json';
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
 function distance(a,b){const r=Math.PI/180,x=(b.lon-a.lon)*r*Math.cos((a.lat+b.lat)/2*r),y=(b.lat-a.lat)*r;return 6371008.8*Math.hypot(x,y);}
@@ -22,7 +22,7 @@ function readTown(match,sample){
  // Match the existing end-of-hour rain convention used by the moving-route sum.
  const rainHour=Math.floor((time-.001)/3600)*3600,interval=rows.find(r=>r.time===rainHour);
  const probability=town.probabilities.find(p=>time>=p.start&&time<p.end&&finite(p.value)&&p.value>=0&&p.value<=100);
- const weather={temperature:val('temperature',true),feels:val('feels',true),wind:val('wind',true),gust:finite(interval?.gust)?interval.gust:null,direction:val('direction'),code:val('code'),day:val('day'),rain:finite(interval?.rain)?interval.rain:null,chance:probability?.value??null,chanceHours:probability?.hours??null};
+ const weather={temperature:val('temperature',true),feels:val('feels',true),wind:val('wind',true),gust:finite(interval?.gust)?interval.gust:null,direction:val('direction'),code:val('code'),day:val('day'),rain:finite(interval?.rain)?interval.rain:null,rainTrace:interval?.rainTrace===true,chance:probability?.value??null,chanceHours:probability?.hours??null};
  if(!finite(weather.temperature))return null;
  return {...weather,source:{provider:'aemet',town:town.name,id:town.id,elevation:town.elevation,separation,heightDelta,issuedLocal:town.issuedLocal,fetchedAt:town.fetchedAt,url:town.url}};
 }

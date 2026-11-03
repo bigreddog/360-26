@@ -23,6 +23,13 @@ def feed(mode='ok'):
               'probabilities': [{'start': NOW - 10800 + i * 21600,
                                  'end': NOW - 10800 + (i + 1) * 21600,
                                  'value': 70, 'hours': 6} for i in range(13)]} for town in TOWNS]
+    if mode in ['trace', 'trace_missing']:
+        for town in towns:
+            for row in town['hourly']:
+                if row['time'] == NOW + 3600:
+                    row.update(rain=None, rainTrace=True)
+                elif mode == 'trace_missing' and row['time'] == NOW + 3 * 3600:
+                    row['rain'] = None
     day = NOW - 9 * 3600
     entries = [{'date': f'2026-11-{4+i:02}', 'area': 'Gran Canaria' if i < 2 else 'Canary Islands',
                 'language': 'es', 'from': (day + i * 86400) * 1000,
@@ -96,7 +103,7 @@ with sync_playwright() as p:
         check(checks, 'new cache schema preserves source attribution', page.evaluate('JSON.parse(localStorage.getItem(RouteWeather.CACHE_KEY)).version') == 3)
         page.evaluate('weatherPanel.cache.aemetPolicyVersion=1;weatherPanel.lastAttempt=0;weatherPanel.update()')
         page.wait_for_function('weatherPanel.cache.aemetPolicyVersion===AemetWeather.POLICY_VERSION&&!weatherPanel.loading')
-        check(checks, 'recent snapshots refresh after a source-selection policy upgrade', page.evaluate('weatherPanel.cache.aemetPolicyVersion') == 2)
+        check(checks, 'recent snapshots refresh after a source-selection policy upgrade', page.evaluate('weatherPanel.cache.aemetPolicyVersion') == 3)
         outlook_text = page.locator('[data-weather-outlook]').inner_text()
         check(checks, 'island outlook shows four dated daily bulletins overlapping the next 72 hours', page.locator('.island-day').count() == 4 and 'next 72 hours' in outlook_text)
         check(checks, 'regional later days are labelled and original Spanish is explicit', 'Gran Canaria' in outlook_text and 'Canary Islands' in outlook_text and 'Spanish' in outlook_text)
@@ -133,6 +140,17 @@ with sync_playwright() as p:
         page.evaluate('state.progressKm=DATA.distance_km-.5;weatherPanel.update(true)')
         page.wait_for_function('!weatherPanel.loading&&weatherPanel.cache.fromKm>248')
         check(checks, 'fully covered short outlook skips Open-Meteo', calls.count('fallback') == before and page.evaluate('weatherPanel.cache.rows.every(r=>r.weather?.source?.provider==="aemet")'))
+        scenario['aemet'] = 'trace'
+        page.evaluate('state.progressKm=0;weatherPanel.refresh(true)')
+        page.wait_for_function('!weatherPanel.loading&&weatherPanel.cache.fromKm===0')
+        check(checks, 'AEMET trace rain keeps the mixed-provider total usable and explicit', 'mm + trace' in page.locator('.weather-rainfall').inner_text() and 'less than 0.1 mm' in page.locator('.weather-rainfall').inner_text() and 'Unavailable' not in page.locator('.weather-rainfall').inner_text())
+        page.locator('.weather-rainfall').scroll_into_view_if_needed()
+        page.screenshot(path=str(OUT / f'{engine}-trace-rain.png'))
+        check(checks, 'trace rain summary fits phone width', page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'))
+        scenario['aemet'] = 'trace_missing'
+        page.evaluate('weatherPanel.refresh(true)')
+        page.wait_for_function('!weatherPanel.loading')
+        check(checks, 'genuinely missing rain is not disguised as trace or zero', 'Unavailable' in page.locator('.weather-rainfall').inner_text() and 'amounts are missing' in page.locator('.weather-rainfall').inner_text())
         scenario['aemet'] = 'delayed'
         page.evaluate('state.progressKm=0;weatherPanel.refresh(true)')
         page.wait_for_function('!weatherPanel.loading&&weatherPanel.cache.fromKm===0')
@@ -157,6 +175,9 @@ with sync_playwright() as p:
         check(checks, 'fallback outage retains AEMET while leaving remote hours missing', page.evaluate('AemetWeather.counts(weatherPanel.cache.rows).aemet>0&&AemetWeather.counts(weatherPanel.cache.rows).missing>0'))
         check(checks, 'partial-provider outage is explained', 'fallback unavailable' in page.locator('[data-weather-status]').inner_text())
         check(checks, 'missing rain samples stay unavailable', 'Unavailable' in page.locator('.weather-rainfall').inner_text())
+        scenario.update(aemet='trace', fallback='ok')
+        page.evaluate('weatherPanel.refresh(true)')
+        page.wait_for_function('!weatherPanel.loading')
         # Export preserves the selected AEMET source without new requests offline.
         page.locator('#toolsPanel>summary').click()
         with page.expect_download() as info:
@@ -171,6 +192,7 @@ with sync_playwright() as p:
         o.goto('http://127.0.0.1:8787/data/test_aemet_saved.html')
         o.wait_for_function('typeof weatherPanel!=="undefined"&&weatherPanel.cache')
         check(checks, 'portable offline HTML retains mixed source provenance and original forecasts', 'AEMET' in o.locator('[data-weather-provider]').inner_text() and 'Offline' in o.locator('[data-weather-status]').inner_text())
+        check(checks, 'trace rain survives portable offline export without becoming unavailable', 'mm + trace' in o.locator('.weather-rainfall').inner_text())
         check(checks, 'offline HTML also restores original regional text and its scope', o.locator('.island-day').count() == 4 and 'Offline' in o.locator('[data-weather-outlook]').inner_text())
         check(checks, 'English translations are available offline without a translation service', o.locator('.island-day>p[lang=en]:not(.island-significant)').count() == 4 and 'Cloudy intervals' in o.locator('[data-weather-outlook]').inner_text())
         o.locator('[data-outlook-sources]>summary').click()

@@ -1,9 +1,9 @@
 {
-  "passed": 84,
+  "passed": 92,
   "results": [
     {
       "browser": "chromium",
-      "passed": 42,
+      "passed": 46,
       "checks": [
         "AEMET is used alongside explicitly identified remote/high-route fallback",
         "visible provider badge identifies both sources",
@@ -28,6 +28,9 @@
         "source badges and detailed cards fit 390px",
         "source badges and detailed cards fit 844px",
         "fully covered short outlook skips Open-Meteo",
+        "AEMET trace rain keeps the mixed-provider total usable and explicit",
+        "trace rain summary fits phone width",
+        "genuinely missing rain is not disguised as trace or zero",
         "eight-hour saved AEMET remains usable with a visible update-delay warning",
         "AEMET source cards preserve issue time and delayed download age",
         "old AEMET downloads are rejected and fallback is visible",
@@ -37,6 +40,7 @@
         "missing rain samples stay unavailable",
         "portable HTML embeds separately dated official outlook text",
         "portable offline HTML retains mixed source provenance and original forecasts",
+        "trace rain survives portable offline export without becoming unavailable",
         "offline HTML also restores original regional text and its scope",
         "English translations are available offline without a translation service",
         "expired island bulletins are hidden rather than relabelled",
@@ -51,7 +55,7 @@
     },
     {
       "browser": "webkit",
-      "passed": 42,
+      "passed": 46,
       "checks": [
         "AEMET is used alongside explicitly identified remote/high-route fallback",
         "visible provider badge identifies both sources",
@@ -76,6 +80,9 @@
         "source badges and detailed cards fit 390px",
         "source badges and detailed cards fit 844px",
         "fully covered short outlook skips Open-Meteo",
+        "AEMET trace rain keeps the mixed-provider total usable and explicit",
+        "trace rain summary fits phone width",
+        "genuinely missing rain is not disguised as trace or zero",
         "eight-hour saved AEMET remains usable with a visible update-delay warning",
         "AEMET source cards preserve issue time and delayed download age",
         "old AEMET downloads are rejected and fallback is visible",
@@ -85,6 +92,7 @@
         "missing rain samples stay unavailable",
         "portable HTML embeds separately dated official outlook text",
         "portable offline HTML retains mixed source provenance and original forecasts",
+        "trace rain survives portable offline export without becoming unavailable",
         "offline HTML also restores original regional text and its scope",
         "English translations are available offline without a translation service",
         "expired island bulletins are hidden rather than relabelled",

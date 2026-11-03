@@ -40,6 +40,22 @@ class TestAemet(unittest.TestCase):
         self.assertIsNone(A.number('NaN'))
         self.assertEqual(A.number('0'), 0)
 
+    def test_trace_precipitation_is_preserved_without_inventing_a_number(self):
+        data = A.parse_xml(xml(body='<temperatura periodo="09">20</temperatura><precipitacion periodo="09">Ip</precipitacion>'), TOWN, NOW)
+        self.assertIsNone(data['hourly'][0]['rain'])
+        self.assertIs(data['hourly'][0]['rainTrace'], True)
+        for value in ['', 'unknown', '0']:
+            data = A.parse_xml(xml(body=f'<temperatura periodo="09">20</temperatura><precipitacion periodo="09">{value}</precipitacion>'), TOWN, NOW)
+            self.assertNotIn('rainTrace', data['hourly'][0])
+
+    def test_real_artenara_trace_hours_survive_ingestion(self):
+        raw = (ROOT / 'tests/fixtures/aemet-artenara-20261103.xml').read_bytes()
+        data = A.parse_xml(raw, {**TOWN, 'id': '35005'}, NOW)
+        trace = [r for r in data['hourly'] if r.get('rainTrace')]
+        self.assertEqual([datetime.fromtimestamp(r['time'], timezone.utc).isoformat() for r in trace],
+                         ['2026-11-04T11:00:00+00:00', '2026-11-04T18:00:00+00:00'])
+        self.assertTrue(all(r['rain'] is None for r in trace))
+
     def test_unknown_sky_code_is_not_clear(self):
         data = A.parse_xml(xml(body='<temperatura periodo="09">10</temperatura><estado_cielo periodo="09">999</estado_cielo>'), TOWN, NOW)
         self.assertIsNone(data['hourly'][0]['code'])
